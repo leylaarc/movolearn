@@ -1,0 +1,194 @@
+{
+  "id": "642e91cd-dc84-545b-ae0f-46ae543e6a04",
+  "title": "Dottie's Herd Rescue",
+  "theme": "Dinosaurs",
+  "lessonType": "rescue",
+  "ageTarget": "5-8",
+  "gradeTarget": "K-2",
+  "readingLevel": "Early Reader",
+  "learningGoal": "All-around practice",
+  "estimatedMinutes": 10,
+  "storyOpening": "Morning mist curled across the valley as Dottie the young dinosaur lifted her head and heard a soft cry from behind a wall of ferns.",
+  "missionPrompt": "A baby dinosaur wandered away from its herd. Follow the tracks, read the signs, and help Dottie bring the little one home!",
+  "readingPassage": "Dottie pads carefully along a muddy trail where three-toed footprints press into the earth. Long ago, giant dinosaurs walked in valleys like this one. Some dinosaurs ate plants. Animals that eat plants are called herbivores. The crying sound leads Dottie to a baby triceratops hiding near a fallen log. Fossils are the left-behind parts of dinosaurs that scientists study today — but this baby is alive and needs help. Dottie nudges it gently toward the distant sounds of the herd.",
+  "storyEnding": "The baby triceratops reunites with its herd. Dottie trumpets proudly — you helped a lost dinosaur find its family.",
+  "reflectionPrompt": "What would you do next if you heard another dinosaur calling for help?",
+  "creativePrompt": "Draw a picture of the valley where Dottie lives and label three places the herd might rest.",
+  "readingSkill": "Using context clues",
+  "mathSkill": "Subtraction within 10",
+  "skillsPracticed": [
+    "Reading",
+    "Math",
+    "Vocabulary",
+    "Science",
+    "Creative Thinking"
+  ],
+  "vocabularyWords": [
+    {
+      "id": "d1000001-0000-0000-0000-000000000001",
+      "word": "Herbivore",
+      "definition": "an animal that eats plants",
+      "exampleSentence": "Some dinosaurs were herbivores that munched on leaves.",
+      "storyConnection": "The passage explains plant-eating dinosaurs."
+    },
+    {
+      "id": "d1000001-0000-0000-0000-000000000002",
+      "word": "Fossil",
+      "definition": "the remains of a plant or animal preserved in rock",
+      "exampleSentence": "Scientists study fossils to learn about dinosaurs.",
+      "storyConnection": "Fossils help us understand dinosaurs from long ago."
+    },
+    {
+      "id": "d1000001-0000-0000-0000-000000000003",
+      "word": "Herd",
+      "definition": "a group of animals that live and move together",
+      "exampleSentence": "The baby dinosaur belongs with its herd.",
+      "storyConnection": "Your mission is to return the baby to its herd."
+    }
+  ],
+  "knowledgeFacts": [
+    {
+      "id": "d2000001-0000-0000-0000-000000000001",
+      "fact": "Scientists learn about dinosaurs by studying fossils.",
+      "explanation": "Fossils can be bones, teeth, or footprints preserved in rock."
+    },
+    {
+      "id": "d2000001-0000-0000-0000-000000000002",
+      "fact": "Some dinosaurs traveled in herds for safety.",
+      "explanation": "Staying together helped plant-eaters watch for danger."
+    }
+  ],
+  "questions": [
+    {
+      "id": "0ec13c9d-32ce-5581-bee7-3990f3652ea2",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What did herbivore dinosaurs eat?",
+      "choices": [
+        "Plants",
+        "Meat",
+        "Insects only"
+      ],
+      "correctAnswer": "Plants",
+      "explanation": "Herbivore dinosaurs ate plants.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "1ec13c9d-32ce-5581-bee7-3990f3652ea3",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What sound leads Dottie through the valley?",
+      "choices": [
+        "A soft cry from a baby dinosaur",
+        "A rumble from a distant volcano",
+        "A splash from the river"
+      ],
+      "correctAnswer": "A soft cry from a baby dinosaur",
+      "explanation": "Dottie follows a crying sound behind the ferns.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "2ec13c9d-32ce-5581-bee7-3990f3652ea4",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Where is the baby triceratops hiding?",
+      "choices": [
+        "Near a fallen log",
+        "Beside a fern wall",
+        "On a rocky hillside"
+      ],
+      "correctAnswer": "Near a fallen log",
+      "explanation": "The baby is found near a fallen log.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "b1111111-1111-4111-8111-111111111111",
+      "subject": "reading",
+      "type": "openEnded",
+      "responseType": "matching",
+      "prompt": "Match each word to what the passage says it means.",
+      "pairs": [
+        {
+          "left": "Herbivores",
+          "right": "Animals that ate plants",
+          "supportingEvidence": "Some ate plants and were called herbivores."
+        },
+        {
+          "left": "Fossils",
+          "right": "Remains of dinosaurs that scientists study",
+          "supportingEvidence": "Fossils are the remains of dinosaurs that scientists study today — but this baby is very much alive and needs help."
+        },
+        {
+          "left": "Baby triceratops",
+          "right": "Hiding near a fallen log",
+          "supportingEvidence": "The crying sound leads Dottie to a baby triceratops hiding near a fallen log."
+        }
+      ],
+      "explanation": "Each match comes from a sentence in the reading passage."
+    },
+    {
+      "id": "b2222222-2222-4222-8222-222222222222",
+      "subject": "science",
+      "type": "multipleChoice",
+      "responseType": "multipleChoice",
+      "prompt": "What can footprints in the valley help Dottie learn?",
+      "choices": [
+        "Which way a dinosaur was walking",
+        "What color the dinosaur preferred",
+        "How loud the dinosaur could roar"
+      ],
+      "correctAnswer": "Which way a dinosaur was walking",
+      "explanation": "Footprints show direction and movement, not color or sound."
+    }
+  ],
+  "mathChallenges": [
+    {
+      "id": "88861546-3cfa-52ae-a100-a5a221422ca4",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Dottie sees 9 footprints, then 2 fade in the rain. How many clear footprints remain?",
+      "choices": [
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "9 − 2 = 7 footprints.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "c8606e77-9263-5898-a5c1-eedae66aa11e",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "The herd has 5 adults. 2 more join on the hill. How many adults now?",
+      "choices": [
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "5 + 2 = 7 adults.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "f67294e3-7fb6-56bf-a82c-13c00982d90b",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "You pick 8 fern leaves to mark the trail and give 3 to Dottie. How many leaves do you still hold?",
+      "choices": [
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "5",
+      "explanation": "8 − 3 = 5 leaves.",
+      "responseType": "multipleChoice"
+    }
+  ],
+  "sections": [],
+  "category": "discovery",
+  "primarySubject": "science",
+  "teaser": "Help Dottie follow footprints and bring a lost baby dinosaur home.",
+  "creativeResponseType": "drawing",
+  "reflectionResponseType": "shortText"
+}

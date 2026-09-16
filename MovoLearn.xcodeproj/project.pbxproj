@@ -1,0 +1,1101 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000010000000000000001 /* MovoLearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000001 /* MovoLearnApp.swift */; };
+		A10000010000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000002 /* ContentView.swift */; };
+		A10000010000000000000003 /* ChildProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000003 /* ChildProfile.swift */; };
+		A10000010000000000000004 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000004 /* Lesson.swift */; };
+		A10000010000000000000005 /* LessonQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000005 /* LessonQuestion.swift */; };
+		A10000010000000000000006 /* ProgressSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000006 /* ProgressSummary.swift */; };
+		A10000010000000000000007 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000007 /* WelcomeView.swift */; };
+		A10000010000000000000008 /* ChildProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000008 /* ChildProfileSetupView.swift */; };
+		A10000010000000000000009 /* InterestSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000009 /* InterestSelectionView.swift */; };
+		A1000001000000000000000A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000000A /* HomeView.swift */; };
+		A10000010000000000000066 /* ProgressHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000066 /* ProgressHubView.swift */; };
+		A10000010000000000000065 /* ExploreLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000065 /* ExploreLibraryView.swift */; };
+		A10000010000000000000064 /* MainTabShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000064 /* MainTabShell.swift */; };
+		A10000010000000000000063 /* HomeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000063 /* HomeComponents.swift */; };
+		A10000010000000000000062 /* HomeFeedBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000062 /* HomeFeedBuilder.swift */; };
+		A10000010000000000000061 /* HomeActivityStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000061 /* HomeActivityStore.swift */; };
+		A10000010000000000000060 /* ExploreSubjectCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000060 /* ExploreSubjectCategory.swift */; };
+		A10000010000000000000070 /* GameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000070 /* GameProgress.swift */; };
+		A10000010000000000000071 /* GameProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000071 /* GameProgressStore.swift */; };
+		A10000010000000000000080 /* LearnerAbilityProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000080 /* LearnerAbilityProfile.swift */; };
+		A10000010000000000000081 /* ContentAdaptationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000081 /* ContentAdaptationService.swift */; };
+		A10000010000000000000082 /* LessonPreDisplayGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000082 /* LessonPreDisplayGate.swift */; };
+		A10000010000000000000083 /* AgeGradeLearningStandards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000083 /* AgeGradeLearningStandards.swift */; };
+		A10000010000000000000084 /* AdaptiveSkillAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000084 /* AdaptiveSkillAdjuster.swift */; };
+		A10000010000000000000085 /* ChildFacingProseQualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000085 /* ChildFacingProseQualityValidator.swift */; };
+		A100000100000000000000A0 /* MissionPromptNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A0 /* MissionPromptNormalizer.swift */; };
+		A10000010000000000000086 /* ReflectionPromptQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000086 /* ReflectionPromptQuality.swift */; };
+		A10000010000000000000087 /* CreativePromptQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000087 /* CreativePromptQuality.swift */; };
+		A10000010000000000000072 /* AdventuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000072 /* AdventuresView.swift */; };
+		A10000010000000000000073 /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000073 /* RewardsView.swift */; };
+		A1000001000000000000000B /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000000B /* LessonView.swift */; };
+		A1000001000000000000000C /* LessonCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000000C /* LessonCompletionView.swift */; };
+		A1000001000000000000000D /* ParentSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000000D /* ParentSummaryView.swift */; };
+		A1000001000000000000000E /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000000E /* AppViewModel.swift */; };
+		A1000001000000000000000F /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000000F /* LessonViewModel.swift */; };
+		A10000010000000000000010 /* LessonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000010 /* LessonLoader.swift */; };
+		A10000010000000000000013 /* sharks.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000013 /* sharks.json */; };
+		A10000010000000000000014 /* horses.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000014 /* horses.json */; };
+		A10000010000000000000015 /* space.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000015 /* space.json */; };
+		A10000010000000000000016 /* dinosaurs.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000016 /* dinosaurs.json */; };
+		A10000010000000000000017 /* UserProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000017 /* UserProgress.swift */; };
+		A10000010000000000000018 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000018 /* ProgressStore.swift */; };
+		A10000010000000000000011 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000011 /* DesignSystem.swift */; };
+		A10000010000000000000019 /* SparkComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000019 /* SparkComponents.swift */; };
+		A1000001000000000000001A /* TopicIllustrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001A /* TopicIllustrations.swift */; };
+		A1000001000000000000001B /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001B /* Topic.swift */; };
+		A1000001000000000000001C /* TopicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001C /* TopicLibrary.swift */; };
+		A1000001000000000000001D /* BundledLessons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001D /* BundledLessons.swift */; };
+		A1000001000000000000001E /* LessonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001E /* LessonFactory.swift */; };
+		A1000001000000000000001F /* DailyLessonSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001F /* DailyLessonSelector.swift */; };
+		A10000010000000000000020 /* TopicSceneViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000020 /* TopicSceneViews.swift */; };
+		A10000010000000000000021 /* StoryStepComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000021 /* StoryStepComponents.swift */; };
+		A10000010000000000000022 /* BundledLessonsExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000022 /* BundledLessonsExtended.swift */; };
+		A10000010000000000000023 /* LessonDifficultyRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000023 /* LessonDifficultyRules.swift */; };
+		A10000010000000000000024 /* QuestionQualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000024 /* QuestionQualityValidator.swift */; };
+		A10000010000000000000025 /* AILessonGenerationPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000025 /* AILessonGenerationPrompt.swift */; };
+		A10000010000000000000026 /* MathWordProblemScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000026 /* MathWordProblemScenes.swift */; };
+		A10000010000000000000027 /* MathWordProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000027 /* MathWordProblemGenerator.swift */; };
+		A10000010000000000000028 /* QuestionResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000028 /* QuestionResponseType.swift */; };
+		A10000010000000000000029 /* DrawingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000029 /* DrawingCanvasView.swift */; };
+		A1000001000000000000002A /* QuestionAnswerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000002A /* QuestionAnswerInput.swift */; };
+		A1000001000000000000002B /* MatchingSortingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000002B /* MatchingSortingViews.swift */; };
+		A1000001000000000000002C /* ThemeInteractionQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000002C /* ThemeInteractionQuestions.swift */; };
+		A1000001000000000000002E /* PassageMatchingQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000002E /* PassageMatchingQuestionGenerator.swift */; };
+		A1000001000000000000002D /* LessonContextBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000002D /* LessonContextBank.swift */; };
+		A10000010000000000000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000012 /* Assets.xcassets */; };
+		T10000010000000000000001 /* QuestionResponseTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000001 /* QuestionResponseTypeTests.swift */; };
+		T1000001000000000000000A /* PassageMatchingQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T2000001000000000000000A /* PassageMatchingQuestionTests.swift */; };
+		A10000010000000000000030 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000030 /* ProfileRepository.swift */; };
+		A10000010000000000000031 /* PersonalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000031 /* PersonalizationService.swift */; };
+		A10000010000000000000032 /* LearningState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000032 /* LearningState.swift */; };
+		A10000010000000000000033 /* MarbleModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000033 /* MarbleModels.swift */; };
+		A10000010000000000000034 /* LearningProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000034 /* LearningProgressStore.swift */; };
+		A10000010000000000000035 /* MasteryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000035 /* MasteryEngine.swift */; };
+		A10000010000000000000036 /* MarbleCurriculumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000036 /* MarbleCurriculumService.swift */; };
+		A10000010000000000000037 /* LessonCurriculumMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000037 /* LessonCurriculumMapper.swift */; };
+		A10000010000000000000038 /* LearningPathEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000038 /* LearningPathEngine.swift */; };
+		A10000010000000000000039 /* CurriculumDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000039 /* CurriculumDiagnostics.swift */; };
+		A1000001000000000000003A /* LearningSessionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000003A /* LearningSessionRecorder.swift */; };
+		A1000001000000000000003B /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000003B /* ProfileSettingsView.swift */; };
+		A10000010000000000000040 /* topics.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000040 /* topics.json */; };
+		A10000010000000000000041 /* dependencies.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000041 /* dependencies.json */; };
+		A10000010000000000000042 /* clusters.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000042 /* clusters.json */; };
+		A10000010000000000000043 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000043 /* manifest.json */; };
+		A10000010000000000000044 /* curriculum-standards.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000044 /* curriculum-standards.json */; };
+		A10000010000000000000045 /* lesson-curriculum-map.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000045 /* lesson-curriculum-map.json */; };
+		T10000010000000000000002 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000002 /* ProfilePersistenceTests.swift */; };
+		T10000010000000000000003 /* MarbleCurriculumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000003 /* MarbleCurriculumTests.swift */; };
+		A10000010000000000000050 /* MysteryKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000050 /* MysteryKind.swift */; };
+		A10000010000000000000051 /* MysteryQualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000051 /* MysteryQualityValidator.swift */; };
+		A10000010000000000000052 /* MysteryInvestigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000052 /* MysteryInvestigationView.swift */; };
+		T10000010000000000000004 /* MysteryQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000004 /* MysteryQualityTests.swift */; };
+		T10000010000000000000005 /* QuestionQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000005 /* QuestionQualityTests.swift */; };
+		A10000010000000000000090 /* ContentProviderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000090 /* ContentProviderProtocols.swift */; };
+		A10000010000000000000091 /* CaseStandardsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000091 /* CaseStandardsProvider.swift */; };
+		A10000010000000000000092 /* LexileReadingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000092 /* LexileReadingProvider.swift */; };
+		A10000010000000000000093 /* QuantileMathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000093 /* QuantileMathProvider.swift */; };
+		A10000010000000000000094 /* LevelSkillProgressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000094 /* LevelSkillProgressions.swift */; };
+		A10000010000000000000095 /* MathProblemValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000095 /* MathProblemValidator.swift */; };
+		A10000010000000000000096 /* AutomatedContentQualityGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000096 /* AutomatedContentQualityGate.swift */; };
+		A10000010000000000000097 /* LevelSpecificContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000097 /* LevelSpecificContentFactory.swift */; };
+		A10000010000000000000098 /* ApprovedContentLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000098 /* ApprovedContentLibrary.swift */; };
+		A100000100000000000000B1 /* CuratedTopicLessonBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B1 /* CuratedTopicLessonBank.swift */; };
+		A100000100000000000000B4 /* CuratedTopicLessonBank+ExtendedTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B4 /* CuratedTopicLessonBank+ExtendedTopics.swift */; };
+		A100000100000000000000B6 /* CuratedTopicLessonBank+Discovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B6 /* CuratedTopicLessonBank+Discovery.swift */; };
+		A100000100000000000000B7 /* CuratedTopicLessonBank+UniqueWorlds.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B7 /* CuratedTopicLessonBank+UniqueWorlds.swift */; };
+		A100000100000000000000B8 /* CuratedTopicLessonBank+Creative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B8 /* CuratedTopicLessonBank+Creative.swift */; };
+		A100000100000000000000B9 /* CuratedTopicLessonBank+DiscoveryWaveD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B9 /* CuratedTopicLessonBank+DiscoveryWaveD.swift */; };
+		A100000100000000000000BA /* CuratedTopicLessonBank+CreativeWaveE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000BA /* CuratedTopicLessonBank+CreativeWaveE.swift */; };
+		A100000100000000000000B5 /* CatalogBrowseSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B5 /* CatalogBrowseSelector.swift */; };
+		A100000100000000000000B2 /* LessonContentCoherenceValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B2 /* LessonContentCoherenceValidator.swift */; };
+		A100000100000000000000B3 /* RecentLessonStructureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000B3 /* RecentLessonStructureTracker.swift */; };
+		T100000100000000000000B4 /* ContentQualityCoherenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T200000100000000000000B4 /* ContentQualityCoherenceTests.swift */; };
+		A10000010000000000000099 /* ContentLibrarySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000099 /* ContentLibrarySelector.swift */; };
+		A1000001000000000000009A /* ProfileContentInvalidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000009A /* ProfileContentInvalidator.swift */; };
+		A1000001000000000000009B /* BackendOnlyAILessonGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000009B /* BackendOnlyAILessonGenerator.swift */; };
+		A1000001000000000000009C /* case-mock-skills.json in Resources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000009C /* case-mock-skills.json */; };
+		A1000001000000000000009D /* approved-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000009D /* approved-manifest.json */; };
+		T10000010000000000000006 /* LevelContentDifferentiationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000006 /* LevelContentDifferentiationTests.swift */; };
+		T10000010000000000000007 /* ChildFacingProseQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000007 /* ChildFacingProseQualityTests.swift */; };
+		T10000010000000000000008 /* ReflectionPromptQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000008 /* ReflectionPromptQualityTests.swift */; };
+		T1000001000000000000000B /* CreativePromptQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T2000001000000000000000B /* CreativePromptQualityTests.swift */; };
+		T10000010000000000000009 /* MathQuestionVarietyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20000010000000000000009 /* MathQuestionVarietyTests.swift */; };
+		A100000100000000000000A1 /* ocean_movo-ela-letter-sound-k_beginner_emerging.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A1 /* ocean_movo-ela-letter-sound-k_beginner_emerging.json */; };
+		A100000100000000000000A2 /* ocean_movo-math-add-sub-10-1_early-reader_developing.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A2 /* ocean_movo-math-add-sub-10-1_early-reader_developing.json */; };
+		A100000100000000000000A3 /* horses_movo-ela-short-sentences-1_early-reader_developing.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A3 /* horses_movo-ela-short-sentences-1_early-reader_developing.json */; };
+		A100000100000000000000A4 /* space_movo-ela-main-idea-2_growing-reader_secure.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A4 /* space_movo-ela-main-idea-2_growing-reader_secure.json */; };
+		A100000100000000000000A5 /* space_movo-math-add-sub-20-1_growing-reader_secure.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A5 /* space_movo-math-add-sub-20-1_growing-reader_secure.json */; };
+		A100000100000000000000A6 /* sharks_movo-math-multi-step-2_confident-reader_advancing.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A6 /* sharks_movo-math-multi-step-2_confident-reader_advancing.json */; };
+		A100000100000000000000A7 /* dinosaurs_movo-ela-inference-2_confident-reader_advancing.json in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000A7 /* dinosaurs_movo-ela-inference-2_confident-reader_advancing.json */; };
+		A1000001000000000000009E /* PipelineLessonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000009E /* PipelineLessonAdapter.swift */; };
+		A100000100000000000000C0 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C0 /* KeychainStore.swift */; };
+		A100000100000000000000C1 /* ParentSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C1 /* ParentSessionStore.swift */; };
+		A100000100000000000000C2 /* FamilyAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C2 /* FamilyAPIModels.swift */; };
+		A100000100000000000000C3 /* FamilyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C3 /* FamilyAPIClient.swift */; };
+		A100000100000000000000C4 /* SyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C4 /* SyncCoordinator.swift */; };
+		A100000100000000000000C5 /* ParentAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C5 /* ParentAccountView.swift */; };
+		A100000100000000000000C7 /* PrivacyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C7 /* PrivacyNoticeView.swift */; };
+		A100000100000000000000C9 /* PrivacyPolicyCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C9 /* PrivacyPolicyCopy.swift */; };
+		A100000100000000000000C8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A200000100000000000000C8 /* PrivacyInfo.xcprivacy */; };
+		T1000001000000000000000C /* FamilyAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T2000001000000000000000C /* FamilyAPIClientTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000010000000000000001 /* MovoLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovoLearnApp.swift; sourceTree = "<group>"; };
+		A20000010000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A20000010000000000000003 /* ChildProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfile.swift; sourceTree = "<group>"; };
+		A20000010000000000000004 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		A20000010000000000000005 /* LessonQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonQuestion.swift; sourceTree = "<group>"; };
+		A20000010000000000000006 /* ProgressSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSummary.swift; sourceTree = "<group>"; };
+		A20000010000000000000007 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A20000010000000000000008 /* ChildProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfileSetupView.swift; sourceTree = "<group>"; };
+		A20000010000000000000009 /* InterestSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionView.swift; sourceTree = "<group>"; };
+		A2000001000000000000000A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A20000010000000000000066 /* ProgressHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHubView.swift; sourceTree = "<group>"; };
+		A20000010000000000000065 /* ExploreLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreLibraryView.swift; sourceTree = "<group>"; };
+		A20000010000000000000064 /* MainTabShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabShell.swift; sourceTree = "<group>"; };
+		A20000010000000000000063 /* HomeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponents.swift; sourceTree = "<group>"; };
+		A20000010000000000000062 /* HomeFeedBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedBuilder.swift; sourceTree = "<group>"; };
+		A20000010000000000000061 /* HomeActivityStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeActivityStore.swift; sourceTree = "<group>"; };
+		A20000010000000000000060 /* ExploreSubjectCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSubjectCategory.swift; sourceTree = "<group>"; };
+		A20000010000000000000070 /* GameProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgress.swift; sourceTree = "<group>"; };
+		A20000010000000000000071 /* GameProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressStore.swift; sourceTree = "<group>"; };
+		A20000010000000000000080 /* LearnerAbilityProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnerAbilityProfile.swift; sourceTree = "<group>"; };
+		A20000010000000000000081 /* ContentAdaptationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAdaptationService.swift; sourceTree = "<group>"; };
+		A20000010000000000000082 /* LessonPreDisplayGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPreDisplayGate.swift; sourceTree = "<group>"; };
+		A20000010000000000000083 /* AgeGradeLearningStandards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeGradeLearningStandards.swift; sourceTree = "<group>"; };
+		A20000010000000000000084 /* AdaptiveSkillAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveSkillAdjuster.swift; sourceTree = "<group>"; };
+		A20000010000000000000085 /* ChildFacingProseQualityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFacingProseQualityValidator.swift; sourceTree = "<group>"; };
+		A200000100000000000000A0 /* MissionPromptNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPromptNormalizer.swift; sourceTree = "<group>"; };
+		A20000010000000000000086 /* ReflectionPromptQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionPromptQuality.swift; sourceTree = "<group>"; };
+		A20000010000000000000087 /* CreativePromptQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativePromptQuality.swift; sourceTree = "<group>"; };
+		A20000010000000000000072 /* AdventuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventuresView.swift; sourceTree = "<group>"; };
+		A20000010000000000000073 /* RewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsView.swift; sourceTree = "<group>"; };
+		A2000001000000000000000B /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
+		A2000001000000000000000C /* LessonCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCompletionView.swift; sourceTree = "<group>"; };
+		A2000001000000000000000D /* ParentSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentSummaryView.swift; sourceTree = "<group>"; };
+		A2000001000000000000000E /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		A2000001000000000000000F /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		A20000010000000000000010 /* LessonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLoader.swift; sourceTree = "<group>"; };
+		A20000010000000000000013 /* sharks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sharks.json; sourceTree = "<group>"; };
+		A20000010000000000000014 /* horses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = horses.json; sourceTree = "<group>"; };
+		A20000010000000000000015 /* space.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = space.json; sourceTree = "<group>"; };
+		A20000010000000000000016 /* dinosaurs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dinosaurs.json; sourceTree = "<group>"; };
+		A20000010000000000000017 /* UserProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgress.swift; sourceTree = "<group>"; };
+		A20000010000000000000018 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
+		A20000010000000000000011 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		A20000010000000000000019 /* SparkComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkComponents.swift; sourceTree = "<group>"; };
+		A2000001000000000000001A /* TopicIllustrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicIllustrations.swift; sourceTree = "<group>"; };
+		A2000001000000000000001B /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		A2000001000000000000001C /* TopicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicLibrary.swift; sourceTree = "<group>"; };
+		A2000001000000000000001D /* BundledLessons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledLessons.swift; sourceTree = "<group>"; };
+		A2000001000000000000001E /* LessonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonFactory.swift; sourceTree = "<group>"; };
+		A2000001000000000000001F /* DailyLessonSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLessonSelector.swift; sourceTree = "<group>"; };
+		A20000010000000000000020 /* TopicSceneViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSceneViews.swift; sourceTree = "<group>"; };
+		A20000010000000000000021 /* StoryStepComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryStepComponents.swift; sourceTree = "<group>"; };
+		A20000010000000000000022 /* BundledLessonsExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledLessonsExtended.swift; sourceTree = "<group>"; };
+		A20000010000000000000023 /* LessonDifficultyRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDifficultyRules.swift; sourceTree = "<group>"; };
+		A20000010000000000000024 /* QuestionQualityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionQualityValidator.swift; sourceTree = "<group>"; };
+		A20000010000000000000025 /* AILessonGenerationPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AILessonGenerationPrompt.swift; sourceTree = "<group>"; };
+		A20000010000000000000026 /* MathWordProblemScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathWordProblemScenes.swift; sourceTree = "<group>"; };
+		A20000010000000000000027 /* MathWordProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathWordProblemGenerator.swift; sourceTree = "<group>"; };
+		A20000010000000000000028 /* QuestionResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResponseType.swift; sourceTree = "<group>"; };
+		A20000010000000000000029 /* DrawingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingCanvasView.swift; sourceTree = "<group>"; };
+		A2000001000000000000002A /* QuestionAnswerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerInput.swift; sourceTree = "<group>"; };
+		A2000001000000000000002B /* MatchingSortingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSortingViews.swift; sourceTree = "<group>"; };
+		A2000001000000000000002C /* ThemeInteractionQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInteractionQuestions.swift; sourceTree = "<group>"; };
+		A2000001000000000000002E /* PassageMatchingQuestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassageMatchingQuestionGenerator.swift; sourceTree = "<group>"; };
+		A2000001000000000000002D /* LessonContextBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonContextBank.swift; sourceTree = "<group>"; };
+		A20000010000000000000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A30000010000000000000001 /* MovoLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovoLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		T20000010000000000000001 /* QuestionResponseTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResponseTypeTests.swift; sourceTree = "<group>"; };
+		T2000001000000000000000A /* PassageMatchingQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassageMatchingQuestionTests.swift; sourceTree = "<group>"; };
+		T30000010000000000000001 /* MovoLearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovoLearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000010000000000000030 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		A20000010000000000000031 /* PersonalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationService.swift; sourceTree = "<group>"; };
+		A20000010000000000000032 /* LearningState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningState.swift; sourceTree = "<group>"; };
+		A20000010000000000000033 /* MarbleModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarbleModels.swift; sourceTree = "<group>"; };
+		A20000010000000000000034 /* LearningProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningProgressStore.swift; sourceTree = "<group>"; };
+		A20000010000000000000035 /* MasteryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasteryEngine.swift; sourceTree = "<group>"; };
+		A20000010000000000000036 /* MarbleCurriculumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarbleCurriculumService.swift; sourceTree = "<group>"; };
+		A20000010000000000000037 /* LessonCurriculumMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCurriculumMapper.swift; sourceTree = "<group>"; };
+		A20000010000000000000038 /* LearningPathEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPathEngine.swift; sourceTree = "<group>"; };
+		A20000010000000000000039 /* CurriculumDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDiagnostics.swift; sourceTree = "<group>"; };
+		A2000001000000000000003A /* LearningSessionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningSessionRecorder.swift; sourceTree = "<group>"; };
+		A2000001000000000000003B /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
+		A20000010000000000000040 /* topics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = topics.json; sourceTree = "<group>"; };
+		A20000010000000000000041 /* dependencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dependencies.json; sourceTree = "<group>"; };
+		A20000010000000000000042 /* clusters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = clusters.json; sourceTree = "<group>"; };
+		A20000010000000000000043 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		A20000010000000000000044 /* curriculum-standards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = curriculum-standards.json; sourceTree = "<group>"; };
+		A20000010000000000000045 /* lesson-curriculum-map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lesson-curriculum-map.json; sourceTree = "<group>"; };
+		T20000010000000000000002 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
+		T20000010000000000000003 /* MarbleCurriculumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarbleCurriculumTests.swift; sourceTree = "<group>"; };
+		A20000010000000000000050 /* MysteryKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryKind.swift; sourceTree = "<group>"; };
+		A20000010000000000000051 /* MysteryQualityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryQualityValidator.swift; sourceTree = "<group>"; };
+		A20000010000000000000052 /* MysteryInvestigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryInvestigationView.swift; sourceTree = "<group>"; };
+		T20000010000000000000004 /* MysteryQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryQualityTests.swift; sourceTree = "<group>"; };
+		T20000010000000000000005 /* QuestionQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionQualityTests.swift; sourceTree = "<group>"; };
+		A20000010000000000000090 /* ContentProviderProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProviderProtocols.swift; sourceTree = "<group>"; };
+		A20000010000000000000091 /* CaseStandardsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseStandardsProvider.swift; sourceTree = "<group>"; };
+		A20000010000000000000092 /* LexileReadingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexileReadingProvider.swift; sourceTree = "<group>"; };
+		A20000010000000000000093 /* QuantileMathProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantileMathProvider.swift; sourceTree = "<group>"; };
+		A20000010000000000000094 /* LevelSkillProgressions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSkillProgressions.swift; sourceTree = "<group>"; };
+		A20000010000000000000095 /* MathProblemValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblemValidator.swift; sourceTree = "<group>"; };
+		A20000010000000000000096 /* AutomatedContentQualityGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedContentQualityGate.swift; sourceTree = "<group>"; };
+		A20000010000000000000097 /* LevelSpecificContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSpecificContentFactory.swift; sourceTree = "<group>"; };
+		A20000010000000000000098 /* ApprovedContentLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedContentLibrary.swift; sourceTree = "<group>"; };
+		A200000100000000000000B1 /* CuratedTopicLessonBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedTopicLessonBank.swift; sourceTree = "<group>"; };
+		A200000100000000000000B4 /* CuratedTopicLessonBank+ExtendedTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuratedTopicLessonBank+ExtendedTopics.swift"; sourceTree = "<group>"; };
+		A200000100000000000000B6 /* CuratedTopicLessonBank+Discovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuratedTopicLessonBank+Discovery.swift"; sourceTree = "<group>"; };
+		A200000100000000000000B7 /* CuratedTopicLessonBank+UniqueWorlds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuratedTopicLessonBank+UniqueWorlds.swift"; sourceTree = "<group>"; };
+		A200000100000000000000B8 /* CuratedTopicLessonBank+Creative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuratedTopicLessonBank+Creative.swift"; sourceTree = "<group>"; };
+		A200000100000000000000B9 /* CuratedTopicLessonBank+DiscoveryWaveD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuratedTopicLessonBank+DiscoveryWaveD.swift"; sourceTree = "<group>"; };
+		A200000100000000000000BA /* CuratedTopicLessonBank+CreativeWaveE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuratedTopicLessonBank+CreativeWaveE.swift"; sourceTree = "<group>"; };
+		A200000100000000000000B5 /* CatalogBrowseSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBrowseSelector.swift; sourceTree = "<group>"; };
+		A200000100000000000000B2 /* LessonContentCoherenceValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonContentCoherenceValidator.swift; sourceTree = "<group>"; };
+		A200000100000000000000B3 /* RecentLessonStructureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentLessonStructureTracker.swift; sourceTree = "<group>"; };
+		A20000010000000000000099 /* ContentLibrarySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLibrarySelector.swift; sourceTree = "<group>"; };
+		A2000001000000000000009A /* ProfileContentInvalidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentInvalidator.swift; sourceTree = "<group>"; };
+		A2000001000000000000009B /* BackendOnlyAILessonGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendOnlyAILessonGenerator.swift; sourceTree = "<group>"; };
+		A2000001000000000000009C /* case-mock-skills.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = case-mock-skills.json; sourceTree = "<group>"; };
+		A2000001000000000000009D /* approved-manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "approved-manifest.json"; sourceTree = "<group>"; };
+		T20000010000000000000006 /* LevelContentDifferentiationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelContentDifferentiationTests.swift; sourceTree = "<group>"; };
+		T200000100000000000000B4 /* ContentQualityCoherenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentQualityCoherenceTests.swift; sourceTree = "<group>"; };
+		T20000010000000000000007 /* ChildFacingProseQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFacingProseQualityTests.swift; sourceTree = "<group>"; };
+		T20000010000000000000008 /* ReflectionPromptQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionPromptQualityTests.swift; sourceTree = "<group>"; };
+		T2000001000000000000000B /* CreativePromptQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativePromptQualityTests.swift; sourceTree = "<group>"; };
+		T20000010000000000000009 /* MathQuestionVarietyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestionVarietyTests.swift; sourceTree = "<group>"; };
+		A200000100000000000000A1 /* ocean_movo-ela-letter-sound-k_beginner_emerging.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ocean_movo-ela-letter-sound-k_beginner_emerging.json; sourceTree = "<group>"; };
+		A200000100000000000000A2 /* ocean_movo-math-add-sub-10-1_early-reader_developing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ocean_movo-math-add-sub-10-1_early-reader_developing.json; sourceTree = "<group>"; };
+		A200000100000000000000A3 /* horses_movo-ela-short-sentences-1_early-reader_developing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = horses_movo-ela-short-sentences-1_early-reader_developing.json; sourceTree = "<group>"; };
+		A200000100000000000000A4 /* space_movo-ela-main-idea-2_growing-reader_secure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = space_movo-ela-main-idea-2_growing-reader_secure.json; sourceTree = "<group>"; };
+		A200000100000000000000A5 /* space_movo-math-add-sub-20-1_growing-reader_secure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = space_movo-math-add-sub-20-1_growing-reader_secure.json; sourceTree = "<group>"; };
+		A200000100000000000000A6 /* sharks_movo-math-multi-step-2_confident-reader_advancing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sharks_movo-math-multi-step-2_confident-reader_advancing.json; sourceTree = "<group>"; };
+		A200000100000000000000A7 /* dinosaurs_movo-ela-inference-2_confident-reader_advancing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dinosaurs_movo-ela-inference-2_confident-reader_advancing.json; sourceTree = "<group>"; };
+		A2000001000000000000009E /* PipelineLessonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineLessonAdapter.swift; sourceTree = "<group>"; };
+		A200000100000000000000C0 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		A200000100000000000000C1 /* ParentSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentSessionStore.swift; sourceTree = "<group>"; };
+		A200000100000000000000C2 /* FamilyAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyAPIModels.swift; sourceTree = "<group>"; };
+		A200000100000000000000C3 /* FamilyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyAPIClient.swift; sourceTree = "<group>"; };
+		A200000100000000000000C4 /* SyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncCoordinator.swift; sourceTree = "<group>"; };
+		A200000100000000000000C5 /* ParentAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAccountView.swift; sourceTree = "<group>"; };
+		A200000100000000000000C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A200000100000000000000C7 /* PrivacyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyNoticeView.swift; sourceTree = "<group>"; };
+		A200000100000000000000C9 /* PrivacyPolicyCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyCopy.swift; sourceTree = "<group>"; };
+		A200000100000000000000C8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		T2000001000000000000000C /* FamilyAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyAPIClientTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A40000010000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		T40000010000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		T50000010000000000000001 /* MovoLearnTests */ = {
+			isa = PBXGroup;
+			children = (
+				T20000010000000000000001 /* QuestionResponseTypeTests.swift */,
+				T2000001000000000000000A /* PassageMatchingQuestionTests.swift */,
+				T20000010000000000000002 /* ProfilePersistenceTests.swift */,
+				T20000010000000000000003 /* MarbleCurriculumTests.swift */,
+				T20000010000000000000004 /* MysteryQualityTests.swift */,
+				T20000010000000000000005 /* QuestionQualityTests.swift */,
+				T20000010000000000000006 /* LevelContentDifferentiationTests.swift */,
+				T200000100000000000000B4 /* ContentQualityCoherenceTests.swift */,
+				T20000010000000000000007 /* ChildFacingProseQualityTests.swift */,
+				T20000010000000000000008 /* ReflectionPromptQualityTests.swift */,
+				T2000001000000000000000B /* CreativePromptQualityTests.swift */,
+				T20000010000000000000009 /* MathQuestionVarietyTests.swift */,
+				T2000001000000000000000C /* FamilyAPIClientTests.swift */,
+			);
+			path = MovoLearnTests;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A50000010000000000000002 /* MovoLearn */,
+				T50000010000000000000001 /* MovoLearnTests */,
+				A50000010000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A50000010000000000000002 /* MovoLearn */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000001 /* MovoLearnApp.swift */,
+				A20000010000000000000002 /* ContentView.swift */,
+				A200000100000000000000C6 /* Info.plist */,
+				A200000100000000000000C8 /* PrivacyInfo.xcprivacy */,
+				A50000010000000000000004 /* Models */,
+				A50000010000000000000005 /* Views */,
+				A50000010000000000000006 /* ViewModels */,
+				A50000010000000000000007 /* Data */,
+				A50000010000000000000008 /* Theme */,
+				A20000010000000000000012 /* Assets.xcassets */,
+			);
+			path = MovoLearn;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A30000010000000000000001 /* MovoLearn.app */,
+				T30000010000000000000001 /* MovoLearnTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2000001000000000000001B /* Topic.swift */,
+				A20000010000000000000060 /* ExploreSubjectCategory.swift */,
+				A20000010000000000000003 /* ChildProfile.swift */,
+				A20000010000000000000070 /* GameProgress.swift */,
+				A20000010000000000000004 /* Lesson.swift */,
+				A20000010000000000000005 /* LessonQuestion.swift */,
+				A20000010000000000000028 /* QuestionResponseType.swift */,
+				A20000010000000000000006 /* ProgressSummary.swift */,
+				A20000010000000000000017 /* UserProgress.swift */,
+				A20000010000000000000032 /* LearningState.swift */,
+				A20000010000000000000033 /* MarbleModels.swift */,
+				A20000010000000000000050 /* MysteryKind.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000007 /* WelcomeView.swift */,
+				A200000100000000000000C5 /* ParentAccountView.swift */,
+				A200000100000000000000C7 /* PrivacyNoticeView.swift */,
+				A200000100000000000000C9 /* PrivacyPolicyCopy.swift */,
+				A20000010000000000000008 /* ChildProfileSetupView.swift */,
+				A20000010000000000000009 /* InterestSelectionView.swift */,
+				A2000001000000000000000A /* HomeView.swift */,
+				A20000010000000000000072 /* AdventuresView.swift */,
+				A20000010000000000000073 /* RewardsView.swift */,
+				A20000010000000000000066 /* ProgressHubView.swift */,
+				A20000010000000000000065 /* ExploreLibraryView.swift */,
+				A20000010000000000000064 /* MainTabShell.swift */,
+				A2000001000000000000000B /* LessonView.swift */,
+				A20000010000000000000029 /* DrawingCanvasView.swift */,
+				A2000001000000000000002A /* QuestionAnswerInput.swift */,
+				A2000001000000000000002B /* MatchingSortingViews.swift */,
+				A2000001000000000000000C /* LessonCompletionView.swift */,
+				A2000001000000000000000D /* ParentSummaryView.swift */,
+				A2000001000000000000003B /* ProfileSettingsView.swift */,
+				A20000010000000000000052 /* MysteryInvestigationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000006 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A2000001000000000000000E /* AppViewModel.swift */,
+				A2000001000000000000000F /* LessonViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000007 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000010 /* LessonLoader.swift */,
+				A2000001000000000000001C /* TopicLibrary.swift */,
+				A2000001000000000000001D /* BundledLessons.swift */,
+				A20000010000000000000022 /* BundledLessonsExtended.swift */,
+				A2000001000000000000001E /* LessonFactory.swift */,
+				A2000001000000000000001F /* DailyLessonSelector.swift */,
+				A20000010000000000000023 /* LessonDifficultyRules.swift */,
+				A20000010000000000000024 /* QuestionQualityValidator.swift */,
+				A20000010000000000000025 /* AILessonGenerationPrompt.swift */,
+				A20000010000000000000026 /* MathWordProblemScenes.swift */,
+				A20000010000000000000027 /* MathWordProblemGenerator.swift */,
+				A2000001000000000000002C /* ThemeInteractionQuestions.swift */,
+				A20000010000000000000062 /* HomeFeedBuilder.swift */,
+				A20000010000000000000061 /* HomeActivityStore.swift */,
+				A20000010000000000000071 /* GameProgressStore.swift */,
+				A20000010000000000000080 /* LearnerAbilityProfile.swift */,
+				A20000010000000000000081 /* ContentAdaptationService.swift */,
+				A20000010000000000000082 /* LessonPreDisplayGate.swift */,
+				A20000010000000000000083 /* AgeGradeLearningStandards.swift */,
+				A20000010000000000000084 /* AdaptiveSkillAdjuster.swift */,
+				A20000010000000000000085 /* ChildFacingProseQualityValidator.swift */,
+				A200000100000000000000A0 /* MissionPromptNormalizer.swift */,
+				A20000010000000000000086 /* ReflectionPromptQuality.swift */,
+				A20000010000000000000087 /* CreativePromptQuality.swift */,
+				A2000001000000000000002E /* PassageMatchingQuestionGenerator.swift */,
+				A2000001000000000000002D /* LessonContextBank.swift */,
+				A20000010000000000000018 /* ProgressStore.swift */,
+				A20000010000000000000030 /* ProfileRepository.swift */,
+				A200000100000000000000C0 /* KeychainStore.swift */,
+				A200000100000000000000C1 /* ParentSessionStore.swift */,
+				A200000100000000000000C2 /* FamilyAPIModels.swift */,
+				A200000100000000000000C3 /* FamilyAPIClient.swift */,
+				A200000100000000000000C4 /* SyncCoordinator.swift */,
+				A20000010000000000000031 /* PersonalizationService.swift */,
+				A20000010000000000000034 /* LearningProgressStore.swift */,
+				A20000010000000000000035 /* MasteryEngine.swift */,
+				A20000010000000000000036 /* MarbleCurriculumService.swift */,
+				A20000010000000000000037 /* LessonCurriculumMapper.swift */,
+				A20000010000000000000038 /* LearningPathEngine.swift */,
+				A20000010000000000000039 /* CurriculumDiagnostics.swift */,
+				A2000001000000000000003A /* LearningSessionRecorder.swift */,
+				A20000010000000000000051 /* MysteryQualityValidator.swift */,
+				A5000001000000000000000B /* ContentPipeline */,
+				A5000001000000000000000C /* Standards */,
+				A5000001000000000000000D /* ApprovedLessons */,
+				A50000010000000000000009 /* Lessons */,
+				A5000001000000000000000A /* Marble */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000009 /* Lessons */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000013 /* sharks.json */,
+				A20000010000000000000014 /* horses.json */,
+				A20000010000000000000015 /* space.json */,
+				A20000010000000000000016 /* dinosaurs.json */,
+			);
+			path = Lessons;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000008 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000011 /* DesignSystem.swift */,
+				A20000010000000000000063 /* HomeComponents.swift */,
+				A20000010000000000000019 /* SparkComponents.swift */,
+				A2000001000000000000001A /* TopicIllustrations.swift */,
+				A20000010000000000000020 /* TopicSceneViews.swift */,
+				A20000010000000000000021 /* StoryStepComponents.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		A5000001000000000000000A /* Marble */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000040 /* topics.json */,
+				A20000010000000000000041 /* dependencies.json */,
+				A20000010000000000000042 /* clusters.json */,
+				A20000010000000000000043 /* manifest.json */,
+				A20000010000000000000044 /* curriculum-standards.json */,
+				A20000010000000000000045 /* lesson-curriculum-map.json */,
+			);
+			path = Marble;
+			sourceTree = "<group>";
+		};
+
+		A5000001000000000000000B /* ContentPipeline */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000090 /* ContentProviderProtocols.swift */,
+				A20000010000000000000091 /* CaseStandardsProvider.swift */,
+				A20000010000000000000092 /* LexileReadingProvider.swift */,
+				A20000010000000000000093 /* QuantileMathProvider.swift */,
+				A20000010000000000000094 /* LevelSkillProgressions.swift */,
+				A20000010000000000000095 /* MathProblemValidator.swift */,
+				A20000010000000000000096 /* AutomatedContentQualityGate.swift */,
+				A20000010000000000000097 /* LevelSpecificContentFactory.swift */,
+				A20000010000000000000098 /* ApprovedContentLibrary.swift */,
+				A200000100000000000000B1 /* CuratedTopicLessonBank.swift */,
+				A200000100000000000000B4 /* CuratedTopicLessonBank+ExtendedTopics.swift */,
+				A200000100000000000000B6 /* CuratedTopicLessonBank+Discovery.swift */,
+				A200000100000000000000B7 /* CuratedTopicLessonBank+UniqueWorlds.swift */,
+				A200000100000000000000B8 /* CuratedTopicLessonBank+Creative.swift */,
+				A200000100000000000000B9 /* CuratedTopicLessonBank+DiscoveryWaveD.swift */,
+				A200000100000000000000BA /* CuratedTopicLessonBank+CreativeWaveE.swift */,
+				A200000100000000000000B5 /* CatalogBrowseSelector.swift */,
+				A200000100000000000000B2 /* LessonContentCoherenceValidator.swift */,
+				A200000100000000000000B3 /* RecentLessonStructureTracker.swift */,
+				A20000010000000000000099 /* ContentLibrarySelector.swift */,
+				A2000001000000000000009A /* ProfileContentInvalidator.swift */,
+				A2000001000000000000009B /* BackendOnlyAILessonGenerator.swift */,
+				A2000001000000000000009E /* PipelineLessonAdapter.swift */,
+			);
+			path = ContentPipeline;
+			sourceTree = "<group>";
+		};
+		A5000001000000000000000C /* Standards */ = {
+			isa = PBXGroup;
+			children = (
+				A2000001000000000000009C /* case-mock-skills.json */,
+			);
+			path = Standards;
+			sourceTree = "<group>";
+		};
+		A5000001000000000000000D /* ApprovedLessons */ = {
+			isa = PBXGroup;
+			children = (
+				A2000001000000000000009D /* approved-manifest.json */,
+				A200000100000000000000A1 /* ocean_movo-ela-letter-sound-k_beginner_emerging.json */,
+				A200000100000000000000A2 /* ocean_movo-math-add-sub-10-1_early-reader_developing.json */,
+				A200000100000000000000A3 /* horses_movo-ela-short-sentences-1_early-reader_developing.json */,
+				A200000100000000000000A4 /* space_movo-ela-main-idea-2_growing-reader_secure.json */,
+				A200000100000000000000A5 /* space_movo-math-add-sub-20-1_growing-reader_secure.json */,
+				A200000100000000000000A6 /* sharks_movo-math-multi-step-2_confident-reader_advancing.json */,
+				A200000100000000000000A7 /* dinosaurs_movo-ela-inference-2_confident-reader_advancing.json */,
+			);
+			path = ApprovedLessons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A60000010000000000000001 /* MovoLearn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000010000000000000003 /* Build configuration list for PBXNativeTarget "MovoLearn" */;
+			buildPhases = (
+				A70000010000000000000001 /* Sources */,
+				A40000010000000000000001 /* Frameworks */,
+				A70000010000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MovoLearn;
+			productName = MovoLearn;
+			productReference = A30000010000000000000001 /* MovoLearn.app */;
+			productType = "com.apple.product-type.application";
+		};
+
+		T60000010000000000000001 /* MovoLearnTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = T80000010000000000000001 /* Build configuration list for PBXNativeTarget "MovoLearnTests" */;
+			buildPhases = (
+				T40000010000000000000001 /* Sources */,
+				T40000010000000000000002 /* Frameworks */,
+				T40000010000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				T70000010000000000000001 /* PBXTargetDependency */,
+			);
+			name = MovoLearnTests;
+			productName = MovoLearnTests;
+			productReference = T30000010000000000000001 /* MovoLearnTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A90000010000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2640;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					A60000010000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					T60000010000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = A60000010000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = A80000010000000000000001 /* Build configuration list for PBXProject "MovoLearn" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A50000010000000000000001;
+			productRefGroup = A50000010000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A60000010000000000000001 /* MovoLearn */,
+				T60000010000000000000001 /* MovoLearnTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A70000010000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000012 /* Assets.xcassets in Resources */,
+				A10000010000000000000013 /* sharks.json in Resources */,
+				A10000010000000000000014 /* horses.json in Resources */,
+				A10000010000000000000015 /* space.json in Resources */,
+				A10000010000000000000016 /* dinosaurs.json in Resources */,
+				A10000010000000000000040 /* topics.json in Resources */,
+				A10000010000000000000041 /* dependencies.json in Resources */,
+				A10000010000000000000042 /* clusters.json in Resources */,
+				A10000010000000000000043 /* manifest.json in Resources */,
+				A10000010000000000000044 /* curriculum-standards.json in Resources */,
+				A10000010000000000000045 /* lesson-curriculum-map.json in Resources */,
+				A1000001000000000000009C /* case-mock-skills.json in Resources */,
+				A1000001000000000000009D /* approved-manifest.json in Resources */,
+				A100000100000000000000A1 /* ocean_movo-ela-letter-sound-k_beginner_emerging.json in Resources */,
+				A100000100000000000000A2 /* ocean_movo-math-add-sub-10-1_early-reader_developing.json in Resources */,
+				A100000100000000000000A3 /* horses_movo-ela-short-sentences-1_early-reader_developing.json in Resources */,
+				A100000100000000000000A4 /* space_movo-ela-main-idea-2_growing-reader_secure.json in Resources */,
+				A100000100000000000000A5 /* space_movo-math-add-sub-20-1_growing-reader_secure.json in Resources */,
+				A100000100000000000000A6 /* sharks_movo-math-multi-step-2_confident-reader_advancing.json in Resources */,
+				A100000100000000000000A7 /* dinosaurs_movo-ela-inference-2_confident-reader_advancing.json in Resources */,
+				A100000100000000000000C8 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+
+/* Begin PBXContainerItemProxy section */
+		T70000010000000000000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A90000010000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A60000010000000000000001;
+			remoteInfo = MovoLearn;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		T70000010000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A60000010000000000000001 /* MovoLearn */;
+			targetProxy = T70000010000000000000002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A70000010000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000001 /* MovoLearnApp.swift in Sources */,
+				A10000010000000000000002 /* ContentView.swift in Sources */,
+				A10000010000000000000003 /* ChildProfile.swift in Sources */,
+				A10000010000000000000004 /* Lesson.swift in Sources */,
+				A10000010000000000000005 /* LessonQuestion.swift in Sources */,
+				A10000010000000000000028 /* QuestionResponseType.swift in Sources */,
+				A10000010000000000000006 /* ProgressSummary.swift in Sources */,
+				A10000010000000000000007 /* WelcomeView.swift in Sources */,
+				A10000010000000000000008 /* ChildProfileSetupView.swift in Sources */,
+				A10000010000000000000009 /* InterestSelectionView.swift in Sources */,
+				A1000001000000000000000A /* HomeView.swift in Sources */,
+				A10000010000000000000066 /* ProgressHubView.swift in Sources */,
+				A10000010000000000000065 /* ExploreLibraryView.swift in Sources */,
+				A10000010000000000000064 /* MainTabShell.swift in Sources */,
+				A10000010000000000000063 /* HomeComponents.swift in Sources */,
+				A10000010000000000000062 /* HomeFeedBuilder.swift in Sources */,
+				A10000010000000000000061 /* HomeActivityStore.swift in Sources */,
+				A10000010000000000000060 /* ExploreSubjectCategory.swift in Sources */,
+				A10000010000000000000070 /* GameProgress.swift in Sources */,
+				A10000010000000000000071 /* GameProgressStore.swift in Sources */,
+				A10000010000000000000080 /* LearnerAbilityProfile.swift in Sources */,
+				A10000010000000000000081 /* ContentAdaptationService.swift in Sources */,
+				A10000010000000000000082 /* LessonPreDisplayGate.swift in Sources */,
+				A10000010000000000000083 /* AgeGradeLearningStandards.swift in Sources */,
+				A10000010000000000000084 /* AdaptiveSkillAdjuster.swift in Sources */,
+				A10000010000000000000085 /* ChildFacingProseQualityValidator.swift in Sources */,
+				A100000100000000000000A0 /* MissionPromptNormalizer.swift in Sources */,
+				A10000010000000000000086 /* ReflectionPromptQuality.swift in Sources */,
+				A10000010000000000000087 /* CreativePromptQuality.swift in Sources */,
+				A10000010000000000000072 /* AdventuresView.swift in Sources */,
+				A10000010000000000000073 /* RewardsView.swift in Sources */,
+				A1000001000000000000000B /* LessonView.swift in Sources */,
+				A10000010000000000000029 /* DrawingCanvasView.swift in Sources */,
+				A1000001000000000000002A /* QuestionAnswerInput.swift in Sources */,
+				A1000001000000000000002B /* MatchingSortingViews.swift in Sources */,
+				A1000001000000000000000C /* LessonCompletionView.swift in Sources */,
+				A1000001000000000000000D /* ParentSummaryView.swift in Sources */,
+				A1000001000000000000000E /* AppViewModel.swift in Sources */,
+				A1000001000000000000000F /* LessonViewModel.swift in Sources */,
+				A10000010000000000000010 /* LessonLoader.swift in Sources */,
+				A10000010000000000000017 /* UserProgress.swift in Sources */,
+				A10000010000000000000018 /* ProgressStore.swift in Sources */,
+				A10000010000000000000011 /* DesignSystem.swift in Sources */,
+				A10000010000000000000019 /* SparkComponents.swift in Sources */,
+				A1000001000000000000001A /* TopicIllustrations.swift in Sources */,
+				A1000001000000000000001B /* Topic.swift in Sources */,
+				A1000001000000000000001C /* TopicLibrary.swift in Sources */,
+				A1000001000000000000001D /* BundledLessons.swift in Sources */,
+				A10000010000000000000022 /* BundledLessonsExtended.swift in Sources */,
+				A1000001000000000000001E /* LessonFactory.swift in Sources */,
+				A1000001000000000000001F /* DailyLessonSelector.swift in Sources */,
+				A10000010000000000000023 /* LessonDifficultyRules.swift in Sources */,
+				A10000010000000000000024 /* QuestionQualityValidator.swift in Sources */,
+				A10000010000000000000025 /* AILessonGenerationPrompt.swift in Sources */,
+				A10000010000000000000026 /* MathWordProblemScenes.swift in Sources */,
+				A10000010000000000000027 /* MathWordProblemGenerator.swift in Sources */,
+				A1000001000000000000002C /* ThemeInteractionQuestions.swift in Sources */,
+				A1000001000000000000002E /* PassageMatchingQuestionGenerator.swift in Sources */,
+				A10000010000000000000020 /* TopicSceneViews.swift in Sources */,
+				A10000010000000000000021 /* StoryStepComponents.swift in Sources */,
+				A10000010000000000000030 /* ProfileRepository.swift in Sources */,
+				A10000010000000000000031 /* PersonalizationService.swift in Sources */,
+				A10000010000000000000032 /* LearningState.swift in Sources */,
+				A10000010000000000000033 /* MarbleModels.swift in Sources */,
+				A10000010000000000000034 /* LearningProgressStore.swift in Sources */,
+				A10000010000000000000035 /* MasteryEngine.swift in Sources */,
+				A10000010000000000000036 /* MarbleCurriculumService.swift in Sources */,
+				A10000010000000000000037 /* LessonCurriculumMapper.swift in Sources */,
+				A10000010000000000000038 /* LearningPathEngine.swift in Sources */,
+				A10000010000000000000039 /* CurriculumDiagnostics.swift in Sources */,
+				A1000001000000000000003A /* LearningSessionRecorder.swift in Sources */,
+				A1000001000000000000003B /* ProfileSettingsView.swift in Sources */,
+				A10000010000000000000050 /* MysteryKind.swift in Sources */,
+				A10000010000000000000051 /* MysteryQualityValidator.swift in Sources */,
+				A10000010000000000000052 /* MysteryInvestigationView.swift in Sources */,
+				A1000001000000000000002D /* LessonContextBank.swift in Sources */,
+				A10000010000000000000090 /* ContentProviderProtocols.swift in Sources */,
+				A10000010000000000000091 /* CaseStandardsProvider.swift in Sources */,
+				A10000010000000000000092 /* LexileReadingProvider.swift in Sources */,
+				A10000010000000000000093 /* QuantileMathProvider.swift in Sources */,
+				A10000010000000000000094 /* LevelSkillProgressions.swift in Sources */,
+				A10000010000000000000095 /* MathProblemValidator.swift in Sources */,
+				A10000010000000000000096 /* AutomatedContentQualityGate.swift in Sources */,
+				A10000010000000000000097 /* LevelSpecificContentFactory.swift in Sources */,
+				A10000010000000000000098 /* ApprovedContentLibrary.swift in Sources */,
+				A100000100000000000000B1 /* CuratedTopicLessonBank.swift in Sources */,
+				A100000100000000000000B4 /* CuratedTopicLessonBank+ExtendedTopics.swift in Sources */,
+				A100000100000000000000B6 /* CuratedTopicLessonBank+Discovery.swift in Sources */,
+				A100000100000000000000B7 /* CuratedTopicLessonBank+UniqueWorlds.swift in Sources */,
+				A100000100000000000000B8 /* CuratedTopicLessonBank+Creative.swift in Sources */,
+				A100000100000000000000B9 /* CuratedTopicLessonBank+DiscoveryWaveD.swift in Sources */,
+				A100000100000000000000BA /* CuratedTopicLessonBank+CreativeWaveE.swift in Sources */,
+				A100000100000000000000B5 /* CatalogBrowseSelector.swift in Sources */,
+				A100000100000000000000B2 /* LessonContentCoherenceValidator.swift in Sources */,
+				A100000100000000000000B3 /* RecentLessonStructureTracker.swift in Sources */,
+				A10000010000000000000099 /* ContentLibrarySelector.swift in Sources */,
+				A1000001000000000000009A /* ProfileContentInvalidator.swift in Sources */,
+				A1000001000000000000009B /* BackendOnlyAILessonGenerator.swift in Sources */,
+				A1000001000000000000009E /* PipelineLessonAdapter.swift in Sources */,
+				A100000100000000000000C0 /* KeychainStore.swift in Sources */,
+				A100000100000000000000C1 /* ParentSessionStore.swift in Sources */,
+				A100000100000000000000C2 /* FamilyAPIModels.swift in Sources */,
+				A100000100000000000000C3 /* FamilyAPIClient.swift in Sources */,
+				A100000100000000000000C4 /* SyncCoordinator.swift in Sources */,
+				A100000100000000000000C5 /* ParentAccountView.swift in Sources */,
+				A100000100000000000000C7 /* PrivacyNoticeView.swift in Sources */,
+				A100000100000000000000C9 /* PrivacyPolicyCopy.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		T40000010000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				T10000010000000000000001 /* QuestionResponseTypeTests.swift in Sources */,
+				T1000001000000000000000A /* PassageMatchingQuestionTests.swift in Sources */,
+				T10000010000000000000002 /* ProfilePersistenceTests.swift in Sources */,
+				T10000010000000000000003 /* MarbleCurriculumTests.swift in Sources */,
+				T10000010000000000000004 /* MysteryQualityTests.swift in Sources */,
+				T10000010000000000000005 /* QuestionQualityTests.swift in Sources */,
+				T10000010000000000000006 /* LevelContentDifferentiationTests.swift in Sources */,
+				T100000100000000000000B4 /* ContentQualityCoherenceTests.swift in Sources */,
+				T10000010000000000000007 /* ChildFacingProseQualityTests.swift in Sources */,
+				T10000010000000000000008 /* ReflectionPromptQualityTests.swift in Sources */,
+				T1000001000000000000000B /* CreativePromptQualityTests.swift in Sources */,
+				T10000010000000000000009 /* MathQuestionVarietyTests.swift in Sources */,
+				T1000001000000000000000C /* FamilyAPIClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		T40000010000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA0000010000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA0000010000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA0000010000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZWQBH4Y2X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovoLearn/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Movo Learn";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.movolearn.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				ENABLE_TESTABILITY = YES;
+			};
+			name = Debug;
+		};
+		AA0000010000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZWQBH4Y2X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovoLearn/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Movo Learn";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.movolearn.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+
+		T90000010000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZWQBH4Y2X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.movolearn.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovoLearn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MovoLearn";
+			};
+			name = Debug;
+		};
+		T90000010000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZWQBH4Y2X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.movolearn.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovoLearn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MovoLearn";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A80000010000000000000001 /* Build configuration list for PBXProject "MovoLearn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000001 /* Debug */,
+				AA0000010000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A80000010000000000000003 /* Build configuration list for PBXNativeTarget "MovoLearn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000003 /* Debug */,
+				AA0000010000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+
+		T80000010000000000000001 /* Build configuration list for PBXNativeTarget "MovoLearnTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				T90000010000000000000001 /* Debug */,
+				T90000010000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A90000010000000000000001 /* Project object */;
+}

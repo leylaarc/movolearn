@@ -1,0 +1,29 @@
+---
+description: Child-facing facts and vocabulary must use real subject terms only
+globs: MovoLearn/Data/ContentPipeline/**/*.swift, MovoLearn/Data/AILessonGenerationPrompt.swift
+alwaysApply: true
+---
+
+# Real subject terms
+
+Did You Know cards, vocabulary words, and definitions must use **real terms** for every subject.
+
+Use words a parent, ranger, coach, or scientist would actually say:
+
+- ocean: tide chart, tide pool, kelp, seashell
+- space: orbit, planet, countdown, thrust
+- earth science: lava, rain gauge, fossil, habitat
+- everyday: cockpit, conductor, recipe, moat, hubcap
+
+Never invent labels and present them as facts:
+
+- shell pack, card pack, launch kit
+- two-part plans, two-part question, two-step, multi-step
+- sparkle beads, glow markers, planet cards
+- beach math, poster math, barn math
+
+Do not label a math question as two-part, two-step, or multi-step. If the story only needs one operation, ask one question.
+
+Word problems may count trays, boxes, or snacks. Those are story objects, not Did You Know terms.
+
+Lesson titles must name the real activity in the story (Ocean Sighting Day, Harvest Day), never leftover labels like “Dolphin Watch Packs.”

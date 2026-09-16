@@ -1,0 +1,243 @@
+{
+  "id": "55d3273a-f97d-4f54-b3a7-30184424aebc",
+  "title": "Ocean: Sounds and Pictures",
+  "subject": "Reading",
+  "theme": "Ocean",
+  "learning_objective": "Recognize and produce the primary sound for common consonants and short vowels.",
+  "standard_skill_id": "movo.ela.letter-sound.k",
+  "intended_age": "4-5",
+  "intended_grade": "K",
+  "intended_reading_level": "Beginner",
+  "intended_math_level": "Emerging",
+  "instructions": "Look. Listen. Tap the match.",
+  "story_content": {
+    "opening": "Willa the Whale smiles. She sees a big blue wave.",
+    "passage": "Willa sees a shell. The shell is pink. Willa taps the shell. Splash!",
+    "ending": "Great work exploring ocean ideas today!"
+  },
+  "story_opening": "Willa the Whale smiles. She sees a big blue wave.",
+  "reading_passage": "Willa sees a shell. The shell is pink. Willa taps the shell. Splash!",
+  "activities": [
+    {
+      "type": "story_practice",
+      "title": "Explore the story",
+      "description": "Willa the Whale smiles. She sees a big blue wave."
+    },
+    {
+      "type": "guided_practice",
+      "title": "Practice the skill",
+      "description": "Recognize and produce the primary sound for common consonants and short vowels."
+    }
+  ],
+  "questions": [
+    {
+      "id": "e8e4fa70-a513-4394-a64e-aa0d5c099623",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What does the friend see first?",
+      "choices": [
+        "a shell",
+        "a wave"
+      ],
+      "correct_answers": [
+        "a shell"
+      ],
+      "explanation": "The story names that object first.",
+      "hints": [
+        "Look at the first sentence."
+      ]
+    },
+    {
+      "id": "97945f02-d517-48ab-bbd2-039b88a9c919",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What sound word is in the story?",
+      "choices": [
+        "Splash",
+        "Beep"
+      ],
+      "correct_answers": [
+        "Splash"
+      ],
+      "explanation": "That sound ends the short story.",
+      "hints": [
+        "Check the last sentence."
+      ]
+    },
+    {
+      "id": "bc7a2f48-09b8-4131-8752-2fbd97eb56da",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Willa sees this set: ● ● ● ●. How many seashells?",
+      "choices": [
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answers": [
+        "4"
+      ],
+      "explanation": "Count each mark once: 1, 2, 3, 4.",
+      "hints": [
+        "Touch each dot as you count."
+      ],
+      "operation": "count",
+      "operands": [
+        4
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Matching the picture to a similar-looking wrong object",
+    "Double-counting objects in a set"
+  ],
+  "success_criteria": [
+    "Answers reading items aligned to Beginner expectations",
+    "Completes math items within the Emerging operation set",
+    "Uses only information taught in this lesson's story or worked examples",
+    "Selects a single correct answer from plausible choices"
+  ],
+  "prerequisites": [],
+  "mastered_skills": [],
+  "practice_skills": [],
+  "learner_id": "anon_profile_beginner_01",
+  "approval_status": "approved",
+  "generator": "MockAILessonGenerator",
+  "reading_vocab_style": "one-syllable concrete nouns",
+  "math_number_range": [
+    1,
+    10
+  ],
+  "math_operations": [
+    "count",
+    "compare"
+  ],
+  "reading_measurement": {
+    "providerName": "MockReadabilityProvider (NOT Lexile)",
+    "isLicensedLexile": false,
+    "intendedBand": "Beginner",
+    "measuredEstimate": 176,
+    "measuredBand": "Beginner",
+    "passesIntendedRange": true,
+    "notes": [
+      "MOCK heuristic — not a licensed MetaMetrics Lexile measure.",
+      "avg_words_per_sentence=3.2",
+      "avg_word_length=4.0",
+      "word_count=13",
+      "sentence_count=4"
+    ]
+  },
+  "math_validation": {
+    "passed": true,
+    "issues": []
+  },
+  "quality_gate": {
+    "passed": true,
+    "checks": [
+      {
+        "number": 1,
+        "question": "Does this match the child’s age and grade band?",
+        "passed": true,
+        "detail": "avg_wps=3.2 (limit~8.0), sentences=4, age=4-5"
+      },
+      {
+        "number": 2,
+        "question": "Does it match the intended skill level?",
+        "passed": true,
+        "detail": "reading=Beginner, math=Emerging, skill=movo.ela.letter-sound.k"
+      },
+      {
+        "number": 3,
+        "question": "Is the information accurate / well-formed?",
+        "passed": true,
+        "detail": "No structural accuracy issues"
+      },
+      {
+        "number": 4,
+        "question": "Is the wording understandable for the band?",
+        "passed": true,
+        "detail": "passage_len=13 words"
+      },
+      {
+        "number": 5,
+        "question": "Does the activity teach the intended skill?",
+        "passed": true,
+        "detail": "Recognize and produce the primary sound for common consonants and short vowels."
+      },
+      {
+        "number": 6,
+        "question": "Do the questions match what was taught?",
+        "passed": true,
+        "detail": "passage-grounded reading ratio=100%"
+      },
+      {
+        "number": 7,
+        "question": "Is the difficulty appropriate?",
+        "passed": true,
+        "detail": "inference/choice limits checked for band"
+      },
+      {
+        "number": 8,
+        "question": "Is the content engaging without sacrificing educational value?",
+        "passed": true,
+        "detail": "story + passage + practice present"
+      },
+      {
+        "number": 9,
+        "question": "Are there confusing, misleading, random, or unrelated elements?",
+        "passed": true,
+        "detail": "joke/unrelated markers scanned"
+      },
+      {
+        "number": 10,
+        "question": "Would an educator consider this a meaningful learning activity?",
+        "passed": true,
+        "detail": "skill + story + accurate practice aligned"
+      },
+      {
+        "number": 11,
+        "question": "Are child instructions present and non-empty?",
+        "passed": true,
+        "detail": "Look. Listen. Tap the match."
+      },
+      {
+        "number": 12,
+        "question": "Are success criteria and common mistakes documented?",
+        "passed": true,
+        "detail": "criteria=4, mistakes=2"
+      },
+      {
+        "number": 13,
+        "question": "Do math items pass deterministic validation?",
+        "passed": true,
+        "detail": "ok"
+      },
+      {
+        "number": 14,
+        "question": "Does the payload stay privacy-safe (no child name/DOB/contact)?",
+        "passed": true,
+        "detail": "anonymous fields only"
+      }
+    ],
+    "reasons": []
+  },
+  "approved_at": "2026-07-14T04:43:39.507519+00:00",
+  "contentSource": "backend_content_pipeline",
+  "providers": {
+    "standards": "MockCASEStandardsProvider",
+    "ai": "MockAILessonGenerator",
+    "reading": "MockReadabilityProvider (NOT Lexile)",
+    "mathProgression": "MockQuantileAlignedProgression (NOT Quantile)"
+  },
+  "profile": {
+    "ageRange": "4-5",
+    "grade": "K",
+    "readingLevel": "Beginner",
+    "mathLevel": "Emerging",
+    "interests": [
+      "Ocean",
+      "Sharks"
+    ],
+    "learnerId": "anon_profile_beginner_01"
+  }
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Movo Learn">
+  <defs>
+    <linearGradient id="g" x1="8" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1493ff"/>
+      <stop offset="0.55" stop-color="#9e47ff"/>
+      <stop offset="1" stop-color="#ff477a"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <path d="M18 42V24.2c0-1.4 1.7-2.1 2.7-1.1L32 34.2 43.3 23.1c1-1 2.7-.3 2.7 1.1V42" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46.5 16.5 48.8 21l4.6.5-3.4 3.3.9 4.6-4.1-2.3-4.1 2.3.9-4.6-3.4-3.3 4.6-.5z" fill="#ffc700"/>
+</svg>

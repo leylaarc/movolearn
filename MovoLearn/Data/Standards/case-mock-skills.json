@@ -1,0 +1,215 @@
+{
+  "providerNote": "MOCK CASE-aligned skills for Movo Learn. Not live 1EdTech CASE Network data. Replace with licensed CASE provider when credentials are available.",
+  "skills": [
+    {
+      "identifier": "mock.ela.letter-sounds",
+      "fullStatement": "Identify letters and common sounds",
+      "humanCodingScheme": "ELA.K.RF.1",
+      "subject": "Reading",
+      "educationLevel": ["K", "Pre-K"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": [],
+      "relatedIds": ["mock.ela.phonics"]
+    },
+    {
+      "identifier": "mock.ela.phonics",
+      "fullStatement": "Blend simple phonics patterns in CVC words",
+      "humanCodingScheme": "ELA.K.RF.2",
+      "subject": "Reading",
+      "educationLevel": ["K", "1"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.letter-sounds"],
+      "relatedIds": ["mock.ela.simple-words"]
+    },
+    {
+      "identifier": "mock.ela.simple-words",
+      "fullStatement": "Read high-frequency simple words",
+      "humanCodingScheme": "ELA.1.RF.3",
+      "subject": "Reading",
+      "educationLevel": ["K", "1"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.phonics"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.ela.short-sentences",
+      "fullStatement": "Read and understand short sentences",
+      "humanCodingScheme": "ELA.1.RL.1",
+      "subject": "Reading",
+      "educationLevel": ["1"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.simple-words"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.ela.sequencing",
+      "fullStatement": "Sequence events in a short story",
+      "humanCodingScheme": "ELA.1.RL.3",
+      "subject": "Reading",
+      "educationLevel": ["1", "2"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.short-sentences"],
+      "relatedIds": ["mock.ela.main-idea"]
+    },
+    {
+      "identifier": "mock.ela.main-idea",
+      "fullStatement": "Identify the main idea of a passage",
+      "humanCodingScheme": "ELA.2.RI.2",
+      "subject": "Reading",
+      "educationLevel": ["2"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.sequencing"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.ela.vocab-context",
+      "fullStatement": "Use context to explain vocabulary",
+      "humanCodingScheme": "ELA.2.L.4",
+      "subject": "Reading",
+      "educationLevel": ["2", "3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.main-idea"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.ela.inference",
+      "fullStatement": "Make inferences about characters and events",
+      "humanCodingScheme": "ELA.3.RL.1",
+      "subject": "Reading",
+      "educationLevel": ["3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.vocab-context"],
+      "relatedIds": ["mock.ela.motivation"]
+    },
+    {
+      "identifier": "mock.ela.motivation",
+      "fullStatement": "Explain character motivation using evidence",
+      "humanCodingScheme": "ELA.3.RL.3",
+      "subject": "Reading",
+      "educationLevel": ["3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.inference"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.ela.compare",
+      "fullStatement": "Compare information across details",
+      "humanCodingScheme": "ELA.3.RI.9",
+      "subject": "Reading",
+      "educationLevel": ["3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.ela.inference"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.number-recognition",
+      "fullStatement": "Recognize written numbers",
+      "humanCodingScheme": "MATH.K.CC.1",
+      "subject": "Math",
+      "educationLevel": ["K"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": [],
+      "relatedIds": ["mock.math.counting"]
+    },
+    {
+      "identifier": "mock.math.counting",
+      "fullStatement": "Count objects and say how many",
+      "humanCodingScheme": "MATH.K.CC.4",
+      "subject": "Math",
+      "educationLevel": ["K"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.number-recognition"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.comparing",
+      "fullStatement": "Compare quantities using more/less/same",
+      "humanCodingScheme": "MATH.K.CC.6",
+      "subject": "Math",
+      "educationLevel": ["K", "1"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.counting"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.add-sub",
+      "fullStatement": "Add and subtract within 20",
+      "humanCodingScheme": "MATH.1.OA.6",
+      "subject": "Math",
+      "educationLevel": ["1"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.comparing"],
+      "relatedIds": ["mock.math.place-value"]
+    },
+    {
+      "identifier": "mock.math.place-value",
+      "fullStatement": "Understand tens and ones",
+      "humanCodingScheme": "MATH.1.NBT.2",
+      "subject": "Math",
+      "educationLevel": ["1", "2"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.add-sub"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.multi-digit",
+      "fullStatement": "Add and subtract multi-digit numbers",
+      "humanCodingScheme": "MATH.2.NBT.5",
+      "subject": "Math",
+      "educationLevel": ["2"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.place-value"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.mult-div",
+      "fullStatement": "Multiply and divide with equal groups",
+      "humanCodingScheme": "MATH.3.OA.1",
+      "subject": "Math",
+      "educationLevel": ["3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.multi-digit"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.fractions",
+      "fullStatement": "Understand simple unit fractions",
+      "humanCodingScheme": "MATH.3.NF.1",
+      "subject": "Math",
+      "educationLevel": ["3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.mult-div"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.measurement",
+      "fullStatement": "Measure length using standard units",
+      "humanCodingScheme": "MATH.2.MD.1",
+      "subject": "Math",
+      "educationLevel": ["2", "3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.add-sub"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.geometry",
+      "fullStatement": "Identify shapes and their attributes",
+      "humanCodingScheme": "MATH.K.G.4",
+      "subject": "Math",
+      "educationLevel": ["K", "1", "2"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.number-recognition"],
+      "relatedIds": []
+    },
+    {
+      "identifier": "mock.math.multistep",
+      "fullStatement": "Solve multi-step word problems",
+      "humanCodingScheme": "MATH.3.OA.8",
+      "subject": "Math",
+      "educationLevel": ["3"],
+      "CFItemType": "Learning Objective",
+      "prerequisiteIds": ["mock.math.mult-div", "mock.math.add-sub"],
+      "relatedIds": []
+    }
+  ]
+}

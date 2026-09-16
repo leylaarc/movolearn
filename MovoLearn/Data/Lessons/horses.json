@@ -1,0 +1,194 @@
+{
+  "id": "5317784e-fa97-54b4-ba37-d4c875f74340",
+  "title": "Sunny's Stable Mission",
+  "theme": "Horses",
+  "lessonType": "builder",
+  "ageTarget": "5-8",
+  "gradeTarget": "K-2",
+  "readingLevel": "Early Reader",
+  "learningGoal": "All-around practice",
+  "estimatedMinutes": 10,
+  "storyOpening": "Sweet hay dust floated in sunbeams as Sunny the horse nudged your shoulder in the barn. She whinnied softly, as if asking for help with something important.",
+  "missionPrompt": "Sunny needs a cozy new stall with room for hay, water, and a sunny window. Read the blueprint, count the supplies, and build her perfect home!",
+  "readingPassage": "In the barn, wood smells sweet and hay dust dances in the light. Sunny nudges your shoulder while you sketch a stall with a wide door and a window for fresh air. Horses talk with their ears. Sunny's ears point forward, and that means she is curious about your plan. You count hooks for brushes, space for a water bucket, and room for a soft pile of hay. A foal peeks in from the paddock, watching every move.",
+  "storyEnding": "Sunny's new stall is ready. She flicks her tail happily and steps inside — your careful building made her feel right at home.",
+  "reflectionPrompt": "What part of Sunny's stall are you most proud of?",
+  "creativePrompt": "Create a new obstacle course for Sunny. What would she jump over or trot through?",
+  "readingSkill": "Following directions",
+  "mathSkill": "Addition within 10",
+  "skillsPracticed": [
+    "Reading",
+    "Math",
+    "Vocabulary",
+    "Science",
+    "Creative Thinking"
+  ],
+  "vocabularyWords": [
+    {
+      "id": "a1000001-0000-0000-0000-000000000001",
+      "word": "Stable",
+      "definition": "a building where horses live and sleep",
+      "exampleSentence": "Sunny waits for her new stall inside the stable.",
+      "storyConnection": "The whole mission happens in Sunny's stable."
+    },
+    {
+      "id": "a1000001-0000-0000-0000-000000000002",
+      "word": "Foal",
+      "definition": "a young horse",
+      "exampleSentence": "A foal peeks in from the paddock.",
+      "storyConnection": "The foal watches you build Sunny's stall."
+    },
+    {
+      "id": "a1000001-0000-0000-0000-000000000003",
+      "word": "Paddock",
+      "definition": "a fenced area where horses walk and graze",
+      "exampleSentence": "Horses stretch their legs in the paddock.",
+      "storyConnection": "The foal comes from the paddock to watch."
+    }
+  ],
+  "knowledgeFacts": [
+    {
+      "id": "a2000001-0000-0000-0000-000000000001",
+      "fact": "Horses use their ears, eyes, and body language to communicate.",
+      "explanation": "Forward ears often mean a horse is curious or paying attention."
+    },
+    {
+      "id": "a2000001-0000-0000-0000-000000000002",
+      "fact": "A horse can sleep standing up because of special leg locks.",
+      "explanation": "Their legs can lock in place so they rest without falling over."
+    }
+  ],
+  "questions": [
+    {
+      "id": "d159899b-6549-5db1-b0a7-8fa58b31955b",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What are you building for Sunny?",
+      "choices": [
+        "A horse stall in a stable",
+        "A riding arena fence",
+        "A hay storage loft"
+      ],
+      "correctAnswer": "A horse stall in a stable",
+      "explanation": "You sketch a stall in the barn for Sunny.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "e259899b-6549-5db1-b0a7-8fa58b31955c",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What does Sunny's forward ears mean?",
+      "choices": [
+        "She is curious",
+        "She is frightened",
+        "She is angry"
+      ],
+      "correctAnswer": "She is curious",
+      "explanation": "Forward ears show curiosity.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "f359899b-6549-5db1-b0a7-8fa58b31955d",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Who peeks in from the paddock?",
+      "choices": [
+        "A foal",
+        "A mare",
+        "A stallion"
+      ],
+      "correctAnswer": "A foal",
+      "explanation": "A young horse — a foal — watches from the paddock.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "b1111111-1111-4111-8111-111111111101",
+      "subject": "reading",
+      "type": "openEnded",
+      "responseType": "matching",
+      "prompt": "Match each item with what the passage says about it.",
+      "pairs": [
+        {
+          "left": "Sunny's ears",
+          "right": "Point forward when she is curious",
+          "supportingEvidence": "Horses talk with their ears. Sunny's ears point forward, and that means she is curious about your plan."
+        },
+        {
+          "left": "Stall",
+          "right": "Has a wide door and a window for fresh air",
+          "supportingEvidence": "Sunny nudges your shoulder while you sketch a stall with a wide door and a window for fresh air."
+        },
+        {
+          "left": "Foal",
+          "right": "Peeks in from the paddock",
+          "supportingEvidence": "A foal peeks in from the paddock, watching every move."
+        }
+      ],
+      "explanation": "Each match comes from a sentence in the reading passage."
+    },
+    {
+      "id": "b2222222-2222-4222-8222-222222222201",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "responseType": "multipleChoice",
+      "prompt": "What did you do right after Sunny nudged you to start the plan?",
+      "choices": [
+        "You sketched a stall with a door and window",
+        "You left the barn without drawing anything",
+        "You moved Sunny to a distant pasture first"
+      ],
+      "correctAnswer": "You sketched a stall with a door and window",
+      "explanation": "After Sunny asked for help, you sketched the stall plan."
+    }
+  ],
+  "mathChallenges": [
+    {
+      "id": "071a8afb-61fd-5649-9223-afc44307a818",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "You nail 4 boards, then 3 more. How many boards total?",
+      "choices": [
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "4 + 3 = 7 boards.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "53ff8857-6277-5f99-a928-86168e87eb27",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "6 bales of hay are stacked. You use 1 for Sunny. How many bales remain?",
+      "choices": [
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "5",
+      "explanation": "6 − 1 = 5 bales.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "c388a09b-0edf-5d0e-8d9e-e3500f548b21",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "2 windows plus 2 doors — how many openings in the stall?",
+      "choices": [
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "4",
+      "explanation": "2 + 2 = 4 openings.",
+      "responseType": "multipleChoice"
+    }
+  ],
+  "sections": [],
+  "category": "math",
+  "primarySubject": "math",
+  "teaser": "Help Sunny the horse count hay bales, ribbons, and jumps.",
+  "creativeResponseType": "longText",
+  "reflectionResponseType": "shortText"
+}

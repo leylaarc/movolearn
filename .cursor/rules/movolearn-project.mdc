@@ -1,0 +1,36 @@
+---
+description: MovoLearn iOS project context — always use this repo root and conventions
+alwaysApply: true
+---
+
+# Movo Learn
+
+You are working on **Movo Learn**, a SwiftUI iOS children’s learning app at:
+
+`/Users/leylaarcasoy/MovoLearn`
+
+## Root
+
+- Project root is **MovoLearn/** on disk (contains `MovoLearn.xcodeproj`), NOT the user home directory. Product name is **Movo Learn**.
+- Read `AGENTS.md` at the repo root for architecture and file map.
+
+## Stack
+
+- SwiftUI, iOS 17+, single Xcode target
+- Lessons: JSON via `LessonLoader` in `MovoLearn/Data/`
+- Progress: `ProgressStore` (local) + parent-owned family API sync
+- UI: `Theme/DesignSystem.swift` + `Theme/SparkComponents.swift`
+
+## Rules
+
+- Do not add payments unless asked
+- Preserve app flow: Welcome → Parent Account → Setup → Interests → Home → Lesson → Completion → Home (parent report lives in Profile)
+- New `.swift` files must be added to `project.pbxproj`
+- Prefer reusable components over duplicated styling
+- Child-facing facts and vocabulary must use **real subject terms only** (no invented labels like “shell pack” or “two-part plans”)
+
+## Run
+
+```bash
+xcodebuild -scheme MovoLearn -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' build
+```

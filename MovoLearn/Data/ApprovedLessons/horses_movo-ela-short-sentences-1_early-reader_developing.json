@@ -1,0 +1,269 @@
+{
+  "id": "7a2751a5-efcc-4dae-98a8-d64e78d56445",
+  "title": "Horses: Short Word Adventure",
+  "subject": "Reading",
+  "theme": "Horses",
+  "learning_objective": "Read and understand short, concrete sentences with familiar vocabulary.",
+  "standard_skill_id": "movo.ela.short-sentences.1",
+  "intended_age": "5-6",
+  "intended_grade": "1",
+  "intended_reading_level": "Early Reader",
+  "intended_math_level": "Developing",
+  "instructions": "Read each short sentence. Then answer who and what.",
+  "story_content": {
+    "opening": "Sunny the Horse trots along a dusty trail. She wants to reach the apple tree.",
+    "passage": "Sunny sees ripe apples on a low branch. She takes two careful steps. A bird sings from the fence. Sunny reaches an apple and munches happily. Then she trots home along the trail.",
+    "ending": "Great work exploring horses ideas today!"
+  },
+  "story_opening": "Sunny the Horse trots along a dusty trail. She wants to reach the apple tree.",
+  "reading_passage": "Sunny sees ripe apples on a low branch. She takes two careful steps. A bird sings from the fence. Sunny reaches an apple and munches happily. Then she trots home along the trail.",
+  "activities": [
+    {
+      "type": "story_practice",
+      "title": "Explore the story",
+      "description": "Sunny the Horse trots along a dusty trail. She wants to reach the apple tree."
+    },
+    {
+      "type": "guided_practice",
+      "title": "Practice the skill",
+      "description": "Read and understand short, concrete sentences with familiar vocabulary."
+    }
+  ],
+  "questions": [
+    {
+      "id": "d9c035ec-1810-4a3b-a023-69703886040c",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Where does the story mostly take place?",
+      "choices": [
+        "on a dusty trail",
+        "in a classroom",
+        "on a city bus"
+      ],
+      "correct_answers": [
+        "on a dusty trail"
+      ],
+      "explanation": "The setting is named in the opening and passage.",
+      "hints": [
+        "Reread the first two sentences."
+      ]
+    },
+    {
+      "id": "a3bc7157-a7b7-4637-819a-769e07af6973",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What happens near the end?",
+      "choices": [
+        "Sunny trots home along the trail",
+        "They fly to another planet",
+        "They build a giant tower"
+      ],
+      "correct_answers": [
+        "Sunny trots home along the trail"
+      ],
+      "explanation": "The last sentence tells the ending action.",
+      "hints": [
+        "Check the final sentence."
+      ]
+    },
+    {
+      "id": "c257a981-df00-4638-a606-7f60ff240de6",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Which detail is in the passage?",
+      "choices": [
+        "ripe apples on a low branch",
+        "a hundred rockets",
+        "a marching parade"
+      ],
+      "correct_answers": [
+        "ripe apples on a low branch"
+      ],
+      "explanation": "That detail is stated in the text.",
+      "hints": [
+        "Scan for numbers and objects."
+      ]
+    },
+    {
+      "id": "de0db938-8701-42ca-ab41-6d2a7e05ce35",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Sunny collected 4 apples on the path. Then Sunny found 2 more. How many apples does Sunny have now?",
+      "choices": [
+        "5",
+        "6",
+        "7"
+      ],
+      "correct_answers": [
+        "6"
+      ],
+      "explanation": "4 + 2 = 6.",
+      "hints": [
+        "Start at 4 and count on 2."
+      ],
+      "operation": "add",
+      "operands": [
+        4,
+        2
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Remembering a detail from the opening but not the ending",
+    "Adding when the story requires taking away"
+  ],
+  "success_criteria": [
+    "Answers reading items aligned to Early Reader expectations",
+    "Completes math items within the Developing operation set",
+    "Uses only information taught in this lesson's story or worked examples",
+    "Selects a single correct answer from plausible choices"
+  ],
+  "prerequisites": [
+    "movo.ela.simple-words.1"
+  ],
+  "mastered_skills": [
+    "movo.ela.letter-sound.k",
+    "movo.ela.phonics.blend.k",
+    "movo.ela.simple-words.1"
+  ],
+  "practice_skills": [],
+  "learner_id": "anon_profile_early_01",
+  "approval_status": "approved",
+  "generator": "MockAILessonGenerator",
+  "reading_vocab_style": "high-frequency + simple decodable words",
+  "math_number_range": [
+    1,
+    10
+  ],
+  "math_operations": [
+    "add",
+    "subtract"
+  ],
+  "reading_measurement": {
+    "providerName": "MockReadabilityProvider (NOT Lexile)",
+    "isLicensedLexile": false,
+    "intendedBand": "Early Reader",
+    "measuredEstimate": 363,
+    "measuredBand": "Early Reader",
+    "passesIntendedRange": true,
+    "notes": [
+      "MOCK heuristic — not a licensed MetaMetrics Lexile measure.",
+      "avg_words_per_sentence=6.6",
+      "avg_word_length=4.3",
+      "word_count=33",
+      "sentence_count=5"
+    ]
+  },
+  "math_validation": {
+    "passed": true,
+    "issues": []
+  },
+  "quality_gate": {
+    "passed": true,
+    "checks": [
+      {
+        "number": 1,
+        "question": "Does this match the child’s age and grade band?",
+        "passed": true,
+        "detail": "avg_wps=6.6 (limit~12.0), sentences=5, age=5-6"
+      },
+      {
+        "number": 2,
+        "question": "Does it match the intended skill level?",
+        "passed": true,
+        "detail": "reading=Early Reader, math=Developing, skill=movo.ela.short-sentences.1"
+      },
+      {
+        "number": 3,
+        "question": "Is the information accurate / well-formed?",
+        "passed": true,
+        "detail": "No structural accuracy issues"
+      },
+      {
+        "number": 4,
+        "question": "Is the wording understandable for the band?",
+        "passed": true,
+        "detail": "passage_len=33 words"
+      },
+      {
+        "number": 5,
+        "question": "Does the activity teach the intended skill?",
+        "passed": true,
+        "detail": "Read and understand short, concrete sentences with familiar vocabulary."
+      },
+      {
+        "number": 6,
+        "question": "Do the questions match what was taught?",
+        "passed": true,
+        "detail": "passage-grounded reading ratio=100%"
+      },
+      {
+        "number": 7,
+        "question": "Is the difficulty appropriate?",
+        "passed": true,
+        "detail": "inference/choice limits checked for band"
+      },
+      {
+        "number": 8,
+        "question": "Is the content engaging without sacrificing educational value?",
+        "passed": true,
+        "detail": "story + passage + practice present"
+      },
+      {
+        "number": 9,
+        "question": "Are there confusing, misleading, random, or unrelated elements?",
+        "passed": true,
+        "detail": "joke/unrelated markers scanned"
+      },
+      {
+        "number": 10,
+        "question": "Would an educator consider this a meaningful learning activity?",
+        "passed": true,
+        "detail": "skill + story + accurate practice aligned"
+      },
+      {
+        "number": 11,
+        "question": "Are child instructions present and non-empty?",
+        "passed": true,
+        "detail": "Read each short sentence. Then answer who and what."
+      },
+      {
+        "number": 12,
+        "question": "Are success criteria and common mistakes documented?",
+        "passed": true,
+        "detail": "criteria=4, mistakes=2"
+      },
+      {
+        "number": 13,
+        "question": "Do math items pass deterministic validation?",
+        "passed": true,
+        "detail": "ok"
+      },
+      {
+        "number": 14,
+        "question": "Does the payload stay privacy-safe (no child name/DOB/contact)?",
+        "passed": true,
+        "detail": "anonymous fields only"
+      }
+    ],
+    "reasons": []
+  },
+  "approved_at": "2026-07-14T04:43:39.508480+00:00",
+  "contentSource": "backend_content_pipeline",
+  "providers": {
+    "standards": "MockCASEStandardsProvider",
+    "ai": "MockAILessonGenerator",
+    "reading": "MockReadabilityProvider (NOT Lexile)",
+    "mathProgression": "MockQuantileAlignedProgression (NOT Quantile)"
+  },
+  "profile": {
+    "ageRange": "5-6",
+    "grade": "1",
+    "readingLevel": "Early Reader",
+    "mathLevel": "Developing",
+    "interests": [
+      "Horses"
+    ],
+    "learnerId": "anon_profile_early_01"
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "id": "de8a7760-ae99-4f92-ab3c-948a53ce1f4f",
+  "title": "Sharks Numbers — Advancing Challenge",
+  "subject": "Math",
+  "theme": "Sharks",
+  "learning_objective": "Solve one- and two-step word problems involving addition and subtraction within 100.",
+  "standard_skill_id": "movo.math.multi-step.2",
+  "intended_age": "8-10",
+  "intended_grade": "3",
+  "intended_reading_level": "Confident Reader",
+  "intended_math_level": "Advancing",
+  "instructions": "Solve each shark problem carefully.",
+  "story_content": {
+    "opening": "Conflicting dive logs disagreed about shark visits after the storm, so Willa challenged the team to reconcile the evidence.",
+    "passage": "Dive Log Blue lists six reef-shark visits in the week after the storm; Dive Log Green lists two. Both teams used the same observation window at dusk. Willa notices Green's camera faced the sand flat, while Blue filmed the drop-off where sharks usually patrol. The mismatch likely reflects camera aim, not a sudden shark disappearance. If next week's crews film both zones, counts should converge. Willa rejects the claim that sharks abandoned the reef entirely. The kelp fish counts remain stable, and that would be unlikely if the big hunters had vanished overnight.",
+    "ending": "Great work exploring sharks ideas today!"
+  },
+  "story_opening": "Conflicting dive logs disagreed about shark visits after the storm, so Willa challenged the team to reconcile the evidence.",
+  "reading_passage": "Dive Log Blue lists six reef-shark visits in the week after the storm; Dive Log Green lists two. Both teams used the same observation window at dusk. Willa notices Green's camera faced the sand flat, while Blue filmed the drop-off where sharks usually patrol. The mismatch likely reflects camera aim, not a sudden shark disappearance. If next week's crews film both zones, counts should converge. Willa rejects the claim that sharks abandoned the reef entirely. The kelp fish counts remain stable, and that would be unlikely if the big hunters had vanished overnight.",
+  "activities": [
+    {
+      "type": "story_practice",
+      "title": "Explore the story",
+      "description": "Conflicting dive logs disagreed about shark visits after the storm, so Willa challenged the team to reconcile the evidence."
+    },
+    {
+      "type": "guided_practice",
+      "title": "Practice the skill",
+      "description": "Solve one- and two-step word problems involving addition and subtraction within 100."
+    }
+  ],
+  "questions": [
+    {
+      "id": "48598346-24f0-413a-9215-f53d46e249f5",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Dive Log Blue lists 6 reef-shark visits. Dive Log Green lists 2. How many visits in all?",
+      "choices": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correct_answers": [
+        "8"
+      ],
+      "explanation": "6 + 2 = 8.",
+      "hints": [
+        "Add the two log counts."
+      ],
+      "operation": "add",
+      "operands": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "6c4fac58-8381-47a6-8d6d-8221e1ba6b0d",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Crews sorted tiny fish into 4 equal boxes with 3 tiny fish in each box. How many tiny fish are there in all?",
+      "choices": [
+        "7",
+        "10",
+        "12",
+        "14"
+      ],
+      "correct_answers": [
+        "12"
+      ],
+      "explanation": "4 groups of 3 is 12.",
+      "hints": [
+        "Think 3 + 3 + 3 + 3."
+      ],
+      "operation": "multiply",
+      "operands": [
+        4,
+        3
+      ]
+    },
+    {
+      "id": "f5fb4146-ea4d-4c58-abe7-dabc2c637f5c",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "A research bar is broken into 4 equal parts. Willa shades 1 part. What fraction is shaded?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1/4",
+        "3/4"
+      ],
+      "correct_answers": [
+        "1/4"
+      ],
+      "explanation": "One of four equal parts is 1/4.",
+      "hints": [
+        "Denominator is the number of equal parts."
+      ],
+      "operation": "fraction",
+      "operands": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "6836fc18-18cb-48ab-8923-ff1c40d0f07d",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What can you reasonably infer from the passage?",
+      "choices": [
+        "Camera aim, not shark disappearance, explains the log gap",
+        "The characters abandoned science entirely",
+        "Nothing in the passage can be compared",
+        "A single photo proved every claim instantly"
+      ],
+      "correct_answers": [
+        "Camera aim, not shark disappearance, explains the log gap"
+      ],
+      "explanation": "The inference is supported by specific textual evidence.",
+      "hints": [
+        "Combine two details rather than guessing."
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Making an inference that is not supported by cited evidence",
+    "Completing only the first step of a multi-step problem"
+  ],
+  "success_criteria": [
+    "Answers reading items aligned to Confident Reader expectations",
+    "Completes math items within the Advancing operation set",
+    "Uses only information taught in this lesson's story or worked examples",
+    "Selects a single correct answer from plausible choices"
+  ],
+  "prerequisites": [
+    "movo.math.add-sub-20.1",
+    "movo.math.place-value.1"
+  ],
+  "mastered_skills": [
+    "movo.math.add-sub-20.1",
+    "movo.math.place-value.1",
+    "movo.math.counting.k"
+  ],
+  "practice_skills": [],
+  "learner_id": "anon_profile_math_adv_01",
+  "approval_status": "approved",
+  "generator": "MockAILessonGenerator",
+  "reading_vocab_style": "evidence, hypothesize, infer, competing claim, reconcile",
+  "math_number_range": [
+    1,
+    100
+  ],
+  "math_operations": [
+    "multi_step",
+    "multiply_intro",
+    "fraction_unit"
+  ],
+  "reading_measurement": {
+    "providerName": "MockReadabilityProvider (NOT Lexile)",
+    "isLicensedLexile": false,
+    "intendedBand": "Confident Reader",
+    "measuredEstimate": 859,
+    "measuredBand": "Growing Reader",
+    "passesIntendedRange": true,
+    "notes": [
+      "MOCK heuristic — not a licensed MetaMetrics Lexile measure.",
+      "avg_words_per_sentence=15.3",
+      "avg_word_length=4.9",
+      "word_count=92",
+      "sentence_count=6"
+    ]
+  },
+  "math_validation": {
+    "passed": true,
+    "issues": []
+  },
+  "quality_gate": {
+    "passed": true,
+    "checks": [
+      {
+        "number": 1,
+        "question": "Does this match the child’s age and grade band?",
+        "passed": true,
+        "detail": "avg_wps=15.3 (limit~24.0), sentences=6, age=8-10"
+      },
+      {
+        "number": 2,
+        "question": "Does it match the intended skill level?",
+        "passed": true,
+        "detail": "reading=Confident Reader, math=Advancing, skill=movo.math.multi-step.2"
+      },
+      {
+        "number": 3,
+        "question": "Is the information accurate / well-formed?",
+        "passed": true,
+        "detail": "No structural accuracy issues"
+      },
+      {
+        "number": 4,
+        "question": "Is the wording understandable for the band?",
+        "passed": true,
+        "detail": "passage_len=92 words"
+      },
+      {
+        "number": 5,
+        "question": "Does the activity teach the intended skill?",
+        "passed": true,
+        "detail": "Solve one- and two-step word problems involving addition and subtraction within 100."
+      },
+      {
+        "number": 6,
+        "question": "Do the questions match what was taught?",
+        "passed": true,
+        "detail": "passage-grounded reading ratio=100%"
+      },
+      {
+        "number": 7,
+        "question": "Is the difficulty appropriate?",
+        "passed": true,
+        "detail": "inference/choice limits checked for band"
+      },
+      {
+        "number": 8,
+        "question": "Is the content engaging without sacrificing educational value?",
+        "passed": true,
+        "detail": "story + passage + practice present"
+      },
+      {
+        "number": 9,
+        "question": "Are there confusing, misleading, random, or unrelated elements?",
+        "passed": true,
+        "detail": "joke/unrelated markers scanned"
+      },
+      {
+        "number": 10,
+        "question": "Would an educator consider this a meaningful learning activity?",
+        "passed": true,
+        "detail": "skill + story + accurate practice aligned"
+      },
+      {
+        "number": 11,
+        "question": "Are child instructions present and non-empty?",
+        "passed": true,
+        "detail": "Plan the steps before computing. Check units."
+      },
+      {
+        "number": 12,
+        "question": "Are success criteria and common mistakes documented?",
+        "passed": true,
+        "detail": "criteria=4, mistakes=2"
+      },
+      {
+        "number": 13,
+        "question": "Do math items pass deterministic validation?",
+        "passed": true,
+        "detail": "ok"
+      },
+      {
+        "number": 14,
+        "question": "Does the payload stay privacy-safe (no child name/DOB/contact)?",
+        "passed": true,
+        "detail": "anonymous fields only"
+      }
+    ],
+    "reasons": []
+  },
+  "approved_at": "2026-07-14T04:43:39.513448+00:00",
+  "contentSource": "backend_content_pipeline",
+  "providers": {
+    "standards": "MockCASEStandardsProvider",
+    "ai": "MockAILessonGenerator",
+    "reading": "MockReadabilityProvider (NOT Lexile)",
+    "mathProgression": "MockQuantileAlignedProgression (NOT Quantile)"
+  },
+  "profile": {
+    "ageRange": "8-10",
+    "grade": "3",
+    "readingLevel": "Confident Reader",
+    "mathLevel": "Advancing",
+    "interests": [
+      "Sharks"
+    ],
+    "learnerId": "anon_profile_math_adv_01"
+  }
+}

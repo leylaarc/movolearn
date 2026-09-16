@@ -1,0 +1,25 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Cursor / IDE (local only — rules and AGENTS.md stay tracked)
+.cursor/plans/
+
+# Env / secrets
+.env
+*.pem

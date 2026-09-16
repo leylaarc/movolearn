@@ -1,0 +1,14 @@
+---
+description: SwiftUI and design conventions for MovoLearn views
+globs: MovoLearn/**/*.swift
+alwaysApply: false
+---
+
+# SwiftUI conventions
+
+- Use `DesignSystem.Colors`, `DesignSystem.Typography`, `DesignSystem.Spacing` — not hardcoded values
+- Use `PrimaryButton`, `TopicChip`, `LessonCard`, `MascotView`, etc. from `SparkComponents.swift`
+- Use `.sparkCard()` and `.screenBackground()` view modifiers from `DesignSystem.swift`
+- Minimum tap targets ~56pt for child-facing buttons
+- Parent screens: calmer, white cards; child screens: colorful gradients and mascots
+- Avoid `Form` — use `SparkInputCard` for profile fields

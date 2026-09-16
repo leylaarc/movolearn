@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "name": "Movo Learn",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/DerivedData": true
+    }
+  }
+}

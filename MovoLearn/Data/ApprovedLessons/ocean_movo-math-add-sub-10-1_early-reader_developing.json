@@ -1,0 +1,279 @@
+{
+  "id": "d508ace9-7706-42af-8edd-4d28a1d3b696",
+  "title": "Ocean Numbers — Developing Challenge",
+  "subject": "Math",
+  "theme": "Ocean",
+  "learning_objective": "Add and subtract within 10 using objects, drawings, or equations.",
+  "standard_skill_id": "movo.math.add-sub-10.1",
+  "intended_age": "5-6",
+  "intended_grade": "1",
+  "intended_reading_level": "Early Reader",
+  "intended_math_level": "Developing",
+  "instructions": "Use pictures or tally marks for each step.",
+  "story_content": {
+    "opening": "Willa the Whale paddles near a sunny reef. She wants to find a smooth stone.",
+    "passage": "Willa looks under a flat rock. She finds three smooth stones. A crab scurries away. Willa keeps one stone for her collection. Then she swims back to the reef.",
+    "ending": "Great work exploring ocean ideas today!"
+  },
+  "story_opening": "Willa the Whale paddles near a sunny reef. She wants to find a smooth stone.",
+  "reading_passage": "Willa looks under a flat rock. She finds three smooth stones. A crab scurries away. Willa keeps one stone for her collection. Then she swims back to the reef.",
+  "activities": [
+    {
+      "type": "story_practice",
+      "title": "Explore the story",
+      "description": "Willa the Whale paddles near a sunny reef. She wants to find a smooth stone."
+    },
+    {
+      "type": "guided_practice",
+      "title": "Practice the skill",
+      "description": "Add and subtract within 10 using objects, drawings, or equations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "615f1612-18de-4275-94c6-d7da8a1b6c5c",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Willa collected 4 seashells on the path. Then Willa found 2 more. How many seashells does Willa have now?",
+      "choices": [
+        "5",
+        "6",
+        "7"
+      ],
+      "correct_answers": [
+        "6"
+      ],
+      "explanation": "4 + 2 = 6.",
+      "hints": [
+        "Start at 4 and count on 2."
+      ],
+      "operation": "add",
+      "operands": [
+        4,
+        2
+      ]
+    },
+    {
+      "id": "fd1f9cee-5a5b-4b7b-84e4-9eb5a937425d",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Seven seashells were resting in a pile. Three seashells were shared with a friend. How many seashells are left?",
+      "choices": [
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answers": [
+        "4"
+      ],
+      "explanation": "7 − 3 = 4.",
+      "hints": [
+        "Take away 3 from 7."
+      ],
+      "operation": "subtract",
+      "operands": [
+        7,
+        3
+      ]
+    },
+    {
+      "id": "de2d2c9d-e035-468f-8f59-3df6b65084d3",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Willa had 5 seashells. Willa found 3 more. How many altogether?",
+      "choices": [
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_answers": [
+        "8"
+      ],
+      "explanation": "5 + 3 = 8.",
+      "hints": [
+        "Add the two groups."
+      ],
+      "operation": "add",
+      "operands": [
+        5,
+        3
+      ]
+    },
+    {
+      "id": "5d5a2878-389f-49ff-ba65-a6275f6ddfcd",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Where does the story mostly take place?",
+      "choices": [
+        "near a reef",
+        "in a classroom",
+        "on a city bus"
+      ],
+      "correct_answers": [
+        "near a reef"
+      ],
+      "explanation": "The setting is named in the opening and passage.",
+      "hints": [
+        "Reread the first two sentences."
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Remembering a detail from the opening but not the ending",
+    "Adding when the story requires taking away"
+  ],
+  "success_criteria": [
+    "Answers reading items aligned to Early Reader expectations",
+    "Completes math items within the Developing operation set",
+    "Uses only information taught in this lesson's story or worked examples",
+    "Selects a single correct answer from plausible choices"
+  ],
+  "prerequisites": [
+    "movo.math.counting.k",
+    "movo.math.comparing.k"
+  ],
+  "mastered_skills": [
+    "movo.math.counting.k",
+    "movo.math.comparing.k"
+  ],
+  "practice_skills": [],
+  "learner_id": "anon_profile_math_dev_01",
+  "approval_status": "approved",
+  "generator": "MockAILessonGenerator",
+  "reading_vocab_style": "high-frequency + simple decodable words",
+  "math_number_range": [
+    1,
+    10
+  ],
+  "math_operations": [
+    "add",
+    "subtract"
+  ],
+  "reading_measurement": {
+    "providerName": "MockReadabilityProvider (NOT Lexile)",
+    "isLicensedLexile": false,
+    "intendedBand": "Early Reader",
+    "measuredEstimate": 319,
+    "measuredBand": "Beginner",
+    "passesIntendedRange": true,
+    "notes": [
+      "MOCK heuristic — not a licensed MetaMetrics Lexile measure.",
+      "avg_words_per_sentence=5.8",
+      "avg_word_length=4.3",
+      "word_count=29",
+      "sentence_count=5"
+    ]
+  },
+  "math_validation": {
+    "passed": true,
+    "issues": []
+  },
+  "quality_gate": {
+    "passed": true,
+    "checks": [
+      {
+        "number": 1,
+        "question": "Does this match the child’s age and grade band?",
+        "passed": true,
+        "detail": "avg_wps=5.8 (limit~12.0), sentences=5, age=5-6"
+      },
+      {
+        "number": 2,
+        "question": "Does it match the intended skill level?",
+        "passed": true,
+        "detail": "reading=Early Reader, math=Developing, skill=movo.math.add-sub-10.1"
+      },
+      {
+        "number": 3,
+        "question": "Is the information accurate / well-formed?",
+        "passed": true,
+        "detail": "No structural accuracy issues"
+      },
+      {
+        "number": 4,
+        "question": "Is the wording understandable for the band?",
+        "passed": true,
+        "detail": "passage_len=29 words"
+      },
+      {
+        "number": 5,
+        "question": "Does the activity teach the intended skill?",
+        "passed": true,
+        "detail": "Add and subtract within 10 using objects, drawings, or equations."
+      },
+      {
+        "number": 6,
+        "question": "Do the questions match what was taught?",
+        "passed": true,
+        "detail": "passage-grounded reading ratio=100%"
+      },
+      {
+        "number": 7,
+        "question": "Is the difficulty appropriate?",
+        "passed": true,
+        "detail": "inference/choice limits checked for band"
+      },
+      {
+        "number": 8,
+        "question": "Is the content engaging without sacrificing educational value?",
+        "passed": true,
+        "detail": "story + passage + practice present"
+      },
+      {
+        "number": 9,
+        "question": "Are there confusing, misleading, random, or unrelated elements?",
+        "passed": true,
+        "detail": "joke/unrelated markers scanned"
+      },
+      {
+        "number": 10,
+        "question": "Would an educator consider this a meaningful learning activity?",
+        "passed": true,
+        "detail": "skill + story + accurate practice aligned"
+      },
+      {
+        "number": 11,
+        "question": "Are child instructions present and non-empty?",
+        "passed": true,
+        "detail": "Use pictures or tally marks for each step."
+      },
+      {
+        "number": 12,
+        "question": "Are success criteria and common mistakes documented?",
+        "passed": true,
+        "detail": "criteria=4, mistakes=2"
+      },
+      {
+        "number": 13,
+        "question": "Do math items pass deterministic validation?",
+        "passed": true,
+        "detail": "ok"
+      },
+      {
+        "number": 14,
+        "question": "Does the payload stay privacy-safe (no child name/DOB/contact)?",
+        "passed": true,
+        "detail": "anonymous fields only"
+      }
+    ],
+    "reasons": []
+  },
+  "approved_at": "2026-07-14T04:43:39.511926+00:00",
+  "contentSource": "backend_content_pipeline",
+  "providers": {
+    "standards": "MockCASEStandardsProvider",
+    "ai": "MockAILessonGenerator",
+    "reading": "MockReadabilityProvider (NOT Lexile)",
+    "mathProgression": "MockQuantileAlignedProgression (NOT Quantile)"
+  },
+  "profile": {
+    "ageRange": "5-6",
+    "grade": "1",
+    "readingLevel": "Early Reader",
+    "mathLevel": "Developing",
+    "interests": [
+      "Ocean"
+    ],
+    "learnerId": "anon_profile_math_dev_01"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "id": "304e4a1c-6f1b-44d3-aac2-32c950f573de",
+  "title": "Space: Main Idea Mission",
+  "subject": "Reading",
+  "theme": "Space",
+  "learning_objective": "Identify the main topic and retell key supporting details of an informational or narrative text.",
+  "standard_skill_id": "movo.ela.main-idea.2",
+  "intended_age": "6-7",
+  "intended_grade": "2",
+  "intended_reading_level": "Growing Reader",
+  "intended_math_level": "Secure",
+  "instructions": "Read the passage carefully. Look for the main idea and the details that support it. Use clues from the text when you answer.",
+  "story_content": {
+    "opening": "Nova checks a list of water pouches and tools. She wants to get them to friends on the Moon.",
+    "passage": "Nova's crew must deliver four water pouches and two antenna tools before night cycle begins. The Moon has no air, so every checklist item matters. Nova reads the supply list aloud while a robot confirms each count. Craters make landing tricky, so the team practices a slow approach. When the final pouch is sealed, Nova marks the main goal: keep the outpost crew safely supplied.",
+    "ending": "Great work exploring space ideas today!"
+  },
+  "story_opening": "Nova checks a list of water pouches and tools. She wants to get them to friends on the Moon.",
+  "reading_passage": "Nova's crew must deliver four water pouches and two antenna tools before night cycle begins. The Moon has no air, so every checklist item matters. Nova reads the supply list aloud while a robot confirms each count. Craters make landing tricky, so the team practices a slow approach. When the final pouch is sealed, Nova marks the main goal: keep the outpost crew safely supplied.",
+  "activities": [
+    {
+      "type": "story_practice",
+      "title": "Explore the story",
+      "description": "Nova checks a list of water pouches and tools. She wants to get them to friends on the Moon."
+    },
+    {
+      "type": "guided_practice",
+      "title": "Practice the skill",
+      "description": "Identify the main topic and retell key supporting details of an informational or narrative text."
+    }
+  ],
+  "questions": [
+    {
+      "id": "75308205-c985-4527-b0c1-e95cad04d5ca",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What is the main idea of the passage?",
+      "choices": [
+        "Careful supply checks keep the moon crew safe",
+        "The characters want to win a race",
+        "The weather report is the only topic"
+      ],
+      "correct_answers": [
+        "Careful supply checks keep the moon crew safe"
+      ],
+      "explanation": "The passage repeatedly supports that central idea.",
+      "hints": [
+        "Ask what the whole passage is mostly about."
+      ]
+    },
+    {
+      "id": "7d41b928-bab7-4821-9d38-df44d14f8f0f",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Which detail best supports the main idea?",
+      "choices": [
+        "Nova reads the supply list while a robot confirms each count",
+        "The characters want to win a race",
+        "The weather is the only topic"
+      ],
+      "correct_answers": [
+        "Nova reads the supply list while a robot confirms each count"
+      ],
+      "explanation": "That detail directly backs the central message.",
+      "hints": [
+        "Find a sentence that proves the main idea."
+      ]
+    },
+    {
+      "id": "c0a00c0c-0eca-4fe9-b28d-95c9882c7474",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "According to the passage, why does the character take notes or observe carefully?",
+      "choices": [
+        "To keep the outpost crew safely supplied",
+        "To finish first in a contest",
+        "To ignore the evidence"
+      ],
+      "correct_answers": [
+        "To keep the outpost crew safely supplied"
+      ],
+      "explanation": "The text states the purpose of careful observation.",
+      "hints": [
+        "Look for because / so / purpose language."
+      ]
+    },
+    {
+      "id": "72fd6dd1-deaf-46cf-b3a5-e9b70ce00b3d",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Nova packed 12 moon rocks in a crate. Then Nova added 5 more from a basket. How many moon rocks are in the crate now?",
+      "choices": [
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "correct_answers": [
+        "17"
+      ],
+      "explanation": "12 + 5 = 17.",
+      "hints": [
+        "Add the ones: 2 + 5 = 7, keep the ten."
+      ],
+      "operation": "add",
+      "operands": [
+        12,
+        5
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Choosing a detail instead of the main idea",
+    "Confusing the tens value with the tens digit itself"
+  ],
+  "success_criteria": [
+    "Answers reading items aligned to Growing Reader expectations",
+    "Completes math items within the Secure operation set",
+    "Uses only information taught in this lesson's story or worked examples",
+    "Selects a single correct answer from plausible choices"
+  ],
+  "prerequisites": [
+    "movo.ela.key-details.1",
+    "movo.ela.sequencing.1"
+  ],
+  "mastered_skills": [
+    "movo.ela.key-details.1",
+    "movo.ela.sequencing.1",
+    "movo.ela.short-sentences.1"
+  ],
+  "practice_skills": [],
+  "learner_id": "anon_profile_growing_01",
+  "approval_status": "approved",
+  "generator": "MockAILessonGenerator",
+  "reading_vocab_style": "context-supported academic words (shelter, supply, fossil, pattern)",
+  "math_number_range": [
+    1,
+    20
+  ],
+  "math_operations": [
+    "add",
+    "subtract",
+    "place_value"
+  ],
+  "reading_measurement": {
+    "providerName": "MockReadabilityProvider (NOT Lexile)",
+    "isLicensedLexile": false,
+    "intendedBand": "Growing Reader",
+    "measuredEstimate": 715,
+    "measuredBand": "Growing Reader",
+    "passesIntendedRange": true,
+    "notes": [
+      "MOCK heuristic — not a licensed MetaMetrics Lexile measure.",
+      "avg_words_per_sentence=13.0",
+      "avg_word_length=4.7",
+      "word_count=65",
+      "sentence_count=5"
+    ]
+  },
+  "math_validation": {
+    "passed": true,
+    "issues": []
+  },
+  "quality_gate": {
+    "passed": true,
+    "checks": [
+      {
+        "number": 1,
+        "question": "Does this match the child’s age and grade band?",
+        "passed": true,
+        "detail": "avg_wps=13.0 (limit~18.0), sentences=5, age=6-7"
+      },
+      {
+        "number": 2,
+        "question": "Does it match the intended skill level?",
+        "passed": true,
+        "detail": "reading=Growing Reader, math=Secure, skill=movo.ela.main-idea.2"
+      },
+      {
+        "number": 3,
+        "question": "Is the information accurate / well-formed?",
+        "passed": true,
+        "detail": "No structural accuracy issues"
+      },
+      {
+        "number": 4,
+        "question": "Is the wording understandable for the band?",
+        "passed": true,
+        "detail": "passage_len=65 words"
+      },
+      {
+        "number": 5,
+        "question": "Does the activity teach the intended skill?",
+        "passed": true,
+        "detail": "Identify the main topic and retell key supporting details of an informational or narrative text."
+      },
+      {
+        "number": 6,
+        "question": "Do the questions match what was taught?",
+        "passed": true,
+        "detail": "passage-grounded reading ratio=100%"
+      },
+      {
+        "number": 7,
+        "question": "Is the difficulty appropriate?",
+        "passed": true,
+        "detail": "inference/choice limits checked for band"
+      },
+      {
+        "number": 8,
+        "question": "Is the content engaging without sacrificing educational value?",
+        "passed": true,
+        "detail": "story + passage + practice present"
+      },
+      {
+        "number": 9,
+        "question": "Are there confusing, misleading, random, or unrelated elements?",
+        "passed": true,
+        "detail": "joke/unrelated markers scanned"
+      },
+      {
+        "number": 10,
+        "question": "Would an educator consider this a meaningful learning activity?",
+        "passed": true,
+        "detail": "skill + story + accurate practice aligned"
+      },
+      {
+        "number": 11,
+        "question": "Are child instructions present and non-empty?",
+        "passed": true,
+        "detail": "Read the passage carefully. Look for the main idea and the details that support "
+      },
+      {
+        "number": 12,
+        "question": "Are success criteria and common mistakes documented?",
+        "passed": true,
+        "detail": "criteria=4, mistakes=2"
+      },
+      {
+        "number": 13,
+        "question": "Do math items pass deterministic validation?",
+        "passed": true,
+        "detail": "ok"
+      },
+      {
+        "number": 14,
+        "question": "Does the payload stay privacy-safe (no child name/DOB/contact)?",
+        "passed": true,
+        "detail": "anonymous fields only"
+      }
+    ],
+    "reasons": []
+  },
+  "approved_at": "2026-07-14T04:43:39.509041+00:00",
+  "contentSource": "backend_content_pipeline",
+  "providers": {
+    "standards": "MockCASEStandardsProvider",
+    "ai": "MockAILessonGenerator",
+    "reading": "MockReadabilityProvider (NOT Lexile)",
+    "mathProgression": "MockQuantileAlignedProgression (NOT Quantile)"
+  },
+  "profile": {
+    "ageRange": "6-7",
+    "grade": "2",
+    "readingLevel": "Growing Reader",
+    "mathLevel": "Secure",
+    "interests": [
+      "Space"
+    ],
+    "learnerId": "anon_profile_growing_01"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "id": "e3cb590d-790f-57b6-bd1a-03f56267303f",
+  "title": "Reef Rescue",
+  "theme": "Sharks",
+  "lessonType": "explorer",
+  "ageTarget": "5-8",
+  "gradeTarget": "K-2",
+  "readingLevel": "Early Reader",
+  "learningGoal": "All-around practice",
+  "difficultyLevel": "Early Reader",
+  "estimatedMinutes": 10,
+  "storyOpening": "Far below the ocean waves, a young reef shark named Finn noticed that the coral garden had gone quiet. Silver fish that usually darted between the rocks were nowhere to be seen.",
+  "missionPrompt": "Help Finn search the reef, read the clues near the coral cave, and count the missing fish so the reef feels alive again!",
+  "readingPassage": "Blue light shimmered across the coral reef as Finn the young shark searched for his fish friends. He swam past waving sea plants and noticed tiny bubbles rising from a dark cave. Finn uses gills to breathe underwater, just like other fish. His guide pointed to the slits along his neck — gills that pull oxygen from the water with every swim. With a flick of his fin, Finn spotted silver fish hiding below. If Finn follows the bubbles, he might find the missing fish.",
+  "storyEnding": "The reef hums with life again. Finn swims in happy circles while his fish friends reappear from the cave — thanks to you, the reef mystery is solved!",
+  "reflectionPrompt": "Which clue helped you the most near the coral cave?",
+  "creativePrompt": "Design a secret underwater hideout for Finn. What would be inside?",
+  "readingSkill": "Finding main ideas",
+  "mathSkill": "Addition within 10",
+  "skillsPracticed": [
+    "Reading",
+    "Math",
+    "Vocabulary",
+    "Science",
+    "Creative Thinking"
+  ],
+  "vocabularyWords": [
+    {
+      "id": "a1000001-0000-0000-0000-000000000001",
+      "word": "Gills",
+      "definition": "body parts that help sharks breathe underwater",
+      "exampleSentence": "Finn uses his gills to pull oxygen from the water.",
+      "storyConnection": "Gills help Finn stay underwater during the reef search."
+    },
+    {
+      "id": "a1000001-0000-0000-0000-000000000002",
+      "word": "Reef",
+      "definition": "a ridge of rock or coral in the sea where many animals live",
+      "exampleSentence": "Colorful fish usually dart between the reef rocks.",
+      "storyConnection": "Finn's whole adventure happens at the coral reef."
+    },
+    {
+      "id": "a1000001-0000-0000-0000-000000000003",
+      "word": "Predator",
+      "definition": "an animal that hunts other animals for food",
+      "exampleSentence": "A shark is a careful hunter, also called a predator.",
+      "storyConnection": "Finn is a young predator learning about his reef home."
+    }
+  ],
+  "knowledgeFacts": [
+    {
+      "id": "b1000001-0000-0000-0000-000000000001",
+      "fact": "Sharks do not have bones like humans.",
+      "explanation": "A shark's body is held up by soft, bendy material called cartilage. That helps sharks bend and swim smoothly."
+    },
+    {
+      "id": "b1000001-0000-0000-0000-000000000002",
+      "fact": "Some sharks can sense tiny movements in the water.",
+      "explanation": "Special sensors help them find fish even when the water is dark or cloudy."
+    }
+  ],
+  "questions": [
+    {
+      "id": "bed85011-1eed-549a-8a3c-a275ae05db11",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "mysteryKind": "cause",
+      "mysterySetup": "Finn notices the coral garden has gone quiet. Why might the silver fish be hiding?",
+      "clues": [
+        "Tiny bubbles keep rising from a dark cave nearby.",
+        "The fish dart away whenever something moves near that cave mouth.",
+        "Finn sees a flicker of silver deep inside, as if the fish found a safer pocket of water."
+      ],
+      "prompt": "What best explains why the fish disappeared from the open reef?",
+      "choices": [
+        "They are hiding in the cave for safety",
+        "They swam to a different part of the open reef",
+        "They are resting on the sandy seafloor nearby"
+      ],
+      "correctAnswer": "They are hiding in the cave for safety",
+      "explanation": "Bubbles from the cave, fish darting from that spot, and a silver flicker inside all support that the fish are hiding in the cave.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "c2d85011-1eed-549a-8a3c-a275ae05db12",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Where does Finn's adventure take place?",
+      "choices": [
+        "Under the ocean near a coral reef",
+        "In a kelp forest",
+        "Beside a sandy lagoon"
+      ],
+      "correctAnswer": "Under the ocean near a coral reef",
+      "explanation": "Finn explores a reef deep under the waves.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "d3d85011-1eed-549a-8a3c-a275ae05db13",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What helps Finn breathe underwater?",
+      "choices": [
+        "Gills",
+        "Lungs",
+        "Blowholes"
+      ],
+      "correctAnswer": "Gills",
+      "explanation": "Sharks use gills to breathe underwater.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "e4d85011-1eed-549a-8a3c-a275ae05db14",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Why might Finn follow the bubbles?",
+      "choices": [
+        "They might lead to the missing fish",
+        "They might lead to a shipwreck",
+        "They might lead to a tide pool"
+      ],
+      "correctAnswer": "They might lead to the missing fish",
+      "explanation": "The story says following bubbles might help Finn find the fish.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "a1111111-1111-4111-8111-111111111111",
+      "subject": "reading",
+      "type": "openEnded",
+      "responseType": "matching",
+      "prompt": "Match each item with what the passage says about it.",
+      "pairs": [
+        {
+          "left": "Gills",
+          "right": "Pull oxygen from the water",
+          "supportingEvidence": "His guide pointed to the slits along his neck — gills that pull oxygen from the water with every swim."
+        },
+        {
+          "left": "Bubbles",
+          "right": "Rising from a dark cave",
+          "supportingEvidence": "He swam past waving sea plants and noticed tiny bubbles rising from a dark cave."
+        },
+        {
+          "left": "Silver fish",
+          "right": "Hiding below",
+          "supportingEvidence": "With a flick of his fin, Finn spotted silver fish hiding below."
+        }
+      ],
+      "explanation": "Each match comes from a sentence in the reading passage."
+    },
+    {
+      "id": "a2222222-2222-4222-8222-222222222222",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "responseType": "multipleChoice",
+      "prompt": "What did Finn spot with a flick of his fin?",
+      "choices": [
+        "Silver fish hiding below",
+        "A boat on the surface",
+        "A sandcastle on the beach"
+      ],
+      "correctAnswer": "Silver fish hiding below",
+      "explanation": "The story says Finn spotted silver fish hiding below."
+    }
+  ],
+  "mathChallenges": [
+    {
+      "id": "84d0189e-455d-56c1-9b58-ef3ac6945af2",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Finn found 4 silver fish hiding near the coral and 3 yellow fish behind a rock. How many fish did Finn find altogether?",
+      "choices": [
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "4 + 3 = 7 fish.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "94d0189e-455d-56c1-9b58-ef3ac6945af3",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "You spot 8 fish, then 2 hide inside the coral. How many fish can you still see?",
+      "choices": [
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "6",
+      "explanation": "8 − 2 = 6 fish.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "a4d0189e-455d-56c1-9b58-ef3ac6945af4",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "2 hammerheads and 3 reef sharks pass your window. How many sharks in all?",
+      "choices": [
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "5",
+      "explanation": "2 + 3 = 5 sharks.",
+      "responseType": "multipleChoice"
+    }
+  ],
+  "sections": [],
+  "category": "story",
+  "primarySubject": "reading",
+  "teaser": "Help Finn the shark follow the clues and find the missing fish.",
+  "difficultyLabel": "Early Reader",
+  "creativeResponseType": "drawing",
+  "reflectionResponseType": "shortText"
+}

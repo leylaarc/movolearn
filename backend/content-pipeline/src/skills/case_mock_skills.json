@@ -1,0 +1,205 @@
+{
+  "_comment": "MOCK CASE-aligned skill catalog for local development only. Replace with live 1EdTech CASE Network data when licensed. Structure mirrors CFItem-like fields; identifiers are synthetic.",
+  "skills": [
+    {
+      "identifier": "movo.ela.letter-sound.k",
+      "fullStatement": "Recognize and produce the primary sound for common consonants and short vowels.",
+      "humanCodingScheme": "ELA.RF.K.3a",
+      "educationLevel": ["K", "Pre-K"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": [],
+      "relatedIds": ["movo.ela.phonics.blend.k", "movo.ela.simple-words.1"]
+    },
+    {
+      "identifier": "movo.ela.phonics.blend.k",
+      "fullStatement": "Blend two and three phonemes to read simple CVC words.",
+      "humanCodingScheme": "ELA.RF.K.2c",
+      "educationLevel": ["K", "1"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.letter-sound.k"],
+      "relatedIds": ["movo.ela.simple-words.1"]
+    },
+    {
+      "identifier": "movo.ela.simple-words.1",
+      "fullStatement": "Read grade-appropriate high-frequency and decodable words in isolation and in short phrases.",
+      "humanCodingScheme": "ELA.RF.1.3",
+      "educationLevel": ["1", "K"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.phonics.blend.k"],
+      "relatedIds": ["movo.ela.short-sentences.1", "movo.ela.letter-sound.k"]
+    },
+    {
+      "identifier": "movo.ela.short-sentences.1",
+      "fullStatement": "Read and understand short, concrete sentences with familiar vocabulary.",
+      "humanCodingScheme": "ELA.RF.1.4",
+      "educationLevel": ["1", "2"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.simple-words.1"],
+      "relatedIds": ["movo.ela.sequencing.1", "movo.ela.key-details.1"]
+    },
+    {
+      "identifier": "movo.ela.sequencing.1",
+      "fullStatement": "Retell events from a short text in the order they happened.",
+      "humanCodingScheme": "ELA.RL.1.2",
+      "educationLevel": ["1", "2"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.short-sentences.1"],
+      "relatedIds": ["movo.ela.main-idea.2", "movo.ela.key-details.1"]
+    },
+    {
+      "identifier": "movo.ela.key-details.1",
+      "fullStatement": "Ask and answer questions about key details in a text (who, what, where).",
+      "humanCodingScheme": "ELA.RL.1.1",
+      "educationLevel": ["1", "2"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.short-sentences.1"],
+      "relatedIds": ["movo.ela.sequencing.1", "movo.ela.main-idea.2"]
+    },
+    {
+      "identifier": "movo.ela.main-idea.2",
+      "fullStatement": "Identify the main topic and retell key supporting details of an informational or narrative text.",
+      "humanCodingScheme": "ELA.RI.2.2",
+      "educationLevel": ["2", "3"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.key-details.1", "movo.ela.sequencing.1"],
+      "relatedIds": ["movo.ela.inference.2", "movo.ela.cause-effect.2"]
+    },
+    {
+      "identifier": "movo.ela.cause-effect.2",
+      "fullStatement": "Describe the connection between a series of events, ideas, or concepts in a text.",
+      "humanCodingScheme": "ELA.RI.2.3",
+      "educationLevel": ["2", "3"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.main-idea.2"],
+      "relatedIds": ["movo.ela.inference.2"]
+    },
+    {
+      "identifier": "movo.ela.inference.2",
+      "fullStatement": "Use details and examples from a text to support inferences about characters or events.",
+      "humanCodingScheme": "ELA.RL.2.3",
+      "educationLevel": ["2", "3"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.main-idea.2", "movo.ela.key-details.1"],
+      "relatedIds": ["movo.ela.cause-effect.2", "movo.ela.compare-contrast.3"]
+    },
+    {
+      "identifier": "movo.ela.compare-contrast.3",
+      "fullStatement": "Compare and contrast two characters, settings, or events using evidence from the text.",
+      "humanCodingScheme": "ELA.RL.3.3",
+      "educationLevel": ["3"],
+      "subject": "Reading",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.ela.inference.2"],
+      "relatedIds": ["movo.ela.inference.2"]
+    },
+    {
+      "identifier": "movo.math.counting.k",
+      "fullStatement": "Count to 20; count objects in a set and write the matching numeral.",
+      "humanCodingScheme": "MATH.K.CC.B.4",
+      "educationLevel": ["K", "Pre-K"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": [],
+      "relatedIds": ["movo.math.comparing.k", "movo.math.add-sub-10.1"]
+    },
+    {
+      "identifier": "movo.math.comparing.k",
+      "fullStatement": "Compare two groups of objects and identify which has more, fewer, or an equal number.",
+      "humanCodingScheme": "MATH.K.CC.C.6",
+      "educationLevel": ["K", "1"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.counting.k"],
+      "relatedIds": ["movo.math.add-sub-10.1"]
+    },
+    {
+      "identifier": "movo.math.add-sub-10.1",
+      "fullStatement": "Add and subtract within 10 using objects, drawings, or equations.",
+      "humanCodingScheme": "MATH.1.OA.C.6",
+      "educationLevel": ["1", "K"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.counting.k", "movo.math.comparing.k"],
+      "relatedIds": ["movo.math.add-sub-20.1", "movo.math.place-value.1"]
+    },
+    {
+      "identifier": "movo.math.add-sub-20.1",
+      "fullStatement": "Add and subtract within 20, demonstrating fluency for addition and subtraction within 10.",
+      "humanCodingScheme": "MATH.1.OA.C.6b",
+      "educationLevel": ["1", "2"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.add-sub-10.1"],
+      "relatedIds": ["movo.math.place-value.1", "movo.math.multi-step.2"]
+    },
+    {
+      "identifier": "movo.math.place-value.1",
+      "fullStatement": "Understand that the two digits of a two-digit number represent tens and ones.",
+      "humanCodingScheme": "MATH.1.NBT.B.2",
+      "educationLevel": ["1", "2"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.counting.k", "movo.math.add-sub-10.1"],
+      "relatedIds": ["movo.math.add-sub-20.1", "movo.math.mult-div.3"]
+    },
+    {
+      "identifier": "movo.math.measurement.2",
+      "fullStatement": "Measure length using standard units and compare lengths of two objects.",
+      "humanCodingScheme": "MATH.2.MD.A.1",
+      "educationLevel": ["2", "3"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.comparing.k", "movo.math.add-sub-20.1"],
+      "relatedIds": ["movo.math.geometry.2", "movo.math.fractions.3"]
+    },
+    {
+      "identifier": "movo.math.geometry.2",
+      "fullStatement": "Recognize and draw shapes with specified attributes (sides, angles, faces).",
+      "humanCodingScheme": "MATH.2.G.A.1",
+      "educationLevel": ["2", "3"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.counting.k"],
+      "relatedIds": ["movo.math.measurement.2", "movo.math.fractions.3"]
+    },
+    {
+      "identifier": "movo.math.multi-step.2",
+      "fullStatement": "Solve one- and two-step word problems involving addition and subtraction within 100.",
+      "humanCodingScheme": "MATH.2.OA.A.1",
+      "educationLevel": ["2", "3"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.add-sub-20.1", "movo.math.place-value.1"],
+      "relatedIds": ["movo.math.mult-div.3", "movo.math.fractions.3"]
+    },
+    {
+      "identifier": "movo.math.mult-div.3",
+      "fullStatement": "Interpret products and quotients of whole numbers using equal groups and arrays.",
+      "humanCodingScheme": "MATH.3.OA.A.1",
+      "educationLevel": ["3"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.add-sub-20.1", "movo.math.multi-step.2"],
+      "relatedIds": ["movo.math.fractions.3", "movo.math.multi-step.2"]
+    },
+    {
+      "identifier": "movo.math.fractions.3",
+      "fullStatement": "Understand a fraction as a number on the number line; recognize simple unit fractions.",
+      "humanCodingScheme": "MATH.3.NF.A.1",
+      "educationLevel": ["3"],
+      "subject": "Math",
+      "CFItemType": "Skill",
+      "prerequisiteIds": ["movo.math.geometry.2", "movo.math.mult-div.3"],
+      "relatedIds": ["movo.math.measurement.2", "movo.math.mult-div.3"]
+    }
+  ]
+}

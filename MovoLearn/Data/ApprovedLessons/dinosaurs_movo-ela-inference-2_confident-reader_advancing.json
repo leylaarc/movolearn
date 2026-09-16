@@ -1,0 +1,294 @@
+{
+  "id": "a24b6f0e-708c-4e09-8937-808a48331e32",
+  "title": "Dinosaurs: Evidence and Inference",
+  "subject": "Reading",
+  "theme": "Dinosaurs",
+  "learning_objective": "Use details and examples from a text to support inferences about characters or events.",
+  "standard_skill_id": "movo.ela.inference.2",
+  "intended_age": "8-10",
+  "intended_grade": "3",
+  "intended_reading_level": "Confident Reader",
+  "intended_math_level": "Advancing",
+  "instructions": "Read independently. Use evidence from the passage to explain inferences. Compare details before choosing an answer.",
+  "story_content": {
+    "opening": "Two fossil sites told conflicting stories, and Dottie the Dino asked the explorers to decide which clues were stronger—and why.",
+    "passage": "Site A contains crushed eggshells mixed with adult footprints facing outward, as if a caretaker left in a hurry. Site B shows intact nest circles but no adult tracks nearby. Explorers might infer Site A records a disturbed nest while Site B shows eggs left unattended. Dottie cautions that wind can erase tracks, so missing prints at Site B are weaker evidence than the outward tracks at Site A. Comparing both sites, the stronger claim is that Site A captures a moment of interruption. Any conclusion still needs more measurements of shell thickness and soil layers.",
+    "ending": "Great work exploring dinosaurs ideas today!"
+  },
+  "story_opening": "Two fossil sites told conflicting stories, and Dottie the Dino asked the explorers to decide which clues were stronger—and why.",
+  "reading_passage": "Site A contains crushed eggshells mixed with adult footprints facing outward, as if a caretaker left in a hurry. Site B shows intact nest circles but no adult tracks nearby. Explorers might infer Site A records a disturbed nest while Site B shows eggs left unattended. Dottie cautions that wind can erase tracks, so missing prints at Site B are weaker evidence than the outward tracks at Site A. Comparing both sites, the stronger claim is that Site A captures a moment of interruption. Any conclusion still needs more measurements of shell thickness and soil layers.",
+  "activities": [
+    {
+      "type": "story_practice",
+      "title": "Explore the story",
+      "description": "Two fossil sites told conflicting stories, and Dottie the Dino asked the explorers to decide which clues were stronger—and why."
+    },
+    {
+      "type": "guided_practice",
+      "title": "Practice the skill",
+      "description": "Use details and examples from a text to support inferences about characters or events."
+    }
+  ],
+  "questions": [
+    {
+      "id": "a9a33d35-0e8b-4c18-9e29-7f5c3ded7a2a",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What can you reasonably infer from the passage?",
+      "choices": [
+        "Site A more clearly shows a nest interruption than Site B",
+        "The characters abandoned science entirely",
+        "Nothing in the passage can be compared",
+        "A single photo proved every claim instantly"
+      ],
+      "correct_answers": [
+        "Site A more clearly shows a nest interruption than Site B"
+      ],
+      "explanation": "The inference is supported by specific textual evidence.",
+      "hints": [
+        "Combine two details rather than guessing."
+      ]
+    },
+    {
+      "id": "6154fbb5-91c9-4f57-9ea1-686d53edff63",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Which evidence best supports the stronger claim in the passage?",
+      "choices": [
+        "Adult footprints at Site A face outward as if leaving in a hurry",
+        "Someone likes the color blue",
+        "The teams skipped writing any logs",
+        "An unrelated sports score decided the case"
+      ],
+      "correct_answers": [
+        "Adult footprints at Site A face outward as if leaving in a hurry"
+      ],
+      "explanation": "That detail is cited as the stronger support.",
+      "hints": [
+        "Look for what the character treats as stronger evidence."
+      ]
+    },
+    {
+      "id": "2439e85d-f616-4f43-8cf1-bd7dd0511cc6",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Why does the passage reject a competing explanation?",
+      "choices": [
+        "Missing prints at Site B are weaker because wind can erase tracks",
+        "Because the author said so without reasons",
+        "Because the cameras disliked dusk light as a joke",
+        "Because math is unrelated to the logs"
+      ],
+      "correct_answers": [
+        "Missing prints at Site B are weaker because wind can erase tracks"
+      ],
+      "explanation": "A counter-detail weakens the competing idea.",
+      "hints": [
+        "Find the sentence that says an idea fits poorly."
+      ]
+    },
+    {
+      "id": "8ad03218-8494-4ca2-9551-9f013bc0ab99",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What should the team do next, according to the passage?",
+      "choices": [
+        "Measure shell thickness and soil layers further",
+        "Delete all the evidence",
+        "Stop observing permanently",
+        "Invent numbers without diving"
+      ],
+      "correct_answers": [
+        "Measure shell thickness and soil layers further"
+      ],
+      "explanation": "The closing plan is stated near the end.",
+      "hints": [
+        "Check the proposed next step."
+      ]
+    },
+    {
+      "id": "b0c3c911-b871-443f-a08b-0f4063d8cfb2",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Dottie gathered 20 fern leaves, gave away 6, then found 9 more. How many fern leaves does Dottie have now?",
+      "choices": [
+        "21",
+        "22",
+        "23",
+        "25"
+      ],
+      "correct_answers": [
+        "23"
+      ],
+      "explanation": "20 − 6 = 14, then 14 + 9 = 23.",
+      "hints": [
+        "Do the giveaway first, then add the new find."
+      ],
+      "operation": "multi_step",
+      "operands": [
+        20,
+        6,
+        9
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Making an inference that is not supported by cited evidence",
+    "Completing only the first step of a multi-step problem"
+  ],
+  "success_criteria": [
+    "Answers reading items aligned to Confident Reader expectations",
+    "Completes math items within the Advancing operation set",
+    "Uses only information taught in this lesson's story or worked examples",
+    "Selects a single correct answer from plausible choices"
+  ],
+  "prerequisites": [
+    "movo.ela.main-idea.2",
+    "movo.ela.key-details.1"
+  ],
+  "mastered_skills": [
+    "movo.ela.main-idea.2",
+    "movo.ela.key-details.1"
+  ],
+  "practice_skills": [],
+  "learner_id": "anon_profile_confident_01",
+  "approval_status": "approved",
+  "generator": "MockAILessonGenerator",
+  "reading_vocab_style": "evidence, hypothesize, infer, competing claim, reconcile",
+  "math_number_range": [
+    1,
+    100
+  ],
+  "math_operations": [
+    "multi_step",
+    "multiply_intro",
+    "fraction_unit"
+  ],
+  "reading_measurement": {
+    "providerName": "MockReadabilityProvider (NOT Lexile)",
+    "isLicensedLexile": false,
+    "intendedBand": "Confident Reader",
+    "measuredEstimate": 896,
+    "measuredBand": "Growing Reader",
+    "passesIntendedRange": true,
+    "notes": [
+      "MOCK heuristic — not a licensed MetaMetrics Lexile measure.",
+      "avg_words_per_sentence=16.0",
+      "avg_word_length=4.8",
+      "word_count=96",
+      "sentence_count=6"
+    ]
+  },
+  "math_validation": {
+    "passed": true,
+    "issues": []
+  },
+  "quality_gate": {
+    "passed": true,
+    "checks": [
+      {
+        "number": 1,
+        "question": "Does this match the child’s age and grade band?",
+        "passed": true,
+        "detail": "avg_wps=16.0 (limit~24.0), sentences=6, age=8-10"
+      },
+      {
+        "number": 2,
+        "question": "Does it match the intended skill level?",
+        "passed": true,
+        "detail": "reading=Confident Reader, math=Advancing, skill=movo.ela.inference.2"
+      },
+      {
+        "number": 3,
+        "question": "Is the information accurate / well-formed?",
+        "passed": true,
+        "detail": "No structural accuracy issues"
+      },
+      {
+        "number": 4,
+        "question": "Is the wording understandable for the band?",
+        "passed": true,
+        "detail": "passage_len=96 words"
+      },
+      {
+        "number": 5,
+        "question": "Does the activity teach the intended skill?",
+        "passed": true,
+        "detail": "Use details and examples from a text to support inferences about characters or events."
+      },
+      {
+        "number": 6,
+        "question": "Do the questions match what was taught?",
+        "passed": true,
+        "detail": "passage-grounded reading ratio=100%"
+      },
+      {
+        "number": 7,
+        "question": "Is the difficulty appropriate?",
+        "passed": true,
+        "detail": "inference/choice limits checked for band"
+      },
+      {
+        "number": 8,
+        "question": "Is the content engaging without sacrificing educational value?",
+        "passed": true,
+        "detail": "story + passage + practice present"
+      },
+      {
+        "number": 9,
+        "question": "Are there confusing, misleading, random, or unrelated elements?",
+        "passed": true,
+        "detail": "joke/unrelated markers scanned"
+      },
+      {
+        "number": 10,
+        "question": "Would an educator consider this a meaningful learning activity?",
+        "passed": true,
+        "detail": "skill + story + accurate practice aligned"
+      },
+      {
+        "number": 11,
+        "question": "Are child instructions present and non-empty?",
+        "passed": true,
+        "detail": "Read independently. Use evidence from the passage to explain inferences. Compare"
+      },
+      {
+        "number": 12,
+        "question": "Are success criteria and common mistakes documented?",
+        "passed": true,
+        "detail": "criteria=4, mistakes=2"
+      },
+      {
+        "number": 13,
+        "question": "Do math items pass deterministic validation?",
+        "passed": true,
+        "detail": "ok"
+      },
+      {
+        "number": 14,
+        "question": "Does the payload stay privacy-safe (no child name/DOB/contact)?",
+        "passed": true,
+        "detail": "anonymous fields only"
+      }
+    ],
+    "reasons": []
+  },
+  "approved_at": "2026-07-14T04:43:39.510849+00:00",
+  "contentSource": "backend_content_pipeline",
+  "providers": {
+    "standards": "MockCASEStandardsProvider",
+    "ai": "MockAILessonGenerator",
+    "reading": "MockReadabilityProvider (NOT Lexile)",
+    "mathProgression": "MockQuantileAlignedProgression (NOT Quantile)"
+  },
+  "profile": {
+    "ageRange": "8-10",
+    "grade": "3",
+    "readingLevel": "Confident Reader",
+    "mathLevel": "Advancing",
+    "interests": [
+      "Dinosaurs"
+    ],
+    "learnerId": "anon_profile_confident_01"
+  }
+}

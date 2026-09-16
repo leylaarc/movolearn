@@ -1,0 +1,1093 @@
+[
+  {
+    "lessonId": "e3cb590d-790f-57b6-bd1a-03f56267303f",
+    "title": "Reef Rescue",
+    "theme": "Sharks",
+    "primaryTopicId": "mt_ytUG3yjCYt",
+    "supportingTopicIds": [
+      "mt_oAg79ju344",
+      "mt_mRCPP_Ab2W",
+      "mt_scBgiMKhG_",
+      "mt_OvyoRo47K-"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Ocean Life",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": "5317784e-fa97-54b4-ba37-d4c875f74340",
+    "title": "Sunny's Stable Mission",
+    "theme": "Horses",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_scBgiMKhG_",
+      "mt_yJmvUCCym7"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": null,
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": "1de9cbbc-195c-5f1e-8b1e-9b71812dfa76",
+    "title": "Nova's Moon Mission",
+    "theme": "Space",
+    "primaryTopicId": "mt_XlyF294bPR",
+    "supportingTopicIds": [
+      "mt_PiWZA8Z0ZJ",
+      "mt_EHuU1ZeUFA",
+      "mt_ByXgbTld6R"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Space Exploration",
+    "difficulty": null,
+    "recommendedAgeRange": "6-9",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": "642e91cd-dc84-545b-ae0f-46ae543e6a04",
+    "title": "Dottie's Herd Rescue",
+    "theme": "Dinosaurs",
+    "primaryTopicId": "mt_dpM1l5IOk6",
+    "supportingTopicIds": [
+      "mt_u0TeRwRII_",
+      "mt_BnabTHkNIp",
+      "mt_bKlnc7dyVK",
+      "mt_DJh2JPwTf6"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Dinosaurs & Paleontology",
+    "difficulty": null,
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Ocean Rescue Lesson",
+    "theme": "Sharks",
+    "primaryTopicId": "mt_ytUG3yjCYt",
+    "supportingTopicIds": [
+      "mt_oAg79ju344",
+      "mt_mRCPP_Ab2W",
+      "mt_scBgiMKhG_",
+      "mt_OvyoRo47K-"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Ocean Life",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Reef Mystery Lesson",
+    "theme": "Sharks",
+    "primaryTopicId": "mt_ytUG3yjCYt",
+    "supportingTopicIds": [
+      "mt_oAg79ju344",
+      "mt_mRCPP_Ab2W",
+      "mt_scBgiMKhG_",
+      "mt_OvyoRo47K-"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Ocean Life",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Stable Builder Lesson",
+    "theme": "Horses",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_scBgiMKhG_",
+      "mt_yJmvUCCym7"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Pony Care Lesson",
+    "theme": "Horses",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_scBgiMKhG_",
+      "mt_yJmvUCCym7"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Horse Race Math Lesson",
+    "theme": "Horses",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_scBgiMKhG_",
+      "mt_yJmvUCCym7"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Rocket Mission Lesson",
+    "theme": "Space",
+    "primaryTopicId": "mt_XlyF294bPR",
+    "supportingTopicIds": [
+      "mt_PiWZA8Z0ZJ",
+      "mt_EHuU1ZeUFA",
+      "mt_ByXgbTld6R"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Space Exploration",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Planet Explorer Lesson",
+    "theme": "Space",
+    "primaryTopicId": "mt_XlyF294bPR",
+    "supportingTopicIds": [
+      "mt_PiWZA8Z0ZJ",
+      "mt_EHuU1ZeUFA",
+      "mt_ByXgbTld6R"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Space Exploration",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Moon Mystery Lesson",
+    "theme": "Space",
+    "primaryTopicId": "mt_XlyF294bPR",
+    "supportingTopicIds": [
+      "mt_PiWZA8Z0ZJ",
+      "mt_EHuU1ZeUFA",
+      "mt_ByXgbTld6R"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Space Exploration",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Fossil Detective Lesson",
+    "theme": "Dinosaurs",
+    "primaryTopicId": "mt_dpM1l5IOk6",
+    "supportingTopicIds": [
+      "mt_u0TeRwRII_",
+      "mt_BnabTHkNIp",
+      "mt_bKlnc7dyVK",
+      "mt_DJh2JPwTf6"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Dinosaurs & Paleontology",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Dino Rescue Lesson",
+    "theme": "Dinosaurs",
+    "primaryTopicId": "mt_dpM1l5IOk6",
+    "supportingTopicIds": [
+      "mt_u0TeRwRII_",
+      "mt_BnabTHkNIp",
+      "mt_bKlnc7dyVK",
+      "mt_DJh2JPwTf6"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Dinosaurs & Paleontology",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Volcano Valley Lesson",
+    "theme": "Dinosaurs",
+    "primaryTopicId": "mt_dpM1l5IOk6",
+    "supportingTopicIds": [
+      "mt_u0TeRwRII_",
+      "mt_BnabTHkNIp",
+      "mt_bKlnc7dyVK",
+      "mt_DJh2JPwTf6"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Dinosaurs & Paleontology",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Stadium Math Lesson",
+    "theme": "Soccer",
+    "primaryTopicId": "mt_mr_Vk7FGzK",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_VAWV_l7J0D"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_OvyoRo47K-"
+    ],
+    "subject": "Mathematics",
+    "domain": "Addition & Subtraction",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice early number skills",
+      "Read a short problem story"
+    ],
+    "evidenceTargets": [
+      "Solve an addition or subtraction problem",
+      "Explain the answer"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Team Captain Reading Lesson",
+    "theme": "Soccer",
+    "primaryTopicId": "mt_mr_Vk7FGzK",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_VAWV_l7J0D"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_OvyoRo47K-"
+    ],
+    "subject": "Mathematics",
+    "domain": "Addition & Subtraction",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice early number skills",
+      "Read a short problem story"
+    ],
+    "evidenceTargets": [
+      "Solve an addition or subtraction problem",
+      "Explain the answer"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Soccer Strategy Lesson",
+    "theme": "Soccer",
+    "primaryTopicId": "mt_mr_Vk7FGzK",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_VAWV_l7J0D"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_OvyoRo47K-"
+    ],
+    "subject": "Mathematics",
+    "domain": "Addition & Subtraction",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice early number skills",
+      "Read a short problem story"
+    ],
+    "evidenceTargets": [
+      "Solve an addition or subtraction problem",
+      "Explain the answer"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Robot Repair Lesson",
+    "theme": "Robots",
+    "primaryTopicId": "mt_XbGfVhfiUz",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_OvyoRo47K-"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Computing",
+    "domain": "Artificial Intelligence",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Notice helpful technology",
+      "Follow ordered steps"
+    ],
+    "evidenceTargets": [
+      "Identify a machine helper",
+      "Put steps in order"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Coding Lab Lesson",
+    "theme": "Robots",
+    "primaryTopicId": "mt_XbGfVhfiUz",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_OvyoRo47K-"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Computing",
+    "domain": "Artificial Intelligence",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Notice helpful technology",
+      "Follow ordered steps"
+    ],
+    "evidenceTargets": [
+      "Identify a machine helper",
+      "Put steps in order"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Future City Lesson",
+    "theme": "Robots",
+    "primaryTopicId": "mt_XbGfVhfiUz",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_OvyoRo47K-"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Computing",
+    "domain": "Artificial Intelligence",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Notice helpful technology",
+      "Follow ordered steps"
+    ],
+    "evidenceTargets": [
+      "Identify a machine helper",
+      "Put steps in order"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Dog Park Detective Lesson",
+    "theme": "Dogs",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_L1469gt34A"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Cat Clue Hunt Lesson",
+    "theme": "Cats",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_L1469gt34A"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Coral Cave Explorer Lesson",
+    "theme": "Ocean Animals",
+    "primaryTopicId": "mt_oAg79ju344",
+    "supportingTopicIds": [
+      "mt_ytUG3yjCYt",
+      "mt_4bJiGiMPmy",
+      "mt_mRCPP_Ab2W"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_L1469gt34A"
+    ],
+    "subject": "Science",
+    "domain": "Ocean Life",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Castle Story Lab Lesson",
+    "theme": "Princesses",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_8-POYyg7GJ",
+      "mt_N8CpN1EJrP"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Treasure Map Mystery Lesson",
+    "theme": "Pirates",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_WcfaSfVT33",
+      "mt_yJmvUCCym7"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Court Counting Lesson",
+    "theme": "Basketball",
+    "primaryTopicId": "mt_mr_Vk7FGzK",
+    "supportingTopicIds": [
+      "mt_scBgiMKhG_",
+      "mt_VAWV_l7J0D"
+    ],
+    "prerequisiteTopicIds": [
+      "mt_OvyoRo47K-"
+    ],
+    "subject": "Mathematics",
+    "domain": "Addition & Subtraction",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice early number skills",
+      "Read a short problem story"
+    ],
+    "evidenceTargets": [
+      "Solve an addition or subtraction problem",
+      "Explain the answer"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Saturn's Ring Explorer",
+    "theme": "Planets",
+    "primaryTopicId": "mt_EHuU1ZeUFA",
+    "supportingTopicIds": [
+      "mt_XlyF294bPR",
+      "mt_PiWZA8Z0ZJ"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Space Systems & Earth's History",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Rocket Countdown Builder",
+    "theme": "Rockets",
+    "primaryTopicId": "mt_XlyF294bPR",
+    "supportingTopicIds": [
+      "mt_PiWZA8Z0ZJ",
+      "mt_B3W5EfimJw"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Space Exploration",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Canopy Classroom",
+    "theme": "Jungle Animals",
+    "primaryTopicId": "mt_DCelLx_H1A",
+    "supportingTopicIds": [
+      "mt_v3Vz_Pgjjv",
+      "mt_scBgiMKhG_"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Forest Trail Discovery",
+    "theme": "Nature",
+    "primaryTopicId": "mt_L1469gt34A",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_go5i87u2b9"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Organisms & Life Processes",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Lava Field Discovery",
+    "theme": "Volcanoes",
+    "primaryTopicId": "mt_BLQ2_OXPod",
+    "supportingTopicIds": [
+      "mt_uUa6cgv8zV",
+      "mt_adpdEaKEBC"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Volcanoes & Earthquakes",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Storm Clue Hunter",
+    "theme": "Weather",
+    "primaryTopicId": "mt_HZvTriQWTh",
+    "supportingTopicIds": [
+      "mt_go5i87u2b9",
+      "mt_scBgiMKhG_"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Earth's Systems",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Barnyard Rescue",
+    "theme": "Farm Animals",
+    "primaryTopicId": "mt_muxjw0fxxN",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_L1469gt34A"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Zookeeper for a Day",
+    "theme": "Zoo Animals",
+    "primaryTopicId": "mt_v3Vz_Pgjjv",
+    "supportingTopicIds": [
+      "mt_muxjw0fxxN",
+      "mt_scBgiMKhG_"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Animals of the World",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Garden Bug Mystery",
+    "theme": "Bugs",
+    "primaryTopicId": "mt__7hXSTbu9s",
+    "supportingTopicIds": [
+      "mt_zexbopQjG0",
+      "mt_scBgiMKhG_"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Organisms & Life Processes",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "The Secret Passage",
+    "theme": "Castles",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_8-POYyg7GJ",
+      "mt_N8CpN1EJrP"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Moonlit Glade Mystery",
+    "theme": "Fairies",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_8-POYyg7GJ"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Color Mix Lab",
+    "theme": "Art",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_N8CpN1EJrP"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Rhythm Workshop",
+    "theme": "Music",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_UvNrOXny1i"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "City Helper Mission",
+    "theme": "Superheroes",
+    "primaryTopicId": "mt_scBgiMKhG_",
+    "supportingTopicIds": [
+      "mt_B3W5EfimJw",
+      "mt_yJmvUCCym7"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "English",
+    "domain": "English Thinking",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Practice reading for meaning",
+      "Build language confidence"
+    ],
+    "evidenceTargets": [
+      "Retell a key detail",
+      "Respond in words or drawing"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Sky High Explorer",
+    "theme": "Airplanes",
+    "primaryTopicId": "mt_B3W5EfimJw",
+    "supportingTopicIds": [
+      "mt_GBY8enpzO0",
+      "mt_scBgiMKhG_"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Forces & Motion",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  },
+  {
+    "lessonId": null,
+    "title": "Mountain Station Builder",
+    "theme": "Trains",
+    "primaryTopicId": "mt_B3W5EfimJw",
+    "supportingTopicIds": [
+      "mt_OvyoRo47K-",
+      "mt_scBgiMKhG_"
+    ],
+    "prerequisiteTopicIds": [],
+    "subject": "Science",
+    "domain": "Forces & Motion",
+    "difficulty": "Early Reader",
+    "recommendedAgeRange": "5-8",
+    "learningObjectives": [
+      "Explore a science idea",
+      "Practice reading clues",
+      "Solve a related math moment"
+    ],
+    "evidenceTargets": [
+      "Share one science fact",
+      "Answer a reading question",
+      "Complete a short challenge"
+    ]
+  }
+]

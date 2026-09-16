@@ -1,0 +1,222 @@
+{
+  "id": "1de9cbbc-195c-5f1e-8b1e-9b71812dfa76",
+  "title": "Nova's Moon Mission",
+  "theme": "Space",
+  "lessonType": "spaceMission",
+  "ageTarget": "6-9",
+  "gradeTarget": "1-3",
+  "readingLevel": "Growing Reader",
+  "learningGoal": "Science",
+  "estimatedMinutes": 12,
+  "storyOpening": "Mission lights blinked inside the training dome as Nova the Star floated beside a glowing map of the solar system. Today's launch window was open — but only if the crew completed every checklist.",
+  "missionPrompt": "Help Nova prepare the rocket for a moon mission. Read the flight plan, pack supplies, and solve the math before countdown reaches zero!",
+  "readingPassage": "In the training dome, Nova points to a poster of the Moon — a rocky world that orbits Earth. Astronauts travel in rockets because space has no air to breathe. Special suits carry oxygen and keep explorers safe. Your crew reads the supply list aloud: six food packets, four water pouches, and two antenna tools. Nova taps the countdown screen and says, \"Every number must be right before we launch.\" Through the dome window, stars glitter like tiny campfires in the dark.",
+  "storyEnding": "Liftoff! The rocket climbs above the clouds while Nova cheers. Your careful reading and counting made the moon mission possible.",
+  "reflectionPrompt": "Which part of the flight plan helped you most, and why?",
+  "creativePrompt": "Design a rocket with three special tools for exploring the Moon. Name each tool.",
+  "readingSkill": "Reading for details",
+  "mathSkill": "Word problems",
+  "skillsPracticed": [
+    "Reading",
+    "Math",
+    "Vocabulary",
+    "Science",
+    "Creative Thinking"
+  ],
+  "vocabularyWords": [
+    {
+      "id": "b1000001-0000-0000-0000-000000000001",
+      "word": "Orbit",
+      "definition": "to travel in a path around another object in space",
+      "exampleSentence": "The Moon orbits Earth while Earth orbits the Sun.",
+      "storyConnection": "Nova's mission poster shows the Moon orbiting Earth."
+    },
+    {
+      "id": "b1000001-0000-0000-0000-000000000002",
+      "word": "Astronaut",
+      "definition": "a person trained to travel and work in space",
+      "exampleSentence": "Astronauts wear special suits in space.",
+      "storyConnection": "You act like an astronaut preparing for launch."
+    },
+    {
+      "id": "b1000001-0000-0000-0000-000000000003",
+      "word": "Launch",
+      "definition": "the moment when a rocket lifts off and begins its trip",
+      "exampleSentence": "The crew checks every item before launch.",
+      "storyConnection": "Your mission ends with a successful launch."
+    }
+  ],
+  "knowledgeFacts": [
+    {
+      "id": "b2000001-0000-0000-0000-000000000001",
+      "fact": "There is no air in space, so astronauts need suits with oxygen.",
+      "explanation": "Without air, people cannot breathe — suits provide the oxygen they need."
+    },
+    {
+      "id": "b2000001-0000-0000-0000-000000000002",
+      "fact": "The Moon is rocky and has craters formed long ago.",
+      "explanation": "Craters are bowl-shaped marks made when objects hit the Moon's surface."
+    }
+  ],
+  "questions": [
+    {
+      "id": "3370c38a-16ab-56bd-9214-3d09456f69ec",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "Why do astronauts wear special suits in space?",
+      "choices": [
+        "Space has no air to breathe",
+        "Space is too bright without a suit",
+        "Suits help them run faster on Earth"
+      ],
+      "correctAnswer": "Space has no air to breathe",
+      "explanation": "The passage explains there is no air in space.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "e858d7e6-059d-5716-99dd-83ec55a18fdd",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What does the Moon do around Earth?",
+      "choices": [
+        "It orbits Earth",
+        "It orbits the Sun only",
+        "It stays still beside Earth"
+      ],
+      "correctAnswer": "It orbits Earth",
+      "explanation": "The Moon is described as orbiting Earth.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "11e9d0f6-8581-58c8-876c-db588948bff5",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What must the crew get right before launch?",
+      "choices": [
+        "Every number on the supply list",
+        "Every star on the dome map",
+        "Every seat in mission control"
+      ],
+      "correctAnswer": "Every number on the supply list",
+      "explanation": "Nova says every number must be right before launch.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "5cc25b4f-afbf-5401-8507-c096b08380e4",
+      "subject": "reading",
+      "type": "multipleChoice",
+      "prompt": "What is the main idea of this mission story?",
+      "choices": [
+        "Careful planning helps a space crew launch safely",
+        "The crew launches without checking supplies",
+        "The mission is only about naming stars"
+      ],
+      "correctAnswer": "Careful planning helps a space crew launch safely",
+      "explanation": "The crew reads, counts, and checks supplies before liftoff.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "c1111111-1111-4111-8111-111111111102",
+      "subject": "reading",
+      "type": "openEnded",
+      "responseType": "matching",
+      "prompt": "Match each word to what the passage says it means.",
+      "pairs": [
+        {
+          "left": "Moon",
+          "right": "A rocky world that orbits Earth",
+          "supportingEvidence": "In the training dome, Nova points to a poster of the Moon — a rocky world that orbits Earth."
+        },
+        {
+          "left": "Special suits",
+          "right": "Carry oxygen and keep explorers safe",
+          "supportingEvidence": "Special suits carry oxygen and keep explorers safe."
+        },
+        {
+          "left": "Astronauts",
+          "right": "Travel in rockets because space has no air",
+          "supportingEvidence": "Astronauts travel in rockets because space has no air to breathe."
+        }
+      ],
+      "explanation": "Each match comes from a sentence in the reading passage."
+    },
+    {
+      "id": "c2222222-2222-4222-8222-222222222202",
+      "subject": "science",
+      "type": "multipleChoice",
+      "responseType": "multipleChoice",
+      "prompt": "Why does the crew check every number on the supply list before launch?",
+      "choices": [
+        "So the rocket has what the mission needs",
+        "So the crew can skip packing water",
+        "So the rocket can launch without fuel"
+      ],
+      "correctAnswer": "So the rocket has what the mission needs",
+      "explanation": "Careful checking keeps the crew ready and the mission safe."
+    }
+  ],
+  "mathChallenges": [
+    {
+      "id": "885fd901-bb8a-592a-9c01-8d84a972dcc2",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "The crew packs 6 food packets and 4 water pouches. How many supply items altogether?",
+      "choices": [
+        "9",
+        "10",
+        "11"
+      ],
+      "correctAnswer": "10",
+      "explanation": "6 + 4 = 10 items.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "65fb40c0-7e55-57c3-9e6d-cdc07521361b",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "10 tools are on the table. The crew uses 3 before launch. How many tools remain?",
+      "choices": [
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "10 − 3 = 7 tools.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "2651008c-ad50-57d4-80d0-850e16883a34",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Nova adds 2 antenna tools to 4 packed earlier. Then a friend brings 1 more. How many antenna tools now?",
+      "choices": [
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "2 + 4 + 1 = 7 antenna tools.",
+      "responseType": "multipleChoice"
+    },
+    {
+      "id": "0ffadc0a-b0a5-5878-b95b-21b8c4f92db3",
+      "subject": "math",
+      "type": "multipleChoice",
+      "prompt": "Five crew members each carry 2 water pouches to the rocket. How many pouches in all?",
+      "choices": [
+        "8",
+        "9",
+        "10"
+      ],
+      "correctAnswer": "10",
+      "explanation": "5 × 2 = 10 pouches.",
+      "responseType": "multipleChoice"
+    }
+  ],
+  "sections": [],
+  "category": "discovery",
+  "primarySubject": "science",
+  "teaser": "Learn how rockets push upward and complete a space mission.",
+  "creativeResponseType": "drawing",
+  "reflectionResponseType": "shortText"
+}

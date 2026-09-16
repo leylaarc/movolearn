@@ -1,0 +1,2 @@
+# Stdlib-only for the mock pipeline. Add provider SDKs when credentials exist.
+# Python 3.11+

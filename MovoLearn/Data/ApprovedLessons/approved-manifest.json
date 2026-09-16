@@ -1,0 +1,12 @@
+{
+  "providerNote": "Pipeline exemplars only (7 samples). MVP child catalog source of truth is the Swift curated bank (CuratedTopicLessonBank* + LevelSpecificContentFactory / ApprovedContentLibrary.seedLevelMatrix). Keep this list in sync with every *.json file in this folder; do not treat these files as full Topic×Level coverage.",
+  "approvedFiles": [
+    "ocean_movo-ela-letter-sound-k_beginner_emerging.json",
+    "ocean_movo-math-add-sub-10-1_early-reader_developing.json",
+    "horses_movo-ela-short-sentences-1_early-reader_developing.json",
+    "space_movo-ela-main-idea-2_growing-reader_secure.json",
+    "space_movo-math-add-sub-20-1_growing-reader_secure.json",
+    "sharks_movo-math-multi-step-2_confident-reader_advancing.json",
+    "dinosaurs_movo-ela-inference-2_confident-reader_advancing.json"
+  ]
+}
