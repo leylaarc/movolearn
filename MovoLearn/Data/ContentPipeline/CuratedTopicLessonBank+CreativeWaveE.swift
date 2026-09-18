@@ -39,63 +39,43 @@ extension CuratedTopicLessonBank {
     private static func oceanAnimalsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Tide Pool Scene",
-                opening: "Cool ocean water is held among rocks in a small pool.",
-                mission: "Use the inspiration. Draw one tide pool scene.",
-                inspiration: "Inspiration: When the tide goes out, rocks hold small pools where tiny crabs can hide.",
+            return sceneDrawing(
+                title: "Tide Pool Drawing",
+                scene: "A tide pool sits among wet rocks. Cool water fills it. A tiny crab hides near the edge. Green seaweed sticks to the rocks.",
                 vocab: "tide pool",
                 vocabDef: "A tide pool is a small pool of ocean water left among rocks.",
                 fact: "Tide pools are wet homes that stay among rocks after the tide goes out.",
-                prompt: "Draw a tide pool with rock edges, cool water, and one tiny crab.",
-                response: .drawing,
-                ending: "Your tide pool scene is a real ocean home!",
-                reflection: "What animal did you hide in your tide pool?",
+                goals: ["Rocks", "Tiny crab", "Seaweed"],
                 fingerprint: "oceanAnimals.creative.beginner.tide-pool"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw a Dolphin Leap",
-                opening: "A dolphin is ready for a joyful leap above blue waves.",
-                mission: "Use the inspiration. Draw one joyful leap.",
-                inspiration: "Inspiration: Dolphins can push hard with their strong tails and leap above the water for a breath of air.",
+            return sceneDrawing(
+                title: "Dolphin Leap Drawing",
+                scene: "A gray dolphin leaps above a blue wave. Its strong tail makes a white splash. The sky is clear. A pink cloud sits far away.",
                 vocab: "leap",
                 vocabDef: "A leap is a strong jump up into the air.",
                 fact: "Dolphins can leap above the water when their tails push hard.",
-                prompt: "Draw a dolphin leaping above a wave with one splash and a clear sky.",
-                response: .drawing,
-                ending: "Your dolphin leap is full of energy!",
-                reflection: "Where did you place the splash under the dolphin?",
+                goals: ["Dolphin", "Splash", "Blue wave"],
                 fingerprint: "oceanAnimals.creative.early.dolphin-leap"
             )
         case .growingReader:
-            return waveECreative(
+            return sceneDrawing(
                 title: "Design Octopus Camouflage Art",
-                opening: "An octopus can blend into rock and sand.",
-                mission: "Use the inspiration. Draw camouflage art.",
-                inspiration: "Inspiration: Octopuses can change skin color and texture. They match rocks, sand, or coral so they are harder to see.",
+                scene: "An octopus sits on a rock. It matches rocks, sand, or coral so it is harder to see. One arm is bumpy. The water is green-blue.",
                 vocab: "camouflage",
                 vocabDef: "Camouflage is a way of blending in so something is hard to see.",
-                fact: "Octopuses can change color and texture to hide.",
-                prompt: "Draw an octopus that matches rocks, sand, or coral. Show one bumpy or smooth texture that helps it hide.",
-                response: .drawing,
-                ending: "Your camouflage art is ready for the ocean notebook!",
-                reflection: "Which texture detail made your octopus hardest to spot?",
+                fact: "Octopuses can change skin color and texture. They match rocks, sand, or coral so they are harder to see.",
+                goals: ["Octopus", "Matching rock", "Bumpy arm"],
                 fingerprint: "oceanAnimals.creative.growing.octopus-camouflage"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Reef Jobs Map",
-                opening: "A coral reef is busy with living jobs.",
-                mission: "Use the inspiration. Write a reef jobs map plan.",
-                inspiration: "Inspiration: Cleaner fish can remove tiny pests from larger fish. Coral can build hard homes. Grazing fish can clear algae so coral can grow.",
+            return sceneDrawing(
+                title: "Reef Jobs Drawing",
+                scene: "A cleaner fish picks tiny pests off a larger fish. Hard coral builds a home. A grazing fish clears algae. The reef is bright orange and purple.",
                 vocab: "reef",
                 vocabDef: "A reef is a rocky ocean place where coral and many animals live.",
                 fact: "Different reef animals have different helpful jobs.",
-                prompt: "Write a short map plan naming three reef jobs, who does each job, and one sentence on how the jobs work together.",
-                response: .longText,
-                ending: "Your reef jobs map is ready for a young ocean scientist!",
-                reflection: "Which reef job do you think keeps coral healthiest, and why?",
+                goals: ["Cleaner fish", "Coral home", "Grazing fish"],
                 fingerprint: "oceanAnimals.creative.confident.reef-jobs"
             )
         }
@@ -106,63 +86,43 @@ extension CuratedTopicLessonBank {
     private static func planetsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw an Earth Poster",
-                opening: "Earth is our blue and green home.",
-                mission: "Use the inspiration. Draw one Earth poster.",
-                inspiration: "Inspiration: From space, Earth has blue oceans, green and brown land, and swirling white clouds.",
+            return sceneDrawing(
+                title: "Earth Poster Drawing",
+                scene: "Earth is a round planet in black space. Blue oceans cover most of it. Green and brown land shows through. White clouds swirl.",
                 vocab: "Earth",
                 vocabDef: "Earth is the planet where we live.",
                 fact: "Earth has oceans, land, and clouds.",
-                prompt: "Draw Earth as a round planet with blue oceans, land, and white clouds.",
-                response: .drawing,
-                ending: "Your Earth poster is a celebration of our home planet!",
-                reflection: "What color did you use most for the oceans?",
+                goals: ["Blue oceans", "Land", "White clouds"],
                 fingerprint: "planets.creative.beginner.earth-poster"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Sort Rocky and Giant Planets",
-                opening: "Planets are different kinds of worlds.",
-                mission: "Use the inspiration. Draw a sorting chart.",
-                inspiration: "Inspiration: Rocky planets are smaller and solid. Giant planets are much larger and made mostly of gas.",
+            return sceneDrawing(
+                title: "Rocky and Giant Planets",
+                scene: "Two groups of planets float in space. Rocky planets look small and solid. Giant planets look huge and cloudy. The Sun is yellow in the corner.",
                 vocab: "rocky",
                 vocabDef: "Rocky is made of hard solid ground.",
                 fact: "Some planets are rocky, and others are giant gas worlds.",
-                prompt: "Draw two labeled boxes called Rocky Planets and Giant Planets with at least two planet names or pictures in each box.",
-                response: .drawing,
-                ending: "Your sorting chart is a clear map of two big planet groups!",
-                reflection: "Which planet did you place in the rocky group?",
+                goals: ["Rocky planets", "Giant planets", "Yellow Sun"],
                 fingerprint: "planets.creative.early.rocky-giant-sort"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Venus Glow Diagram",
-                opening: "Venus is bright even though thick clouds hide its surface.",
-                mission: "Use the inspiration. Write a glow diagram plan.",
-                inspiration: "Inspiration: Venus has a thick cloud blanket that traps heat and looks bright when sunlight is reflected off the clouds.",
+            return sceneDrawing(
+                title: "Venus Glow Drawing",
+                scene: "Venus shines with a pale yellow glow. A thick cloud blanket wraps the planet. Sunlight bounces off the clouds. Space around Venus is black.",
                 vocab: "glow",
                 vocabDef: "A glow is a soft bright shine.",
                 fact: "Venus looks bright because sunlight is reflected from thick clouds.",
-                prompt: "Write four sentences for a diagram: title, what the thick clouds do, why Venus glows, and one label you would draw.",
-                response: .longText,
-                ending: "Your Venus glow diagram is ready for the planet wall!",
-                reflection: "Which label on your diagram teaches the most important idea?",
+                goals: ["Venus", "Cloud blanket", "Glow"],
                 fingerprint: "planets.creative.growing.venus-glow"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write an Orbit Yarn Kit Plan",
-                opening: "Planets are traveling around the Sun on paths called orbits.",
-                mission: "Use the inspiration. Write a yarn-kit design.",
-                inspiration: "Inspiration: An orbit is a curved path. Inner planets can finish a trip around the Sun faster than outer planets because their paths are shorter.",
+            return sceneDrawing(
+                title: "Orbit Path Drawing",
+                scene: "The yellow Sun sits in the center. Inner planets travel on short curved paths. Outer planets travel on long curved paths. Each path is an orbit.",
                 vocab: "orbit",
                 vocabDef: "An orbit is a curved path around another object in space.",
                 fact: "Planets are traveling around the Sun on orbit paths.",
-                prompt: "Write a short kit writeup naming your yarn model, three setup steps, and one sentence explaining why outer orbits take longer.",
-                response: .longText,
-                ending: "Your orbit yarn kit plan is ready for a classroom demo!",
-                reflection: "Which step helps kids see that outer paths are longer?",
+                goals: ["Sun", "Inner path", "Outer path"],
                 fingerprint: "planets.creative.confident.orbit-yarn"
             )
         }
@@ -173,64 +133,44 @@ extension CuratedTopicLessonBank {
     private static func rocketsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Countdown Art Card",
-                opening: "A rocket is waiting for a careful countdown.",
-                mission: "Use the inspiration. Draw countdown art.",
-                inspiration: "Inspiration: Before launch, a countdown helps the team check that every part is ready and safe.",
+            return sceneDrawing(
+                title: "Countdown Drawing",
+                scene: "A red and white rocket stands on a launch pad. The countdown numbers show 3, 2, 1. Orange flame is just starting. The sky is early-morning blue.",
                 vocab: "countdown",
-                vocabDef: "A countdown is counting down the seconds before something starts.",
-                fact: "A countdown helps rocket teams check that everything is ready.",
-                prompt: "Draw a rocket on a launch pad with big numbers from five to one.",
-                response: .drawing,
-                ending: "Your countdown art is launch-day ready!",
-                reflection: "Which countdown number did you make the largest?",
-                fingerprint: "rockets.creative.beginner.countdown-art"
+                vocabDef: "A countdown is counting down to a launch.",
+                fact: "Rockets wait for a countdown before they leave the pad.",
+                goals: ["Rocket", "Countdown", "Launch pad"],
+                fingerprint: "rockets.creative.beginner.countdown"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Thrust Arrow Art",
-                opening: "A rocket has a strong push that can lift it upward.",
-                mission: "Use the inspiration. Draw thrust arrows.",
-                inspiration: "Inspiration: Burning fuel makes hot gas rush downward. That push, called thrust, can send the rocket up.",
+            return sceneDrawing(
+                title: "Thrust Flame Drawing",
+                scene: "A rocket shoots up. Orange and yellow thrust flames push it. White smoke rolls on the ground. The rocket is silver.",
                 vocab: "thrust",
-                vocabDef: "Thrust is a strong push that moves something forward or up.",
-                fact: "Thrust can push a rocket upward when hot gas rushes down.",
-                prompt: "Draw a rocket with clear arrows for gas going down and the rocket moving up.",
-                response: .drawing,
-                ending: "Your thrust arrows are a real rocket science picture!",
-                reflection: "Which arrow shows the rocket moving up?",
-                fingerprint: "rockets.creative.early.thrust-arrows"
+                vocabDef: "Thrust is the push that lifts a rocket.",
+                fact: "Hot gas rushing down gives a rocket thrust.",
+                goals: ["Silver rocket", "Thrust flames", "Smoke"],
+                fingerprint: "rockets.creative.early.thrust"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Rocket Stages Comic",
-                opening: "Big rockets can drop empty parts as they climb.",
-                mission: "Use the inspiration. Write a stages comic plan.",
-                inspiration: "Inspiration: Rocket stages hold fuel. When a stage is empty, it can fall away so the next stage is lighter and can keep climbing.",
+            return sceneDrawing(
+                title: "Stage Drop Drawing",
+                scene: "An empty rocket stage falls away. The next stage keeps flying. The falling stage is gray. Earth is a blue curve below.",
                 vocab: "stage",
-                vocabDef: "A stage is one part of a rocket that does a job and then may drop away.",
-                fact: "Rocket stages can drop away after their fuel is used.",
-                prompt: "Write four sentences for a three-panel comic: launch, empty stage falling away, and the lighter top stage climbing higher.",
-                response: .longText,
-                ending: "Your stages comic is ready for the rocket board!",
-                reflection: "Why does dropping an empty stage help the rocket climb?",
-                fingerprint: "rockets.creative.growing.stages-comic"
+                vocabDef: "A stage is one part of a rocket that can drop away.",
+                fact: "Dropping empty stages makes the rest of the rocket lighter.",
+                goals: ["Flying stage", "Falling stage", "Earth"],
+                fingerprint: "rockets.creative.growing.stages"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Launch Checklist Poster",
-                opening: "Safe launches are built on careful checks.",
-                mission: "Use the inspiration. Write a checklist poster plan.",
-                inspiration: "Inspiration: Teams check fuel, weather, engines, and escape plans before a rocket leaves the pad.",
-                vocab: "checklist",
-                vocabDef: "A checklist is a list of important things to check.",
-                fact: "Launch teams use checklists so people and rockets are safer.",
-                prompt: "Write a short poster plan with a title, four checklist items, and one sentence explaining why checklists matter.",
-                response: .longText,
-                ending: "Your launch checklist poster is ready for a mission room!",
-                reflection: "Which checklist item would you never skip, and why?",
-                fingerprint: "rockets.creative.confident.checklist-poster"
+            return sceneDrawing(
+                title: "Orbit Insert Drawing",
+                scene: "A spacecraft follows a curved path around Earth. Blue oceans show below. The craft is white. Tiny thrusters make a small orange glow.",
+                vocab: "orbit",
+                vocabDef: "An orbit is a curved path around a planet.",
+                fact: "A spacecraft stays in orbit when it moves fast enough along a curved path.",
+                goals: ["Spacecraft", "Curved path", "Earth"],
+                fingerprint: "rockets.creative.confident.orbit-insert"
             )
         }
     }
@@ -240,64 +180,44 @@ extension CuratedTopicLessonBank {
     private static func soccerCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Kick Force Poster",
-                opening: "A soccer kick is a strong, careful push from the foot.",
-                mission: "Use the inspiration. Draw a kick-force poster.",
-                inspiration: "Inspiration: When a player kicks the ball, the foot pushes the ball and the ball is moved away.",
-                vocab: "kick",
-                vocabDef: "A kick is a strong hit with the foot.",
-                fact: "A kick can push the ball so the ball is moved.",
-                prompt: "Draw a player kicking a soccer ball with one arrow for the ball moving away.",
-                response: .drawing,
-                ending: "Your kick-force poster is a clear picture of how the ball is moved!",
-                reflection: "Where did you put the arrow after the kick?",
-                fingerprint: "soccer.creative.beginner.kick-poster"
+            return sceneDrawing(
+                title: "Pass and Trap Drawing",
+                scene: "A player in a green jersey traps a black-and-white soccer ball. A teammate in blue waits for a pass. The field is bright green. White lines mark the grass.",
+                vocab: "trap",
+                vocabDef: "A trap is stopping the ball with a gentle touch.",
+                fact: "A soft trap helps a player keep control of the soccer ball.",
+                goals: ["Green jersey", "Soccer ball", "Teammate"],
+                fingerprint: "soccer.creative.beginner.pass-trap"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw a Bounce Path",
-                opening: "Soccer balls can bounce and roll on the field.",
-                mission: "Use the inspiration. Draw a bounce path.",
-                inspiration: "Inspiration: When a ball hits the ground, it can bounce up and then travel forward in a curved path.",
-                vocab: "bounce",
-                vocabDef: "Bounce is a spring back up after something is hit.",
-                fact: "A soccer ball can bounce and then keep moving forward.",
-                prompt: "Draw a soccer ball path with two bounces and arrows for the direction.",
-                response: .drawing,
-                ending: "Your bounce path is a clear map of how the ball travels!",
-                reflection: "How many bounce marks did you draw on the path?",
-                fingerprint: "soccer.creative.early.bounce-path"
+            return sceneDrawing(
+                title: "Goalkeeper Dive Drawing",
+                scene: "A goalkeeper in a yellow jersey dives. The gloves are white. The ball is heading toward the corner. The goal net is red.",
+                vocab: "goalkeeper",
+                vocabDef: "A goalkeeper is the player who guards the goal.",
+                fact: "Goalkeepers can use their hands inside the penalty area.",
+                goals: ["Yellow keeper", "Dive", "Goal net"],
+                fingerprint: "soccer.creative.early.keeper"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design Cleat Grip Art",
-                opening: "Soccer cleats can help shoes grip grass.",
-                mission: "Use the inspiration. Write a cleat-grip design.",
-                inspiration: "Inspiration: Cleats are small studs under the shoe. They dig into soft ground so a player can push without sliding.",
-                vocab: "grip",
-                vocabDef: "Grip is a firm hold that stops slipping.",
-                fact: "Cleats help soccer shoes grip soft ground.",
-                prompt: "Write four sentences describing your cleat design, where the studs go, how they help grip, and one place the shoes should not be worn.",
-                response: .longText,
-                ending: "Your cleat-grip design is ready for the sports board!",
-                reflection: "Which part of your design most improves grip?",
-                fingerprint: "soccer.creative.growing.cleat-grip"
+            return sceneDrawing(
+                title: "Open Space Drawing",
+                scene: "A player in an orange jersey runs into open space. Teammates in blue hold the defenders. The soccer ball is rolling toward the open grass. The sky is sunny.",
+                vocab: "space",
+                vocabDef: "Space is an empty patch of field a player can use.",
+                fact: "Moving into open space can make a pass easier.",
+                goals: ["Orange player", "Open grass", "Soccer ball"],
+                fingerprint: "soccer.creative.growing.open-space"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write an Aiming Target Design",
-                opening: "Good kicks are helped by careful aiming.",
-                mission: "Use the inspiration. Write a target-practice design.",
-                inspiration: "Inspiration: Players aim by looking at a target, planting a support foot, and swinging the kicking foot toward the spot they chose.",
-                vocab: "aim",
-                vocabDef: "Aim means to point carefully toward a chosen spot.",
-                fact: "Aiming helps a kick send the ball where the player wants.",
-                prompt: "Write a short target design with a target name, three aiming steps, and one sentence explaining how your target helps practice.",
-                response: .longText,
-                ending: "Your aiming target design is ready for real practice!",
-                reflection: "Which aiming step do you think matters most?",
-                fingerprint: "soccer.creative.confident.aiming-target"
+            return sceneDrawing(
+                title: "Corner Kick Drawing",
+                scene: "A player takes a corner kick. The ball is white with black patches. Teammates wait near the goal. The flag is bright yellow.",
+                vocab: "corner",
+                vocabDef: "A corner is a kick from the corner of the field.",
+                fact: "A corner kick starts with the ball on the corner arc.",
+                goals: ["Corner kick", "Goal", "Yellow flag"],
+                fingerprint: "soccer.creative.confident.corner"
             )
         }
     }
@@ -307,64 +227,44 @@ extension CuratedTopicLessonBank {
     private static func basketballCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Bounce Ball Scene",
-                opening: "A basketball can bounce when it hits the floor.",
-                mission: "Use the inspiration. Draw one bounce scene.",
-                inspiration: "Inspiration: When a basketball hits the floor, the ball is pushed down and then springs back up into the hands.",
-                vocab: "bounce",
-                vocabDef: "Bounce is a spring back up after something is hit.",
-                fact: "A basketball can bounce up after it hits the floor.",
-                prompt: "Draw a basketball bouncing once on the floor toward waiting hands.",
-                response: .drawing,
-                ending: "Your bounce scene is a clear picture of how the ball returns!",
-                reflection: "Where did you draw the hands catching the bounce?",
-                fingerprint: "basketball.creative.beginner.bounce-scene"
+            return sceneDrawing(
+                title: "Dribble Drawing",
+                scene: "A player in a red jersey dribbles an orange basketball. The ball bounces by the player's side. The court is pale wood. Blue sneakers squeak.",
+                vocab: "dribble",
+                vocabDef: "A dribble is bouncing the ball while you move.",
+                fact: "Players must dribble to move with the basketball.",
+                goals: ["Red jersey", "Orange ball", "Court"],
+                fingerprint: "basketball.creative.beginner.dribble"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw an Arc Shot",
-                opening: "A shot is often traveling in a curved path.",
-                mission: "Use the inspiration. Draw an arc shot.",
-                inspiration: "Inspiration: A good shot rises in a curve, called an arc, then falls toward the hoop.",
-                vocab: "arc",
-                vocabDef: "An arc is a curved path through the air.",
-                fact: "Basketball shots can follow a curved arc toward the hoop.",
-                prompt: "Draw a player shooting with a curved arc path from the ball to the hoop.",
-                response: .drawing,
-                ending: "Your arc shot drawing is a real shooting idea!",
-                reflection: "Did your arc rise high before falling toward the hoop?",
-                fingerprint: "basketball.creative.early.arc-shot"
+            return sceneDrawing(
+                title: "Chest Pass Drawing",
+                scene: "Two players face each other. The passer in purple pushes a chest pass. The orange ball flies straight. The receiver holds out both hands.",
+                vocab: "pass",
+                vocabDef: "A pass is sending the ball to a teammate.",
+                fact: "A chest pass uses two hands and a straight push.",
+                goals: ["Passer", "Orange ball", "Receiver"],
+                fingerprint: "basketball.creative.early.chest-pass"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Grip Guide",
-                opening: "Hands can control the basketball with a steady grip.",
-                mission: "Use the inspiration. Write a grip guide.",
-                inspiration: "Inspiration: Spreading the fingers and keeping the ball on the pads of the hands helps players control dribbles and passes.",
-                vocab: "grip",
-                vocabDef: "Grip is a firm, careful hold.",
-                fact: "A steady hand grip helps control a basketball.",
-                prompt: "Write four sentences naming your grip guide, how fingers spread, why pads of the hands matter, and one tip for a soft catch.",
-                response: .longText,
-                ending: "Your grip guide is ready for the gym wall!",
-                reflection: "Which grip tip would help a new player most?",
-                fingerprint: "basketball.creative.growing.grip-guide"
+            return sceneDrawing(
+                title: "Layup Drawing",
+                scene: "A player in a white jersey jumps near the hoop. The orange ball kisses the backboard. The rim is red. A defender in green watches.",
+                vocab: "layup",
+                vocabDef: "A layup is a close shot off the backboard.",
+                fact: "A layup uses a soft touch near the basket.",
+                goals: ["Jump", "Backboard", "Red rim"],
+                fingerprint: "basketball.creative.growing.layup"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Court Energy Diagram",
-                opening: "Players can use energy to run, jump, and pass.",
-                mission: "Use the inspiration. Write a court energy diagram plan.",
-                inspiration: "Inspiration: Stored energy in muscles turns into motion when a player runs or jumps. Passes and shots move energy into the ball.",
-                vocab: "energy",
-                vocabDef: "Energy is the power that makes things move or change.",
-                fact: "Players can turn body energy into running, jumping, and ball motion.",
-                prompt: "Write a short diagram writeup with a title, three labeled energy moments on the court, and one sentence explaining how energy moves to the ball.",
-                response: .longText,
-                ending: "Your court energy diagram is ready to teach a whole team!",
-                reflection: "Which labeled moment best shows energy moving into the ball?",
-                fingerprint: "basketball.creative.confident.court-energy"
+            return sceneDrawing(
+                title: "Box Out Drawing",
+                scene: "A player in a blue jersey boxes out under the hoop. The player's back faces a teammate's opponent. The orange basketball is coming off the rim. The paint is a tan rectangle.",
+                vocab: "rebound",
+                vocabDef: "A rebound is grabbing the ball after a missed shot.",
+                fact: "Boxing out helps a player grab a rebound.",
+                goals: ["Box out", "Hoop", "Basketball"],
+                fingerprint: "basketball.creative.confident.box-out"
             )
         }
     }
@@ -374,63 +274,43 @@ extension CuratedTopicLessonBank {
     private static func catsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw Careful Cat Claws",
-                opening: "Cats can use claws for climbing and holding.",
-                mission: "Use the inspiration. Draw claws that can hide.",
-                inspiration: "Inspiration: Many cats can pull their claws in when they walk and push them out when they climb or hold.",
+            return sceneDrawing(
+                title: "Cat Claws Drawing",
+                scene: "A tabby cat shows claws on one paw. The claws are out for climbing. The other paw has claws tucked away. The cat is orange with stripes.",
                 vocab: "claw",
                 vocabDef: "A claw is a sharp nail on an animal's toe.",
                 fact: "Cats can pull claws in and push them out when needed.",
-                prompt: "Draw a cat paw with claws out for climbing and a note that claws can tuck away.",
-                response: .drawing,
-                ending: "Your claw picture is a real cat body lesson!",
-                reflection: "Did you show claws out, tucked in, or both?",
+                goals: ["Orange cat", "Claws out", "Tucked claws"],
                 fingerprint: "cats.creative.beginner.claws"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Night Eyes Glow",
-                opening: "Cat eyes are helpful in dim light.",
-                mission: "Use the inspiration. Draw night eyes.",
-                inspiration: "Inspiration: A special layer in a cat's eye can reflect light and help the cat see better in the dark.",
+            return sceneDrawing(
+                title: "Night Eyes Drawing",
+                scene: "A cat face glows in dim light. The eyes are green. A soft moon is yellow. The night sky is deep blue.",
                 vocab: "reflect",
                 vocabDef: "Reflect is when light is bounced back.",
                 fact: "Cats can see better in dim light because their eyes reflect light.",
-                prompt: "Draw a cat face at night with glowing eyes and a soft moon nearby.",
-                response: .drawing,
-                ending: "Your night-eyes art is a clear picture of dim-light seeing!",
-                reflection: "What color glow did you choose for the eyes?",
+                goals: ["Cat face", "Green eyes", "Moon"],
                 fingerprint: "cats.creative.early.night-eyes"
             )
         case .growingReader:
-            return waveECreative(
+            return sceneDrawing(
                 title: "Draw Long Whiskers",
-                opening: "Whiskers help a cat feel if a space is too tight.",
-                mission: "Draw a cat using its long whiskers.",
-                inspiration: "Inspiration: Whiskers are long stiff hairs. They help a cat feel the sides of a tight space. Leave them long so they can do that job.",
+                scene: "A gray cat walks through a narrow gap. Long whiskers touch both sides. The gap is between two brown chairs. The floor is a warm rug.",
                 vocab: "whisker",
                 vocabDef: "A whisker is a long stiff hair that helps an animal feel nearby things.",
                 fact: "Long whiskers help cats feel if a gap is too small.",
-                prompt: "Draw a cat walking through a narrow gap. Make the whiskers long enough to touch both sides.",
-                response: .drawing,
-                ending: "Your picture shows how whiskers help a cat stay safe!",
-                reflection: "Where did the whiskers touch in your picture?",
+                goals: ["Gray cat", "Long whiskers", "Narrow gap"],
                 fingerprint: "cats.creative.growing.whiskers"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write Quiet Paws Poster",
-                opening: "Cats can walk with soft, quiet steps.",
-                mission: "Use the inspiration. Write a quiet-paws poster plan.",
-                inspiration: "Inspiration: Soft pads under cat paws and careful foot placement help cats walk quietly while hunting or exploring.",
+            return sceneDrawing(
+                title: "Quiet Paws Drawing",
+                scene: "A cat walks with soft, quiet steps. Soft pads show under the paws. The cat is black. The hallway is dim and still.",
                 vocab: "quiet",
                 vocabDef: "Quiet is when little or no sound is made.",
                 fact: "Soft paw pads help cats walk quietly.",
-                prompt: "Write a short poster plan with a title, three quiet-walking tips based on real cat bodies, and one sentence on why quiet steps help a cat.",
-                response: .longText,
-                ending: "Your quiet-paws poster is ready for young cat observers!",
-                reflection: "Which quiet-walking tip came straight from a real cat body part?",
+                goals: ["Black cat", "Soft pads", "Hallway"],
                 fingerprint: "cats.creative.confident.quiet-paws"
             )
         }
@@ -441,64 +321,44 @@ extension CuratedTopicLessonBank {
     private static func princessesCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Garden Plant Plan",
-                opening: "A kind princess is tending a useful garden.",
-                mission: "Use the inspiration. Draw helpful plants.",
-                inspiration: "Inspiration: Gardens grow food and flowers when people water plants, give them sunlight, and keep soil healthy.",
+            return sceneDrawing(
+                title: "Garden Plant Drawing",
+                scene: "A princess in a blue dress waters three plants. The watering can is silver. Sunlight is bright yellow. The soil looks dark and healthy.",
                 vocab: "garden",
                 vocabDef: "A garden is a place where people grow plants with care.",
                 fact: "Plants need water, sunlight, and healthy soil to grow.",
-                prompt: "Draw a garden with three plants, a watering can, and sunlight.",
-                response: .drawing,
-                ending: "Your garden plan is a real plant-care picture!",
-                reflection: "Which plant did you give the most sunlight?",
+                goals: ["Princess", "Three plants", "Watering can"],
                 fingerprint: "princesses.creative.beginner.garden-plants"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Stained Glass Light",
-                opening: "Colored glass can paint rooms with light.",
-                mission: "Use the inspiration. Draw stained glass light.",
-                inspiration: "Inspiration: Sunlight passing through colored glass can make colored patches of light on floors and walls.",
-                vocab: "stained glass",
-                vocabDef: "Stained glass is colored glass used in windows to shape light.",
-                fact: "Colored glass can change sunlight into colored light patches.",
-                prompt: "Draw a tall window of colored glass with colored light spots on the floor.",
-                response: .drawing,
-                ending: "Your stained glass art is a clear picture of how light can change!",
-                reflection: "Which color of light did you place on the floor?",
-                fingerprint: "princesses.creative.early.stained-glass"
+            return sceneDrawing(
+                title: "Kind Helper Drawing",
+                scene: "A princess in a pink gown helps carry a basket. The basket holds red apples. A friend in a green cloak smiles. The path is stone gray.",
+                vocab: "kind",
+                vocabDef: "Kind means helpful and caring.",
+                fact: "Kind leaders share work and look after other people.",
+                goals: ["Pink gown", "Apple basket", "Friend"],
+                fingerprint: "princesses.creative.early.kind-helper"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Kind Travel Map",
-                opening: "A journey can help neighboring towns.",
-                mission: "Use the inspiration. Write a travel map plan.",
-                inspiration: "Inspiration: Real maps show roads, rivers, and safe resting places. A helpful journey plan marks water, food, and places to share tools.",
+            return sceneDrawing(
+                title: "Map Table Drawing",
+                scene: "A princess studies a map on a wooden table. Blue rivers and green hills are drawn on the map. A gold compass sits beside a candle. The room is warm.",
                 vocab: "map",
-                vocabDef: "A map is a drawing that shows places and paths.",
-                fact: "Good travel maps mark paths and useful stopping places.",
-                prompt: "Write four sentences naming your map, two stops that help travelers, one river or road, and one kind act along the route.",
-                response: .longText,
-                ending: "Your kind travel map is ready for the castle hall!",
-                reflection: "Which stop on your map helps travelers the most?",
-                fingerprint: "princesses.creative.growing.map-travel"
+                vocabDef: "A map is a drawing that shows places.",
+                fact: "Maps help people plan safe routes.",
+                goals: ["Map", "Compass", "Candle"],
+                fingerprint: "princesses.creative.growing.map-table"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Fair-Rules Charter",
-                opening: "Fair rules can help everyone feel safe and heard.",
-                mission: "Use the inspiration. Write a fair-rules charter.",
-                inspiration: "Inspiration: Good community rules are clear, kind, and the same for everyone. They explain how to share, listen, and fix mistakes.",
-                vocab: "charter",
-                vocabDef: "A charter is a written set of important rules.",
-                fact: "Fair rules work best when they are clear and apply to everyone.",
-                prompt: "Write a short charter with a title, four fair rules, and one sentence explaining how the rules keep people safe and kind.",
-                response: .longText,
-                ending: "Your fair-rules charter is ready to guide a real community!",
-                reflection: "Which rule in your charter protects kindness the best?",
-                fingerprint: "princesses.creative.confident.fair-rules"
+            return sceneDrawing(
+                title: "Council Hall Drawing",
+                scene: "A princess listens at a round table. Three advisers sit with her. A scroll with a wax seal lies open. Tall windows let in daylight.",
+                vocab: "council",
+                vocabDef: "A council is a group that talks and decides together.",
+                fact: "Listening to many voices can help a leader choose well.",
+                goals: ["Round table", "Advisers", "Scroll"],
+                fingerprint: "princesses.creative.confident.council"
             )
         }
     }
@@ -508,64 +368,44 @@ extension CuratedTopicLessonBank {
     private static func castlesCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Strong Stone Wall",
-                opening: "Castle walls were built to be thick and strong.",
-                mission: "Use the inspiration. Draw a stone wall.",
-                inspiration: "Inspiration: Builders stacked heavy stones carefully so walls could stand tall and stay sturdy.",
-                vocab: "stone",
-                vocabDef: "Stone is a hard piece of rock used in building.",
-                fact: "Thick stone walls helped castles stay strong.",
-                prompt: "Draw a castle wall made of stacked stones with one tall tower.",
-                response: .drawing,
-                ending: "Your stone wall is sturdy and real!",
-                reflection: "How many stone rows did you stack in the wall?",
-                fingerprint: "castles.creative.beginner.stone-wall"
+            return sceneDrawing(
+                title: "Moat Drawing",
+                scene: "A stone castle sits behind a blue moat. A wooden drawbridge is down. Green ducks swim in the water. The towers are gray.",
+                vocab: "moat",
+                vocabDef: "A moat is a water ditch around a castle.",
+                fact: "A moat made it harder for strangers to reach the castle walls.",
+                goals: ["Castle", "Blue moat", "Drawbridge"],
+                fingerprint: "castles.creative.beginner.moat"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw a Strong Arch",
-                opening: "Arches can help doorways hold weight.",
-                mission: "Use the inspiration. Draw an arch.",
-                inspiration: "Inspiration: An arch is a curved doorway shape. The stones push against each other so the opening can hold weight above it.",
-                vocab: "arch",
-                vocabDef: "An arch is a curved opening that can hold weight above it.",
-                fact: "Arches help castle doorways hold the weight above them.",
-                prompt: "Draw a castle doorway with a clear arch and stones meeting at the top.",
-                response: .drawing,
-                ending: "Your arch drawing is a real building idea!",
-                reflection: "Where did the stones meet at the top of your arch?",
-                fingerprint: "castles.creative.early.arch"
+            return sceneDrawing(
+                title: "Keep Drawing",
+                scene: "The keep is the strongest tower. It is tall and tan. Small windows sit high up. A red banner flies from the top.",
+                vocab: "keep",
+                vocabDef: "A keep is the strongest inner tower of a castle.",
+                fact: "People could shelter in the keep if the outer walls were in danger.",
+                goals: ["Keep", "High windows", "Red banner"],
+                fingerprint: "castles.creative.early.keep"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Drawbridge Lever",
-                opening: "A drawbridge can rise and lower with a lever system.",
-                mission: "Use the inspiration. Write a lever design.",
-                inspiration: "Inspiration: A lever uses a long bar and a turning point so a smaller push can lift a heavy bridge.",
-                vocab: "lever",
-                vocabDef: "A lever is a bar that turns on a point to help lift or move something.",
-                fact: "Levers help people lift heavy drawbridges with less force.",
-                prompt: "Write four sentences naming your drawbridge, where the lever turns, how chains or ropes help, and one safety rule while the bridge moves.",
-                response: .longText,
-                ending: "Your drawbridge lever design is ready for the builder board!",
-                reflection: "Which part of your design makes lifting easier?",
-                fingerprint: "castles.creative.growing.drawbridge-lever"
+            return sceneDrawing(
+                title: "Gatehouse Drawing",
+                scene: "Guards stand in a gatehouse. The portcullis is a black iron grate. The gate passage is stone. A lantern hangs by the door.",
+                vocab: "portcullis",
+                vocabDef: "A portcullis is a strong grate that can drop to close a gate.",
+                fact: "A gatehouse controlled who could enter a castle.",
+                goals: ["Gatehouse", "Iron grate", "Guards"],
+                fingerprint: "castles.creative.growing.gatehouse"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Moat Plan",
-                opening: "A moat is water around a castle for protection.",
-                mission: "Use the inspiration. Write a moat plan.",
-                inspiration: "Inspiration: Moats used water as a barrier. Builders also planned bridges, banks, and ways to keep the water from flooding rooms.",
-                vocab: "moat",
-                vocabDef: "A moat is a water-filled ditch around a castle.",
-                fact: "Moats used water as a protective barrier around castles.",
-                prompt: "Write a short moat plan with a name, three design choices, and one sentence explaining how your plan keeps the castle safer without flooding rooms.",
-                response: .longText,
-                ending: "Your moat plan is ready for a careful castle builder!",
-                reflection: "Which design choice best keeps rooms dry?",
-                fingerprint: "castles.creative.confident.moat-plan"
+            return sceneDrawing(
+                title: "Castle Yard Drawing",
+                scene: "The bailey is a busy castle yard. A well sits in the center. Brown stables stand near the tower.",
+                vocab: "bailey",
+                vocabDef: "A bailey is an open yard inside castle walls.",
+                fact: "Castle yards held wells and stables.",
+                goals: ["Castle yard", "Well", "Stables"],
+                fingerprint: "castles.creative.confident.bailey"
             )
         }
     }
@@ -575,64 +415,44 @@ extension CuratedTopicLessonBank {
     private static func fairiesCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Seed Parachute",
-                opening: "Some seeds can travel on the wind.",
-                mission: "Use the inspiration. Draw a seed parachute.",
-                inspiration: "Inspiration: For a fairies nature art board, dandelion seeds have fluffy tops that act like tiny parachutes so the wind can carry them to new soil.",
-                vocab: "seed",
-                vocabDef: "A seed is a tiny part that can grow into a new plant.",
-                fact: "Fluffy seed tops help some seeds ride the wind.",
-                prompt: "Draw a seed with a fluffy parachute top floating above grass.",
-                response: .drawing,
-                ending: "Your seed parachute is a real nature trick!",
-                reflection: "What color did you choose for the fluffy parachute?",
-                fingerprint: "fairies.creative.beginner.seed-parachute"
+            return sceneDrawing(
+                title: "Dewdrop Garden Drawing",
+                scene: "A small fairy sits on a green leaf. Silver dewdrops shine on the grass. The fairy's wings are pale blue. A yellow daisy stands nearby.",
+                vocab: "dew",
+                vocabDef: "Dew is tiny water drops that form on cool mornings.",
+                fact: "Dewdrops form when air cools and water collects on plants.",
+                goals: ["Fairy", "Dewdrops", "Daisy"],
+                fingerprint: "fairies.creative.beginner.dew"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Firefly Light Art",
-                opening: "Fireflies can make their own soft light.",
-                mission: "Use the inspiration. Draw firefly light.",
-                inspiration: "Inspiration: For a fairies light study, fireflies can make light in their bodies with a special chemical reaction. The glow helps them find one another.",
-                vocab: "glow",
-                vocabDef: "A glow is a soft light that shines.",
-                fact: "Fireflies can make soft light inside their bodies.",
-                prompt: "Draw three fireflies glowing above evening grass with soft light circles.",
-                response: .drawing,
-                ending: "Your firefly art is real living light!",
-                reflection: "How many glowing circles did you add around the fireflies?",
-                fingerprint: "fairies.creative.early.firefly-light"
+            return sceneDrawing(
+                title: "Pollinator Friend Drawing",
+                scene: "A fairy flies beside a bee. The bee visits a purple flower. Yellow pollen dusts the bee. The meadow is green.",
+                vocab: "pollen",
+                vocabDef: "Pollen is a fine powder flowers use to make seeds.",
+                fact: "Bees carry pollen from flower to flower.",
+                goals: ["Fairy", "Bee", "Purple flower"],
+                fingerprint: "fairies.creative.early.pollen"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Wing Shape Study",
-                opening: "Insect wings are thin, strong, and shaped for flight.",
-                mission: "Use the inspiration. Write a wing design plan.",
-                inspiration: "Inspiration: For a fairies wing study, many insect wings are thin with strong veins. The shape helps lift and balance while the insect flies.",
-                vocab: "vein",
-                vocabDef: "A vein is a thin line that strengthens a leaf or wing.",
-                fact: "Insect wings can use thin strong veins to stay light and sturdy.",
-                prompt: "Write four sentences describing your wing study: wing shape, vein pattern, how the shape helps flight, and one material you would use in a model.",
-                response: .longText,
-                ending: "Your wing shape study is ready for a nature notebook!",
-                reflection: "Which vein detail makes your wing model strongest?",
-                fingerprint: "fairies.creative.growing.wing-study"
+            return sceneDrawing(
+                title: "Moonlit Path Drawing",
+                scene: "Fairies follow a path of pale mushrooms. Moonlight is silver. The forest is dark green. One lantern is warm gold.",
+                vocab: "moonlight",
+                vocabDef: "Moonlight is sunlight that bounces off the Moon.",
+                fact: "Moonlight is reflected sunlight.",
+                goals: ["Mushroom path", "Moonlight", "Lantern"],
+                fingerprint: "fairies.creative.growing.moon-path"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Pollen Path Plan",
-                opening: "Pollen can travel from flower to flower.",
-                mission: "Use the inspiration. Write a pollen path plan.",
-                inspiration: "Inspiration: For a fairies garden path, bees and other insects can brush pollen onto their bodies and carry it to the next flower, helping plants make seeds.",
-                vocab: "pollen",
-                vocabDef: "Pollen is tiny powder from flowers that helps make seeds.",
-                fact: "Insects can carry pollen from one flower to another.",
-                prompt: "Write a short path plan naming two flowers, one insect helper, three steps of pollen travel, and why the path helps plants.",
-                response: .longText,
-                ending: "Your pollen path plan is ready for a garden science walk!",
-                reflection: "Which step in your path best shows how plants get help?",
-                fingerprint: "fairies.creative.confident.pollen-path"
+            return sceneDrawing(
+                title: "Seed Carry Drawing",
+                scene: "Fairies help carry a milkweed seed on the wind. The seed has white fluff. The sky is pink at sunset. A garden waits below.",
+                vocab: "seed",
+                vocabDef: "A seed is a plant's starting package.",
+                fact: "Some seeds travel on the wind with fluffy hairs.",
+                goals: ["Fairies", "Fluffy seed", "Sunset sky"],
+                fingerprint: "fairies.creative.confident.seed"
             )
         }
     }
@@ -642,64 +462,44 @@ extension CuratedTopicLessonBank {
     private static func airplanesCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Lift Wing",
-                opening: "Airplane wings can help lift the plane into the air.",
-                mission: "Use the inspiration. Draw a lift wing.",
-                inspiration: "Inspiration: Air moving over and under a wing helps create lift, the upward force that helps a plane fly.",
-                vocab: "lift",
-                vocabDef: "Lift is an upward force that helps something rise.",
-                fact: "Wings help create lift so airplanes can fly.",
-                prompt: "Draw an airplane wing with arrows for air moving and the plane lifting up.",
-                response: .drawing,
-                ending: "Your lift wing drawing is a real flight idea!",
-                reflection: "Which arrow shows the plane lifting up?",
-                fingerprint: "airplanes.creative.beginner.lift-wing"
+            return sceneDrawing(
+                title: "Cockpit Drawing",
+                scene: "A pilot sits in a cockpit. The windows show blue sky. Dials and switches are on the panel. The airplane nose is white.",
+                vocab: "cockpit",
+                vocabDef: "A cockpit is where the pilots sit and fly the airplane.",
+                fact: "Pilots use cockpit instruments to fly safely.",
+                goals: ["Pilot", "Windows", "Panel"],
+                fingerprint: "airplanes.creative.beginner.cockpit"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Thrust Force Art",
-                opening: "Engines can push an airplane forward.",
-                mission: "Use the inspiration. Draw thrust force.",
-                inspiration: "Inspiration: Engines create thrust, a forward push. When thrust is strong enough, the plane can move down the runway and into the air.",
-                vocab: "thrust",
-                vocabDef: "Thrust is a strong push that moves something forward.",
-                fact: "Airplane engines can create thrust that pushes the plane forward.",
-                prompt: "Draw an airplane with clear arrows for forward thrust and moving air behind the engines.",
-                response: .drawing,
-                ending: "Your thrust art is a clear picture of what pushes a plane ahead!",
-                reflection: "Where did you place the thrust arrows?",
-                fingerprint: "airplanes.creative.early.thrust"
+            return sceneDrawing(
+                title: "Wing Lift Drawing",
+                scene: "An airplane wing cuts through white clouds. Air flows over the curved top. The plane is silver. The ground is a green patch far below.",
+                vocab: "lift",
+                vocabDef: "Lift is the upward force that helps an airplane fly.",
+                fact: "The shape of a wing helps create lift.",
+                goals: ["Wing", "Clouds", "Silver plane"],
+                fingerprint: "airplanes.creative.early.lift"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Flight Path Map",
-                opening: "Planes can follow planned paths through the sky.",
-                mission: "Use the inspiration. Write a flight path plan.",
-                inspiration: "Inspiration: Pilots and planners choose routes that avoid storms, save fuel when possible, and keep planes safely spaced.",
-                vocab: "route",
-                vocabDef: "A route is a planned path from one place to another.",
-                fact: "Flight routes are planned for safety and clear spacing.",
-                prompt: "Write four sentences naming your flight path, start and end cities, one weather check, and one safety spacing idea.",
-                response: .longText,
-                ending: "Your flight path map is ready for the control board!",
-                reflection: "Which safety choice on your route matters most?",
-                fingerprint: "airplanes.creative.growing.flight-path"
+            return sceneDrawing(
+                title: "Runway Drawing",
+                scene: "A runway stretches in two long lines. Lights are white and yellow. A blue airplane waits to take off. The wind sock is orange.",
+                vocab: "runway",
+                vocabDef: "A runway is a long strip for takeoff and landing.",
+                fact: "Airplanes use runways to speed up and slow down.",
+                goals: ["Runway", "Airplane", "Wind sock"],
+                fingerprint: "airplanes.creative.growing.runway"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Cockpit Checklist",
-                opening: "Pilots can use checklists before every flight.",
-                mission: "Use the inspiration. Write a cockpit checklist writeup.",
-                inspiration: "Inspiration: Cockpit checklists help pilots check fuel, flaps, weather, and instruments before takeoff.",
-                vocab: "checklist",
-                vocabDef: "A checklist is a list of important steps to check.",
-                fact: "Pilots can use checklists to make takeoffs safer.",
-                prompt: "Write a short checklist writeup with a title, five items, and one sentence explaining why skipping steps is unsafe.",
-                response: .longText,
-                ending: "Your cockpit checklist is ready beside a training simulator!",
-                reflection: "Which checklist item would you check first, and why?",
-                fingerprint: "airplanes.creative.confident.cockpit-checklist"
+            return sceneDrawing(
+                title: "Air Traffic Drawing",
+                scene: "A control tower stands beside the airport. A controller in the glass room watches two planes. One plane is landing. One plane is taxiing. The sky is clear.",
+                vocab: "tower",
+                vocabDef: "A control tower is a tall room where people guide airport traffic.",
+                fact: "Air traffic controllers help keep airplanes spaced safely.",
+                goals: ["Tower", "Landing plane", "Taxiing plane"],
+                fingerprint: "airplanes.creative.confident.tower"
             )
         }
     }
@@ -709,64 +509,44 @@ extension CuratedTopicLessonBank {
     private static func trainsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw Wheels on Tracks",
-                opening: "Train wheels are riding on steel tracks.",
-                mission: "Use the inspiration. Draw wheels and tracks.",
-                inspiration: "Inspiration: Train wheels have a special shape that keeps them on steel rails so the train stays on the track.",
-                vocab: "track",
-                vocabDef: "A track is a pair of rails that guide train wheels.",
-                fact: "Train wheels ride on tracks that guide the train.",
-                prompt: "Draw a train with wheels sitting firmly on two rails.",
-                response: .drawing,
-                ending: "Your wheels-and-tracks picture is real train travel!",
-                reflection: "Did both rails sit under the train wheels?",
-                fingerprint: "trains.creative.beginner.wheels-tracks"
+            return sceneDrawing(
+                title: "Engine Drawing",
+                scene: "A blue engine pulls two yellow cars. The conductor waves from the window. Steel rails shine. Green hills sit behind the train.",
+                vocab: "engine",
+                vocabDef: "An engine is the machine that pulls a train.",
+                fact: "The engine provides the power that moves the train.",
+                goals: ["Blue engine", "Yellow cars", "Rails"],
+                fingerprint: "trains.creative.beginner.engine"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Train Energy Art",
-                opening: "Trains need energy to move heavy cars.",
-                mission: "Use the inspiration. Draw train energy.",
-                inspiration: "Inspiration: Engines turn fuel or electricity into motion energy that pulls many train cars along the track.",
-                vocab: "energy",
-                vocabDef: "Energy is the power that makes things move or change.",
-                fact: "Train engines can turn energy into motion to pull cars.",
-                prompt: "Draw an engine pulling cars with one arrow for energy becoming motion.",
-                response: .drawing,
-                ending: "Your energy art is a clear picture of what makes a train move!",
-                reflection: "Where did you place the arrow for motion?",
-                fingerprint: "trains.creative.early.energy"
+            return sceneDrawing(
+                title: "Station Drawing",
+                scene: "A red train waits at a station. The platform is gray. A clock hangs above the bench. A family stands behind the yellow safety line.",
+                vocab: "platform",
+                vocabDef: "A platform is the raised place where people wait for a train.",
+                fact: "People wait behind the safety line until the train stops.",
+                goals: ["Red train", "Platform", "Safety line"],
+                fingerprint: "trains.creative.early.station"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Station Map",
-                opening: "Stations can help people board and leave safely.",
-                mission: "Use the inspiration. Write a station map plan.",
-                inspiration: "Inspiration: Good stations mark platforms, waiting areas, exits, and clear paths so crowds move safely.",
-                vocab: "platform",
-                vocabDef: "A platform is the raised place beside the tracks where people wait.",
-                fact: "Station platforms can give people a safe place to wait for trains.",
-                prompt: "Write four sentences naming your station, two labeled areas, one safe walking path, and one rule for staying behind the platform edge.",
-                response: .longText,
-                ending: "Your station map is ready to guide real travelers!",
-                reflection: "Which labeled area keeps waiting passengers safest?",
-                fingerprint: "trains.creative.growing.station-map"
+            return sceneDrawing(
+                title: "Signal Light Drawing",
+                scene: "A signal light stands by the tracks. The light is green. A silver train rolls toward a bridge. The sky is cloudy gray.",
+                vocab: "signal",
+                vocabDef: "A signal is a light or sign that tells a train to go or wait.",
+                fact: "Train signals help keep trains from meeting on the same track.",
+                goals: ["Green signal", "Silver train", "Bridge"],
+                fingerprint: "trains.creative.growing.signal"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Momentum Safety Poster",
-                opening: "Heavy trains need long distances to stop.",
-                mission: "Use the inspiration. Write a momentum safety poster.",
-                inspiration: "Inspiration: A moving train has momentum, so it cannot stop instantly. Safety signs and long braking distances protect people near tracks.",
-                vocab: "momentum",
-                vocabDef: "Momentum is the push a moving object keeps as it travels.",
-                fact: "Heavy moving trains need long distances to stop safely.",
-                prompt: "Write a short poster plan with a title, three safety rules near tracks, and one sentence explaining why trains need long stopping room.",
-                response: .longText,
-                ending: "Your momentum safety poster is ready to protect people near tracks!",
-                reflection: "Which safety rule connects most clearly to momentum?",
-                fingerprint: "trains.creative.confident.momentum-safety"
+            return sceneDrawing(
+                title: "Freight Yard Drawing",
+                scene: "A freight yard holds boxcars, tank cars, and flatcars. A switch engine is orange. Workers wear yellow vests. Rails curve in many directions.",
+                vocab: "freight",
+                vocabDef: "Freight is goods moved from one place to another.",
+                fact: "Freight trains carry goods in many kinds of railcars.",
+                goals: ["Boxcars", "Switch engine", "Yellow vests"],
+                fingerprint: "trains.creative.confident.freight"
             )
         }
     }
@@ -776,64 +556,44 @@ extension CuratedTopicLessonBank {
     private static func carsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw Rolling Wheels",
-                opening: "Car wheels can roll to move the car.",
-                mission: "Use the inspiration. Draw rolling wheels.",
-                inspiration: "Inspiration: Round car wheels can roll smoothly so a car can move with less rubbing against the road.",
-                vocab: "wheel",
-                vocabDef: "A wheel is a round part that rolls to help a vehicle move.",
-                fact: "Round wheels help cars roll along the road.",
-                prompt: "Draw a car with four round wheels and one arrow for rolling motion.",
-                response: .drawing,
-                ending: "Your rolling wheels picture is a clear map of how cars move!",
-                reflection: "Which arrow shows the wheels rolling?",
-                fingerprint: "cars.creative.beginner.wheels"
+            return sceneDrawing(
+                title: "Hubcap Drawing",
+                scene: "A red car parks by a curb. A shiny hubcap covers the wheel. The tires are black. A yellow crosswalk sits in front.",
+                vocab: "hubcap",
+                vocabDef: "A hubcap is the cover on the center of a wheel.",
+                fact: "Hubcaps cover the center of a car wheel.",
+                goals: ["Red car", "Hubcap", "Crosswalk"],
+                fingerprint: "cars.creative.beginner.hubcap"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Brake Force Art",
-                opening: "Brakes can slow a car by making a stopping force.",
-                mission: "Use the inspiration. Draw brake force.",
-                inspiration: "Inspiration: When a driver presses the car brake, pads can press on the wheels and create force that slows the car.",
-                vocab: "brake",
-                vocabDef: "A brake is a part that slows or stops a vehicle.",
-                fact: "Brakes can create force that slows the wheels and the car.",
-                prompt: "Draw a car slowing down with arrows for brake force at the wheels.",
-                response: .drawing,
-                ending: "Your brake force art is a real safety idea!",
-                reflection: "Where did you place the brake-force arrows?",
-                fingerprint: "cars.creative.early.brakes"
+            return sceneDrawing(
+                title: "Seat Belt Drawing",
+                scene: "A child sits in a car seat. The gray seat belt crosses the chest. The red car waits by the road. A parent checks the buckle.",
+                vocab: "buckle",
+                vocabDef: "A buckle is the clasp that locks a seat belt.",
+                fact: "Seat belts help keep people in place if a car stops fast.",
+                goals: ["Car seat", "Seat belt", "Buckle"],
+                fingerprint: "cars.creative.early.seatbelt"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Seatbelt Force Poster",
-                opening: "Seatbelts can protect riders when a car stops suddenly.",
-                mission: "Use the inspiration. Write a seatbelt poster plan.",
-                inspiration: "Inspiration: If cars stop quickly, riders keep moving forward unless a seatbelt can hold them safely in place.",
-                vocab: "force",
-                vocabDef: "Force is a push or pull that can change motion.",
-                fact: "Seatbelts can hold riders safely when a car stops suddenly.",
-                prompt: "Write four sentences explaining your poster title, what happens without a belt, how the belt holds a rider, and one rule for buckling up.",
-                response: .longText,
-                ending: "Your seatbelt force poster is ready for a safety classroom!",
-                reflection: "Which sentence best explains why the belt must hold the rider?",
-                fingerprint: "cars.creative.growing.seatbelt-force"
+            return sceneDrawing(
+                title: "Traffic Light Drawing",
+                scene: "The traffic light is red. A blue car waits at the stop line on the road. A walker stands on the sidewalk.",
+                vocab: "signal",
+                vocabDef: "A traffic signal tells drivers when to stop or go.",
+                fact: "Red means stop. Green means go if the way is clear.",
+                goals: ["Traffic light", "Blue car", "Walker"],
+                fingerprint: "cars.creative.growing.lights"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Fuel Energy Guide",
-                opening: "Cars need energy to move.",
-                mission: "Use the inspiration. Write a simplified fuel-energy guide.",
-                inspiration: "Inspiration: Fuel or battery energy is stored in the car. Engines or motors can change that stored energy into motion for the car wheels.",
-                vocab: "fuel",
-                vocabDef: "Fuel is a stored energy source that can power a machine.",
-                fact: "Cars can change stored fuel or battery energy into wheel motion.",
-                prompt: "Write a short guide with a title, three energy steps from storage to motion, and one sentence comparing fuel and battery power in simple words.",
-                response: .longText,
-                ending: "Your fuel energy guide is ready for young engineers!",
-                reflection: "Which energy step shows storage turning into motion?",
-                fingerprint: "cars.creative.confident.fuel-energy"
+            return sceneDrawing(
+                title: "Engine Bay Drawing",
+                scene: "The hood of a car is open. A parent points to the battery and the radiator. The engine is gray. A toolbox is red on the ground.",
+                vocab: "engine",
+                vocabDef: "An engine is the machine that makes a car move.",
+                fact: "Car engines turn fuel or stored power into motion.",
+                goals: ["Open hood", "Battery", "Toolbox"],
+                fingerprint: "cars.creative.confident.engine-bay"
             )
         }
     }
@@ -843,64 +603,44 @@ extension CuratedTopicLessonBank {
     private static func superheroesCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Strong Material Gadget",
-                opening: "A helper gadget can be made of a strong material.",
-                mission: "Use the inspiration. Draw one strong gadget.",
-                inspiration: "Inspiration: Real tools use strong materials like metal or thick plastic so they do not break during hard jobs.",
-                vocab: "material",
-                vocabDef: "Material is what something is made from.",
-                fact: "Strong materials help tools last during hard jobs.",
-                prompt: "Draw a helper gadget and label the strong material it is made from.",
-                response: .drawing,
-                ending: "Your strong material gadget is ready for a helpful mission!",
-                reflection: "Which strong material did you choose for your gadget?",
-                fingerprint: "superheroes.creative.beginner.material-gadget"
+            return sceneDrawing(
+                title: "Kind Hero Drawing",
+                scene: "A hero in a teal cape helps a cat down from a tree. The cat is orange. The tree is green. Neighbors wave from a porch.",
+                vocab: "help",
+                vocabDef: "Help means to make a job easier for someone.",
+                fact: "Everyday helpers solve problems with care, not just power.",
+                goals: ["Hero", "Orange cat", "Tree"],
+                fingerprint: "superheroes.creative.beginner.kind-help"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw a Lever Helper Tool",
-                opening: "Levers can help people lift heavy things.",
-                mission: "Use the inspiration. Draw a lever tool.",
-                inspiration: "Inspiration: A lever is a bar that turns on a point. A small push on the long end can lift a heavier load on the short end.",
-                vocab: "lever",
-                vocabDef: "A lever is a bar that turns on a point to help lift something.",
-                fact: "Levers help people lift heavy loads with less force.",
-                prompt: "Draw a lever tool lifting a heavy box with the turning point marked clearly.",
-                response: .drawing,
-                ending: "Your lever tool is a real science helper idea!",
-                reflection: "Where did you mark the turning point on your lever?",
-                fingerprint: "superheroes.creative.early.lever-tool"
+            return sceneDrawing(
+                title: "Team Rescue Drawing",
+                scene: "Two heroes work together. One holds a rope. One guides a boat to shore. The water is blue. Life jackets are orange.",
+                vocab: "team",
+                vocabDef: "A team is a group that works toward the same goal.",
+                fact: "Teams can solve problems that one person cannot finish alone.",
+                goals: ["Two heroes", "Rope", "Boat"],
+                fingerprint: "superheroes.creative.early.team"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Sensor Gadget",
-                opening: "Sensors can help people notice important changes.",
-                mission: "Use the inspiration. Write a sensor gadget plan.",
-                inspiration: "Inspiration: Real sensors can detect heat, light, sound, or motion and send a signal so people can respond safely.",
-                vocab: "sensor",
-                vocabDef: "A sensor is a device that notices a change and sends a signal.",
-                fact: "Sensors can notice changes like heat, light, sound, or motion.",
-                prompt: "Write four sentences naming your sensor gadget, what it detects, how it warns people, and one helpful rescue use.",
-                response: .longText,
-                ending: "Your sensor gadget plan is ready for the inventor lab!",
-                reflection: "What change does your sensor notice first?",
-                fingerprint: "superheroes.creative.growing.sensor-gadget"
+            return sceneDrawing(
+                title: "Safe Landing Drawing",
+                scene: "A hero in a purple suit lands softly on a rooftop. Knees bend. A weather vane is yellow. The city is gray below.",
+                vocab: "balance",
+                vocabDef: "Balance is staying steady so you do not fall.",
+                fact: "Bending knees can help a person land more safely.",
+                goals: ["Hero", "Rooftop", "Bent knees"],
+                fingerprint: "superheroes.creative.growing.landing"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Force Training Poster",
-                opening: "Training can build strength and control safely.",
-                mission: "Use the inspiration. Write a force training poster.",
-                inspiration: "Inspiration: Practice with careful form helps muscles apply force safely. Warm-ups, rest, and good technique protect the body.",
-                vocab: "force",
-                vocabDef: "Force is a push or pull that can move something.",
-                fact: "Careful training helps people apply force safely and with control.",
-                prompt: "Write a short poster plan with a title, three safe training tips, and one sentence explaining how good technique protects the body.",
-                response: .longText,
-                ending: "Your force training poster is ready for a real practice room!",
-                reflection: "Which training tip best protects the body while building strength?",
-                fingerprint: "superheroes.creative.confident.force-training"
+            return sceneDrawing(
+                title: "Community Helper Drawing",
+                scene: "A hero helps at a rescue with firefighters and medics. The fire truck is red. A first-aid bag is white with a green cross.",
+                vocab: "community",
+                vocabDef: "A community is a group of people who share a place.",
+                fact: "Real helpers include firefighters, medics, and neighbors.",
+                goals: ["Hero", "Fire truck", "Medic bag"],
+                fingerprint: "superheroes.creative.confident.community"
             )
         }
     }
@@ -910,64 +650,44 @@ extension CuratedTopicLessonBank {
     private static func artCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Color Mix Chart",
-                opening: "Mixing colors can make new colors.",
-                mission: "Use the inspiration. Draw a color mix.",
-                inspiration: "Inspiration: Mixing yellow and blue can make green. Mixing red and yellow can make orange.",
-                vocab: "mix",
-                vocabDef: "Mix is when things are stirred together.",
-                fact: "Mixing two colors can make a new color.",
-                prompt: "Draw two paint puddles mixing into a new color with labels for the colors you used.",
-                response: .drawing,
-                ending: "Your color mix chart is a real art science idea!",
-                reflection: "Which new color did your mix create?",
-                fingerprint: "art.creative.beginner.color-mix"
+            return sceneDrawing(
+                title: "Primary Color Drawing",
+                scene: "Three paint pots sit on a table. One is red. One is yellow. One is blue. A brush with a wooden handle waits beside paper.",
+                vocab: "primary",
+                vocabDef: "Primary colors are red, yellow, and blue.",
+                fact: "Red, yellow, and blue can mix to make many other colors.",
+                goals: ["Red pot", "Yellow pot", "Blue pot"],
+                fingerprint: "art.creative.beginner.primary"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Light Reflection Art",
-                opening: "Smooth shiny surfaces can bounce light.",
-                mission: "Use the inspiration. Draw reflection.",
-                inspiration: "Inspiration: Light can bounce off a shiny surface and travel to your eyes so you see a reflection.",
-                vocab: "reflect",
-                vocabDef: "Reflect is when light is bounced back.",
-                fact: "Shiny surfaces can reflect light so we see reflections.",
-                prompt: "Draw a shiny circle reflecting a window with a light arrow bouncing off it.",
-                response: .drawing,
-                ending: "Your reflection art is a clear picture of how light can bounce!",
-                reflection: "Where did the light arrow bounce in your drawing?",
-                fingerprint: "art.creative.early.light-reflection"
+            return sceneDrawing(
+                title: "Still Life Drawing",
+                scene: "A still life sits on a cloth. There is a green apple, a brown jug, and a yellow lemon. A window lights one side. The other side is in shadow.",
+                vocab: "still life",
+                vocabDef: "A still life is a picture of objects that do not move.",
+                fact: "Light and shadow help a still life look solid.",
+                goals: ["Apple", "Jug", "Shadow"],
+                fingerprint: "art.creative.early.still-life"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Pigment Poster",
-                opening: "Pigments can give paint its color.",
-                mission: "Use the inspiration. Write a pigment poster plan.",
-                inspiration: "Inspiration: Pigments are tiny colored particles. When mixed into paint, they give the paint its color.",
-                vocab: "pigment",
-                vocabDef: "Pigment is made of tiny colored particles that give paint its color.",
-                fact: "Pigments are the colored bits that make paint colorful.",
-                prompt: "Write four sentences naming your poster, what pigment is, one paint color example, and why stirring pigment evenly matters.",
-                response: .longText,
-                ending: "Your pigment poster is ready for the art studio wall!",
-                reflection: "Which sentence best explains what pigment does?",
-                fingerprint: "art.creative.growing.pigment"
+            return sceneDrawing(
+                title: "Warm Cool Drawing",
+                scene: "A landscape splits into warm and cool colors. The sunny hill is orange and yellow. The shady valley is blue and green. A path runs between them.",
+                vocab: "cool",
+                vocabDef: "Cool colors include blue and green.",
+                fact: "Warm and cool colors can show sun and shade.",
+                goals: ["Warm hill", "Cool valley", "Path"],
+                fingerprint: "art.creative.growing.warm-cool"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Warm and Cool Gallery Plan",
-                opening: "Warm and cool colors can change a picture's feeling.",
-                mission: "Use the inspiration. Write a gallery plan.",
-                inspiration: "Inspiration: Warm colors like red and orange can feel energetic. Cool colors like blue and green can feel calm. Artists choose them on purpose.",
-                vocab: "gallery",
-                vocabDef: "A gallery is a place that shows artwork for people to view.",
-                fact: "Warm and cool colors can change how a picture feels.",
-                prompt: "Write a short gallery plan with a title, two warm-color artworks, two cool-color artworks, and one sentence explaining the feeling you want visitors to notice.",
-                response: .longText,
-                ending: "Your warm and cool gallery plan is ready for a real exhibit!",
-                reflection: "Which artwork pair best shows the feeling contrast?",
-                fingerprint: "art.creative.confident.warm-cool-gallery"
+            return sceneDrawing(
+                title: "Perspective Street Drawing",
+                scene: "A street goes back toward a vanishing point. Buildings get smaller as they recede. A red bus is close. A tiny cyclist is far away.",
+                vocab: "perspective",
+                vocabDef: "Perspective is a way of drawing depth on a flat page.",
+                fact: "Things look smaller when they are farther away.",
+                goals: ["Street", "Buildings", "Red bus"],
+                fingerprint: "art.creative.confident.perspective"
             )
         }
     }
@@ -977,64 +697,44 @@ extension CuratedTopicLessonBank {
     private static func musicCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Vibration Sound Scene",
-                opening: "Sound often begins with a vibration.",
-                mission: "Use the inspiration. Draw vibration.",
-                inspiration: "Inspiration: When a drum skin shakes, it vibrates the air and we hear a sound.",
-                vocab: "vibrate",
-                vocabDef: "Vibrate is when something shakes back and forth quickly.",
-                fact: "Vibrating objects can make sounds we hear.",
-                prompt: "Draw a drum being tapped with tiny vibration lines in the air.",
-                response: .drawing,
-                ending: "Your vibration scene is a clear picture of how sound can begin!",
-                reflection: "Where did you put the vibration lines?",
-                fingerprint: "music.creative.beginner.vibration"
+            return sceneDrawing(
+                title: "Steady Beat Drawing",
+                scene: "A drummer taps a steady beat. The drum is red. Four beat marks sit in a row. Friends clap along. The room is sunny.",
+                vocab: "beat",
+                vocabDef: "A beat is a steady pulse in music.",
+                fact: "A steady beat helps people play music together.",
+                goals: ["Drum", "Beat marks", "Clapping"],
+                fingerprint: "music.creative.beginner.beat"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw High and Low Pitch",
-                opening: "Pitch tells whether a sound is high or low.",
-                mission: "Use the inspiration. Draw pitch.",
-                inspiration: "Inspiration: A short tight string can make a higher pitch. A longer looser string can make a lower pitch.",
+            return sceneDrawing(
+                title: "High and Low Drawing",
+                scene: "A keyboard shows high notes on the right and low notes on the left. A child in a purple shirt plays. A treble staff hangs on the wall. A cat listens.",
                 vocab: "pitch",
                 vocabDef: "Pitch is how high or low a sound is.",
-                fact: "String length and tightness can change pitch.",
-                prompt: "Draw two strings, one short and one long, with labels for high pitch and low pitch.",
-                response: .drawing,
-                ending: "Your pitch drawing is a real music science idea!",
-                reflection: "Which string did you label as high pitch?",
+                fact: "On a piano, notes get higher as you move to the right.",
+                goals: ["Keyboard", "High notes", "Low notes"],
                 fingerprint: "music.creative.early.pitch"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Volume Control Chart",
-                opening: "Volume is how loud or soft a sound is.",
-                mission: "Use the inspiration. Write a volume chart plan.",
-                inspiration: "Inspiration: Hitting a drum harder can make a louder volume. Touching it gently makes a softer sound.",
-                vocab: "volume",
-                vocabDef: "Volume is how loud or soft a sound is.",
-                fact: "Stronger vibrations can make louder volume.",
-                prompt: "Write four sentences naming your chart, one loud action, one soft action, and one place where soft volume is kind.",
-                response: .longText,
-                ending: "Your volume control chart is ready for the music room!",
-                reflection: "Where would soft volume matter most in your chart?",
-                fingerprint: "music.creative.growing.volume"
+            return sceneDrawing(
+                title: "Orchestra Seats Drawing",
+                scene: "An orchestra sits in curved rows. Strings are in front. Woodwinds sit behind them. Brass and percussion are farther back. The conductor's podium is wood.",
+                vocab: "orchestra",
+                vocabDef: "An orchestra is a large group of instruments playing together.",
+                fact: "Orchestra families sit in groups so the sound blends.",
+                goals: ["Strings", "Woodwinds", "Conductor"],
+                fingerprint: "music.creative.growing.orchestra"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write an Instrument Material Guide",
-                opening: "Materials can change how instruments sound.",
-                mission: "Use the inspiration. Write a material guide.",
-                inspiration: "Inspiration: Wood, metal, and stretched skin vibrate differently. Material choice changes tone and loudness.",
-                vocab: "material",
-                vocabDef: "Material is what something is made from.",
-                fact: "Instrument materials can change the sound when they vibrate.",
-                prompt: "Write a short guide with a title, three instrument materials, how each might sound, and one sentence on choosing a material for a soft tone.",
-                response: .longText,
-                ending: "Your instrument material guide is ready for young builders!",
-                reflection: "Which material would you choose for the softest tone, and why?",
-                fingerprint: "music.creative.confident.instrument-material"
+            return sceneDrawing(
+                title: "Dynamics Drawing",
+                scene: "A choir sings on risers. One side is labeled soft. One side is labeled loud. The director's hands show the change. Robes are blue.",
+                vocab: "dynamics",
+                vocabDef: "Dynamics are how loud or soft music is.",
+                fact: "Musicians change dynamics to make music more expressive.",
+                goals: ["Choir", "Soft side", "Loud side"],
+                fingerprint: "music.creative.confident.dynamics"
             )
         }
     }
@@ -1044,63 +744,43 @@ extension CuratedTopicLessonBank {
     private static func cookingCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Heat Change Scene",
-                opening: "Heat can change food.",
-                mission: "Use the inspiration. Draw a heat change.",
-                inspiration: "Inspiration: Heat can melt butter, warm soup, and turn batter firmer as it cooks.",
+            return sceneDrawing(
+                title: "Heat Change Drawing",
+                scene: "A pan sits on a stove. Butter is melting from a yellow stick into a gold puddle. A wooden spoon waits. The burner is orange.",
                 vocab: "heat",
                 vocabDef: "Heat is warmth that can change food.",
                 fact: "Heat can change how food looks and feels.",
-                prompt: "Draw a pan with food changing as heat warms it, and label before and after.",
-                response: .drawing,
-                ending: "Your heat change scene is real kitchen science!",
-                reflection: "What food did you show changing with heat?",
+                goals: ["Pan", "Melting butter", "Spoon"],
                 fingerprint: "cooking.creative.beginner.heat-change"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw a Measuring Tools Card",
-                opening: "Cooking can use careful measuring.",
-                mission: "Use the inspiration. Draw measuring tools.",
-                inspiration: "Inspiration: Cups and spoons help cooks measure the same amount each time so recipes work.",
+            return sceneDrawing(
+                title: "Measuring Tools Drawing",
+                scene: "A measuring cup and a measuring spoon sit by a mixing bowl. The cup is clear. The spoon is silver. Flour waits in a yellow bag.",
                 vocab: "measure",
                 vocabDef: "Measure means to find out how much of something there is.",
                 fact: "Measuring tools help cooks use the right amounts.",
-                prompt: "Draw two measuring tools with labels and one bowl waiting for ingredients.",
-                response: .drawing,
-                ending: "Your measuring card is ready for a kitchen helper!",
-                reflection: "Which measuring tool did you draw first?",
+                goals: ["Measuring cup", "Spoon", "Bowl"],
                 fingerprint: "cooking.creative.early.measuring"
             )
         case .growingReader:
-            return waveECreative(
+            return sceneDrawing(
                 title: "Draw Sugar Mixing in Water",
-                opening: "Sugar can mix into water until you cannot see the bits.",
-                mission: "Draw sugar dissolving in a cup of water.",
-                inspiration: "Inspiration: Sugar can dissolve in warm water. The bits seem to disappear, but the sugar is still in the water.",
+                scene: "A clear cup holds water. Sugar goes in from a small spoon. After mixing, the bits disappear but the sugar is still in the water. The cup sits on a blue napkin.",
                 vocab: "dissolve",
                 vocabDef: "Dissolve means a solid mixes into a liquid until you cannot see the bits.",
                 fact: "Sugar can dissolve in water and stay in the liquid.",
-                prompt: "Draw a cup of water. Show sugar going in. Then show the water after the sugar mixes in.",
-                response: .drawing,
-                ending: "You showed how sugar mixes into water!",
-                reflection: "What happened to the sugar in your picture?",
+                goals: ["Cup of water", "Sugar", "After mixing"],
                 fingerprint: "cooking.creative.growing.dissolving"
             )
         case .confidentReader:
-            return waveECreative(
+            return sceneDrawing(
                 title: "Draw Ice, Water, and Steam",
-                opening: "Heat can change ice into water, and water into steam.",
-                mission: "Draw ice, water, and steam.",
-                inspiration: "Inspiration: Ice is solid water. Melting makes liquid water. Boiling can make steam, a gas.",
+                scene: "Three pictures sit in a row. Ice is a solid cube. Melted water sits in a bowl. Steam rises from a kettle. Labels name each state.",
                 vocab: "state",
                 vocabDef: "A state is the form matter takes, such as solid, liquid, or gas.",
                 fact: "Cooking can change matter between solid, liquid, and gas forms.",
-                prompt: "Draw three pictures in a row: ice, melted water, and steam. Label each one.",
-                response: .drawing,
-                ending: "You showed how water can change form!",
-                reflection: "Which picture shows steam?",
+                goals: ["Ice", "Water", "Steam"],
                 fingerprint: "cooking.creative.confident.states-recipe"
             )
         }
@@ -1111,64 +791,44 @@ extension CuratedTopicLessonBank {
     private static func natureCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Habitat Home",
-                opening: "A habitat is a living place with what animals need.",
-                mission: "Use the inspiration. Draw one habitat.",
-                inspiration: "Inspiration: A nature habitat can give animals food, water, shelter, and space to live.",
+            return sceneDrawing(
+                title: "Habitat Home Drawing",
+                scene: "In nature, a rabbit sits in a meadow. Green plants are food. A burrow is shelter. A stream gives water near a tree.",
                 vocab: "habitat",
                 vocabDef: "A habitat is a place where a plant or animal lives and finds what it needs.",
                 fact: "Habitats can give animals food, water, shelter, and space.",
-                prompt: "Draw a habitat with one animal, one food source, and one shelter.",
-                response: .drawing,
-                ending: "Your habitat home is a clear picture of what a living place needs!",
-                reflection: "What shelter did you give your animal?",
+                goals: ["Rabbit", "Burrow", "Stream"],
                 fingerprint: "nature.creative.beginner.habitat"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw a Season Change Scene",
-                opening: "Seasons can change light, temperature, and plant life.",
-                mission: "Use the inspiration. Draw a season scene.",
-                inspiration: "Inspiration: In nature, trees can grow green leaves in warm seasons and drop leaves when days get cooler and shorter.",
-                vocab: "season",
-                vocabDef: "A season is a time of year with its own weather pattern.",
-                fact: "Seasons can change leaves, light, and temperature.",
-                prompt: "Draw one tree in two season boxes labeled leafy and bare.",
-                response: .drawing,
-                ending: "Your season scene is a real nature pattern!",
-                reflection: "Which season box shows the leafy tree?",
-                fingerprint: "nature.creative.early.season"
+            return sceneDrawing(
+                title: "Food Chain Drawing",
+                scene: "In nature, green plants grow in sunlight. A rabbit eats the plants. A hawk flies above the field. A tree stands nearby.",
+                vocab: "food chain",
+                vocabDef: "A food chain shows who eats whom.",
+                fact: "Energy in a food chain starts with sunlight and plants.",
+                goals: ["Plants", "Rabbit", "Hawk"],
+                fingerprint: "nature.creative.early.food-chain"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Soil Layers Card",
-                opening: "Healthy soil has layers and living helpers.",
-                mission: "Use the inspiration. Write a soil card plan.",
-                inspiration: "Inspiration: Topsoil has nutrients for plants. Deeper layers may be denser. Worms and tiny living things help mix and enrich soil.",
-                vocab: "soil",
-                vocabDef: "Soil is the ground material plants grow in.",
-                fact: "Healthy soil has nutrients and living helpers for plants.",
-                prompt: "Write four sentences naming your soil card, two layers, one living helper, and why plants need healthy soil.",
-                response: .longText,
-                ending: "Your soil layers card is ready for a garden notebook!",
-                reflection: "Which living helper did you include in the soil?",
-                fingerprint: "nature.creative.growing.soil"
+            return sceneDrawing(
+                title: "Rain Gauge Drawing",
+                scene: "A rain gauge stands in a garden. Rain fills the tube. Marks show how much rain fell. Leaves are shiny and wet. Clouds are gray.",
+                vocab: "rain gauge",
+                vocabDef: "A rain gauge is a tool that measures how much rain falls.",
+                fact: "A rain gauge collects rain so people can measure it.",
+                goals: ["Rain gauge", "Rain", "Garden"],
+                fingerprint: "nature.creative.growing.rain-gauge"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Plant Water Path Plan",
-                opening: "Water can travel through plants.",
-                mission: "Use the inspiration. Write a plant water path.",
-                inspiration: "Inspiration: Roots can take in water. Tiny tubes can carry water up the stem to leaves, where plants use water for growth.",
-                vocab: "root",
-                vocabDef: "A root is the part of a plant that grows in soil and takes in water.",
-                fact: "Roots take in water that travels up to leaves.",
-                prompt: "Write a short path plan with a title, three labeled stops for water travel, and one sentence explaining why roots matter.",
-                response: .longText,
-                ending: "Your plant water path is ready for a science walk!",
-                reflection: "Which stop on the path shows water entering the plant?",
-                fingerprint: "nature.creative.confident.plant-water"
+            return sceneDrawing(
+                title: "Watershed Drawing",
+                scene: "In nature, rain falls on a forest hill. Water runs into a creek. The creek joins a river. Trees hold the soil.",
+                vocab: "watershed",
+                vocabDef: "A watershed is land that drains rain into the same stream or river.",
+                fact: "Rain that falls on land can travel downhill into creeks and rivers.",
+                goals: ["Hill", "Creek", "River"],
+                fingerprint: "nature.creative.confident.watershed"
             )
         }
     }
@@ -1178,64 +838,44 @@ extension CuratedTopicLessonBank {
     private static func bugsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Six-Leg Bug",
-                opening: "Insects have six legs.",
-                mission: "Use the inspiration. Draw one insect.",
-                inspiration: "Inspiration: True insects have six legs. Counting legs helps scientists tell insects from spiders.",
-                vocab: "insect",
-                vocabDef: "An insect is a small animal with six legs.",
-                fact: "Insects have six legs.",
-                prompt: "Draw an insect with six clearly counted legs and one antenna pair.",
-                response: .drawing,
-                ending: "Your six-leg bug is a real insect fact!",
-                reflection: "Did you count six legs on your insect?",
-                fingerprint: "bugs.creative.beginner.six-legs"
+            return sceneDrawing(
+                title: "Ladybug Drawing",
+                scene: "A red ladybug walks on a green leaf. Black spots mark its wing covers. Tiny legs grip the leaf. A yellow flower is nearby.",
+                vocab: "spot",
+                vocabDef: "A spot is a small mark of color.",
+                fact: "Ladybugs are beetles with hard wing covers.",
+                goals: ["Ladybug", "Spots", "Leaf"],
+                fingerprint: "bugs.creative.beginner.ladybug"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw an Exoskeleton Shield",
-                opening: "Many bugs have a hard outer skeleton.",
-                mission: "Use the inspiration. Draw an exoskeleton.",
-                inspiration: "Inspiration: An exoskeleton is a hard outer covering that protects a bug's soft body and gives it shape.",
-                vocab: "exoskeleton",
-                vocabDef: "An exoskeleton is a hard outer covering that protects a bug's body.",
-                fact: "An exoskeleton can protect a bug like a hard suit of armor.",
-                prompt: "Draw a beetle with a labeled hard outer shell and a soft body note underneath.",
-                response: .drawing,
-                ending: "Your exoskeleton art is a clear picture of how bugs stay protected!",
-                reflection: "Where did you place the exoskeleton label?",
-                fingerprint: "bugs.creative.early.exoskeleton"
+            return sceneDrawing(
+                title: "Ant Trail Drawing",
+                scene: "A brown ant walks on a garden trail. Two long antennae feel the ground. The ant is a small bug. Crumbs sit nearby.",
+                vocab: "antenna",
+                vocabDef: "An antenna is a feeler that helps an insect sense nearby things.",
+                fact: "Many insects use antennae to smell and feel nearby things.",
+                goals: ["Ant", "Antennae", "Trail"],
+                fingerprint: "bugs.creative.early.antennae"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Pollination Poster",
-                opening: "Some bugs can help flowers make seeds.",
-                mission: "Use the inspiration. Write a pollination poster plan.",
-                inspiration: "Inspiration: Bees and butterflies can carry pollen from flower to flower as they sip nectar, helping plants make seeds.",
-                vocab: "pollination",
-                vocabDef: "Pollination is moving pollen so plants can make seeds.",
-                fact: "Bug helpers can move pollen between flowers.",
-                prompt: "Write four sentences naming your poster, one bug helper, how pollen moves, and why flowers benefit.",
-                response: .longText,
-                ending: "Your pollination poster is ready for a garden classroom!",
-                reflection: "Which detail best shows how pollen moves?",
-                fingerprint: "bugs.creative.growing.pollination"
+            return sceneDrawing(
+                title: "Metamorphosis Drawing",
+                scene: "A monarch's life sits in four pictures. An egg is on a milkweed leaf. A caterpillar eats. A chrysalis hangs. An orange butterfly flies.",
+                vocab: "chrysalis",
+                vocabDef: "A chrysalis is the hard case where a caterpillar changes.",
+                fact: "Butterflies change from egg to caterpillar to chrysalis to adult.",
+                goals: ["Egg", "Caterpillar", "Butterfly"],
+                fingerprint: "bugs.creative.growing.metamorphosis"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write Metamorphosis Stages Art",
-                opening: "Some insects can change form as they grow.",
-                mission: "Use the inspiration. Write a stages art plan.",
-                inspiration: "Inspiration: A butterfly grows through stages: egg, caterpillar, chrysalis, and adult butterfly. Each stage looks different.",
-                vocab: "metamorphosis",
-                vocabDef: "Metamorphosis is a big change in body form as an animal grows.",
-                fact: "Butterflies change through egg, caterpillar, chrysalis, and adult stages.",
-                prompt: "Write a short stages art plan naming all four stages in order and one detail to draw for each stage.",
-                response: .longText,
-                ending: "Your metamorphosis stages plan is ready for a science gallery!",
-                reflection: "Which stage looks most different from the adult, and why?",
-                fingerprint: "bugs.creative.confident.metamorphosis"
+            return sceneDrawing(
+                title: "Pollinator Garden Drawing",
+                scene: "Bees and butterflies visit native flowers. A bee is on a purple coneflower. A butterfly is on milkweed. A shallow water dish sits in the soil.",
+                vocab: "pollinator",
+                vocabDef: "A pollinator is an animal that moves pollen from flower to flower.",
+                fact: "Bees and butterflies help plants make seeds when they visit flowers.",
+                goals: ["Bee", "Butterfly", "Flowers"],
+                fingerprint: "bugs.creative.confident.pollinator"
             )
         }
     }
@@ -1245,64 +885,44 @@ extension CuratedTopicLessonBank {
     private static func weatherCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Cloud Shapes Card",
-                opening: "Clouds are made of tiny water drops.",
-                mission: "Use the inspiration. Draw clouds.",
-                inspiration: "Inspiration: Clouds are formed when tiny water drops gather in the air. Different shapes can hint at different weather.",
+            return sceneDrawing(
+                title: "Sun and Cloud Drawing",
+                scene: "A bright yellow sun peeks from behind a white cloud. The sky is light blue. A child wears a hat. Grass is green.",
                 vocab: "cloud",
-                vocabDef: "A cloud is a group of tiny water drops floating in the air.",
-                fact: "Clouds are made of tiny water drops in the air.",
-                prompt: "Draw two cloud shapes and label them with soft gray or white colors.",
-                response: .drawing,
-                ending: "Your cloud card is a clear picture of what clouds are made of!",
-                reflection: "Which cloud shape did you draw first?",
-                fingerprint: "weather.creative.beginner.cloud"
+                vocabDef: "A cloud is a collection of tiny water drops in the sky.",
+                fact: "Clouds are made of tiny water drops or ice crystals.",
+                goals: ["Sun", "Cloud", "Blue sky"],
+                fingerprint: "weather.creative.beginner.sun-cloud"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Wind Direction Art",
-                opening: "Wind is moving air.",
-                mission: "Use the inspiration. Draw wind.",
-                inspiration: "Inspiration: Weather wind can push flags, leaves, and clouds in the same direction as the moving air.",
+            return sceneDrawing(
+                title: "Wind Vane Drawing",
+                scene: "A wind vane points toward the blowing wind. The arrow is red. A tree leans the same way. Leaves fly. The sky is gray.",
                 vocab: "wind",
                 vocabDef: "Wind is moving air.",
-                fact: "Wind is air that moves and can push things.",
-                prompt: "Draw a flag and leaves blowing the same way with one wind arrow.",
-                response: .drawing,
-                ending: "Your wind art is a clear picture of the direction of moving air!",
-                reflection: "Which way does your wind arrow point?",
-                fingerprint: "weather.creative.early.wind"
+                fact: "A wind vane shows the direction the wind comes from.",
+                goals: ["Wind vane", "Leaning tree", "Leaves"],
+                fingerprint: "weather.creative.early.wind-vane"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Rain Cycle Diagram",
-                opening: "Water can travel in a cycle through air and land.",
-                mission: "Use the inspiration. Write a rain cycle plan.",
-                inspiration: "Inspiration: In the weather rain cycle, water can evaporate into the air, form clouds, fall as rain, and return to rivers and oceans.",
-                vocab: "cycle",
-                vocabDef: "A cycle is a pattern that repeats again and again.",
-                fact: "The rain cycle moves water between land, air, and clouds.",
-                prompt: "Write four sentences naming your diagram, three cycle steps in order, and why the pattern can repeat.",
-                response: .longText,
-                ending: "Your rain cycle diagram is ready for the weather board!",
-                reflection: "Which cycle step returns water to the ground?",
-                fingerprint: "weather.creative.growing.rain-cycle"
+            return sceneDrawing(
+                title: "Water Cycle Drawing",
+                scene: "The sun warms a blue lake. Water vapor rises. A gray cloud forms. Rain falls back to the lake. Arrows show the cycle.",
+                vocab: "evaporate",
+                vocabDef: "Evaporate means liquid water turns into water vapor.",
+                fact: "The water cycle moves water from lakes to clouds and back as rain.",
+                goals: ["Lake", "Cloud", "Rain"],
+                fingerprint: "weather.creative.growing.water-cycle"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Storm Safety Kit Plan",
-                opening: "Storms need careful safety plans.",
-                mission: "Use the inspiration. Write a storm safety kit writeup.",
-                inspiration: "Inspiration: A good weather storm kit may include a flashlight, water, a radio, and a clear indoor meeting place away from windows.",
-                vocab: "safety",
-                vocabDef: "Safety means actions and tools that help keep people from harm.",
-                fact: "Storm safety kits help families prepare before weather turns severe.",
-                prompt: "Write a short kit plan with a title, four items, one indoor meeting place rule, and one sentence explaining why planning early helps.",
-                response: .longText,
-                ending: "Your storm safety kit plan is ready to help a real family prepare!",
-                reflection: "Which kit item would you pack first, and why?",
-                fingerprint: "weather.creative.confident.storm-safety"
+            return sceneDrawing(
+                title: "Forecast Map Drawing",
+                scene: "A weather map shows a cold front as a blue line. Rain symbols sit ahead of the front. A sun symbol sits behind it. The map key is in the corner.",
+                vocab: "forecast",
+                vocabDef: "A forecast is a prediction of coming weather.",
+                fact: "Weather maps help people predict rain, wind, and temperature.",
+                goals: ["Cold front", "Rain symbols", "Map key"],
+                fingerprint: "weather.creative.confident.forecast"
             )
         }
     }
@@ -1312,64 +932,44 @@ extension CuratedTopicLessonBank {
     private static func farmAnimalsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Milk Mammal Scene",
-                opening: "Cows are mammals that make milk.",
-                mission: "Use the inspiration. Draw a milk mammal.",
-                inspiration: "Inspiration: Mammals feed their babies milk. Dairy cows make milk that people can drink after careful farming care.",
-                vocab: "mammal",
-                vocabDef: "A mammal is an animal that feeds its babies milk.",
-                fact: "Cows are mammals that make milk for their babies.",
-                prompt: "Draw a cow and a calf with a soft milk label nearby.",
-                response: .drawing,
-                ending: "Your milk mammal scene is a real farm fact!",
-                reflection: "Did you include both the cow and the calf?",
-                fingerprint: "farmAnimals.creative.beginner.milk-mammal"
+            return sceneDrawing(
+                title: "Barn Morning Drawing",
+                scene: "A red barn sits under a yellow sun. A brown cow stands by a water trough. A white chicken pecks grain. Green grass is wet with dew.",
+                vocab: "barn",
+                vocabDef: "A barn is a farm building that shelters animals and tools.",
+                fact: "Farm animals need food, water, and shelter every day.",
+                goals: ["Red barn", "Cow", "Chicken"],
+                fingerprint: "farmAnimals.creative.beginner.barn"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw an Egg Nest Card",
-                opening: "Many farm birds can lay eggs.",
-                mission: "Use the inspiration. Draw an egg nest.",
-                inspiration: "Inspiration: Hens can lay eggs in nests. Warm, clean nests help keep eggs safe until they are collected.",
-                vocab: "nest",
-                vocabDef: "A nest is a soft place birds make for eggs.",
-                fact: "Hens lay eggs in nests that need to stay clean and safe.",
-                prompt: "Draw a hen beside a nest with two eggs and clean straw.",
-                response: .drawing,
-                ending: "Your egg nest card is careful farm care!",
-                reflection: "How many eggs did you place in the nest?",
-                fingerprint: "farmAnimals.creative.early.egg-nest"
+            return sceneDrawing(
+                title: "Sheep Fleece Drawing",
+                scene: "A sheep with thick white fleece stands by a fence. A farmer holds shears. A basket waits for wool. The pasture is green.",
+                vocab: "fleece",
+                vocabDef: "Fleece is a sheep's woolly coat.",
+                fact: "Sheep grow a thick fleece that people can shear.",
+                goals: ["Sheep", "Fleece", "Basket"],
+                fingerprint: "farmAnimals.creative.early.fleece"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Plant Eater Menu",
-                opening: "Some farm animals can eat plants.",
-                mission: "Use the inspiration. Write a plant-eater menu.",
-                inspiration: "Inspiration: Cows, sheep, and horses eat plants like grass and hay. Their teeth and stomachs help them handle tough plant food.",
-                vocab: "graze",
-                vocabDef: "Graze is when an animal eats grass and plants in a field.",
-                fact: "Many farm animals are plant eaters that graze on grass and hay.",
-                prompt: "Write four sentences naming your menu, two plant foods, one animal that eats them, and one reason plant eaters need fresh water too.",
-                response: .longText,
-                ending: "Your plant eater menu is ready for the barn board!",
-                reflection: "Which plant food on your menu is most important each day?",
-                fingerprint: "farmAnimals.creative.growing.plant-eater"
+            return sceneDrawing(
+                title: "Hen Nest Drawing",
+                scene: "A hen sits on a nest in straw. One brown egg is beside her. The coop is wood. A waterer is silver. Sunlight comes through a window.",
+                vocab: "nest",
+                vocabDef: "A nest is a safe place a bird makes for eggs.",
+                fact: "Hens lay eggs in nests lined with straw.",
+                goals: ["Hen", "Egg", "Straw nest"],
+                fingerprint: "farmAnimals.creative.growing.nest"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Water Care Plan",
-                opening: "Farm animals need clean water every day.",
-                mission: "Use the inspiration. Write a water care plan.",
-                inspiration: "Inspiration: Clean water keeps animals healthy. Farmers check troughs, refill them, and keep dirt and ice from blocking drinking water.",
-                vocab: "trough",
-                vocabDef: "A trough is a long container that holds water or food for animals.",
-                fact: "Farm animals need clean drinking water checked every day.",
-                prompt: "Write a short care plan with a title, three water-check steps, and one sentence explaining why dirty water is a problem.",
-                response: .longText,
-                ending: "Your water care plan is ready for a real farm helper!",
-                reflection: "Which water-check step would you do first each morning?",
-                fingerprint: "farmAnimals.creative.confident.water-care"
+            return sceneDrawing(
+                title: "Pasture Rotation Drawing",
+                scene: "Cows graze in one green pasture. A gate is closed to a resting field. The resting field is taller grass. A farmer checks the fence.",
+                vocab: "pasture",
+                vocabDef: "A pasture is a grassy field where animals graze.",
+                fact: "Moving animals between pastures lets grass grow back.",
+                goals: ["Cows", "Green pasture", "Gate"],
+                fingerprint: "farmAnimals.creative.confident.pasture"
             )
         }
     }
@@ -1379,64 +979,44 @@ extension CuratedTopicLessonBank {
     private static func zooAnimalsCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Habitat Exhibit",
-                opening: "Zoo habitats can match what animals need.",
-                mission: "Use the inspiration. Draw one exhibit.",
-                inspiration: "Inspiration: A good zoo habitat gives space, shelter, water, and features like rocks or trees that fit the animal.",
-                vocab: "habitat",
-                vocabDef: "A habitat is a living place with what an animal needs.",
-                fact: "Zoo habitats can give animals space, shelter, and water.",
-                prompt: "Draw a zoo habitat with one animal, shelter, and water.",
-                response: .drawing,
-                ending: "Your habitat exhibit is thoughtful animal care!",
-                reflection: "What shelter did you include for the animal?",
-                fingerprint: "zooAnimals.creative.beginner.habitat"
+            return sceneDrawing(
+                title: "Giraffe Browse Drawing",
+                scene: "A giraffe stretches its long neck to high leaves. The giraffe is tan with brown patches. The leaves are green. A keeper watches from a path.",
+                vocab: "browse",
+                vocabDef: "Browse means to eat leaves from trees and shrubs.",
+                fact: "Giraffes use long necks to browse leaves high in trees.",
+                goals: ["Giraffe", "Long neck", "Leaves"],
+                fingerprint: "zooAnimals.creative.beginner.giraffe"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw an Adaptation Trait",
-                opening: "Adaptations can help animals survive.",
-                mission: "Use the inspiration. Draw one adaptation.",
-                inspiration: "Inspiration: A giraffe's long neck helps it reach high leaves. Thick fur can help other animals stay warm.",
-                vocab: "adaptation",
-                vocabDef: "An adaptation is a body trait or behavior that helps an animal survive.",
-                fact: "Adaptations help animals get food, stay safe, or stay warm.",
-                prompt: "Draw one zoo animal and clearly label one helpful body trait.",
-                response: .drawing,
-                ending: "Your adaptation art is a real survival idea!",
-                reflection: "Which body trait did you label on your animal?",
-                fingerprint: "zooAnimals.creative.early.adaptation"
+            return sceneDrawing(
+                title: "Penguin Colony Drawing",
+                scene: "Black-and-white penguins stand on rocks. One penguin slides into blue water. A nest of pebbles sits nearby. The sky is pale.",
+                vocab: "colony",
+                vocabDef: "A colony is a group of animals living together.",
+                fact: "Many penguins live in colonies and nest with pebbles.",
+                goals: ["Penguins", "Water", "Pebble nest"],
+                fingerprint: "zooAnimals.creative.early.penguins"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design Enrichment Play Ideas",
-                opening: "Enrichment can keep zoo animals active and curious.",
-                mission: "Use the inspiration. Write enrichment ideas.",
-                inspiration: "Inspiration: Enrichment can include climbing structures, puzzle feeders, and scent trails that encourage natural behaviors.",
-                vocab: "enrichment",
-                vocabDef: "Enrichment is activities and objects that keep animals active and curious.",
-                fact: "Enrichment helps zoo animals practice natural behaviors.",
-                prompt: "Write four sentences naming your enrichment plan, two activities, which animal they help, and why curiosity matters.",
-                response: .longText,
-                ending: "Your enrichment plan is ready for a zookeeper notebook!",
-                reflection: "Which enrichment activity best matches the animal's natural behavior?",
-                fingerprint: "zooAnimals.creative.growing.enrichment"
+            return sceneDrawing(
+                title: "Elephant Dust Bath Drawing",
+                scene: "An elephant throws tan dust on its back. The elephant is gray. A water hole is nearby. A calf stands in the shade.",
+                vocab: "dust bath",
+                vocabDef: "A dust bath is when an animal covers its skin with dry soil.",
+                fact: "Elephants can use dust to protect their skin.",
+                goals: ["Elephant", "Dust", "Calf"],
+                fingerprint: "zooAnimals.creative.growing.dust-bath"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Conservation Poster",
-                opening: "Conservation can protect animals and wild places.",
-                mission: "Use the inspiration. Write a conservation poster plan.",
-                inspiration: "Inspiration: Conservation can mean protecting habitats, reducing litter, and supporting careful wildlife science.",
-                vocab: "conservation",
-                vocabDef: "Conservation is actions that protect animals, plants, and wild places.",
-                fact: "Conservation helps protect animals and the places they need.",
-                prompt: "Write a short poster plan with a title, three helpful actions, and one sentence explaining how kids can help.",
-                response: .longText,
-                ending: "Your conservation poster is ready to inspire a whole community!",
-                reflection: "Which helpful action on your poster feels most doable for kids?",
-                fingerprint: "zooAnimals.creative.confident.conservation"
+            return sceneDrawing(
+                title: "Habitat Care Drawing",
+                scene: "A zookeeper rakes a habitat. Fresh branches are enrichment. A pool is clean and blue. A clipboard hangs on the gate.",
+                vocab: "enrichment",
+                vocabDef: "Enrichment is extra things that help zoo animals stay busy and well.",
+                fact: "Keepers give zoo animals enrichment so they can explore and stay healthy.",
+                goals: ["Keeper", "Branches", "Pool"],
+                fingerprint: "zooAnimals.creative.confident.enrichment"
             )
         }
     }
@@ -1446,98 +1026,45 @@ extension CuratedTopicLessonBank {
     private static func piratesCreative(_ level: ReadingLevel) -> CreativePack {
         switch level {
         case .beginner:
-            return waveECreative(
-                title: "Draw a Floating Boat",
-                opening: "Boats can float when water pushes up enough.",
-                mission: "Use the inspiration. Draw a floating boat.",
-                inspiration: "Inspiration: A boat floats when the upward push of water, called buoyancy, supports the boat's weight.",
-                vocab: "float",
-                vocabDef: "Float is when something stays on top of water without sinking.",
-                fact: "Boats can float when water pushes up enough to support them.",
-                prompt: "Draw a wooden boat floating on water with one upward arrow under the hull.",
-                response: .drawing,
-                ending: "Your floating boat is a real water science idea!",
-                reflection: "Where did you place the upward arrow under the boat?",
-                fingerprint: "pirates.creative.beginner.float-boat"
+            return sceneDrawing(
+                title: "Compass Drawing",
+                scene: "A pirate ship sails on blue water. A compass sits on the deck. The needle points north. A red sail catches the wind.",
+                vocab: "compass",
+                vocabDef: "A compass is a tool that shows direction.",
+                fact: "A compass needle points toward north.",
+                goals: ["Ship", "Compass", "Red sail"],
+                fingerprint: "pirates.creative.beginner.compass"
             )
         case .earlyReader:
-            return waveECreative(
-                title: "Draw Sail and Wind Power",
-                opening: "Sails can catch wind to move a boat.",
-                mission: "Use the inspiration. Draw sail and wind.",
-                inspiration: "Inspiration: Wind pushes against a sail. That push can move the boat forward across the water.",
-                vocab: "sail",
-                vocabDef: "A sail is a large cloth that catches wind to move a boat.",
-                fact: "Wind pushing on sails can move a boat forward.",
-                prompt: "Draw a sailboat with a full sail and wind arrows pushing the sail.",
-                response: .drawing,
-                ending: "Your sail and wind art is a clear picture of how boats can move!",
-                reflection: "Which way do your wind arrows push the sail?",
-                fingerprint: "pirates.creative.early.sail-wind"
+            return sceneDrawing(
+                title: "Tide Chart Drawing",
+                scene: "A pirate studies a tide chart by lantern light. High tide and low tide are marked. The harbor is brown at low water. The chart is tan paper.",
+                vocab: "tide chart",
+                vocabDef: "A tide chart shows when the water will be high or low.",
+                fact: "Sailors use tide charts to know when a harbor is deep enough.",
+                goals: ["Tide chart", "Lantern", "Harbor"],
+                fingerprint: "pirates.creative.early.tide-chart"
             )
         case .growingReader:
-            return waveECreative(
-                title: "Design a Compass Guide Card",
-                opening: "A compass can help travelers find direction.",
-                mission: "Use the inspiration. Write a compass guide.",
-                inspiration: "Inspiration: A compass needle points toward magnetic north. Travelers can use north to judge east, south, and west.",
-                vocab: "compass",
-                vocabDef: "A compass is a tool that shows direction using a magnetic needle.",
-                fact: "A compass needle points toward magnetic north to help with direction.",
-                prompt: "Write four sentences naming your guide, what the needle does, how to find east from north, and one reason direction matters at sea.",
-                response: .longText,
-                ending: "Your compass guide card is ready for a navigation kit!",
-                reflection: "How would you find east using your compass guide?",
-                fingerprint: "pirates.creative.growing.compass"
+            return sceneDrawing(
+                title: "Lookout Drawing",
+                scene: "A lookout stands in the crow's nest. A spyglass is brown. White clouds sit on the horizon. The sea is dark blue.",
+                vocab: "lookout",
+                vocabDef: "A lookout is a person who watches for land, ships, or weather.",
+                fact: "A high lookout can see farther across the water.",
+                goals: ["Lookout", "Spyglass", "Horizon"],
+                fingerprint: "pirates.creative.growing.lookout"
             )
         case .confidentReader:
-            return waveECreative(
-                title: "Write a Map Scale Plan",
-                opening: "Map scale can show how map distance relates to real distance.",
-                mission: "Use the inspiration. Write a map scale plan.",
-                inspiration: "Inspiration: A map scale might say one finger width equals one kilometer. Scale helps sailors estimate how far a journey really is.",
-                vocab: "scale",
-                vocabDef: "Scale is a rule that shows how map distance matches real distance.",
-                fact: "Map scale helps people estimate real travel distance.",
-                prompt: "Write a short map scale plan with a title, your scale rule, two measured journey lengths, and one sentence explaining why scale prevents wrong distance guesses.",
-                response: .longText,
-                ending: "Your map scale plan is ready for a real navigation lesson!",
-                reflection: "Which journey length on your plan uses the scale most clearly?",
-                fingerprint: "pirates.creative.confident.map-scale"
+            return sceneDrawing(
+                title: "Harbor Map Drawing",
+                scene: "A harbor map shows a channel, a sandbar, and a lighthouse. The lighthouse is white with a black stripe. Safe water is blue. The sandbar is tan.",
+                vocab: "channel",
+                vocabDef: "A channel is a deeper path ships use in a harbor.",
+                fact: "Harbor maps mark channels so ships can avoid shallow sandbars.",
+                goals: ["Channel", "Sandbar", "Lighthouse"],
+                fingerprint: "pirates.creative.confident.harbor-map"
             )
         }
-    }
-
-    // MARK: - Wave E Creative helper
-
-    /// Wave E packs share Wave C's creative builder (unique missions / hints / vocab examples).
-    private static func waveECreative(
-        title: String,
-        opening: String,
-        mission: String,
-        inspiration: String,
-        vocab: String,
-        vocabDef: String,
-        fact: String,
-        prompt: String,
-        response: QuestionResponseType,
-        ending: String,
-        reflection: String,
-        fingerprint: String
-    ) -> CreativePack {
-        creative(
-            title: title,
-            opening: opening,
-            mission: mission,
-            inspiration: inspiration,
-            vocab: vocab,
-            vocabDef: vocabDef,
-            fact: fact,
-            prompt: prompt,
-            response: response,
-            ending: ending,
-            reflection: reflection,
-            fingerprint: fingerprint
-        )
     }
 }

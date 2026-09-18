@@ -29,7 +29,8 @@ struct ParentSummaryView: View {
                 accent: DesignSystem.Colors.skyBlue,
                 secondary: DesignSystem.Colors.freshGreen,
                 tertiary: DesignSystem.Colors.lavenderPurple,
-                intensity: 0.45
+                intensity: 0.45,
+                showsSparkles: false
             )
 
             ScrollView(showsIndicators: false) {

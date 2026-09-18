@@ -101,24 +101,28 @@ struct SoftBubbleAtmosphere: View {
     var secondary: Color = DesignSystem.Colors.sunshineYellow
     var tertiary: Color = DesignSystem.Colors.lavenderPurple
     var intensity: Double = 1.0
+    var showsSparkles: Bool = true
 
     init(
         accent: Color = DesignSystem.Colors.skyBlue,
         secondary: Color = DesignSystem.Colors.sunshineYellow,
         tertiary: Color = DesignSystem.Colors.lavenderPurple,
-        intensity: Double = 1.0
+        intensity: Double = 1.0,
+        showsSparkles: Bool = true
     ) {
         self.accent = accent
         self.secondary = secondary
         self.tertiary = tertiary
         self.intensity = intensity
+        self.showsSparkles = showsSparkles
     }
 
-    init(topic: Topic, intensity: Double = 1.0) {
+    init(topic: Topic, intensity: Double = 1.0, showsSparkles: Bool = true) {
         self.accent = TopicPalette.color(for: topic)
         self.secondary = DesignSystem.Colors.sunshineYellow
         self.tertiary = DesignSystem.Colors.skyBlue
         self.intensity = intensity
+        self.showsSparkles = showsSparkles
     }
 
     var body: some View {
@@ -159,10 +163,82 @@ struct SoftBubbleAtmosphere: View {
                     .blur(radius: 22)
                     .position(x: geo.size.width * 0.88, y: geo.size.height * 0.68)
                     .floating(offset: 7, delay: 1.3)
+
+                if showsSparkles {
+                    IdleSparkleField(count: 10, intensity: min(1, i))
+                }
             }
         }
         .ignoresSafeArea()
         .allowsHitTesting(false)
+    }
+}
+
+/// Twinkling stars and sparkles that reuse the existing celebration icons.
+struct IdleSparkleField: View {
+    var count: Int = 10
+    var intensity: Double = 1.0
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.illustrationAnimates) private var illustrationAnimates
+
+    private let colors: [Color] = [
+        DesignSystem.Colors.sunshineYellow,
+        DesignSystem.Colors.coralPink,
+        DesignSystem.Colors.skyBlue,
+        DesignSystem.Colors.brightLavender,
+        DesignSystem.Colors.freshGreen
+    ]
+
+    var body: some View {
+        GeometryReader { geo in
+            if illustrationAnimates && !reduceMotion {
+                ForEach(0..<count, id: \.self) { i in
+                    IdleSparkle(
+                        index: i,
+                        color: colors[i % colors.count],
+                        canvas: geo.size
+                    )
+                }
+            }
+        }
+        .allowsHitTesting(false)
+        .opacity(intensity)
+    }
+}
+
+private struct IdleSparkle: View {
+    let index: Int
+    let color: Color
+    let canvas: CGSize
+    @State private var twinkle = false
+
+    var body: some View {
+        Image(systemName: index.isMultiple(of: 2) ? "star.fill" : "sparkle")
+            .font(.system(size: size, weight: .bold))
+            .foregroundStyle(color.opacity(twinkle ? 0.92 : 0.22))
+            .scaleEffect(twinkle ? 1.14 : 0.78)
+            .rotationEffect(.degrees(twinkle ? 14 : -10))
+            .position(x: canvas.width * x, y: canvas.height * y)
+            .offset(y: twinkle ? -6 : 4)
+            .onAppear {
+                withAnimation(DesignSystem.Animation.twinkle.delay(Double(index) * 0.16)) {
+                    twinkle = true
+                }
+            }
+            .accessibilityHidden(true)
+    }
+
+    private var size: CGFloat { [9, 12, 8, 11, 10][index % 5] }
+
+    private var x: CGFloat {
+        let xs: [CGFloat] = [0.08, 0.22, 0.38, 0.55, 0.72, 0.88, 0.14, 0.64, 0.81, 0.42, 0.93, 0.31]
+        return xs[index % xs.count]
+    }
+
+    private var y: CGFloat {
+        let ys: [CGFloat] = [0.12, 0.28, 0.18, 0.08, 0.34, 0.22, 0.72, 0.78, 0.62, 0.86, 0.48, 0.68]
+        return ys[index % ys.count]
     }
 }
 
@@ -236,8 +312,10 @@ struct SoftStatBubble: View {
                 Image(systemName: icon)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.white)
+                    .symbolEffect(.bounce, value: value)
             }
             .floating(offset: 4, delay: floatDelay)
+            .idlePulse(scale: 1.05, delay: floatDelay)
 
             Text(value)
                 .font(DesignSystem.Typography.title(18))
@@ -300,18 +378,24 @@ struct PrimaryGradientButton: View {
     var isEnabled: Bool = true
     let action: () -> Void
 
+    @State private var iconBounce = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         Button(action: action) {
             HStack(spacing: DesignSystem.Spacing.sm) {
                 if let icon {
                     Image(systemName: icon)
                         .font(.title3.weight(.semibold))
+                        .symbolEffect(.bounce, value: iconBounce)
+                        .idlePulse(scale: isEnabled && !reduceMotion ? 1.08 : 1, delay: 0.2)
                 }
                 Text(title)
             }
         }
         .buttonStyle(PrimaryButtonStyle(isEnabled: isEnabled))
         .disabled(!isEnabled)
+        .onAppear { iconBounce = true }
     }
 }
 
@@ -330,17 +414,21 @@ struct SecondaryButton: View {
     var icon: String? = nil
     let action: () -> Void
 
+    @State private var iconBounce = false
+
     var body: some View {
         Button(action: action) {
             HStack(spacing: DesignSystem.Spacing.sm) {
                 if let icon {
                     Image(systemName: icon)
                         .font(.body.weight(.semibold))
+                        .symbolEffect(.bounce, value: iconBounce)
                 }
                 Text(title)
             }
         }
         .buttonStyle(SecondaryButtonStyle())
+        .onAppear { iconBounce = true }
     }
 }
 
@@ -445,27 +533,17 @@ struct LessonOptionCard: View {
 
                     Spacer(minLength: 0)
 
-                    VStack(alignment: .trailing, spacing: 6) {
-                        HStack(spacing: 5) {
-                            Image(systemName: lesson.category.iconSystemName)
-                                .font(.system(size: 10, weight: .bold))
-                            Text(lesson.category.shortLabel.uppercased())
-                                .font(DesignSystem.Typography.label(10))
-                        }
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(.white.opacity(0.22))
-                        .clipShape(Capsule())
-
-                        Text("\(lesson.estimatedMinutes) min")
-                            .font(DesignSystem.Typography.caption(11).weight(.semibold))
-                            .foregroundStyle(.white.opacity(0.95))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background(.black.opacity(0.18))
-                            .clipShape(Capsule())
+                    HStack(spacing: 5) {
+                        Image(systemName: lesson.category.iconSystemName)
+                            .font(.system(size: 10, weight: .bold))
+                        Text(lesson.category.shortLabel.uppercased())
+                            .font(DesignSystem.Typography.label(10))
                     }
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(.white.opacity(0.22))
+                    .clipShape(Capsule())
                 }
                 .padding(DesignSystem.Spacing.md)
             }
@@ -489,10 +567,7 @@ struct LessonOptionCard: View {
                     .lineLimit(3)
                     .fixedSize(horizontal: false, vertical: true)
 
-                HStack(spacing: 8) {
-                    metaChip(icon: "sparkles", text: lesson.difficultyLabel)
-                    metaChip(icon: "clock.fill", text: "\(lesson.estimatedMinutes) min")
-                }
+                metaChip(icon: "sparkles", text: lesson.difficultyLabel)
 
                 FlowLayout(spacing: 6) {
                     ForEach(Array(lesson.skillsPracticed.prefix(3)), id: \.self) { skill in
@@ -546,6 +621,7 @@ typealias LessonCard = LessonOptionCard
 // MARK: - Mascot View
 
 enum MascotKind {
+    case finnShark
     case willaWhale
     case novaStar
     case dottieDino
@@ -554,7 +630,8 @@ enum MascotKind {
 
     static func forTopic(_ topic: Topic) -> MascotKind {
         switch topic {
-        case .sharks, .oceanAnimals, .pirates: return .willaWhale
+        case .sharks: return .finnShark
+        case .oceanAnimals: return .willaWhale
         case .space, .planets, .rockets: return .novaStar
         case .dinosaurs, .volcanoes: return .dottieDino
         case .horses, .farmAnimals: return .sunnyHorse
@@ -564,6 +641,7 @@ enum MascotKind {
 
     var name: String {
         switch self {
+        case .finnShark: return "Finn"
         case .willaWhale: return "Willa"
         case .novaStar: return "Nova"
         case .dottieDino: return "Dottie"
@@ -581,9 +659,14 @@ struct MascotView: View {
 
     @State private var bobbing = false
     @State private var pulse = false
+    @State private var blink = false
+    @State private var looking = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var kind: MascotKind { MascotKind.forTopic(topic) }
     private var themeColor: Color { TopicPalette.color(for: topic) }
+    private var motionEnabled: Bool { animates && !reduceMotion }
+    private let blinkTimer = Timer.publish(every: 3.4, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ZStack {
@@ -597,28 +680,62 @@ struct MascotView: View {
                     )
                 )
                 .frame(width: size * 1.1, height: size * 1.1)
-                .scaleEffect(celebrate && pulse ? 1.08 : 1)
+                .scaleEffect(celebrate && pulse ? 1.12 : 1)
 
             mascotFace
-                .scaleEffect(celebrate ? (pulse ? 1.06 : 1.0) : 1.0)
+                .scaleEffect(celebrate ? (pulse ? 1.08 : 1.0) : 1.0)
         }
-        .offset(y: animates && bobbing ? -4 : 0)
+        .offset(y: motionEnabled && bobbing ? (celebrate ? -8 : -4) : 0)
+        .rotationEffect(.degrees(motionEnabled && bobbing ? (celebrate ? 5 : 3) : (motionEnabled ? (celebrate ? -4 : -2) : 0)))
         .onAppear {
-            guard animates else { return }
+            guard motionEnabled else { return }
             withAnimation(DesignSystem.Animation.bob) { bobbing = true }
+            withAnimation(DesignSystem.Animation.idle.delay(0.35)) { looking = true }
             guard celebrate else { return }
             withAnimation(DesignSystem.Animation.twinkle) { pulse = true }
+        }
+        .onReceive(blinkTimer) { _ in
+            guard motionEnabled else { return }
+            withAnimation(.easeInOut(duration: 0.08)) { blink = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+                withAnimation(.easeInOut(duration: 0.12)) { blink = false }
+            }
         }
     }
 
     @ViewBuilder
     private var mascotFace: some View {
         switch kind {
+        case .finnShark: sharkFace
         case .willaWhale: whaleFace
         case .novaStar: starFace
         case .dottieDino: dinoFace
         case .sunnyHorse: horseFace
         case .sparkBuddy: buddyFace
+        }
+    }
+
+    private var sharkFace: some View {
+        ZStack {
+            Triangle()
+                .fill(themeColor)
+                .frame(width: size * 0.22, height: size * 0.2)
+                .rotationEffect(.degrees(-90))
+                .offset(y: -size * 0.2)
+                .wiggle(degrees: 8, delay: 0.15)
+            Ellipse()
+                .fill(themeColor)
+                .frame(width: size * 0.62, height: size * 0.34)
+            Ellipse()
+                .fill(themeColor)
+                .frame(width: size * 0.3, height: size * 0.2)
+                .offset(x: -size * 0.22)
+            Triangle()
+                .fill(themeColor.opacity(0.75))
+                .frame(width: size * 0.16, height: size * 0.16)
+                .offset(x: size * 0.3)
+            mascotEyes(offsetY: -size * 0.04)
+            smileArc.offset(x: -size * 0.1, y: size * 0.06)
         }
     }
 
@@ -651,6 +768,7 @@ struct MascotView: View {
                     )
                 )
                 .frame(width: size * 0.5, height: size * 0.5)
+                .wiggle(degrees: 6, delay: 0.2)
             mascotEyes(offsetY: -size * 0.02)
             smileArc.offset(y: size * 0.1)
         }
@@ -682,6 +800,7 @@ struct MascotView: View {
                 .frame(width: size * 0.18, height: size * 0.28)
                 .offset(x: -size * 0.2, y: -size * 0.12)
                 .rotationEffect(.degrees(-20))
+                .wiggle(degrees: 7, delay: 0.25)
             mascotEyes(offsetY: -size * 0.02)
             smileArc.offset(y: size * 0.08)
         }
@@ -708,13 +827,18 @@ struct MascotView: View {
             eye
         }
         .offset(y: offsetY)
+        .offset(x: looking ? size * 0.02 : -size * 0.02)
     }
 
     private var eye: some View {
         ZStack {
             Circle().fill(.white).frame(width: size * 0.12, height: size * 0.12)
-            Circle().fill(DesignSystem.Colors.deepNavy).frame(width: size * 0.06, height: size * 0.06)
+            Circle()
+                .fill(DesignSystem.Colors.deepNavy)
+                .frame(width: size * 0.06, height: size * 0.06)
+                .offset(x: looking ? 1 : -1)
         }
+        .scaleEffect(x: 1, y: blink ? 0.12 : 1)
     }
 
     private var smileArc: some View {
@@ -877,11 +1001,13 @@ struct AnswerButton: View {
                         .foregroundStyle(DesignSystem.Colors.successGreen)
                         .accessibilityHidden(true)
                         .transition(.scale.combined(with: .opacity))
+                        .symbolEffect(.bounce, value: isCorrect)
                 } else if isIncorrect {
                     Image(systemName: "arrow.counterclockwise.circle.fill")
                         .font(.title2)
                         .foregroundStyle(DesignSystem.Colors.softRed)
                         .accessibilityHidden(true)
+                        .symbolEffect(.bounce, value: isIncorrect)
                 } else if isSelected {
                     Image(systemName: "circle.fill")
                         .font(.caption)
@@ -901,11 +1027,20 @@ struct AnswerButton: View {
                 RoundedRectangle(cornerRadius: DesignSystem.Radius.mediumRadius, style: .continuous)
                     .stroke(borderColor, lineWidth: isSelected || isCorrect || isIncorrect ? 2.5 : 1)
             )
-            .scaleEffect(isCorrect ? 1.02 : 1)
+            .scaleEffect(isCorrect ? 1.03 : 1)
         }
         .buttonStyle(BouncyCardButtonStyle())
         .sensoryFeedback(.selection, trigger: isSelected)
         .sensoryFeedback(.success, trigger: isCorrect)
+        .shake(trigger: isIncorrect)
+        .overlay {
+            if isCorrect {
+                CelebrationView()
+                    .scaleEffect(0.72)
+                    .offset(y: -18)
+                    .allowsHitTesting(false)
+            }
+        }
         .animation(DesignSystem.Animation.cardSelectAnimation, value: isCorrect)
         .animation(DesignSystem.Animation.cardSelectAnimation, value: isIncorrect)
         .animation(DesignSystem.Animation.cardSelectAnimation, value: isSelected)
@@ -954,7 +1089,8 @@ struct FeedbackCard: View {
                 Image(systemName: isCorrect ? "star.circle.fill" : "lightbulb.fill")
                     .font(.title2)
                     .foregroundStyle(isCorrect ? DesignSystem.Colors.sunshineYellow : DesignSystem.Colors.warmOrange)
-                    .scaleEffect(bounce ? 1.15 : 1)
+                    .scaleEffect(bounce ? 1.18 : 1)
+                    .symbolEffect(.bounce, value: bounce)
                     .accessibilityHidden(true)
 
                 Text(message)
@@ -971,6 +1107,16 @@ struct FeedbackCard: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .transition(.opacity.combined(with: .move(edge: .bottom)).combined(with: .scale(scale: 0.97)))
+        .overlay(alignment: .topTrailing) {
+            if isCorrect {
+                Image(systemName: "sparkle")
+                    .font(.title3)
+                    .foregroundStyle(DesignSystem.Colors.sunshineYellow)
+                    .idlePulse(scale: 1.2, delay: 0.1)
+                    .offset(x: 4, y: -6)
+                    .accessibilityHidden(true)
+            }
+        }
         .onAppear {
             guard isCorrect else { return }
             withAnimation(DesignSystem.Animation.celebrate) { bounce = true }
@@ -993,7 +1139,11 @@ struct CelebrationView: View {
         (14, -15, -95, DesignSystem.Colors.coralPink, "star.fill"),
         (12, 70, -15, DesignSystem.Colors.freshGreen, "sparkle"),
         (10, -55, 30, DesignSystem.Colors.sunshineYellow, "star.fill"),
-        (13, 20, -60, DesignSystem.Colors.brightLavender, "sparkle")
+        (13, 20, -60, DesignSystem.Colors.brightLavender, "sparkle"),
+        (11, 80, -70, DesignSystem.Colors.skyBlue, "star.fill"),
+        (15, -85, -30, DesignSystem.Colors.warmOrange, "sparkle"),
+        (9, 10, 25, DesignSystem.Colors.coralPink, "sparkle"),
+        (12, -25, 18, DesignSystem.Colors.sunshineYellow, "star.fill")
     ]
 
     var body: some View {
@@ -1036,7 +1186,7 @@ struct ConfettiView: View {
 
     var body: some View {
         GeometryReader { geo in
-            ForEach(0..<12, id: \.self) { i in
+            ForEach(0..<16, id: \.self) { i in
                 confettiPiece(index: i, geo: geo)
             }
         }
@@ -1044,20 +1194,29 @@ struct ConfettiView: View {
         .onAppear { falling = true }
     }
 
+    @ViewBuilder
     private func confettiPiece(index i: Int, geo: GeometryProxy) -> some View {
-        let xPos = CGFloat(i % 6) / 6 * geo.size.width - geo.size.width * 0.42
-        let yEnd = geo.size.height * 0.5
+        let xPos = CGFloat(i % 8) / 8 * geo.size.width - geo.size.width * 0.44
+        let yEnd = geo.size.height * 0.55
         let yStart = -geo.size.height * 0.08
         let w: CGFloat = i.isMultiple(of: 2) ? 6 : 5
         let h: CGFloat = i.isMultiple(of: 2) ? 9 : 7
 
-        return RoundedRectangle(cornerRadius: 1.5)
-            .fill(colors[i % colors.count].opacity(0.85))
-            .frame(width: w, height: h)
-            .rotationEffect(.degrees(falling ? Double(i * 31) : 0))
-            .offset(x: xPos, y: falling ? yEnd : yStart)
-            .opacity(falling ? 0 : 0.75)
-            .animation(.easeIn(duration: 1.4 + Double(i % 3) * 0.2).delay(Double(i) * 0.06), value: falling)
+        Group {
+            if i.isMultiple(of: 3) {
+                Image(systemName: i.isMultiple(of: 2) ? "star.fill" : "sparkle")
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundStyle(colors[i % colors.count])
+            } else {
+                RoundedRectangle(cornerRadius: 1.5)
+                    .fill(colors[i % colors.count].opacity(0.85))
+                    .frame(width: w, height: h)
+            }
+        }
+        .rotationEffect(.degrees(falling ? Double(i * 31) : 0))
+        .offset(x: xPos, y: falling ? yEnd : yStart)
+        .opacity(falling ? 0 : 0.85)
+        .animation(.easeIn(duration: 1.4 + Double(i % 3) * 0.2).delay(Double(i) * 0.05), value: falling)
     }
 }
 
@@ -1142,6 +1301,8 @@ struct SparkInputCard<Content: View>: View {
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     .shadow(color: accent.opacity(0.25), radius: 4, y: 2)
+                    .symbolEffect(.bounce, value: title)
+                    .idlePulse(scale: 1.06, delay: 0.2)
 
                 Text(title)
                     .font(DesignSystem.Typography.sectionHeader(15))
@@ -1345,6 +1506,8 @@ struct EmptyStateCard: View {
                 Image(systemName: icon)
                     .font(.system(size: 32, weight: .semibold))
                     .foregroundStyle(accent)
+                    .symbolEffect(.bounce, value: title)
+                    .idlePulse(scale: 1.08, delay: 0.15)
             }
 
             VStack(spacing: DesignSystem.Spacing.xs) {
@@ -1403,7 +1566,7 @@ struct WelcomeHeroIllustration: View {
                     Circle()
                         .fill(TopicPalette.color(for: orbitTopics[i]).opacity(0.15))
                         .frame(width: 52, height: 52)
-                    TopicIllustrationView(topic: orbitTopics[i], size: 36, animate: false)
+                    TopicIllustrationView(topic: orbitTopics[i], size: 36, animate: true)
                 }
                 .offset(orbitOffset(for: i))
                 .floating(offset: 4, delay: Double(i) * 0.3)

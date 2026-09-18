@@ -31,6 +31,21 @@ final class ChildFacingProseQualityTests: XCTestCase {
         )
     }
 
+    func testPolishRemovesCircleThemAsYouCountFromDrawingPrompts() {
+        XCTAssertEqual(
+            ChildFacingProseQualityValidator.polish(
+                "Draw 5 roses in the castle garden and circle them as you count."
+            ),
+            "Draw 5 roses in the castle garden."
+        )
+        XCTAssertEqual(
+            ChildFacingProseQualityValidator.polish(
+                "Draw 3 apples in the barn. Then draw 2 more apples. Circle both groups as you add."
+            ),
+            "Draw 3 apples in the barn. Then draw 2 more apples."
+        )
+    }
+
     func testPolishRemovesCommaPeriodLeftovers() {
         let broken = "Morning light made the water look calm,. Ripples near the rocks suggested something moved below."
         let polished = ChildFacingProseQualityValidator.polish(broken)
@@ -242,7 +257,7 @@ final class ChildFacingProseQualityTests: XCTestCase {
         let headline = ProgressSummary.shortHeadline(from: story.storyEnding)
         XCTAssertTrue(
             headline.localizedCaseInsensitiveContains("shark")
-                || headline.localizedCaseInsensitiveContains("Willa"),
+                || headline.localizedCaseInsensitiveContains("Finn"),
             "Got headline: \(headline)"
         )
 
@@ -268,7 +283,7 @@ final class ChildFacingProseQualityTests: XCTestCase {
         XCTAssertTrue(
             math.missionPrompt.localizedCaseInsensitiveContains("shell")
                 || math.missionPrompt.localizedCaseInsensitiveContains("coral")
-                || math.missionPrompt.localizedCaseInsensitiveContains("Willa"),
+                || math.missionPrompt.localizedCaseInsensitiveContains("Finn"),
             "Got: \(math.missionPrompt)"
         )
     }
@@ -936,6 +951,14 @@ final class ChildFacingProseQualityTests: XCTestCase {
                 lesson.missionPrompt.localizedCaseInsensitiveContains("match"),
                 "\(topic.rawValue) mission should ask kids to match. Got: \(lesson.missionPrompt)"
             )
+            XCTAssertFalse(
+                scene.readingPassage.localizedCaseInsensitiveContains("into groups of"),
+                "\(topic.rawValue) Read Along still bolts on unused packing counts. Got: \(scene.readingPassage)"
+            )
+            XCTAssertFalse(
+                scene.readingPassage.localizedCaseInsensitiveContains("easy to count"),
+                "\(topic.rawValue) Read Along still uses the packing template. Got: \(scene.readingPassage)"
+            )
             guard let missionSize = MissionPromptNormalizer.groupSize(in: lesson.missionPrompt) else {
                 return XCTFail("\(topic.rawValue) mission never names a group size. Got: \(lesson.missionPrompt)")
             }
@@ -947,10 +970,10 @@ final class ChildFacingProseQualityTests: XCTestCase {
                 missionSize,
                 "\(topic.rawValue) math should use the same group size as the mission (\(missionSize)). Got: \(mathPrompts)"
             )
-            if let packItem = packItem(from: scene.readingPassage) {
+            if let packItem = packItem(from: mathPrompts) {
                 XCTAssertTrue(
-                    mathPrompts.contains(packItem) || lesson.missionPrompt.lowercased().contains(packItem),
-                    "\(topic.rawValue) grouping math should use the story items (\(packItem)). Got: \(mathPrompts)"
+                    lesson.missionPrompt.lowercased().contains(packItem),
+                    "\(topic.rawValue) grouping math should use the story items (\(packItem)). Got: \(lesson.missionPrompt)"
                 )
             }
             XCTAssertFalse(
@@ -999,6 +1022,8 @@ final class ChildFacingProseQualityTests: XCTestCase {
         XCTAssertFalse(lesson.missionPrompt.localizedCaseInsensitiveContains("count the measuring"))
         XCTAssertFalse(lesson.readingPassage.contains("Spoons, cups."))
         XCTAssertFalse(lesson.readingPassage.contains("Spice jars, cups."))
+        XCTAssertFalse(lesson.readingPassage.localizedCaseInsensitiveContains("into groups of"))
+        XCTAssertFalse(lesson.readingPassage.localizedCaseInsensitiveContains("packs 20"))
         XCTAssertTrue(ChildFacingProseQualityValidator.passes(lesson.storyOpening), "Got: \(lesson.storyOpening)")
         XCTAssertTrue(
             ChildFacingProseQualityValidator.validate(lesson.missionPrompt, allowShortImperative: true).passed,
@@ -1093,7 +1118,7 @@ final class ChildFacingProseQualityTests: XCTestCase {
 
 
     func testGroupingMatchExtractsKitchenTrays() {
-        let passage = "Chef Dara puts the spoons in the utensil tray. She puts the cups in the drink tray. She puts the spice jars on the spice shelf. Then she packs 20 spice jars into groups of 10."
+        let passage = "Chef Dara puts the spoons in the utensil tray. She puts the cups in the drink tray. She puts the spice jars on the spice shelf. Now she is ready for dinner."
         let question = GroupingSortQuestionBuilder.question(from: passage)
         XCTAssertNotNil(question)
         XCTAssertEqual(question?.responseType, .matching)
@@ -1104,15 +1129,15 @@ final class ChildFacingProseQualityTests: XCTestCase {
         XCTAssertTrue(lefts.contains("spice jars"))
     }
 
-    private func packItem(from passage: String) -> String? {
-        guard let regex = try? NSRegularExpression(pattern: #"packs \d+ (.+?) into groups"#) else {
+    private func packItem(from text: String) -> String? {
+        guard let regex = try? NSRegularExpression(pattern: #"has \d+ (.+?)\. .+ put[s]? them in groups"#) else {
             return nil
         }
-        let range = NSRange(passage.startIndex..., in: passage)
-        guard let match = regex.firstMatch(in: passage, range: range),
-              let itemRange = Range(match.range(at: 1), in: passage) else {
+        let range = NSRange(text.startIndex..., in: text)
+        guard let match = regex.firstMatch(in: text, range: range),
+              let itemRange = Range(match.range(at: 1), in: text) else {
             return nil
         }
-        return String(passage[itemRange]).lowercased()
+        return String(text[itemRange]).lowercased()
     }
 }

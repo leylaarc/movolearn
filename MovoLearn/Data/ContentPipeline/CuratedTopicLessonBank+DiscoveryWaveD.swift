@@ -42,7 +42,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Tide Pool Homes",
                 storyOpening: "Willa the whale nudges you toward the shore. When the ocean pulls back, little pools of water stay trapped like secret bathtubs in the rocks.",
-                missionPrompt: "Hunt for one true science fact about tide pools in the notes.",
+                missionPrompt: "Hunt for one fact about tide pools in the notes.",
                 readingPassage: "A tide pool is a small pool of ocean water. Rocks hold the water when the tide goes out. Tiny crabs can hide there between wet stones. Cool water keeps the pool wet even in the sun.",
                 questions: [
                     discoveryMCQ(
@@ -322,7 +322,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Earth Is Our Home",
                 storyOpening: "Nova the star twinkles beside you in the night sky. Look up—our whole world is one bright blue ball spinning in space.",
-                missionPrompt: "Spot one true fact about Earth from the science notes.",
+                missionPrompt: "Spot one fact about Earth from the science notes.",
                 readingPassage: "Earth is the planet where we live. It has land, water, and air. The Sun gives Earth light and warmth. Without that warmth, oceans would freeze solid. Earth is our home in space.",
                 questions: [
                     discoveryMCQ(
@@ -602,7 +602,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Countdown Ready",
                 storyOpening: "Nova the star hovers near the launch pad and counts with you. Before a rocket leaves the ground, every number in the countdown matters.",
-                missionPrompt: "Find one true science fact about how countdown checks keep a launch ready.",
+                missionPrompt: "Find one fact about how countdown checks keep a launch ready.",
                 readingPassage: "A countdown helps a rocket team get ready. Each step checks a part of the launch. Teams listen for go or wait. Careful checks keep people safe. One missed check can stop a whole liftoff.",
                 questions: [
                     discoveryMCQ(
@@ -882,7 +882,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Kick Force",
                 storyOpening: "Movo, your spark buddy, taps the soccer ball with a grin. Feel how hard a kick pushes—that force is real science at work.",
-                missionPrompt: "Pick out one true fact about kicking force from the notes.",
+                missionPrompt: "Pick out one fact about kicking force from the notes.",
                 readingPassage: "A kick pushes the ball with force. A stronger kick can make the ball travel farther. Your foot transfers energy to the ball. Force starts the ball moving. The harder the push, the longer the roll across the grass.",
                 questions: [
                     discoveryMCQ(
@@ -941,7 +941,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Bounce Energy",
                 storyOpening: "Movo watches a soccer ball hit the grass with you. It flattens for a blink, then leaps back up—come see the bounce energy!",
-                missionPrompt: "Hunt for one true science fact about bounce energy in the notes.",
+                missionPrompt: "Hunt for one fact about bounce energy in the notes.",
                 readingPassage: "When a soccer ball hits the ground, it squashes a little. Stored energy pushes the ball back up. A bouncy ball returns more energy than a soft flat ball. The ground and the ball share the bounce. Bounce is energy changing form during the hit.",
                 questions: [
                     discoveryMCQ(
@@ -1162,7 +1162,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Ball Bounce",
                 storyOpening: "Movo bounces a basketball beside you. Watch it hit the floor—it squishes, then springs back up like a tiny trampoline.",
-                missionPrompt: "Catch one true science fact about bounce in the notes.",
+                missionPrompt: "Catch one fact about bounce in the notes.",
                 readingPassage: "A basketball bounces when it hits the floor. Air inside the ball helps it spring back. A soft flat ball bounces less. Bounce helps you dribble. The air acts like a hidden spring under your hand.",
                 questions: [
                     discoveryMCQ(
@@ -1221,7 +1221,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Shot Arc",
                 storyOpening: "Movo tosses a soft arc toward the hoop with you. Gravity pulls the ball back down—come wonder about that path!",
-                missionPrompt: "Spot one true fact about a basketball shot's path in the notes.",
+                missionPrompt: "Spot one fact about a basketball shot's path in the notes.",
                 readingPassage: "A basketball shot often follows a curved path called an arc. The ball rises, then falls toward the hoop. Gravity pulls the ball downward after the rise. A flat throw may hit the rim more often. Arc shape matters for aiming at the basket.",
                 questions: [
                     discoveryMCQ(
@@ -1442,7 +1442,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Claws That Hide",
                 storyOpening: "Movo tiptoes beside a quiet cat. It walks so softly you barely hear it—because its claws can vanish into soft paws.",
-                missionPrompt: "Discover one true fact about cat claws in the science notes.",
+                missionPrompt: "Discover one fact about cat claws in the science notes.",
                 readingPassage: "Cats can pull their claws in and out. Hidden claws stay sharp. Claws help a cat climb and grip. Soft paws hide the claws when a cat walks. That secret hide keeps the tips ready for the next climb.",
                 questions: [
                     discoveryMCQ(
@@ -1501,7 +1501,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Night Eyes",
                 storyOpening: "Movo peeks down a dim hallway with you. A cat's eyes still catch shapes you might miss—come wonder how!",
-                missionPrompt: "Hunt for one true science fact about night vision in the notes.",
+                missionPrompt: "Hunt for one fact about night vision in the notes.",
                 readingPassage: "Cats can see well in dim light. Their eyes open wide to take in more light. A special layer in the eye can bounce light back. That bounce helps night vision. Bright noon sun still looks strong to a cat, so shade can feel easier.",
                 questions: [
                     discoveryMCQ(
@@ -1722,7 +1722,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Metal Crowns",
                 storyOpening: "Movo gazes at a sparkling crown under candlelight. What keeps those heavy gems from falling? Let's find out together!",
-                missionPrompt: "Look for one true science fact about crown metals in the notes.",
+                missionPrompt: "Look for one fact about crown metals in the notes.",
                 readingPassage: "Some crowns are made of metal. Metal can be strong and shiny. Soft cloth alone cannot hold heavy gems well. Strong metal supports the shape. One solid band can carry gems that would tear soft fabric.",
                 questions: [
                     discoveryMCQ(
@@ -1781,7 +1781,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Stained-Glass Light",
                 storyOpening: "Movo steps into rainbow spots on the floor. Sunlight pours through colored glass—come see how stained glass works!",
-                missionPrompt: "Hunt for one true fact about stained glass and light in the notes.",
+                missionPrompt: "Hunt for one fact about stained glass and light in the notes.",
                 readingPassage: "Stained glass is colored glass set in a window. Sunlight passes through the glass. Colors appear on the floor as light shines through. Darker glass lets less light pass. Light and color work together in the window.",
                 questions: [
                     discoveryMCQ(
@@ -2002,7 +2002,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Strong Stone Walls",
                 storyOpening: "Movo presses a paw to an old castle wall. It feels cold and solid, built to last for hundreds of years.",
-                missionPrompt: "Find one true fact about stone walls in the science notes.",
+                missionPrompt: "Find one fact about stone walls in the science notes.",
                 readingPassage: "Castle walls were often built from stone. Stone is hard and strong. Soft mud alone cannot hold a tall wall well. Strong stone supports heavy walls. Blocks stacked high can hold towers that mud would crumble under.",
                 questions: [
                     discoveryMCQ(
@@ -2061,7 +2061,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Arches Share Weight",
                 storyOpening: "Movo points up at a stone arch. Look how the curve shares the weight so the opening stays strong!",
-                missionPrompt: "Hunt for one true science fact about arches in the notes.",
+                missionPrompt: "Hunt for one fact about arches in the notes.",
                 readingPassage: "An arch is a curved opening in a wall. The curve spreads weight outward to the sides. Strong sides support the top of the arch. A flat weak span may crack under heavy load. Arches help stone buildings carry weight.",
                 questions: [
                     discoveryMCQ(
@@ -2282,7 +2282,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Seed Parachutes",
                 storyOpening: "Movo tiptoes through a fairy garden. Some seeds wear fluffy tops and drift away like tiny parachutes on the breeze.",
-                missionPrompt: "Hunt for one true science fact about seed parachutes in the notes.",
+                missionPrompt: "Hunt for one fact about seed parachutes in the notes.",
                 readingPassage: "In the fairy garden, some seeds have fluffy tops like tiny parachutes. Wind can carry those fairy seeds far across the leaf tips. A heavy seed without fluff falls sooner onto the soil. Light fluff helps fairy seeds travel on soft wing-like fluff. One puff of wind can send a fluffy seed farther than you can throw.",
                 questions: [
                     discoveryMCQ(
@@ -2341,7 +2341,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Firefly Light",
                 storyOpening: "Movo gasps at tiny lights blinking in the dusk garden. They are cool, not hot like a flame—come wonder why!",
-                missionPrompt: "Hunt for one true science fact about firefly light in the notes.",
+                missionPrompt: "Hunt for one fact about firefly light in the notes.",
                 readingPassage: "In the magic garden, fireflies glow near fairy wings at dusk. Fireflies can make their own light. A chemical reaction in the body releases light energy. The cool glow can help fireflies find each other among the garden leaves. Firefly light is cool, not a hot flame. Living chemistry can create a gentle glow for fairy friends watching nearby.",
                 questions: [
                     discoveryMCQ(
@@ -2562,7 +2562,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Wings and Lift",
                 storyOpening: "Movo stares up at a heavy plane. How can it rise into the sky? Its wings push on the air in a special way.",
-                missionPrompt: "Spot one true fact about lift from the science notes.",
+                missionPrompt: "Spot one fact about lift from the science notes.",
                 readingPassage: "Airplane wings help create lift. Lift is an upward push from air. Wings need moving air to work well. Lift helps a plane rise. Fast air over the wings can lift something as heavy as a school bus.",
                 questions: [
                     discoveryMCQ(
@@ -2621,7 +2621,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Wing Shape Matters",
                 storyOpening: "Movo traces a wing's curve with you. Air races differently above and below that shape—come see why it matters!",
-                missionPrompt: "Hunt for one true fact about wing shape in the notes.",
+                missionPrompt: "Hunt for one fact about wing shape in the notes.",
                 readingPassage: "Wing shape guides how air flows above and below. Faster air over a curved top can relate to lower pressure. The pressure difference can add to lift. Flat boards without careful shape lift less well. Engineers design wings for flight.",
                 questions: [
                     discoveryMCQ(
@@ -2842,7 +2842,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Wheels on Tracks",
                 storyOpening: "Movo watches a long train stay on one thin path. Metal wheels roll on metal rails—come see how!",
-                missionPrompt: "Find one true science fact about tracks in the notes.",
+                missionPrompt: "Find one fact about tracks in the notes.",
                 readingPassage: "Train wheels roll on metal tracks. Tracks guide the train path. Smooth rails help wheels roll. Tracks keep the train on course. Steel rails can stretch for miles without a bend that would tip the cars.",
                 questions: [
                     discoveryMCQ(
@@ -2901,7 +2901,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Friction on Rails",
                 storyOpening: "Movo peeks at steel wheels on steel rails. They look slippery—yet that low friction helps the train roll.",
-                missionPrompt: "Hunt for one true science fact about rail friction in the notes.",
+                missionPrompt: "Hunt for one fact about rail friction in the notes.",
                 readingPassage: "Steel wheels on steel rails have low friction when rolling. Low friction helps a train coast with less drag. Brakes increase friction to slow the train. Wet leaves on rails can change grip. Friction control starts and stops train motion.",
                 questions: [
                     discoveryMCQ(
@@ -3121,8 +3121,8 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return DiscoveryPack(
                 title: "Wheels Roll",
-                storyOpening: "Movo spins a round wheel and grins. Wheels look simple, but they are a clever trick for moving with less drag.",
-                missionPrompt: "Catch one true fact about why wheels are round from the notes.",
+                storyOpening: "Movo watches a car roll down the street. The round wheels under the car turn on the road, so the car can move more easily.",
+                missionPrompt: "Catch one fact about why wheels are round from the notes.",
                 readingPassage: "Car wheels are round so they can roll. Rolling reduces rubbing on the road. Round wheels help a car move. Flat blocks would drag more. One roll turns a hard scrape into a smooth ride.",
                 questions: [
                     discoveryMCQ(
@@ -3155,10 +3155,10 @@ extension CuratedTopicLessonBank {
                         explanation: "Shape matters for easy motion."
                     )
                 ],
-                creativePrompt: "Draw a round wheel and a flat block, and label roll and drag.",
+                creativePrompt: "Draw a car with round wheels rolling down the street.",
                 storyEnding: "You logged a real wheel fact. Great science work!",
                 readingSkill: "Use a science note to explain why wheels are round",
-                reflectionPrompt: "Name one reason round wheels help a car.",
+                reflectionPrompt: "What color and kind of car did you draw?",
                 hints: [
                     "Look for round",
                     "Find rubbing"
@@ -3181,7 +3181,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Brakes Use Friction",
                 storyOpening: "Movo pretends to press a brake pedal with you. Pads squeeze a spinning part—friction slows the car.",
-                missionPrompt: "Hunt for one true science fact about brakes in the notes.",
+                missionPrompt: "Hunt for one fact about brakes in the notes.",
                 readingPassage: "Car brakes slow a car by increasing friction. Brake pads press against a spinning part on the wheel. Rubbing turns motion energy into heat. More friction means a faster slowdown for the cars on the road. Wet roads can lower tire grip and make stopping harder.",
                 questions: [
                     discoveryMCQ(
@@ -3400,68 +3400,68 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return DiscoveryPack(
-                title: "Strong Materials",
-                storyOpening: "Movo inspects shiny hero gear with you. What really keeps a tool from snapping in a tough moment?",
-                missionPrompt: "Discover one true science fact about strong materials in the notes.",
-                readingPassage: "Hero gear can use strong materials. Strong materials resist breaking. Soft paper alone tears too easily. Material strength matters for safe tools. A strong shield can take a hit that would rip paper in one tear.",
+                title: "Hero Powers",
+                storyOpening: "Movo zips on a cape with you. Superheroes in stories use powers to help—what is a real kind of strength?",
+                missionPrompt: "Discover one fact about hero powers in the notes.",
+                readingPassage: "Superheroes in stories use powers to help. One power is super strength. Real strength comes from muscles. Muscles pull to lift and move. Training can make muscles stronger.",
                 questions: [
                     discoveryMCQ(
-                        "According to the notes, what do strong materials resist?",
-                        ["Breaking", "Only changing color", "Only getting warm"],
-                        "Breaking",
-                        "Strong materials resist breaking under force."
+                        "According to the notes, what is one power?",
+                        ["Super strength", "Super speed", "Super hearing"],
+                        "Super strength",
+                        "The notes name super strength as one power."
                     ),
                     discoveryMCQ(
-                        "What tears too easily for tough gear?",
-                        ["Soft paper alone", "Only thick steel always", "Only metal beams"],
-                        "Soft paper alone",
-                        "Soft paper alone tears too easily for tough gear."
+                        "Where does real strength come from?",
+                        ["Muscles", "Hair", "Soft skin"],
+                        "Muscles",
+                        "Real strength comes from muscles."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "material",
-                        definition: "What something is made of.",
-                        exampleSentence: "Strong materials resist breaking."
+                        word: "power",
+                        definition: "A helpful ability a hero uses, such as strength.",
+                        exampleSentence: "Super strength is one hero power."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Strong materials resist breaking better than soft paper.",
-                        explanation: "Material strength matters for safe tools."
+                        fact: "Superheroes in stories use powers to help. One power is super strength.",
+                        explanation: "A power is a helpful ability, such as strength."
                     ),
                     KnowledgeFact(
-                        fact: "Hero gear can use strong materials for protection.",
-                        explanation: "Choosing materials is real science."
+                        fact: "Real strength comes from muscles, and training can make muscles stronger.",
+                        explanation: "Muscles pull to lift and move."
                     )
                 ],
-                creativePrompt: "Draw a shield labeled strong material.",
-                storyEnding: "You logged a real materials fact. Great science work!",
-                readingSkill: "Use a science note to name material strength",
-                reflectionPrompt: "Name one reason strong materials matter for gear.",
+                creativePrompt: "Draw a superhero using a power to help, and label the power.",
+                storyEnding: "You logged a real hero-power fact. Great science work!",
+                readingSkill: "Use a science note to name a hero power",
+                reflectionPrompt: "Name one real way a body can get stronger.",
                 hints: [
-                    "Look for resist breaking",
-                    "Find soft paper"
+                    "Look for super strength",
+                    "Find muscles"
                 ],
                 commonMistakes: [
-                    "Choosing soft paper as the strong choice"
+                    "Choosing a power the notes never name"
                 ],
                 successCriteria: [
-                    "Names resist breaking",
-                    "Uses a materials contrast"
+                    "Names super strength",
+                    "Uses a muscle fact"
                 ],
                 learningObjectives: [
-                    "Identify that strong materials resist breaking for safer gear",
+                    "Identify that super strength is a story power and real strength comes from muscles",
                     "fp:discovery.Superheroes.beginner"
                 ],
-                activityFingerprint: "superheroes.discovery.beginner.materials"
+                activityFingerprint: "superheroes.discovery.beginner.powers"
             )
 
         case .earlyReader:
             return DiscoveryPack(
                 title: "Levers Lift Loads",
                 storyOpening: "Movo tries a hero tool that turns on a pivot. A small push makes a bigger lift on the other end—come see!",
-                missionPrompt: "Hunt for one true science fact about levers in the notes.",
+                missionPrompt: "Hunt for one fact about levers in the notes.",
                 readingPassage: "A lever is a bar that turns on a pivot. Gadgets can use levers to lift heavy loads with less effort. The pivot placement changes how hard you must push. Crowbars are everyday levers. Levers turn a small force into helpful motion.",
                 questions: [
                     discoveryMCQ(
@@ -3682,7 +3682,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Primary Colors Mix",
                 storyOpening: "Movo dips a brush in red, then yellow with you. Watch a brand-new color appear on the page!",
-                missionPrompt: "Hunt for one true fact about mixing primary colors in the notes.",
+                missionPrompt: "Hunt for one fact about mixing primary colors in the notes.",
                 readingPassage: "Red, yellow, and blue are primary colors in paint. Mixing two primaries can make a new color. Red and yellow can make orange. Mixing is a real color change. Two blobs swirled together can make a pumpkin-bright orange.",
                 questions: [
                     discoveryMCQ(
@@ -3741,7 +3741,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Light Reflection",
                 storyOpening: "Movo holds up a red apple in the light. It looks red because it bounces more red light toward your eyes.",
-                missionPrompt: "Hunt for one true science fact about reflected light in the notes.",
+                missionPrompt: "Hunt for one fact about reflected light in the notes.",
                 readingPassage: "We see an object when light reflects from it to our eyes. A red apple reflects more red light than other colors. A black surface reflects little light. Without light, colors are hard to see. Seeing needs bouncing light, objects, and our eyes.",
                 questions: [
                     discoveryMCQ(
@@ -3962,7 +3962,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Sound Is Vibration",
                 storyOpening: "Movo puts a paw on a drum with you. Feel the skin shake? That vibration is how sound begins.",
-                missionPrompt: "Spot one true science fact about sound in the notes.",
+                missionPrompt: "Spot one fact about sound in the notes.",
                 readingPassage: "Sound begins when something vibrates. Vibration means fast tiny shaking. The shaking moves air toward your ears. No vibration means no sound from that object. Even a soft whisper starts with tiny shakes you can barely see.",
                 questions: [
                     discoveryMCQ(
@@ -4021,7 +4021,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Pitch High and Low",
                 storyOpening: "Movo plucks a short tight string, then a long loose one. Hear how pitch changes? Come wonder why!",
-                missionPrompt: "Hunt for one true science fact about pitch in the notes.",
+                missionPrompt: "Hunt for one fact about pitch in the notes.",
                 readingPassage: "Pitch tells whether a sound is high or low. Faster vibrations often make higher pitch. Slower vibrations often make lower pitch. A short tight string can sound higher than a long loose string. Pitch depends on how the object vibrates.",
                 questions: [
                     discoveryMCQ(
@@ -4242,7 +4242,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Heat Changes Food",
                 storyOpening: "Movo cracks an egg into a hot pan with you. Watch liquid turn firm before your eyes—heat is changing food!",
-                missionPrompt: "Find one true fact about heat and food in the science notes.",
+                missionPrompt: "Find one fact about heat and food in the science notes.",
                 readingPassage: "Heat can change food. An egg can go from liquid to firm when heated. Bread can turn brown in a toaster. Heat is a cooking tool. Warmth can flip wobbly egg white into a solid bite.",
                 questions: [
                     discoveryMCQ(
@@ -4301,7 +4301,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Measuring Matters",
                 storyOpening: "Movo levels a measuring scoop carefully. A scoop too full can spoil a cake—tools help cooks repeat a recipe.",
-                missionPrompt: "Hunt for one true fact about measuring in the notes.",
+                missionPrompt: "Hunt for one fact about measuring in the notes.",
                 readingPassage: "Cooking often needs careful measuring. Too much salt can make food taste too strong. Too little water can make dough dry. Measuring tools help cooks repeat a recipe. Amounts are part of cooking science.",
                 questions: [
                     discoveryMCQ(
@@ -4522,7 +4522,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Habitats Are Homes",
                 storyOpening: "Movo pauses on a forest trail. Every animal needs a place that fits—food, water, and a safe spot to rest.",
-                missionPrompt: "Look for one true science fact about habitats in the notes.",
+                missionPrompt: "Look for one fact about habitats in the notes.",
                 readingPassage: "A habitat is a home for living things in nature. A forest trail can give food, water, and shelter. A frog may need a wet stream near plants and leaf cover. Habitats help animals stay alive among the trees. One shady stream can be a whole frog neighborhood.",
                 questions: [
                     discoveryMCQ(
@@ -4581,7 +4581,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Seasons Change Conditions",
                 storyOpening: "Movo points at waking leaf buds. Warm bright months arrive as seasons change temperature and daylight.",
-                missionPrompt: "Hunt for one true science fact about seasons in the notes.",
+                missionPrompt: "Hunt for one fact about seasons in the notes.",
                 readingPassage: "Seasons change temperature and daylight over the year on a nature trail. Forest plants may grow faster in warm bright seasons when leaf buds open. Some animals grow thicker coats in cold seasons beside the trees. Food can be harder to find in winter near the frozen stream. Living things in the garden and forest respond to seasonal changes.",
                 questions: [
                     discoveryMCQ(
@@ -4802,7 +4802,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Six Legs",
                 storyOpening: "Movo counts legs on a bug with you. Six means insect, eight means something else!",
-                missionPrompt: "Pick out one true fact about insect legs from the notes.",
+                missionPrompt: "Pick out one fact about insect legs from the notes.",
                 readingPassage: "Insects have six legs. The legs help them walk and climb. Spiders are not insects because they have eight legs. Counting legs helps scientists sort animals. Six tiny feet can climb a vertical wall of glass.",
                 questions: [
                     discoveryMCQ(
@@ -4861,7 +4861,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Hard Outer Armor",
                 storyOpening: "Movo peeks at an insect's hard outer armor. It protects soft parts inside—come study the exoskeleton!",
-                missionPrompt: "Hunt for one true science fact about exoskeletons in the notes.",
+                missionPrompt: "Hunt for one fact about exoskeletons in the notes.",
                 readingPassage: "Many insects wear a hard outer covering called an exoskeleton. The exoskeleton protects soft parts inside. As an insect grows, it may shed the old covering. Soft skin alone would not protect as well. Armor on the outside is part of insect body design.",
                 questions: [
                     discoveryMCQ(
@@ -5082,7 +5082,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Clouds Hold Water",
                 storyOpening: "Movo looks up at white fluffy shapes in the sky. They are not cotton—they are made of tiny water!",
-                missionPrompt: "Catch one true science fact about clouds in the notes.",
+                missionPrompt: "Catch one fact about clouds in the notes.",
                 readingPassage: "Clouds are made of tiny water drops or ice. They float high in the air. Some clouds look white and fluffy. Clouds are part of weather. One cloud can hold millions of drops too small to see alone.",
                 questions: [
                     discoveryMCQ(
@@ -5141,7 +5141,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Wind Is Moving Air",
                 storyOpening: "Movo's scarf flaps in the breeze. Leaves and flags move for a reason—wind is simply air that is moving.",
-                missionPrompt: "Hunt for one true science fact about wind in the notes.",
+                missionPrompt: "Hunt for one fact about wind in the notes.",
                 readingPassage: "Wind is air that is moving. Moving air can push leaves and flags. Strong wind has more push than a gentle breeze. Wind can feel cool on hot skin. Weather includes wind speed and direction.",
                 questions: [
                     discoveryMCQ(
@@ -5362,7 +5362,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Mammals and Milk",
                 storyOpening: "Sunny the pony nuzzles you near the barn. On a farm, a cow's baby drinks milk made by its mother—just like other mammal babies.",
-                missionPrompt: "Discover one true fact about mammals and milk in the science notes.",
+                missionPrompt: "Discover one fact about mammals and milk in the science notes.",
                 readingPassage: "Cows are mammals. Mammal mothers can make milk for babies. Milk helps young mammals grow. Not all farm animals make milk for people. A calf can drink milk that its mother makes right after birth.",
                 questions: [
                     discoveryMCQ(
@@ -5421,7 +5421,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Chickens and Eggs",
                 storyOpening: "Sunny the pony peeks at a warm nest with you. Inside a fertilized egg, a chick grows until it is ready to hatch.",
-                missionPrompt: "Hunt for one true science fact about chicken eggs in the notes.",
+                missionPrompt: "Hunt for one fact about chicken eggs in the notes.",
                 readingPassage: "Chickens are birds that can lay eggs. An eggshell protects the soft inside. Warmth helps a chick grow inside a fertilized egg. Not every egg on a farm will become a chick. Eggs are part of bird life cycles.",
                 questions: [
                     discoveryMCQ(
@@ -5642,7 +5642,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Habitat Needs",
                 storyOpening: "Movo stands by a zoo habitat sign. A polar bear would overheat in a desert cage—animals need homes that fit their bodies.",
-                missionPrompt: "Find one true science fact about habitat needs in the notes.",
+                missionPrompt: "Find one fact about habitat needs in the notes.",
                 readingPassage: "Zoo animals need habitats that fit them. A polar animal needs cool space. A desert animal needs dry space. Good homes match animal needs. Cool ice and rock can keep a polar animal from getting too hot.",
                 questions: [
                     discoveryMCQ(
@@ -5701,7 +5701,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Adaptations Help Survival",
                 storyOpening: "Movo looks up at a long-necked zoo friend. A long neck can reach high leaves—body features help animals survive.",
-                missionPrompt: "Hunt for one true science fact about adaptations in the notes.",
+                missionPrompt: "Hunt for one fact about adaptations in the notes.",
                 readingPassage: "An adaptation is a body trait or behavior that helps survival. Thick fur can help in cold air. Long necks can help reach high leaves. Sharp claws can help climb or grip food. Zoo teachers study adaptations to care for each species.",
                 questions: [
                     discoveryMCQ(
@@ -5921,8 +5921,8 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return DiscoveryPack(
                 title: "Boats Can Float",
-                storyOpening: "Willa the whale swims beside a pirate ship and wonders with you. How can a heavy ship sit on top of the sea without sinking?",
-                missionPrompt: "Hunt for one true science fact about floating boats in the notes.",
+                storyOpening: "Captain Wren stands at the ship's rail and wonders with you. How can a heavy ship sit on top of the sea without sinking?",
+                missionPrompt: "Hunt for one fact about floating boats in the notes.",
                 readingPassage: "A boat can float on water. Floating means water pushes up on the boat. A boat shape spreads weight. Too much weight can make a boat sink. The water’s upward push can hold a wooden hull as heavy as treasure chests.",
                 questions: [
                     discoveryMCQ(
@@ -5980,8 +5980,8 @@ extension CuratedTopicLessonBank {
         case .earlyReader:
             return DiscoveryPack(
                 title: "Sails Catch Wind",
-                storyOpening: "Willa the whale watches canvas snap tight. A sail catches wind and helps push the boat across the water—come feel that push!",
-                missionPrompt: "Hunt for one true science fact about sails in the notes.",
+                storyOpening: "Captain Wren watches canvas snap tight. A sail catches wind and helps push the boat across the water—come feel that push!",
+                missionPrompt: "Hunt for one fact about sails in the notes.",
                 readingPassage: "A sail is a large cloth that catches wind. Moving air pushes on the sail and can move the boat. Sailors adjust sail angle to use the wind. No wind means the sail gives little push. Wind energy can power a sailing ship.",
                 questions: [
                     discoveryMCQ(
@@ -6050,7 +6050,7 @@ extension CuratedTopicLessonBank {
         case .growingReader:
             return DiscoveryPack(
                 title: "Compass Navigation",
-                storyOpening: "Willa the whale peers at a tiny compass needle. It swings and steadies, pointing toward magnetic north for sailors.",
+                storyOpening: "Captain Wren peers at a tiny compass needle. It swings and steadies, pointing toward magnetic north for sailors.",
                 missionPrompt: "Find the main idea about compasses. Use details from the notes.",
                 readingPassage: "A compass needle points toward magnetic north. Sailors use that clue to choose a heading. Maps and compasses work together for navigation. Without a direction tool, travel over open water is harder. The main idea is that a compass provides a reliable direction reference for navigation.",
                 questions: [
@@ -6120,7 +6120,7 @@ extension CuratedTopicLessonBank {
         case .confidentReader:
             return DiscoveryPack(
                 title: "Map Scale Simplified",
-                storyOpening: "Willa the whale joins your navigation team. Together you investigate how map scale relates to real travel distance.",
+                storyOpening: "Captain Wren joins your navigation team. Together you investigate how map scale relates to real travel distance.",
                 missionPrompt: "Use evidence from the notes. Explain why map scale matters for planning a voyage.",
                 readingPassage: "Map scale tells how map distance relates to real distance. A short line on a map may stand for many miles at sea. Travelers who ignore scale may misjudge supplies and time. Scale lets a small paper stand for a huge ocean. Planning a voyage uses scale to estimate how far a route really is. Navigation science joins maps, scale, and careful measurement.",
                 questions: [

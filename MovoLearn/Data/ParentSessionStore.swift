@@ -13,6 +13,7 @@ struct ParentSession: Codable, Equatable {
     var accessTokenExpiresAt: Date
 }
 
+@MainActor
 protocol ParentSessionStoreProtocol: AnyObject {
     var session: ParentSession? { get }
     var isSignedIn: Bool { get }

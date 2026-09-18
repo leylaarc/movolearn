@@ -578,7 +578,7 @@ enum MathWordProblemGenerator {
     private static func groupingSpec(from passage: String?) -> GroupingSpec? {
         guard let passage, !passage.isEmpty else { return nil }
         guard let regex = try? NSRegularExpression(
-            pattern: #"(?i)packs?\s+(\d+)\s+(.+?)\s+into groups of (\d+)"#,
+            pattern: #"(?i)(?:packs?\s+(\d+)\s+(.+?)\s+into groups of (\d+)|has\s+(\d+)\s+(.+?)\.\s+.+?\s+groups of (\d+))"#,
             options: []
         ) else { return nil }
         let ns = passage as NSString
@@ -587,13 +587,16 @@ enum MathWordProblemGenerator {
             return nil
         }
         func g(_ i: Int) -> String {
+            guard i < match.numberOfRanges else { return "" }
             let range = match.range(at: i)
             guard range.location != NSNotFound else { return "" }
             return ns.substring(with: range).trimmingCharacters(in: .whitespaces)
         }
-        let count = Int(g(1)) ?? 0
-        let plural = g(2)
-        let size = Int(g(3)) ?? 0
+        let packed = Int(g(1)) ?? 0
+        let hasCount = Int(g(4)) ?? 0
+        let count = packed > 0 ? packed : hasCount
+        let plural = packed > 0 ? g(2) : g(5)
+        let size = packed > 0 ? (Int(g(3)) ?? 0) : (Int(g(6)) ?? 0)
         guard count > 0, size > 0, !plural.isEmpty else { return nil }
         let character = firstNamedCharacter(in: passage)
         let pronoun = pronounForName(character ?? "", passage: passage)
@@ -667,12 +670,13 @@ enum MathWordProblemGenerator {
         guard groups >= 1 else { return nil }
 
         let objects = noun(total, scene)
-        let who = scene.pronoun
         let prompt: String
         if let character = scene.character {
-            prompt = "\(cap(character)) packs \(total) \(objects) into groups of \(size). How many full groups can \(who) make?"
+            let actor = scene.pronoun == "they" ? cap(character) : cap(scene.pronoun)
+            let put = scene.pronoun == "they" ? "put" : "puts"
+            prompt = "\(cap(character)) has \(total) \(objects). \(actor) \(put) them in groups of \(size). How many groups is that?"
         } else {
-            prompt = "You pack \(total) \(objects) into groups of \(size). How many full groups can you make?"
+            prompt = "You have \(total) \(objects). You put them in groups of \(size). How many groups is that?"
         }
         return draft(
             prompt: prompt,

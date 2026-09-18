@@ -56,11 +56,6 @@ final class LessonViewModel: ObservableObject {
 
     var journeyStepNumber: Int { currentStepIndex + 1 }
 
-    /// Larger story text and more visual scaffolding for younger / beginner learners.
-    var prefersScaffoldedUI: Bool {
-        ability?.needsScaffolding ?? false
-    }
-
     var storyBodyFontSize: CGFloat {
         if ability?.prefersConcreteLanguage == true { return 24 }
         if ability?.age ?? 8 <= 7 { return 23 }
@@ -72,7 +67,7 @@ final class LessonViewModel: ObservableObject {
         case .question(_, _, let index, let total):
             return "\(currentMoment?.title ?? "Question") (\(index) of \(total))"
         case .creative:
-            return lesson.isArtQuest ? "Art Quest" : "Create Time"
+            return lesson.isArtQuest ? "Draw This Scene!" : "Create Time"
         case .moment(let moment), .reflection(let moment):
             return moment.title
         case .completion:
@@ -91,8 +86,6 @@ final class LessonViewModel: ObservableObject {
     var isOnLastStep: Bool {
         currentStepIndex >= steps.count - 1
     }
-
-    var estimatedMinutes: Int { lesson.estimatedMinutes }
 
     var creativeResponseType: QuestionResponseType {
         lesson.creativeResponseType
@@ -506,17 +499,15 @@ final class LessonViewModel: ObservableObject {
         case .vocabulary:
             return young ? "This new word helps you understand the story." : "Every new word strengthens your reading power."
         case .knowledge:
-            return young ? "Here's a true fact from your adventure." : "Here's a science fact to remember."
+            return young ? "Here's a fact from your adventure." : "Here's a fact to remember."
         case .creative:
             if lesson.isArtQuest {
                 return young
-                    ? "Art Quest! Draw your scene and chase those stars!"
-                    : "Art Quest unlocked — draw the story scene and earn your stars!"
+                    ? "Draw the scene. Tap each part you add!"
+                    : "Draw every color and detail. Tap the checklist as you go!"
             }
             if lesson.creativeResponseType == .drawing {
-                return young
-                    ? "Time to create — draw a moment from the story!"
-                    : "Draw one moment from the story you just read."
+                return "Time to draw!"
             }
             return young
                 ? "Answer using what happened in the story."
@@ -566,27 +557,18 @@ final class LessonViewModel: ObservableObject {
     private static func buildSteps(from lesson: Lesson, ability: LearnerAbilityProfile? = nil) -> [LessonStep] {
         let story = lesson.story
 
-        // Pure Art Quests: short inspiration story → create → reflect. No quiz.
+        // Pure Art Quests: open the drawing board. No quiz, reading, or reflection screens.
         if lesson.isArtQuest {
-            var artSteps: [LessonStep] = [
-                .moment(.storyOpening),
-                .moment(.mission),
-                .moment(.reading)
-            ]
+            var artSteps: [LessonStep] = []
             if !story.creativePrompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 artSteps.append(.creative(.creative))
             }
-            if !story.reflectionPrompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                artSteps.append(.reflection(.reflection))
-            }
-            artSteps.append(.moment(.ending))
             artSteps.append(.completion)
             return artSteps
         }
 
         var steps: [LessonStep] = [
             .moment(.storyOpening),
-            .moment(.mission),
             .moment(.reading)
         ]
 

@@ -11,6 +11,9 @@ struct LessonCompletionView: View {
     @State private var badgeRotation: Double = -15
     @State private var contentOpacity: Double = 0
     @State private var showSparkles = false
+    @State private var sparkleSpin: Double = 0
+    @State private var badgePulse = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var topic: Topic {
         summary.topicsPracticed.first ?? .sharks
@@ -65,6 +68,14 @@ struct LessonCompletionView: View {
             withAnimation(DesignSystem.Animation.gentle.delay(0.3)) {
                 contentOpacity = 1
             }
+            if !reduceMotion {
+                withAnimation(.linear(duration: 22).repeatForever(autoreverses: false).delay(0.4)) {
+                    sparkleSpin = 360
+                }
+                withAnimation(DesignSystem.Animation.twinkle.delay(0.5)) {
+                    badgePulse = true
+                }
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 showSparkles = true
             }
@@ -104,6 +115,7 @@ struct LessonCompletionView: View {
                         Image(systemName: "play.fill")
                             .font(.title3.weight(.bold))
                             .foregroundStyle(.white)
+                            .idlePulse(scale: 1.12, delay: 0.2)
                     }
                     .padding(DesignSystem.Spacing.md)
                     .frame(minHeight: 72)
@@ -169,7 +181,7 @@ struct LessonCompletionView: View {
                     StarShape(points: 5)
                         .stroke(DesignSystem.Colors.sunshineYellow.opacity(0.3), lineWidth: 2)
                         .frame(width: 100 + CGFloat(i) * 20, height: 100 + CGFloat(i) * 20)
-                        .rotationEffect(.degrees(Double(i) * 15 + badgeRotation))
+                        .rotationEffect(.degrees(Double(i) * 15 + badgeRotation + sparkleSpin * (i.isMultiple(of: 2) ? 1 : -0.7)))
                 }
 
                 Circle()
@@ -182,10 +194,13 @@ struct LessonCompletionView: View {
                     )
                     .frame(width: 96, height: 96)
                     .shadow(color: DesignSystem.Shadow.glow.color, radius: DesignSystem.Shadow.glow.radius)
+                    .scaleEffect(badgePulse ? 1.06 : 1)
 
                 Image(systemName: "star.fill")
                     .font(.system(size: 44, weight: .bold))
                     .foregroundStyle(.white)
+                    .symbolEffect(.bounce, value: showSparkles)
+                    .scaleEffect(badgePulse ? 1.08 : 1)
             }
             .scaleEffect(badgeScale)
             .rotationEffect(.degrees(badgeRotation))
@@ -251,6 +266,8 @@ private struct CompletionStatRow: View {
                 .font(.title2)
                 .foregroundStyle(accent)
                 .frame(width: 32)
+                .symbolEffect(.bounce, value: value)
+                .idlePulse(scale: 1.08, delay: 0.2)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(label.uppercased())

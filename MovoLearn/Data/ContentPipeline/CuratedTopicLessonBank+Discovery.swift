@@ -28,7 +28,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "What Horses Eat",
                 storyOpening: "Sunny the pony tips her head toward the hay. Crunch! A horse's big teeth grind plants like a quiet mill.",
-                missionPrompt: "Spot one true science fact about what horses eat.",
+                missionPrompt: "Spot one fact about what horses eat.",
                 readingPassage: "Horses are plant eaters. They chew grass and hay. Fresh water helps them stay strong. Their big flat teeth keep grinding plants almost all day long.",
                 questions: [
                     discoveryMCQ(
@@ -563,7 +563,7 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return DiscoveryPack(
                 title: "How Sharks Breathe",
-                storyOpening: "Willa the whale swims beside a sleek friend. Under the waves, a shark glides and never comes up for air.",
+                storyOpening: "Finn the reef shark glides under the waves. He never comes up for air.",
                 missionPrompt: "Look for one true clue about how sharks breathe underwater.",
                 readingPassage: "Sharks live in the ocean. They breathe with gills. Gills help them breathe underwater. A shark needs water over its gills to breathe — and it never needs air like people do.",
                 questions: [
@@ -598,7 +598,7 @@ extension CuratedTopicLessonBank {
                     )
                 ],
                 creativePrompt: "Draw a shark in the ocean and mark the gill slits on its side.",
-                storyEnding: "Willa the whale sings soft bubbles — you logged a real shark breathing fact. Great science work!",
+                storyEnding: "Finn the reef shark flicks his tail — you logged a real shark breathing fact. Great science work!",
                 readingSkill: "Use a science note to explain how sharks breathe",
                 reflectionPrompt: "Name one thing from the notes that helps a shark breathe.",
                 hints: ["Look for the word gills", "Find the sentence about water"],
@@ -614,7 +614,7 @@ extension CuratedTopicLessonBank {
         case .earlyReader:
             return DiscoveryPack(
                 title: "Skin Like Tiny Teeth",
-                storyOpening: "Willa the whale brushes past rough-smooth shark skin. Come feel why that skin helps a shark slip through water!",
+                storyOpening: "Finn the reef shark flicks his rough-smooth skin. Come feel why that skin helps a shark slip through water!",
                 missionPrompt: "Read the science notes. Answer using evidence from the notes.",
                 readingPassage: "Shark skin feels rough if you rub it one way. Tiny tooth-like scales cover the skin. Scientists call these scales denticles. Denticles help water slide past as the shark swims. Smooth swim motion uses less energy in the ocean.",
                 questions: [
@@ -660,7 +660,7 @@ extension CuratedTopicLessonBank {
                     )
                 ],
                 creativePrompt: "Draw a close-up of shark skin with tiny denticle shapes. Label one scale.",
-                storyEnding: "Willa the whale grins — you used skin clues like a real shark scientist!",
+                storyEnding: "Finn the reef shark grins — you used skin clues like a real shark scientist!",
                 readingSkill: "Connect denticles to how sharks move through water",
                 reflectionPrompt: "Why might rough, tooth-like skin help a swimming shark?",
                 hints: ["Find the word denticles", "Look for how water slides past"],
@@ -676,7 +676,7 @@ extension CuratedTopicLessonBank {
         case .growingReader:
             return DiscoveryPack(
                 title: "A Skeleton of Cartilage",
-                storyOpening: "Willa the whale wonders what is inside a shark's body. Let's investigate the bendy frame together!",
+                storyOpening: "Finn the reef shark wonders what is inside a shark's body. Let's investigate the bendy frame together!",
                 missionPrompt: "Find the main science idea. Use details from the notes as evidence.",
                 readingPassage: "Unlike many bony fish, sharks have skeletons made of cartilage. Cartilage is strong but more flexible than hard bone. A lighter, bendy frame helps many sharks twist and turn while chasing prey. Cartilage also supports the fins that steer the shark through water. Scientists study cartilage skeletons to understand how sharks move so well in the ocean.",
                 questions: [
@@ -734,7 +734,7 @@ extension CuratedTopicLessonBank {
                     )
                 ],
                 creativePrompt: "Draw a simple shark outline. Label the skeleton idea: cartilage, flexible frame.",
-                storyEnding: "Willa the whale circles once. You used body-structure evidence the way careful investigators do.",
+                storyEnding: "Finn the reef shark circles once. You used body-structure evidence the way careful investigators do.",
                 readingSkill: "Identify the main idea about shark cartilage skeletons",
                 reflectionPrompt: "Why might flexibility matter more than hard bone for a swimming hunter?",
                 hints: ["Reread the first sentence about cartilage", "Find the twist-and-turn detail"],
@@ -750,7 +750,7 @@ extension CuratedTopicLessonBank {
         case .confidentReader:
             return DiscoveryPack(
                 title: "Sharks Keep Reefs in Balance",
-                storyOpening: "Willa the whale circles a bright reef. Be her science partner — why do sharks matter to ocean life?",
+                storyOpening: "Finn the reef shark circles a bright reef. Be his science partner — why do sharks matter to ocean life?",
                 missionPrompt: "Use evidence from the notes. Explain how sharks affect reef food webs.",
                 readingPassage: "Healthy reefs need more than bright coral and tiny fish. Sharks often sit near the top of ocean food webs as apex predators. By hunting, they help keep mid-level predator numbers from growing unchecked. When mid-level hunters stay in balance, plant-eating fish can still graze algae that would otherwise smother coral. Scientists studying reef health look for shark presence as one clue that the whole system is working. Losing sharks can tip the balance toward algae overgrowth and weaker coral communities.",
                 questions: [
@@ -812,7 +812,7 @@ extension CuratedTopicLessonBank {
                     )
                 ],
                 creativePrompt: "Draw a simple reef food-web sketch: shark, mid-level hunter, plant-eating fish, algae, coral. Label one balance arrow.",
-                storyEnding: "Willa the whale glides proud. You connected sharks to reef balance like a careful investigator.",
+                storyEnding: "Finn the reef shark glides proud. You connected sharks to reef balance like a careful investigator.",
                 readingSkill: "Infer ecosystem effects from scientific evidence",
                 reflectionPrompt: "Which clue from the notes best shows why losing sharks can hurt coral?",
                 hints: ["Trace the path from sharks to algae to coral", "Reread the scientist clue about shark presence"],
@@ -836,7 +836,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "What Fossils Are",
                 storyOpening: "Dottie the dino presses a paw to cool stone. Imagine finding a footprint from long, long ago!",
-                missionPrompt: "Find one solid science fact about what fossils really are.",
+                missionPrompt: "Find one fact about what fossils really are.",
                 readingPassage: "Dinosaurs lived long ago. Fossils are old clues in rock. A fossil can be a bone or a print. Some footprints stayed in mud that later turned into hard rock.",
                 questions: [
                     discoveryMCQ(
@@ -1104,7 +1104,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Day and Night",
                 storyOpening: "Nova the star twinkles over half the Earth. Right now, half the world is bright and half is dark — at the same time!",
-                missionPrompt: "Catch one true fact that explains why we have day and night.",
+                missionPrompt: "Catch one fact that explains why we have day and night.",
                 readingPassage: "Earth spins like a top. One side faces the Sun and has day. The other side faces away and has night. The Sun does not turn off. Earth keeps spinning even while you sleep.",
                 questions: [
                     discoveryMCQ(
@@ -1376,7 +1376,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "A Dog's Super Nose",
                 storyOpening: "Scout the puppy freezes. His nose twitches. What tiny smell did that strong nose just catch?",
-                missionPrompt: "Sniff out one true science fact about a dog's nose.",
+                missionPrompt: "Sniff out one fact about a dog's nose.",
                 readingPassage: "Dogs have strong noses. A dog uses smell to learn about the world. Wet noses help pick up scents. A dog can smell things people miss — even a tiny treat hiding across a room.",
                 questions: [
                     discoveryMCQ(
@@ -1648,7 +1648,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Robots Follow Steps",
                 storyOpening: "Max the robot freezes mid-step. Beep — did someone forget a step in its list?",
-                missionPrompt: "Pick out one true fact about how a robot knows what to do.",
+                missionPrompt: "Pick out one fact about how a robot knows what to do.",
                 readingPassage: "A robot is a machine. People write steps for the robot. The steps are called a program. The robot does the steps in order. Skip one step, and the robot may stop or get stuck.",
                 questions: [
                     discoveryMCQ(
@@ -1916,7 +1916,7 @@ extension CuratedTopicLessonBank {
             return DiscoveryPack(
                 title: "Hot Rock Inside Earth",
                 storyOpening: "Dottie the dino stomps and feels warmth under her feet. Deep down, rock can get so hot it softens and moves.",
-                missionPrompt: "Discover one true science fact about where a volcano's hot rock comes from.",
+                missionPrompt: "Discover one fact about where a volcano's hot rock comes from.",
                 readingPassage: "A volcano is a mountain that can open. Hot rock can rise from deep inside Earth. When hot rock comes out, it can be hotter than a kitchen oven. People stay far away when a volcano is unsafe.",
                 questions: [
                     discoveryMCQ(

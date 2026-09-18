@@ -364,6 +364,7 @@ enum ChildFacingProseQualityValidator {
     static func polish(_ text: String) -> String {
         var result = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !result.isEmpty else { return result }
+        result = stripCircleWhileCountingInstructions(result)
         result = polishPunctuation(result)
         result = insertMissingIntroCommas(result)
         result = splitCommaSplices(result)
@@ -371,6 +372,36 @@ enum ChildFacingProseQualityValidator {
         result = capitalizeAfterInstructionLabels(result)
         result = capitalizeAllSentenceStarts(result)
         result = polishPunctuation(result)
+        return result
+    }
+
+    /// Drawing the amount is the count — never ask kids to circle objects as they count.
+    static func stripCircleWhileCountingInstructions(_ text: String) -> String {
+        let patterns = [
+            #"\s+and circle them as you count[.!]?"#,
+            #"\s+and circle them when you count[.!]?"#,
+            #"\s+and circle both groups as you add[.!]?"#,
+            #"\s+and circle each(?: one)? as you count[.!]?"#,
+            #"\.\s*Circle them as you count[.!]?"#,
+            #"\.\s*Circle them when you count[.!]?"#,
+            #"\.\s*Circle both groups as you add[.!]?"#,
+            #"\.\s*Circle each(?: one)? as you count[.!]?"#,
+            #"\s+circle them as you count[.!]?"#,
+            #"\s+circle them when you count[.!]?"#,
+            #"\s+circle both groups as you add[.!]?"#,
+            #"\s+circle each(?: one)? as you count[.!]?"#
+        ]
+        var result = text
+        for pattern in patterns {
+            result = result.replacingOccurrences(of: pattern, with: "", options: [.regularExpression, .caseInsensitive])
+        }
+        result = result.replacingOccurrences(of: #"\s{2,}"#, with: " ", options: .regularExpression)
+        result = result.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard result != text.trimmingCharacters(in: .whitespacesAndNewlines) else { return result }
+        if result.isEmpty { return result }
+        if let last = result.last, !".?!".contains(last) {
+            result += "."
+        }
         return result
     }
 
@@ -436,7 +467,8 @@ enum ChildFacingProseQualityValidator {
             curriculumDifficulty: lesson.curriculumDifficulty,
             recommendedAgeRange: lesson.recommendedAgeRange,
             learningObjectives: lesson.learningObjectives,
-            evidenceTargets: lesson.evidenceTargets
+            evidenceTargets: lesson.evidenceTargets,
+            drawingQuestGoals: lesson.drawingQuestGoals
         )
     }
 

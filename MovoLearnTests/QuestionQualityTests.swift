@@ -319,4 +319,85 @@ final class QuestionQualityTests: XCTestCase {
             )
         }
     }
+
+    func testMultipleChoiceCorrectAnswerIsNotAlwaysFirst() {
+        var positions = Set<Int>()
+        for index in 0..<24 {
+            let question = LessonQuestion(
+                id: UUID(uuidString: "00000000-0000-4000-8000-\(String(format: "%012d", index))") ?? UUID(),
+                subject: .reading,
+                type: .multipleChoice,
+                responseType: .multipleChoice,
+                prompt: "Which detail fits the lesson \(index)?",
+                choices: ["Right", "Wrong A", "Wrong B"],
+                correctAnswer: "Right"
+            )
+            XCTAssertEqual(Set(question.choices), ["Right", "Wrong A", "Wrong B"])
+            let position = question.choices.firstIndex(of: "Right")
+            XCTAssertNotNil(position)
+            if let position {
+                positions.insert(position)
+            }
+        }
+        XCTAssertGreaterThan(
+            positions.count,
+            1,
+            "Correct answers should land in more than one option slot, found \(positions)"
+        )
+    }
+
+    func testChoiceOrderIsStableForTheSameQuestion() {
+        let id = UUID(uuidString: "AAAAAAAA-BBBB-4CCC-8DDD-EEEEEEEEEEEE") ?? UUID()
+        let first = LessonQuestion(
+            id: id,
+            subject: .math,
+            type: .multipleChoice,
+            responseType: .multipleChoice,
+            prompt: "How many shells are in the tide pool?",
+            choices: ["7", "8", "9"],
+            correctAnswer: "8"
+        )
+        let rebuilt = LessonQuestion(
+            id: id,
+            subject: .math,
+            type: .multipleChoice,
+            responseType: .multipleChoice,
+            prompt: "How many shells are in the tide pool?",
+            choices: ["9", "7", "8"],
+            correctAnswer: "8"
+        )
+        XCTAssertEqual(first.choices, rebuilt.choices)
+        XCTAssertEqual(first.choices.firstIndex(of: "8"), rebuilt.choices.firstIndex(of: "8"))
+    }
+
+    func testApprovedLessonMultipleChoiceAnswersAreShuffled() {
+        var firstSlotCorrect = 0
+        var scored = 0
+        let topics: [Topic] = [.horses, .sharks, .space, .dinosaurs, .oceanAnimals]
+        for topic in topics {
+            for category in [LessonCategory.story, .math, .discovery] {
+                guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+                    topic: topic,
+                    category: category,
+                    readingLevel: .earlyReader,
+                    mathLevel: .developing
+                ) else { continue }
+                for question in lesson.questions + lesson.mathChallenges {
+                    guard question.displayResponseType == .multipleChoice,
+                          let answer = question.correctAnswer,
+                          let index = question.choices.firstIndex(of: answer) else {
+                        continue
+                    }
+                    scored += 1
+                    if index == 0 { firstSlotCorrect += 1 }
+                }
+            }
+        }
+        XCTAssertGreaterThan(scored, 8, "Expected enough multiple-choice items to check answer position")
+        XCTAssertLessThan(
+            firstSlotCorrect,
+            scored,
+            "Every multiple-choice answer was still the first option (\(firstSlotCorrect)/\(scored))"
+        )
+    }
 }

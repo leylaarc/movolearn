@@ -35,22 +35,31 @@ struct MainTabShell<Home: View, Adventures: View, Rewards: View, Profile: View>:
     var body: some View {
         TabView(selection: $selectedTab) {
             home()
-                .tabItem { Label(MainTab.home.title, systemImage: MainTab.home.systemImage) }
+                .tabItem {
+                    Label(MainTab.home.title, systemImage: MainTab.home.systemImage)
+                }
                 .tag(MainTab.home)
 
             adventures()
-                .tabItem { Label(MainTab.adventures.title, systemImage: MainTab.adventures.systemImage) }
+                .tabItem {
+                    Label(MainTab.adventures.title, systemImage: MainTab.adventures.systemImage)
+                }
                 .tag(MainTab.adventures)
 
             rewards()
-                .tabItem { Label(MainTab.rewards.title, systemImage: MainTab.rewards.systemImage) }
+                .tabItem {
+                    Label(MainTab.rewards.title, systemImage: MainTab.rewards.systemImage)
+                }
                 .tag(MainTab.rewards)
 
             profile()
-                .tabItem { Label(MainTab.profile.title, systemImage: MainTab.profile.systemImage) }
+                .tabItem {
+                    Label(MainTab.profile.title, systemImage: MainTab.profile.systemImage)
+                }
                 .tag(MainTab.profile)
         }
         .tint(DesignSystem.Colors.coralPink)
+        .symbolEffect(.bounce, value: selectedTab)
         .onAppear {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()

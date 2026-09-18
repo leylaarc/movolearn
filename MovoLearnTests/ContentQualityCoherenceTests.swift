@@ -453,7 +453,7 @@ final class ContentQualityCoherenceTests: XCTestCase {
         }
     }
 
-    func testSharkFieldBadgeStaysACreativeArtQuest() {
+    func testSharkArtQuestIsADrawingOnlyScene() {
         let profile = ChildProfile(
             age: 7,
             grade: "2nd Grade",
@@ -467,16 +467,17 @@ final class ContentQualityCoherenceTests: XCTestCase {
             readingLevel: .growingReader,
             mathLevel: .secure
         ) else {
-            return XCTFail("Expected Invent a Shark Field Badge")
+            return XCTFail("Expected shark drawing Art Quest")
         }
-        XCTAssertEqual(lesson.title, "Invent a Shark Field Badge")
+        XCTAssertEqual(lesson.title, "Smooth Shark Skin Drawing")
         let prepared = ContentAdaptationService.prepare(lesson: lesson, profile: profile)
-        XCTAssertEqual(prepared.lesson.title, "Invent a Shark Field Badge")
+        XCTAssertEqual(prepared.lesson.title, "Smooth Shark Skin Drawing")
         XCTAssertEqual(prepared.lesson.category, .creative)
         XCTAssertTrue(prepared.lesson.childFacingMathChallenges.isEmpty)
         XCTAssertTrue(prepared.lesson.childFacingQuestions.isEmpty)
         XCTAssertTrue(prepared.lesson.isArtQuest)
-        XCTAssertTrue(prepared.lesson.creativePrompt.localizedCaseInsensitiveContains("badge"))
+        XCTAssertEqual(prepared.lesson.creativeResponseType, .drawing)
+        XCTAssertTrue(prepared.lesson.creativePrompt.localizedCaseInsensitiveContains("denticle"))
         XCTAssertFalse(prepared.lesson.missionPrompt.localizedCaseInsensitiveContains("groups of"))
         let facts = prepared.lesson.knowledgeFacts
         XCTAssertFalse(facts.isEmpty)
@@ -535,6 +536,42 @@ final class ContentQualityCoherenceTests: XCTestCase {
         XCTAssertTrue(summary.scienceFact.isEmpty)
         XCTAssertTrue(summary.skillsPracticed.contains("Reading"))
         XCTAssertFalse(summary.skillsPracticed.contains("Math"))
+    }
+
+    func testLetterStartChoicesShareTitleCase() {
+        let profile = ChildProfile(
+            age: 6,
+            grade: "Kindergarten",
+            readingLevel: .beginner,
+            mathLevel: .emerging,
+            favoriteTopics: [.superheroes]
+        )
+        guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .superheroes,
+            category: .discovery,
+            readingLevel: .beginner,
+            mathLevel: .emerging
+        ) else {
+            return XCTFail("Expected superheroes beginner discovery lesson")
+        }
+        let prepared = ContentAdaptationService.prepare(lesson: lesson, profile: profile)
+        guard let question = prepared.lesson.childFacingQuestions.first(where: {
+            $0.prompt.localizedCaseInsensitiveContains("starts with the letter")
+        }) else {
+            return XCTFail("Expected a letter-start question. Got: \(prepared.lesson.childFacingQuestions.map(\.prompt))")
+        }
+        for choice in question.choices {
+            XCTAssertEqual(
+                choice,
+                choice.capitalized,
+                "Letter-start choices should all be title case. Got: \(question.choices)"
+            )
+        }
+        XCTAssertEqual(question.correctAnswer, question.correctAnswer?.capitalized)
+        XCTAssertTrue(
+            question.choices.contains(question.correctAnswer ?? ""),
+            "Correct answer must match a displayed choice. choices=\(question.choices) answer=\(question.correctAnswer ?? "nil")"
+        )
     }
 
     func testLetterStartQuestionsStayOffScienceStoriesForNonBeginners() {
@@ -763,5 +800,129 @@ final class ContentQualityCoherenceTests: XCTestCase {
             failures.isEmpty,
             "Unsafe child language (\(failures.count)):\n" + failures.prefix(40).joined(separator: "\n")
         )
+    }
+
+    func testPirateDiscoveryUsesCaptainWrenNotWilla() {
+        for level in ReadingLevel.allCases {
+            guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+                topic: .pirates,
+                category: .discovery,
+                readingLevel: level,
+                mathLevel: .emerging
+            ) else {
+                return XCTFail("Expected pirate discovery lesson for \(level.rawValue)")
+            }
+            let blob = (lesson.storyOpening + " " + lesson.storyEnding).lowercased()
+            XCTAssertFalse(
+                blob.contains("willa") || blob.contains("whale"),
+                "Pirate discovery should star Captain Wren, not Willa the whale. Got: \(lesson.storyOpening)"
+            )
+            XCTAssertTrue(
+                lesson.storyOpening.localizedCaseInsensitiveContains("Captain Wren"),
+                "Pirate discovery opening should name Captain Wren. Got: \(lesson.storyOpening)"
+            )
+        }
+        let compass = LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .pirates,
+            category: .discovery,
+            readingLevel: .growingReader,
+            mathLevel: .emerging
+        )
+        XCTAssertTrue(
+            compass?.storyOpening.localizedCaseInsensitiveContains("compass needle") == true,
+            "Growing-reader pirate discovery should still open on the compass. Got: \(compass?.storyOpening ?? "nil")"
+        )
+    }
+
+    func testCaptainWrenTreasureLessonGroundsTheChestQuestion() {
+        guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .pirates,
+            category: .story,
+            readingLevel: .beginner,
+            mathLevel: .emerging
+        ) else {
+            return XCTFail("Expected Captain Wren treasure lesson")
+        }
+        XCTAssertEqual(lesson.title, "Captain Wren Finds Treasure")
+        XCTAssertTrue(
+            lesson.readingPassage.localizedCaseInsensitiveContains("where the X marks the spot"),
+            "The story should say she digs where the X marks the spot. Got: \(lesson.readingPassage)"
+        )
+        XCTAssertTrue(
+            lesson.readingPassage.localizedCaseInsensitiveContains("gold coins"),
+            "The story should put gold coins in the chest. Got: \(lesson.readingPassage)"
+        )
+
+        guard let lastQuestion = lesson.questions.last else {
+            return XCTFail("Expected a last reading question about the chest")
+        }
+        XCTAssertTrue(
+            lastQuestion.prompt.localizedCaseInsensitiveContains("chest"),
+            "The last question should ask what is in the chest. Got: \(lastQuestion.prompt)"
+        )
+        XCTAssertEqual(lastQuestion.correctAnswer, "Gold coins")
+        XCTAssertTrue(
+            lesson.readingPassage.localizedCaseInsensitiveContains(lastQuestion.correctAnswer ?? ""),
+            "The chest answer must appear in the passage"
+        )
+    }
+
+    func testEveryTopicHasADrawingOnlyArtQuest() {
+        var missing: [String] = []
+        var problems: [String] = []
+        for topic in Topic.allCases {
+            for level in ReadingLevel.allCases {
+                guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+                    topic: topic,
+                    category: .creative,
+                    readingLevel: level,
+                    mathLevel: .developing
+                ) else {
+                    missing.append("\(topic.rawValue) \(level.rawValue)")
+                    continue
+                }
+                if !lesson.isArtQuest {
+                    problems.append("\(topic.rawValue) \(level.rawValue) is not Art Quest")
+                }
+                if lesson.creativeResponseType != .drawing {
+                    problems.append("\(topic.rawValue) \(level.rawValue) type=\(lesson.creativeResponseType.rawValue)")
+                }
+                if !lesson.questions.isEmpty || !lesson.mathChallenges.isEmpty {
+                    problems.append("\(topic.rawValue) \(level.rawValue) still has quiz items")
+                }
+                if !lesson.creativePrompt.localizedCaseInsensitiveContains("draw this scene") {
+                    problems.append("\(topic.rawValue) \(level.rawValue) prompt: \(lesson.creativePrompt)")
+                }
+                if lesson.creativePrompt.localizedCaseInsensitiveContains("write four") {
+                    problems.append("\(topic.rawValue) \(level.rawValue) still asks kids to write")
+                }
+                if lesson.drawingQuestGoals.isEmpty {
+                    problems.append("\(topic.rawValue) \(level.rawValue) missing drawing goals")
+                }
+            }
+        }
+        XCTAssertTrue(missing.isEmpty, "Missing creative lessons: \(missing.joined(separator: ", "))")
+        XCTAssertTrue(problems.isEmpty, problems.joined(separator: "\n"))
+    }
+
+    func testSharkBeginnerArtQuestIsTheFriendsAdventureScene() {
+        guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .sharks,
+            category: .creative,
+            readingLevel: .beginner,
+            mathLevel: .emerging
+        ) else {
+            return XCTFail("Expected shark friends drawing")
+        }
+        XCTAssertEqual(lesson.title, "Shark Friends Adventure")
+        XCTAssertTrue(lesson.isArtQuest)
+        XCTAssertEqual(lesson.creativeResponseType, .drawing)
+        let prompt = lesson.creativePrompt.lowercased()
+        XCTAssertTrue(prompt.contains("gills"))
+        XCTAssertTrue(prompt.contains("dark blue"))
+        XCTAssertTrue(prompt.contains("red") && prompt.contains("pink") && prompt.contains("green"))
+        XCTAssertTrue(prompt.contains("seaweed"))
+        XCTAssertTrue(prompt.contains("starfish"))
+        XCTAssertEqual(lesson.drawingQuestGoals, ["Dark blue shark", "Gills", "Fish friends", "Starfish"])
     }
 }

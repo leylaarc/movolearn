@@ -165,8 +165,11 @@ struct RewardDetailCard: View {
                 Image(systemName: isLocked ? "lock.fill" : reward.systemImage)
                     .font(.title2.weight(.semibold))
                     .foregroundStyle(isLocked ? DesignSystem.Colors.textTertiary : .white)
+                    .symbolEffect(.bounce, value: isLocked)
             }
             .floating(offset: isLocked ? 0 : 5, delay: floatDelay)
+            .idlePulse(scale: isLocked ? 1 : 1.06, delay: floatDelay)
+            .wiggle(degrees: isLocked ? 0 : 5, delay: floatDelay)
 
             Text(reward.title)
                 .font(DesignSystem.Typography.sectionHeader(15))

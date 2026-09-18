@@ -30,6 +30,8 @@ struct HomeKidHeader: View {
                     HStack(spacing: 6) {
                         Image(systemName: "flame.fill")
                             .foregroundStyle(.white)
+                            .symbolEffect(.bounce, value: streak)
+                            .wiggle(degrees: 7)
                         Text("\(streak)-day streak")
                             .foregroundStyle(.white)
                     }
@@ -65,6 +67,7 @@ struct HomeKidHeader: View {
                         )
                         .clipShape(Circle())
                         .shadow(color: DesignSystem.Colors.skyBlue.opacity(0.35), radius: 8, y: 3)
+                        .idlePulse(scale: 1.06, delay: 0.4)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("Find adventures")
@@ -222,6 +225,7 @@ struct ContinueLearningCard: View {
                         .font(DesignSystem.Typography.button(18))
                     Image(systemName: "arrow.right")
                         .font(.system(size: 16, weight: .bold))
+                        .offset(x: ctaPulse ? 4 : 0)
                 }
                 .foregroundStyle(accent)
                 .frame(maxWidth: .infinity)
@@ -299,7 +303,10 @@ struct HomeTodayStrip: View {
                     Image(systemName: goalMet ? "star.fill" : "flag.checkered")
                         .font(.body.weight(.bold))
                         .foregroundStyle(.white)
+                        .symbolEffect(.bounce, value: goalMet)
+                        .symbolEffect(.bounce, value: stats.dailyProgress)
                 }
+                .idlePulse(scale: goalMet ? 1.08 : 1.04)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(goalMet ? "Daily goal done" : "Today’s goal")
@@ -369,7 +376,9 @@ struct DailyGoalCard: View {
                     .font(.title2.weight(.bold))
                     .foregroundStyle(.white)
                     .symbolEffect(.bounce, value: goalMet)
+                    .symbolEffect(.bounce, value: stats.dailyProgress)
             }
+            .idlePulse(scale: goalMet ? 1.08 : 1.04)
 
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
@@ -434,6 +443,7 @@ struct TodayMissionCard: View {
                     Image(systemName: mission.isComplete ? "checkmark" : mission.systemImage)
                         .font(.title3.weight(.bold))
                         .foregroundStyle(.white)
+                        .symbolEffect(.bounce, value: mission.isComplete)
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
@@ -683,6 +693,7 @@ struct WorldBubbleCard: View {
                     TopicIllustrationView(topic: world.illustrationTopic, size: 58, animate: true)
                 }
                 .floating(offset: 5, delay: floatDelay)
+                .idlePulse(scale: 1.04, delay: floatDelay)
 
                 Text(shortTitle)
                     .font(DesignSystem.Typography.sectionHeader(14))
@@ -857,8 +868,11 @@ struct HomeRewardChip: View {
                 Image(systemName: reward.systemImage)
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(.white)
+                    .symbolEffect(.bounce, value: reward.id)
             }
             .floating(offset: 4, delay: floatDelay)
+            .idlePulse(scale: 1.06, delay: floatDelay)
+            .wiggle(degrees: 5, delay: floatDelay)
 
             Text(reward.title)
                 .font(DesignSystem.Typography.caption(12))
@@ -894,7 +908,7 @@ struct RecommendedLessonCard: View {
                         )
                         .frame(width: 68, height: 68)
                         .shadow(color: accent.opacity(0.22), radius: 8, y: 3)
-                    TopicIllustrationView(topic: model.lesson.theme, size: 42, animate: false)
+                    TopicIllustrationView(topic: model.lesson.theme, size: 42, animate: true)
                 }
 
                 VStack(alignment: .leading, spacing: 5) {

@@ -141,7 +141,7 @@ final class LevelContentDifferentiationTests: XCTestCase {
                 )
             ],
             vocabularyWords: [
-                VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total.")
+                VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total.")
             ],
             knowledgeFacts: [
                 KnowledgeFact(fact: "Math problems need every number stated in the story.")

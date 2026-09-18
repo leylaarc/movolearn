@@ -91,7 +91,8 @@ See `docs/CONTENT_PIPELINE.md` and `backend/content-pipeline/README.md`.
 
 ## Mascots (original, not copyrighted)
 
-- Willa the Whale — sharks / ocean
+- Finn the Shark — sharks
+- Willa the Whale — ocean
 - Nova the Star — space
 - Dottie the Dino — dinosaurs
 - Sunny the Horse — horses

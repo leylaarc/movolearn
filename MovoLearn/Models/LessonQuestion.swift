@@ -65,7 +65,7 @@ struct LessonQuestion: Codable, Identifiable, Equatable {
         self.subject = subject
         self.type = type
         self.prompt = normalizedPrompt
-        self.choices = choices
+        self.choices = Self.randomizedChoiceOrder(choices, id: id, prompt: normalizedPrompt)
         self.correctAnswer = correctAnswer
         self.explanation = explanation
         self.difficultyLevel = difficultyLevel
@@ -200,7 +200,8 @@ struct LessonQuestion: Codable, Identifiable, Equatable {
             )
         }
 
-        choices = try container.decodeIfPresent([String].self, forKey: .choices) ?? []
+        let decodedChoices = try container.decodeIfPresent([String].self, forKey: .choices) ?? []
+        choices = Self.randomizedChoiceOrder(decodedChoices, id: id, prompt: prompt)
         correctAnswer = try container.decodeIfPresent(String.self, forKey: .correctAnswer)
         explanation = try container.decodeIfPresent(String.self, forKey: .explanation)
         difficultyLevel = try container.decodeIfPresent(ReadingLevel.self, forKey: .difficultyLevel)
@@ -273,6 +274,33 @@ struct LessonQuestion: Codable, Identifiable, Equatable {
         if !clues.isEmpty {
             try container.encode(clues, forKey: .clues)
         }
+    }
+
+    /// Mixes option order so the correct answer is not always the first button.
+    /// Canonical sort first so encode → decode (or repair rebuilds) stay stable.
+    private static func randomizedChoiceOrder(_ choices: [String], id: UUID, prompt: String) -> [String] {
+        guard choices.count > 1 else { return choices }
+
+        var result = choices.enumerated().sorted { lhs, rhs in
+            if lhs.element == rhs.element { return lhs.offset < rhs.offset }
+            return lhs.element < rhs.element
+        }.map(\.element)
+
+        var state: UInt64 = 0x9E37_79B9_7F4A_7C15
+        for byte in id.uuidString.utf8 {
+            state = state &* 16777619 &+ UInt64(byte)
+        }
+        for byte in prompt.utf8 {
+            state = state &* 16777619 &+ UInt64(byte)
+        }
+        if state == 0 { state = 1 }
+
+        for i in stride(from: result.count - 1, through: 1, by: -1) {
+            state = state &* 6364136223846793005 &+ 1
+            let j = Int(state >> 33) % (i + 1)
+            result.swapAt(i, j)
+        }
+        return result
     }
 
     /// Effective response type for UI rendering.

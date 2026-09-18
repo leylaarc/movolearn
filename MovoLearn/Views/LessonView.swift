@@ -129,22 +129,6 @@ struct LessonView: View {
                 pointSize: viewModel.storyBodyFontSize,
                 centered: false
             )
-        case .mission:
-            VStack(spacing: DesignSystem.Spacing.md) {
-                StoryTextBlock(
-                    text: MissionPromptNormalizer.childFacing(story.missionPrompt),
-                    style: .mission,
-                    pointSize: viewModel.prefersScaffoldedUI ? 24 : nil
-                )
-                HStack(spacing: DesignSystem.Spacing.sm) {
-                    Image(systemName: "clock.fill")
-                        .foregroundStyle(DesignSystem.Colors.warmOrange)
-                    Text("About \(viewModel.estimatedMinutes) minutes")
-                        .font(DesignSystem.Typography.title(16))
-                        .foregroundStyle(DesignSystem.Colors.deepNavy)
-                }
-            }
-            .frame(maxWidth: .infinity)
         case .reading:
             StoryTextBlock(
                 text: story.readingPassage,
@@ -162,6 +146,8 @@ struct LessonView: View {
                 HStack(spacing: DesignSystem.Spacing.sm) {
                     Image(systemName: "star.circle.fill")
                         .foregroundStyle(DesignSystem.Colors.sunshineYellow)
+                        .symbolEffect(.bounce, value: moment.title)
+                        .idlePulse(scale: 1.12)
                     Text("You helped complete today's adventure!")
                         .font(DesignSystem.Typography.title(17))
                         .foregroundStyle(DesignSystem.Colors.deepNavy)
@@ -389,13 +375,16 @@ struct LessonView: View {
         let responseType = viewModel.creativeResponseType
         let displayPrompt = PromptWordingNormalizer.normalize(story.creativePrompt)
         let isArtQuest = viewModel.lesson.isArtQuest
-        let questGoals = responseType == .drawing
-            ? DrawingQuestGoals.goals(for: viewModel.lesson.theme)
+        let questGoals = isArtQuest && responseType == .drawing
+            ? DrawingQuestGoals.goals(
+                for: viewModel.lesson.theme,
+                authored: viewModel.lesson.drawingQuestGoals
+            )
             : []
 
         return LessonPageStage(
             topic: viewModel.lesson.theme,
-            title: moment.title,
+            title: isArtQuest ? viewModel.phaseTitle : moment.title,
             kicker: viewModel.encouragement(for: moment),
             accent: moment.pageAccent(topic: viewModel.lesson.theme),
             compactHeader: responseType == .drawing,
@@ -414,7 +403,7 @@ struct LessonView: View {
 
                 StoryTextBlock(text: displayPrompt, style: responseType == .drawing ? .narrative : .mission)
 
-                if let hint = creativeHint(for: responseType, isArtQuest: isArtQuest) {
+                if let hint = creativeHint(for: responseType) {
                     Text(hint)
                         .font(DesignSystem.Typography.title(17))
                         .foregroundStyle(DesignSystem.Colors.deepNavy)
@@ -436,7 +425,7 @@ struct LessonView: View {
                     matchingCorrect: $viewModel.matchingCorrect,
                     sortingOrderIDs: $viewModel.sortingOrderIDs,
                     sortingCorrect: $viewModel.sortingCorrect,
-                    drawingQuestGoals: isArtQuest ? questGoals : (responseType == .drawing ? questGoals : [])
+                    drawingQuestGoals: questGoals
                 )
                 .frame(maxHeight: responseType == .drawing ? .infinity : nil)
             }
@@ -455,12 +444,8 @@ struct LessonView: View {
         }
     }
 
-    private func creativeHint(for type: QuestionResponseType, isArtQuest: Bool) -> String? {
+    private func creativeHint(for type: QuestionResponseType) -> String? {
         switch type {
-        case .drawing:
-            return isArtQuest
-                ? "Pick colors, draw your scene, then tap the checklist for bonus stars!"
-                : "Pick a color and draw a moment from the story."
         case .number:
             return "Tap the numbers to enter your answer."
         default:
@@ -469,7 +454,7 @@ struct LessonView: View {
     }
 
     private func creativeButtonTitle(responseType: QuestionResponseType, isArtQuest: Bool) -> String {
-        if isArtQuest { return "Finish Art Quest!" }
+        if isArtQuest { return "I'm Done Drawing!" }
         return responseType == .drawing ? "Share My Drawing" : "Submit My Answer"
     }
 
@@ -517,7 +502,10 @@ struct LessonView: View {
             Spacer(minLength: 0)
 
             VStack(spacing: DesignSystem.Spacing.lg) {
-                MascotView(topic: viewModel.lesson.theme, size: 110, celebrate: true)
+                ZStack {
+                    CelebrationView()
+                    MascotView(topic: viewModel.lesson.theme, size: 110, celebrate: true)
+                }
 
                 Text(viewModel.lesson.missionCompleteMessage)
                     .font(DesignSystem.Typography.headline(26))

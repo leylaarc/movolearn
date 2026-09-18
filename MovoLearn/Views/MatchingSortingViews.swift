@@ -129,6 +129,10 @@ struct MatchingQuestionView: View {
         .buttonStyle(.plain)
         .disabled(showFeedback)
         .opacity(locked && !showFeedback ? 0.55 : 1)
+        .scaleEffect(correct ? 1.04 : (selected ? 1.02 : 1))
+        .shake(trigger: incorrect)
+        .animation(DesignSystem.Animation.select, value: selected)
+        .animation(DesignSystem.Animation.celebrate, value: correct)
         .environment(\.colorScheme, .light)
     }
 
@@ -233,6 +237,9 @@ struct SortingQuestionView: View {
                     RoundedRectangle(cornerRadius: DesignSystem.Radius.sm, style: .continuous)
                         .stroke(rowBorder(for: item, index: index), lineWidth: 1.5)
                 )
+                .scaleEffect(showFeedback && isCorrectRow(item, index: index) ? 1.02 : 1)
+                .animation(DesignSystem.Animation.select, value: orderedIDs)
+                .animation(DesignSystem.Animation.celebrate, value: showFeedback)
                 .opacity(draggingID == item.id ? 0.55 : 1)
                 .draggable(item.id) {
                     Text(item.text)
@@ -302,6 +309,12 @@ struct SortingQuestionView: View {
         }
         orderedIDs = ids
         onOrderChanged?(orderedIDs)
+    }
+
+    private func isCorrectRow(_ item: SortingItem, index: Int) -> Bool {
+        guard showFeedback else { return false }
+        let correctID = items.sorted { $0.correctPosition < $1.correctPosition }.map(\.id)
+        return index < correctID.count && correctID[index] == item.id
     }
 
     private func rowBackground(for item: SortingItem, index: Int) -> Color {

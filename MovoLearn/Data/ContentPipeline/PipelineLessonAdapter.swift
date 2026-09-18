@@ -96,7 +96,7 @@ enum PipelineLessonAdapter {
             vocabularyWords: [
                 VocabularyWord(
                     word: primarySubject == .math ? "total" : "explore",
-                    definition: primarySubject == .math ? "How many altogether." : "To look and learn.",
+                    definition: primarySubject == .math ? "How many in all." : "To look and learn.",
                     exampleSentence: "Today we explore new ideas."
                 )
             ],

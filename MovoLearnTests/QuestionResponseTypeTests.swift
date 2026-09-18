@@ -471,4 +471,12 @@ final class QuestionResponseTypeTests: XCTestCase {
         XCTAssertTrue(question.hasValidSortingData)
         XCTAssertTrue(QuestionQualityValidator.isUnsupportedArranging(question))
     }
+
+    func testDrawThisSceneWithDrawbridgeStillCountsAsDrawing() {
+        XCTAssertTrue(
+            QuestionResponseTypeResolver.looksLikeDrawingPrompt(
+                "draw this scene: a wooden drawbridge is down over a blue moat."
+            )
+        )
+    }
 }

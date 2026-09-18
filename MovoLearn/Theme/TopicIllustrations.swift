@@ -113,7 +113,7 @@ struct TopicCard: View {
                             y: 5
                         )
 
-                    TopicIllustrationView(topic: topic, size: 56, animate: isSelected)
+                    TopicIllustrationView(topic: topic, size: 56, animate: true)
 
                     if isSelected {
                         Image(systemName: "checkmark.circle.fill")
@@ -122,6 +122,7 @@ struct TopicCard: View {
                             .foregroundStyle(.white, DesignSystem.Colors.freshGreen)
                             .offset(x: 6, y: -6)
                             .transition(.scale.combined(with: .opacity))
+                            .symbolEffect(.bounce, value: isSelected)
                     }
                 }
                 .floating(

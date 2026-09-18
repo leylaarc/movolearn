@@ -13,13 +13,13 @@ final class SyncCoordinator {
 
     init(
         api: FamilyAPIClientProtocol = FamilyAPIClient.shared,
-        sessionStore: ParentSessionStoreProtocol = ParentSessionStore.shared,
+        sessionStore: ParentSessionStoreProtocol? = nil,
         profileRepository: ProfileRepositoryProtocol = ProfileRepository.shared,
         progressStore: ProgressStore = .shared,
         learningStore: LearningProgressStore = .shared
     ) {
         self.api = api
-        self.sessionStore = sessionStore
+        self.sessionStore = sessionStore ?? ParentSessionStore.shared
         self.profileRepository = profileRepository
         self.progressStore = progressStore
         self.learningStore = learningStore

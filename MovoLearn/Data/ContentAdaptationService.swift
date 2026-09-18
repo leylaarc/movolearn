@@ -197,7 +197,8 @@ enum ContentAdaptationService {
             curriculumDifficulty: lesson.curriculumDifficulty,
             recommendedAgeRange: ageTarget(for: ability.age),
             learningObjectives: lesson.learningObjectives,
-            evidenceTargets: lesson.evidenceTargets
+            evidenceTargets: lesson.evidenceTargets,
+            drawingQuestGoals: lesson.drawingQuestGoals
         )
 
         adapted.primaryTopicId = lesson.primaryTopicId
@@ -747,7 +748,8 @@ enum ContentAdaptationService {
             curriculumDifficulty: lesson.curriculumDifficulty,
             recommendedAgeRange: lesson.recommendedAgeRange,
             learningObjectives: lesson.learningObjectives,
-            evidenceTargets: lesson.evidenceTargets
+            evidenceTargets: lesson.evidenceTargets,
+            drawingQuestGoals: lesson.drawingQuestGoals
         )
     }
 
@@ -816,7 +818,9 @@ enum ContentAdaptationService {
             switch theme {
             case .horses:
                 return "The ponies stand in the yard. They swish their tails. Mia speaks softly so they stay calm."
-            case .sharks, .oceanAnimals:
+            case .sharks:
+                return "Finn sees a blue wave. He swims slowly. A small fish dashes by."
+            case .oceanAnimals:
                 return "Willa sees a blue wave. She swims slowly. A small fish dashes by."
             case .space, .planets, .rockets:
                 return "Nova sees a bright star. She waves hello. The moon looks close and kind."
@@ -893,7 +897,8 @@ enum ContentAdaptationService {
             curriculumDifficulty: lesson.curriculumDifficulty,
             recommendedAgeRange: lesson.recommendedAgeRange,
             learningObjectives: lesson.learningObjectives,
-            evidenceTargets: lesson.evidenceTargets
+            evidenceTargets: lesson.evidenceTargets,
+            drawingQuestGoals: lesson.drawingQuestGoals
         )
     }
 
@@ -1082,19 +1087,21 @@ enum ContentAdaptationService {
             .filter { $0.compare(target, options: .caseInsensitive) != .orderedSame }
             .filter { $0.uppercased().hasPrefix(letterName) == false }
         guard distractors.count >= 2 else { return nil }
-        var choices = [target, distractors[0], distractors[1]]
+        let display = { (word: String) in word.capitalized }
+        var choices = [target, distractors[0], distractors[1]].map(display)
         let pivot = abs(target.hashValue) % choices.count
         if pivot > 0 {
             choices = Array(choices[pivot...]) + Array(choices[..<pivot])
         }
+        let answer = display(target)
         return LessonQuestion(
             subject: .reading,
             type: .multipleChoice,
             responseType: .multipleChoice,
             prompt: "Which word starts with the letter \(letterName)?",
             choices: choices,
-            correctAnswer: target,
-            explanation: "\(target.capitalized) starts with \(letterName)."
+            correctAnswer: answer,
+            explanation: "\(answer) starts with \(letterName)."
         )
     }
 

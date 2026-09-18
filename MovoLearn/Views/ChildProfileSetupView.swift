@@ -65,6 +65,7 @@ struct ChildProfileSetupView: View {
                                         Image(systemName: "minus.circle.fill")
                                             .font(.title2)
                                             .foregroundStyle(DesignSystem.Colors.sunshineYellow)
+                                            .symbolEffect(.bounce, value: profile.currentAge)
                                     }
                                     .frame(minWidth: 48, minHeight: 48)
 
@@ -72,6 +73,8 @@ struct ChildProfileSetupView: View {
                                         .font(DesignSystem.Typography.title(22))
                                         .foregroundStyle(DesignSystem.Colors.deepNavy)
                                         .frame(maxWidth: .infinity)
+                                        .contentTransition(.numericText())
+                                        .animation(DesignSystem.Animation.bounce, value: profile.currentAge)
 
                                     Button {
                                         if profile.storedAge < 10 {
@@ -83,6 +86,7 @@ struct ChildProfileSetupView: View {
                                         Image(systemName: "plus.circle.fill")
                                             .font(.title2)
                                             .foregroundStyle(DesignSystem.Colors.sunshineYellow)
+                                            .symbolEffect(.bounce, value: profile.currentAge)
                                     }
                                     .frame(minWidth: 48, minHeight: 48)
                                 }

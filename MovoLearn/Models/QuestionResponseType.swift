@@ -239,18 +239,7 @@ enum QuestionResponseTypeResolver {
         responseType: QuestionResponseType,
         category: LessonCategory
     ) -> (mission: String, prompt: String, responseType: QuestionResponseType) {
-        let lowerTitle = title.lowercased()
-        let lowerPrompt = prompt.lowercased()
-        let lowerMission = mission.lowercased()
-        let writeFour = lowerPrompt.contains("write four")
-            || lowerMission.contains("write four")
-        let writingPrompt = lowerPrompt.hasPrefix("write ")
-            || lowerMission.contains("write and ")
-            || writeFour
-        let visualTitle = ["art", "camouflage", "design", "invent", "draw", "creature", "poster", "comic", "portrait", "badge"]
-            .contains { lowerTitle.contains($0) }
-        let shouldDraw = category == .creative && writingPrompt && (writeFour || visualTitle)
-        guard shouldDraw else {
+        guard category == .creative else {
             return (
                 ChildFacingProseQualityValidator.polish(mission),
                 ChildFacingProseQualityValidator.polish(prompt),
@@ -365,8 +354,10 @@ enum QuestionResponseTypeResolver {
     }
 
     static func looksLikeDrawingPrompt(_ lower: String) -> Bool {
-        // Avoid false positives like "drawbridge".
-        if lower.contains("drawbridge") { return false }
+        // Avoid false positives like "drawbridge" when the prompt is not asking the child to draw.
+        if lower.contains("drawbridge"), !lower.hasPrefix("draw "), !lower.contains(" draw ") {
+            return false
+        }
 
         let drawingPhrases = [
             "draw ", "draw a ", "draw an ", "draw the ", "draw your ", "draw what",

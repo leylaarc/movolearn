@@ -156,6 +156,60 @@ final class MathQuestionVarietyTests: XCTestCase {
         XCTAssertGreaterThan(Set(prompts).count, 1, "Emerging drawing prompts should vary: \(prompts)")
     }
 
+    func testMathDrawingPromptsDoNotAskKidsToCircleAsTheyCount() {
+        let banned = [
+            "circle them as you count",
+            "circle them when you count",
+            "circle both groups as you add",
+            "circle each as you count",
+            "circle each one as you count"
+        ]
+        func assertClean(_ text: String, label: String) {
+            let displayed = PromptWordingNormalizer.normalize(text)
+            let blob = "\(text) \(displayed)".lowercased()
+            for phrase in banned {
+                XCTAssertFalse(blob.contains(phrase), "\(label) still asks kids to circle while counting: \(text)")
+            }
+        }
+        for topic in Topic.allCases {
+            for level in MathLevel.allCases {
+                guard let scene = CuratedTopicLessonBank.mathScene(
+                    topic: topic,
+                    mathLevel: level,
+                    readingLevel: .beginner
+                ) else {
+                    continue
+                }
+                assertClean(scene.creativePrompt, label: "\(topic.rawValue) @ \(level.rawValue) drawing")
+                for problem in scene.problems {
+                    assertClean(problem.prompt, label: "\(topic.rawValue) @ \(level.rawValue) question")
+                }
+                for hint in scene.hints {
+                    assertClean(hint, label: "\(topic.rawValue) @ \(level.rawValue) hint")
+                }
+            }
+        }
+    }
+
+    func testStaleCircleWhileCountingPromptsAreStrippedBeforeKidsSeeThem() {
+        let stale = [
+            "Draw 5 roses in the castle garden and circle them as you count.",
+            "Draw 4 ponies by a fence. Circle them as you count.",
+            "Draw 3 fish by coral. Then draw 2 more fish. Circle both groups as you add."
+        ]
+        for prompt in stale {
+            let cleaned = PromptWordingNormalizer.normalize(prompt)
+            XCTAssertFalse(
+                cleaned.lowercased().contains("circle"),
+                "Stale circling instruction still shown: \(cleaned)"
+            )
+            XCTAssertTrue(
+                cleaned.lowercased().hasPrefix("draw"),
+                "Drawing instruction should remain: \(cleaned)"
+            )
+        }
+    }
+
     func testSecureGroupingMathUsesTheStoryGroupSize() {
         let topics: [Topic] = [.cooking, .sharks, .soccer, .horses, .space]
         var sizes = Set<Int>()

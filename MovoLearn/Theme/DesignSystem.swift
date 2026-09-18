@@ -377,6 +377,8 @@ enum DesignSystem {
         static let celebrate = celebrationAnimation
         static let stagger = SwiftUI.Animation.spring(response: 0.52, dampingFraction: 0.80)
         static let idle = SwiftUI.Animation.easeInOut(duration: 2.4).repeatForever(autoreverses: true)
+        static let wiggle = SwiftUI.Animation.easeInOut(duration: 1.8).repeatForever(autoreverses: true)
+        static let shake = SwiftUI.Animation.linear(duration: 0.42)
     }
 }
 
@@ -524,23 +526,111 @@ extension View {
             .offset(y: appeared ? 0 : 14)
             .animation(DesignSystem.Animation.gentle.delay(delay), value: appeared)
     }
+
+    func idlePulse(scale: CGFloat = 1.06, delay: Double = 0) -> some View {
+        modifier(IdlePulseModifier(scale: scale, delay: delay))
+    }
+
+    func wiggle(degrees: Double = 4, delay: Double = 0) -> some View {
+        modifier(WiggleModifier(degrees: degrees, delay: delay))
+    }
+
+    func shake(trigger: Bool) -> some View {
+        modifier(ShakeModifier(trigger: trigger))
+    }
 }
 
 struct FloatingModifier: ViewModifier {
     let amplitude: CGFloat
     let delay: Double
     @Environment(\.illustrationAnimates) private var illustrationAnimates
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var floating = false
 
     func body(content: Content) -> some View {
         content
             .offset(y: floating ? -amplitude : amplitude)
             .onAppear {
-                guard illustrationAnimates else { return }
+                guard illustrationAnimates, !reduceMotion else { return }
                 withAnimation(DesignSystem.Animation.gentleFloatAnimation.delay(delay)) {
                     floating = true
                 }
             }
+    }
+}
+
+struct IdlePulseModifier: ViewModifier {
+    let scale: CGFloat
+    let delay: Double
+    @Environment(\.illustrationAnimates) private var illustrationAnimates
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var pulsing = false
+
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(shouldAnimate && pulsing ? scale : 1)
+            .onAppear {
+                guard shouldAnimate else { return }
+                withAnimation(DesignSystem.Animation.idle.delay(delay)) {
+                    pulsing = true
+                }
+            }
+    }
+
+    private var shouldAnimate: Bool { illustrationAnimates && !reduceMotion }
+}
+
+struct WiggleModifier: ViewModifier {
+    let degrees: Double
+    let delay: Double
+    @Environment(\.illustrationAnimates) private var illustrationAnimates
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var wiggling = false
+
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(.degrees(shouldAnimate && wiggling ? degrees : (shouldAnimate ? -degrees : 0)))
+            .onAppear {
+                guard shouldAnimate else { return }
+                withAnimation(DesignSystem.Animation.wiggle.delay(delay)) {
+                    wiggling = true
+                }
+            }
+    }
+
+    private var shouldAnimate: Bool { illustrationAnimates && !reduceMotion }
+}
+
+struct ShakeModifier: ViewModifier {
+    var trigger: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var shakes: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        content
+            .modifier(ShakeGeometry(amount: reduceMotion ? 0 : 8, shakesPerUnit: 4, animatableData: shakes))
+            .onChange(of: trigger) { _, isTriggered in
+                guard isTriggered, !reduceMotion else { return }
+                shakes = 0
+                withAnimation(DesignSystem.Animation.shake) {
+                    shakes = 1
+                }
+            }
+    }
+}
+
+private struct ShakeGeometry: GeometryEffect {
+    var amount: CGFloat
+    var shakesPerUnit: CGFloat
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(
+            CGAffineTransform(
+                translationX: amount * sin(animatableData * .pi * shakesPerUnit),
+                y: 0
+            )
+        )
     }
 }
 

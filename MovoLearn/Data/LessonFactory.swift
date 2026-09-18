@@ -74,7 +74,7 @@ enum LessonFactory {
         let extraFact = def.scienceFacts[(seed + 1) % def.scienceFacts.count]
         let knowledgeFacts = [
             KnowledgeFact(fact: fact, explanation: "Scientists and explorers use this fact to understand \(def.name.lowercased())."),
-            KnowledgeFact(fact: extraFact, explanation: "This is another true fact about \(def.name.lowercased()).")
+            KnowledgeFact(fact: extraFact, explanation: "This is another fact about \(def.name.lowercased()).")
         ].prefix(rules.knowledgeFactRange.upperBound).map { $0 }
 
         let interactionQuestions = ThemeInteractionQuestions.forPassage(
@@ -252,7 +252,7 @@ enum LessonFactory {
             case .builder:
                 return "Use counting and reading to build at \(setting)."
             case .animalExpert:
-                return "Teach one true fact about \(topic.name.lowercased())."
+                return "Teach one fact about \(topic.name.lowercased())."
             case .spaceMission:
                 return "Finish each mission step at \(setting)."
             case .creativeLab:

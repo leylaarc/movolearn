@@ -631,6 +631,8 @@ struct Lesson: Codable, Identifiable {
     var recommendedAgeRange: String?
     var learningObjectives: [String]
     var evidenceTargets: [String]
+    /// Scene checklist shown on Art Quest drawing boards (tap-what-you-added).
+    var drawingQuestGoals: [String]
 
     /// True when the lesson may be shown to children.
     var isApprovedForChildDisplay: Bool {
@@ -693,7 +695,7 @@ struct Lesson: Codable, Identifiable {
     }
 
     var startButtonLabel: String {
-        if isArtQuest { return "Start Art Quest!" }
+        if isArtQuest { return "Start Drawing!" }
         return lessonType.missionButtonLabel
     }
 
@@ -794,7 +796,8 @@ struct Lesson: Codable, Identifiable {
         curriculumDifficulty: String? = nil,
         recommendedAgeRange: String? = nil,
         learningObjectives: [String] = [],
-        evidenceTargets: [String] = []
+        evidenceTargets: [String] = [],
+        drawingQuestGoals: [String] = []
     ) {
         self.id = id
         self.title = title
@@ -877,6 +880,7 @@ struct Lesson: Codable, Identifiable {
         self.recommendedAgeRange = recommendedAgeRange
         self.learningObjectives = learningObjectives
         self.evidenceTargets = evidenceTargets
+        self.drawingQuestGoals = drawingQuestGoals
     }
 
     /// Convenience initializer with legacy single vocabulary and fact fields.
@@ -1019,6 +1023,7 @@ struct Lesson: Codable, Identifiable {
         case curriculumDomain, domain
         case curriculumDifficulty, difficulty
         case recommendedAgeRange, learningObjectives, evidenceTargets
+        case drawingQuestGoals
     }
 
     init(from decoder: Decoder) throws {
@@ -1233,6 +1238,7 @@ struct Lesson: Codable, Identifiable {
         recommendedAgeRange = try container.decodeIfPresent(String.self, forKey: .recommendedAgeRange)
         learningObjectives = try container.decodeIfPresent([String].self, forKey: .learningObjectives) ?? []
         evidenceTargets = try container.decodeIfPresent([String].self, forKey: .evidenceTargets) ?? []
+        drawingQuestGoals = try container.decodeIfPresent([String].self, forKey: .drawingQuestGoals) ?? []
         standardSkillId = try container.decodeIfPresent(String.self, forKey: .standardSkillId)
         contentApprovalStatus = try container.decodeIfPresent(ContentApprovalStatus.self, forKey: .contentApprovalStatus) ?? .legacyBundled
         hints = try container.decodeIfPresent([String].self, forKey: .hints) ?? []
@@ -1298,6 +1304,7 @@ struct Lesson: Codable, Identifiable {
         try container.encodeIfPresent(recommendedAgeRange, forKey: .recommendedAgeRange)
         try container.encode(learningObjectives, forKey: .learningObjectives)
         try container.encode(evidenceTargets, forKey: .evidenceTargets)
+        try container.encode(drawingQuestGoals, forKey: .drawingQuestGoals)
     }
 
     // MARK: - Helpers

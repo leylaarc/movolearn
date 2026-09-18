@@ -130,6 +130,7 @@ struct InterestSelectionView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "sparkles")
                         .font(.body.weight(.semibold))
+                        .symbolEffect(.bounce, value: selectedTopics.count)
                     Text("Surprise me")
                         .font(DesignSystem.Typography.sectionHeader(15))
                 }
@@ -183,6 +184,8 @@ struct InterestSelectionView: View {
             Image(systemName: "heart.fill")
                 .font(.caption.weight(.bold))
                 .foregroundStyle(DesignSystem.Colors.coralPink)
+                .symbolEffect(.bounce, value: selectedTopics.count)
+                .idlePulse(scale: 1.16)
             Text("\(selectedTopics.count) topic\(selectedTopics.count == 1 ? "" : "s") selected\(selectedTopics.count < 3 ? " · pick \(3 - selectedTopics.count) more" : "")")
                 .font(DesignSystem.Typography.sectionHeader(14))
                 .foregroundStyle(DesignSystem.Colors.deepNavy)

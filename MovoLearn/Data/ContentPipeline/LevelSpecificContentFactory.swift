@@ -187,7 +187,8 @@ enum LevelSpecificContentFactory {
             intendedReadingBand: lesson.intendedReadingBand,
             measuredReadingEstimate: lesson.measuredReadingEstimate,
             readingMeasurementProvider: lesson.readingMeasurementProvider,
-            learningObjectives: lesson.learningObjectives.isEmpty ? [lesson.readingSkill, lesson.mathSkill].filter { !$0.isEmpty } : lesson.learningObjectives
+            learningObjectives: lesson.learningObjectives.isEmpty ? [lesson.readingSkill, lesson.mathSkill].filter { !$0.isEmpty } : lesson.learningObjectives,
+            drawingQuestGoals: lesson.drawingQuestGoals
         ))
     }
 
@@ -261,13 +262,23 @@ enum LevelSpecificContentFactory {
             Mia guided the group into the sunny yard, where three ponies swished their tails and watched every step. She explained that horses rely on calm voices, steady movement, and clear sight lines to feel safe. Approaching from directly behind can startle them, so visitors learned to stand where a horse can see them first. A foal stayed close to its mother while Mia described how ear position and body language reveal curiosity or worry. Using those clues, the visitors practiced safer greetings before offering a gentle scratch on the neck. Mia finished by connecting each tip to one goal: thoughtful care protects both horses and people.
             """
 
-        case ("sharks", .beginner), ("ocean animals", .beginner), ("ocean", .beginner):
+        case ("sharks", .beginner):
+            return "Finn sees a blue wave. He swims slowly. A small fish dashes by."
+        case ("ocean animals", .beginner), ("ocean", .beginner):
             return "Willa sees a blue wave. She swims slowly. A small fish dashes by."
-        case ("sharks", .earlyReader), ("ocean animals", .earlyReader), ("ocean", .earlyReader):
+        case ("sharks", .earlyReader):
+            return "Finn the reef shark glides near a sunny reef. He swims slowly and does not chase the little fish. Soft bubbles rise from the rocks. Then he tells a friend what he saw."
+        case ("ocean animals", .earlyReader), ("ocean", .earlyReader):
             return "Willa glides near a sunny reef. She watches a gentle reef shark swim past. The shark moves slowly and does not chase the little fish. Willa counts the bubbles rising from the rocks. Then she tells a friend what she saw."
-        case ("sharks", .growingReader), ("ocean animals", .growingReader), ("ocean", .growingReader):
+        case ("sharks", .growingReader):
+            return "Finn followed the reef trail after a calm morning swim. Bubbles rose near a dark cave, and tiny fish darted into the coral. Reef sharks often rest in quiet pockets during the day. Finn settled in the cooler shade under the ledge. The details helped him decide where to rest next."
+        case ("ocean animals", .growingReader), ("ocean", .growingReader):
             return "Willa followed the reef trail after a calm morning swim. Bubbles rose near a dark cave, and tiny fish darted into the coral. A guide explained that reef sharks often rest in quiet pockets during the day. Willa predicted the shark would return when the water warmed. Later she checked her notes against what she really saw. The details helped her decide what to watch next."
-        case ("sharks", .confidentReader), ("ocean animals", .confidentReader), ("ocean", .confidentReader):
+        case ("sharks", .confidentReader):
+            return """
+            Finn studied the reef like a careful young shark. Morning light made the water look calm, but ripples near the rocks suggested something moved below. Reef sharks choose resting spots for safety and cooler water. Finn compared two clues: fish fleeing inland, and a smooth shape sliding through deeper water. Using both details, he inferred that another shark had already shifted locations. That inference changed his plan for the next rest spot. He noticed two evidence clues before leaving for a quieter ledge.
+            """
+        case ("ocean animals", .confidentReader), ("ocean", .confidentReader):
             return """
             Willa studied the reef like a careful scientist. Morning light made the water look calm, but ripples near the rocks suggested something moved below. The guide said reef sharks choose resting spots for safety and cooler water. Willa compared two clues: fish fleeing inland, and a smooth shape sliding through deeper water. Using both details, she inferred that the shark had already shifted locations. That inference changed her plan for the next observation. She wrote two evidence notes before leaving for a safer viewing ledge.
             """
@@ -328,7 +339,12 @@ enum LevelSpecificContentFactory {
                 mcq(subject: .reading, "Why avoid approaching from directly behind?", choices: ["It can startle a horse", "It helps a horse nap", "It makes ears point forward"], answer: "It can startle a horse", explanation: "Approaching from behind can startle horses.")
             ]
 
-        case ("sharks", .beginner), ("ocean animals", .beginner), ("ocean", .beginner):
+        case ("sharks", .beginner):
+            return [
+                mcq(subject: .reading, "What does Finn see?", choices: ["A blue wave", "A red truck", "A tall tree"], answer: "A blue wave", explanation: "Finn sees a blue wave."),
+                mcq(subject: .reading, "How does Finn swim?", choices: ["Slowly", "Upside down", "Without moving"], answer: "Slowly", explanation: "He swims slowly.")
+            ]
+        case ("ocean animals", .beginner), ("ocean", .beginner):
             return [
                 mcq(subject: .reading, "What does Willa see?", choices: ["A blue wave", "A red truck", "A tall tree"], answer: "A blue wave", explanation: "Willa sees a blue wave."),
                 mcq(subject: .reading, "How does Willa swim?", choices: ["Slowly", "Upside down", "Without moving"], answer: "Slowly", explanation: "She swims slowly.")
@@ -642,7 +658,7 @@ enum LevelSpecificContentFactory {
                 readingLevel: readingLevel,
                 mathLevel: mathLevel,
                 learningGoal: .writing,
-                teaser: "Create something inspired by \(topic.rawValue.lowercased()).",
+                teaser: "Draw a scene about \(topic.rawValue.lowercased()).",
                 readingSkill: "",
                 mathSkill: "",
                 reflectionPrompt: ReflectionPromptQuality.ensureConcrete(
@@ -663,7 +679,8 @@ enum LevelSpecificContentFactory {
                         "Express an idea connected to \(topic.rawValue)",
                         "fp:creative.\(topic.rawValue).\(readingLevel.rawValue)"
                     ]
-                    : pack.learningObjectives
+                    : pack.learningObjectives,
+                drawingQuestGoals: pack.drawingGoals
             )
         }
 
@@ -671,7 +688,6 @@ enum LevelSpecificContentFactory {
         guard let pack = CuratedTopicLessonBank.readingPack(topic: topic, level: readingLevel) else {
             return nil
         }
-        let usesDrawing = readingLevel != .confidentReader
         let inspiration = creativeInspiration(from: pack, level: readingLevel)
         return Lesson(
             id: stableID(topic: topic, category: .creative, reading: readingLevel, math: mathLevel),
@@ -687,20 +703,20 @@ enum LevelSpecificContentFactory {
             mathChallenges: [],
             vocabularyWords: Array(pack.vocabularyWords.prefix(2)),
             knowledgeFacts: Array(pack.knowledgeFacts.prefix(1)),
-            creativePrompt: usesDrawing
-                ? (pack.creativePrompt.isEmpty ? creativeQuestPrompt(topic: topic, level: readingLevel, drawing: true) : pack.creativePrompt)
-                : creativeQuestPrompt(topic: topic, level: readingLevel, drawing: false),
-            creativeResponseType: usesDrawing ? .drawing : .longText,
+            creativePrompt: pack.creativePrompt.isEmpty
+                ? creativeQuestPrompt(topic: topic, level: readingLevel, drawing: true)
+                : pack.creativePrompt,
+            creativeResponseType: .drawing,
             storyEnding: creativeEnding(topic: topic),
             ageTarget: ageBand(age),
             gradeTarget: grade,
             readingLevel: readingLevel,
             mathLevel: mathLevel,
             learningGoal: .writing,
-            teaser: "Create something inspired by \(topic.rawValue.lowercased()).",
+            teaser: "Draw a scene about \(topic.rawValue.lowercased()).",
             readingSkill: "",
             mathSkill: "",
-            reflectionPrompt: creativeReflection(topic: topic, drawing: usesDrawing),
+            reflectionPrompt: creativeReflection(topic: topic, drawing: true),
             skillsPracticed: ["Creative Thinking"],
             standardSkillId: skill?.id,
             contentApprovalStatus: .pendingValidation,
@@ -710,7 +726,8 @@ enum LevelSpecificContentFactory {
             learningObjectives: [
                 "Express an idea connected to \(topic.rawValue)",
                 "fp:creative.\(topic.rawValue).\(readingLevel.rawValue)"
-            ]
+            ],
+            drawingQuestGoals: DrawingQuestGoals.goals(for: topic)
         )
     }
 
@@ -938,7 +955,8 @@ enum LevelSpecificContentFactory {
         switch topic {
         case .horses: base = "Sunny's Stable Sketch"
         case .jungleAnimals: base = "Canopy Color Quest"
-        case .sharks, .oceanAnimals: base = "Willa's Ocean Picture"
+        case .sharks: base = "Finn's Reef Picture"
+        case .oceanAnimals: base = "Willa's Ocean Picture"
         case .space, .planets, .rockets: base = "Nova's Star Sketch"
         case .dinosaurs: base = "Dottie's Fossil Drawing"
         case .soccer: base = "Lena's Field Sketch"
@@ -973,7 +991,9 @@ enum LevelSpecificContentFactory {
             return "Art Quest: Read Sunny's story, then draw a scene that helps keep ponies calm and happy."
         case .jungleAnimals:
             return "Art Quest: Read the rainforest story, then draw one animal in its jungle home."
-        case .sharks, .oceanAnimals:
+        case .sharks:
+            return "Art Quest: Read Finn's reef story, then draw a scene from the reef."
+        case .oceanAnimals:
             return "Art Quest: Read Willa's ocean story, then draw a scene from the reef."
         case .space, .planets, .rockets:
             return "Art Quest: Read Nova's space story, then sketch one moment from the mission."
@@ -1139,11 +1159,15 @@ enum LevelSpecificContentFactory {
             return "Art Quest: Draw the ponies in the sunny yard. Can you add Sunny too?"
         case ("horses", .earlyReader), ("horses", .growingReader), ("horses", .confidentReader):
             return "Art Quest: Draw one pony-care tip from the story — soft voices, calm steps, or standing where a horse can see you."
-        case ("sharks", .beginner), ("ocean", .beginner), ("ocean animals", .beginner):
+        case ("sharks", .beginner):
+            return "Art Quest: Draw the blue wave Finn sees. Add a little fish if you like!"
+        case ("ocean", .beginner), ("ocean animals", .beginner):
             return "Art Quest: Draw the blue wave Willa sees. Add a little fish if you like!"
-        case ("sharks", .earlyReader), ("ocean", .earlyReader), ("ocean animals", .earlyReader),
-             ("sharks", .growingReader), ("ocean", .growingReader), ("ocean animals", .growingReader),
-             ("sharks", .confidentReader), ("ocean", .confidentReader), ("ocean animals", .confidentReader):
+        case ("sharks", .earlyReader), ("sharks", .growingReader), ("sharks", .confidentReader):
+            return "Art Quest: Draw Finn near the reef and one clue from the story."
+        case ("ocean", .earlyReader), ("ocean animals", .earlyReader),
+             ("ocean", .growingReader), ("ocean animals", .growingReader),
+             ("ocean", .confidentReader), ("ocean animals", .confidentReader):
             return "Art Quest: Draw Willa near the reef and one clue from the story."
         case ("space", .beginner), ("planets", .beginner), ("rockets", .beginner):
             return "Art Quest: Draw the bright star Nova sees. Add a moon rock if you can!"

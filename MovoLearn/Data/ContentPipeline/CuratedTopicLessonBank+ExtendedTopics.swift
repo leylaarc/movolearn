@@ -208,7 +208,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Lena can count the soccer balls.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Coaches count gear before every practice to make sure nothing is missing.")],
-                creativePrompt: "Draw 4 soccer balls in the bag and circle them as you count.",
+                creativePrompt: "Draw 4 soccer balls in the bag.",
                 storyEnding: "Lena's gear count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 cones on the left and 3 soccer balls on the right. Which side has more?",
@@ -226,7 +226,7 @@ extension CuratedTopicLessonBank {
                     mcq("A duffel bag holds 10 jerseys. Lena hands 4 jerseys to teammates. How many jerseys are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Lena started practice with 8 cones. She gives away 5 cones to Coach Priya. How many cones does Lena have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total soccer balls.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total soccer balls.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking equipment numbers helps a team get ready faster.")],
                 creativePrompt: "Draw 9 soccer balls ready for the match.",
                 storyEnding: "The team has everything it needs for the match.",
@@ -253,7 +253,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Lena packs 20 practice cones into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Lena sets out 3 equal groups of 4 water bottles for drills. How many water bottles is that?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A corner flag pole is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -278,7 +278,7 @@ extension CuratedTopicLessonBank {
                     mcq("Lena shares 18 orange slices among 3 teammates equally. How many does each teammate get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One corner flag pole is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many medals altogether?")],
+                vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of medals is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Teams often share orange slices at halftime.")],
                 creativePrompt: "Draw the medal packs.",
                 storyEnding: "Every teammate gets a fair share. Great teamwork, Lena!",
@@ -434,7 +434,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Theo can count the basketballs.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Coaches count gear before every practice to make sure nothing is missing.")],
-                creativePrompt: "Draw 4 basketballs by the court and circle them as you count.",
+                creativePrompt: "Draw 4 basketballs by the court.",
                 storyEnding: "Theo's gear count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 jerseys on the left and 3 basketballs on the right. Which side has more?",
@@ -452,7 +452,7 @@ extension CuratedTopicLessonBank {
                     mcq("A cone bin holds 10 practice cones. Theo hands 4 cones to another team. How many cones are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Theo needs 8 jerseys for the team. He already has 5. How many more jerseys does he need?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total basketballs.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total basketballs.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking equipment numbers helps a team get ready faster.")],
                 creativePrompt: "Draw 9 basketballs ready for the game.",
                 storyEnding: "The team has everything it needs for the game.",
@@ -479,7 +479,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Theo packs 20 scorebooks into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Theo packs 3 boxes of trophies with 4 trophies in each box. How many trophies does he pack in all?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A hoop net string is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -504,7 +504,7 @@ extension CuratedTopicLessonBank {
                     mcq("Theo shares 18 orange slices among 3 teammates equally. How many does each teammate get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One hoop net string is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many medals altogether?")],
+                vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first net string is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Players score in basketball by shooting the ball through a hoop.")],
                 creativePrompt: "Draw the medal packs.",
                 storyEnding: "Every teammate gets a fair share. Great teamwork, Theo!",
@@ -660,7 +660,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Ben can count the puppies.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Trainers count treats carefully so every puppy gets a fair turn.")],
-                creativePrompt: "Draw 4 puppies in the yard and circle them as you count.",
+                creativePrompt: "Draw 4 puppies in the yard.",
                 storyEnding: "Ben's puppy count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 treats on the left and 3 puppies on the right. Which side has more?",
@@ -678,7 +678,7 @@ extension CuratedTopicLessonBank {
                     mcq("A toy bin holds 10 chew toys. Ben hands 4 chew toys to other puppies. How many chew toys are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Before fetch, Ben counted 8 tennis balls. After the dogs played, only 5 are left. How many tennis balls are missing?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total dog treats.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total dog treats.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking treat numbers helps trainers plan a fair practice session.")],
                 creativePrompt: "Draw 9 dog treats ready for training.",
                 storyEnding: "Training time is ready to begin.",
@@ -705,7 +705,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Ben packs 20 training treats into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Ben opens 3 packs of puppy bandanas with 4 bandanas in each pack. How many bandanas does he open?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("Scout's leash is 15 centimeters longer than a mark. Another leash is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -730,7 +730,7 @@ extension CuratedTopicLessonBank {
                     mcq("Ben shares 18 training treats among 3 puppy friends equally. How many does each puppy get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One leash is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many biscuits altogether?")],
+                vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of biscuits.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Dogs learn faster when trainers reward the behavior they want.")],
                 creativePrompt: "Draw the biscuit packs.",
                 storyEnding: "Every puppy gets a fair share. Great planning, Ben!",
@@ -886,7 +886,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Ana can count the kittens.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Cat caretakers count kittens carefully to make sure everyone is safe.")],
-                creativePrompt: "Draw 4 kittens in a basket and circle them as you count.",
+                creativePrompt: "Draw 4 kittens in a basket.",
                 storyEnding: "Ana's kitten count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 yarn balls on the left and 3 kittens on the right. Which side has more?",
@@ -904,7 +904,7 @@ extension CuratedTopicLessonBank {
                     mcq("A toy basket holds 10 feather toys. Ana gives 4 feather toys to other kittens. How many feather toys are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Ana started with 8 cat treats in a jar. Then 5 treats roll under the couch. How many treats does she have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total yarn balls.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total yarn balls.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking toy numbers helps caretakers make sure every kitten has something to play with.")],
                 creativePrompt: "Draw 9 yarn balls ready for playtime.",
                 storyEnding: "Playtime is ready to begin.",
@@ -931,7 +931,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Ana packs 20 cat treats into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Ana lays out 3 groups of soft blankets with 4 blankets in each group. How many blankets does she use?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A scratching post is 15 centimeters taller than a mark. Another is 9 centimeters taller. How much taller is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -956,7 +956,7 @@ extension CuratedTopicLessonBank {
                     mcq("Ana shares 18 fish-shaped treats among 3 kitten friends equally. How many does each kitten get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One scratching post is 15 centimeters taller than a mark. Another is 9. How much taller is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many treats altogether?")],
+                vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the treats equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Cats use whiskers to feel nearby objects, even in dim light.")],
                 creativePrompt: "Draw the treat jars.",
                 storyEnding: "Every kitten gets a fair share. Great planning, Ana!",
@@ -1112,7 +1112,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Elin can count the roses.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Castle gardeners counted flowers and jewels carefully to keep everything in order.")],
-                creativePrompt: "Draw 4 roses by the fountain and circle them as you count.",
+                creativePrompt: "Draw 4 roses by the fountain.",
                 storyEnding: "Elin's garden count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 jewels on the left and 3 roses on the right. Which side has more?",
@@ -1130,7 +1130,7 @@ extension CuratedTopicLessonBank {
                     mcq("A gift basket holds 10 cupcakes. Elin gives 4 cupcakes to guests. How many cupcakes are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Elin started with 8 ribbons for the party and handed out 5. How many ribbons does she have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total cupcakes.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total cupcakes.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking feast numbers helps everyone get a fair share.")],
                 creativePrompt: "Draw 9 roses ready for the feast.",
                 storyEnding: "The feast is ready for every guest.",
@@ -1157,7 +1157,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Elin packs 20 garden roses into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Elin places 3 rows of banquet settings with 4 settings in each row. How many table settings is that?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A ballroom banner is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -1182,7 +1182,7 @@ extension CuratedTopicLessonBank {
                     mcq("Elin shares 18 berry tarts among 3 tables of guests equally. How many does each table get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One ballroom banner is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many hairpins altogether?")],
+                vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of hairpins have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A banquet is a large feast held in a castle hall.")],
                 creativePrompt: "Draw the hairpin packs.",
                 storyEnding: "Every guest gets a fair share. Elin planned the feast well!",
@@ -1338,7 +1338,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Mr. Bram can count the torches.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Castle guards counted torches each night to make sure the halls stayed lit.")],
-                creativePrompt: "Draw 4 torches in the hall and circle them as you count.",
+                creativePrompt: "Draw 4 torches in the hall.",
                 storyEnding: "Mr. Bram's torch count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 stones on the left and 3 torches on the right. Which side has more?",
@@ -1356,7 +1356,7 @@ extension CuratedTopicLessonBank {
                     mcq("A supply crate holds 10 candles. Mr. Bram sends 4 candles to another tower. How many candles are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Mr. Bram lined up 8 shields for the hall. A guard lined up only 5. How many more shields did Mr. Bram line up?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total torches.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total torches.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking supply numbers helped castle staff prepare for cold nights.")],
                 creativePrompt: "Draw 9 torches ready for nightfall.",
                 storyEnding: "The tower is ready for the night.",
@@ -1383,7 +1383,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Mr. Bram packs 20 wall stones into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Mr. Bram fills 3 trays of banners with 4 banners in each tray. How many banners are ready?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("The drawbridge chain is 15 centimeters longer than a mark. Another chain is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -1408,7 +1408,7 @@ extension CuratedTopicLessonBank {
                     mcq("Mr. Bram shares 18 bread rolls among 3 guard posts equally. How many does each post get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One drawbridge chain is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many keys altogether?")],
+                vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 keys.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A moat is a water-filled ditch that helped protect a castle.")],
                 creativePrompt: "Draw the key cases.",
                 storyEnding: "Every guard post gets a fair share. Well organized, Mr. Bram!",
@@ -1564,7 +1564,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Luma can count the fairies.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Fairies in the glade like to count fireflies and flowers together each night.")],
-                creativePrompt: "Draw 4 fairies above the ferns and circle them as you count.",
+                creativePrompt: "Draw 4 fairies above the ferns.",
                 storyEnding: "Luma's glade count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 flowers on the left and 3 fairies on the right. Which side has more?",
@@ -1582,7 +1582,7 @@ extension CuratedTopicLessonBank {
                     mcq("A petal basket holds 10 glowing petals. Luma shares 4 petals with friends. How many petals are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Luma gathered 8 dewdrops at dawn. She gives away 5 to a flower fairy. How many dewdrops does Luma have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total flowers.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total flowers.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking flower numbers helps fairies plan a fair glade gathering.")],
                 creativePrompt: "Draw 9 flowers ready for the ring.",
                 storyEnding: "The glade gathering is ready to begin.",
@@ -1596,11 +1596,11 @@ extension CuratedTopicLessonBank {
                 character: "Luma",
                 pronoun: "she",
                 items: [
-                    ("sparkle beads", "in the bead pouch"),
+                    ("beads", "in the bead pouch"),
                     ("mushroom caps", "in the picnic basket"),
                     ("fern stems", "on the festival path")
                 ],
-                packItem: "sparkle beads",
+                packItem: "beads",
                 purpose: "for the fairy festival"
             )
             return MathScene(
@@ -1609,7 +1609,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Luma packs 20 sparkle beads into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Luma arranges mushroom caps into 3 rows with 4 caps in each row. How many mushroom caps are there?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A fern stem is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -1634,7 +1634,7 @@ extension CuratedTopicLessonBank {
                     mcq("Luma shares 18 berries among 3 fairy friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One fern stem is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many beads altogether?")],
+                vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the beads into equal shares.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Fireflies make their own light with a chemical reaction in their bodies.")],
                 creativePrompt: "Draw the bead packs.",
                 storyEnding: "Every fairy gets a fair share. Great planning, Luma!",
@@ -1790,7 +1790,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Zoe can count the suitcases.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Airport workers count luggage carefully so every bag reaches the right plane.")],
-                creativePrompt: "Draw 4 suitcases on the cart and circle them as you count.",
+                creativePrompt: "Draw 4 suitcases on the cart.",
                 storyEnding: "Zoe's suitcase count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 boarding passes on the left and 3 suitcases on the right. Which side has more?",
@@ -1808,7 +1808,7 @@ extension CuratedTopicLessonBank {
                     mcq("A luggage cart holds 10 suitcases. Zoe rolls 4 suitcases to another gate. How many suitcases are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Zoe needs 8 boarding passes for her cabin check. She has collected 5 so far. How many more does she need?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total suitcases.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total suitcases.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking luggage numbers helps a flight crew load the plane efficiently.")],
                 creativePrompt: "Draw 9 suitcases ready for the flight.",
                 storyEnding: "The gate is ready for boarding.",
@@ -1835,7 +1835,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Zoe packs 20 luggage tags into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Zoe counts seats in 3 cabin sections with 4 seats in each section. How many seats does she count?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A runway marker is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -1860,7 +1860,7 @@ extension CuratedTopicLessonBank {
                     mcq("Zoe shares 18 pretzel bags among 3 rows of passengers equally. How many does each row get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One runway marker is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many pins altogether?")],
+                vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of pins is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "The cockpit is where the pilots sit to fly the plane.")],
                 creativePrompt: "Draw the wing pin packs.",
                 storyEnding: "Every row gets a fair share. Zoe keeps every row fair so the flight stays smooth.",
@@ -2016,7 +2016,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Owen can count the train cars.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Conductors count train cars carefully before every departure.")],
-                creativePrompt: "Draw 4 train cars on the track and circle them as you count.",
+                creativePrompt: "Draw 4 train cars on the track.",
                 storyEnding: "Owen's train car count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 tickets on the left and 3 train cars on the right. Which side has more?",
@@ -2034,7 +2034,7 @@ extension CuratedTopicLessonBank {
                     mcq("A ticket box holds 10 tickets. Owen stamps 4 tickets for passengers. How many tickets are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Owen counted 8 luggage tags before the stop. After tagging bags, only 5 tags are left. How many tags were used?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total train cars.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total train cars.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking ticket numbers helps a station run smoothly.")],
                 creativePrompt: "Draw 9 train cars ready for the trip.",
                 storyEnding: "The station is ready for departure.",
@@ -2061,7 +2061,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Owen packs 20 track bolts into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Owen sets out 3 rows of train benches with 4 benches in each row. How many benches does he place?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A rail section is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -2086,7 +2086,7 @@ extension CuratedTopicLessonBank {
                     mcq("Owen shares 18 biscuits among 3 train cars of passengers equally. How many does each car get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One rail section is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many badges altogether?")],
+                vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first rail section is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A conductor helps passengers and checks that the train is ready to leave.")],
                 creativePrompt: "Draw the badge trays.",
                 storyEnding: "Every train car gets a fair share. Owen keeps every train car fair so the trip stays smooth.",
@@ -2242,7 +2242,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Rosa can count the cars.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Mechanics count parts carefully before starting any repair.")],
-                creativePrompt: "Draw 4 cars in the parking lot and circle them as you count.",
+                creativePrompt: "Draw 4 cars in the parking lot.",
                 storyEnding: "Rosa's car count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 wheels on the left and 3 cars on the right. Which side has more?",
@@ -2260,7 +2260,7 @@ extension CuratedTopicLessonBank {
                     mcq("A parts bin holds 10 oil bottles. Rosa hands 4 oil bottles to other mechanics. How many oil bottles are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Rosa found 8 tools on her bench. Later she noticed 5 had rolled under a car. How many tools are left on the bench?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total wheels.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total wheels.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking part numbers helps a garage finish repairs faster.")],
                 creativePrompt: "Draw 9 wheels ready for the repair day.",
                 storyEnding: "The garage is ready for the repair day.",
@@ -2287,7 +2287,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Rosa packs 20 engine bolts into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Rosa unpacks 3 boxes with 4 wheels in each box. How many wheels does she unpack?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("One fuel hose is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -2312,7 +2312,7 @@ extension CuratedTopicLessonBank {
                     mcq("Rosa shares 18 spare bolts among 3 customers equally. How many does each customer get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One seat belt strap is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many hubcaps altogether?")],
+                vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of hubcaps.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A hubcap covers the center of a car's wheel.")],
                 creativePrompt: "Draw the hubcap packs.",
                 storyEnding: "Every customer gets a fair share. Great work, Rosa!",
@@ -2468,7 +2468,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Max can count the gears.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Robot builders count small parts carefully before every project.")],
-                creativePrompt: "Draw 4 gears on the workbench and circle them as you count.",
+                creativePrompt: "Draw 4 gears on the workbench.",
                 storyEnding: "Max's gear count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 sensors on the left and 3 gears on the right. Which side has more?",
@@ -2486,7 +2486,7 @@ extension CuratedTopicLessonBank {
                     mcq("A parts box holds 10 batteries. Max hands 4 batteries to another builder. How many batteries are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Max began with 8 screws and gave away 5 to his helper. How many screws does Max have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total wires.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total wires.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking part numbers helps a robot get built correctly.")],
                 creativePrompt: "Draw 9 wires ready for the new robot.",
                 storyEnding: "The workbench is ready for building.",
@@ -2513,7 +2513,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Max packs 20 screws into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Max builds 3 groups of sensors with 4 sensors in each group. How many sensors does he build?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A robot arm is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -2538,7 +2538,7 @@ extension CuratedTopicLessonBank {
                     mcq("Max shares 18 batteries among 3 robots equally. How many does each robot get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One robot arm is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many boards altogether?")],
+                vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the boards equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A circuit board carries electricity to a robot's parts.")],
                 creativePrompt: "Draw the circuit board packs.",
                 storyEnding: "Every robot gets a fair share. Great build, Max!",
@@ -2694,7 +2694,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Nina can count the capes.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Helpers count their gear carefully before starting any job.")],
-                creativePrompt: "Draw 4 capes on hooks and circle them as you count.",
+                creativePrompt: "Draw 4 capes on hooks.",
                 storyEnding: "Nina's cape count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 masks on the left and 3 capes on the right. Which side has more?",
@@ -2712,7 +2712,7 @@ extension CuratedTopicLessonBank {
                     mcq("A training box holds 10 masks. Nina hands 4 masks to new trainees. How many masks are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Nina packed 8 training capes. A trainee packed only 5. How many more capes did Nina pack?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total badges.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total badges.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking gear numbers helps training days run smoothly.")],
                 creativePrompt: "Draw 9 badges ready for training.",
                 storyEnding: "Training day is ready to begin.",
@@ -2739,7 +2739,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Nina packs 20 badges into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Nina fills 3 trays of masks with 4 masks in each tray. How many masks are ready for training?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A training cape is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -2764,7 +2764,7 @@ extension CuratedTopicLessonBank {
                     mcq("Nina shares 18 wristbands among 3 trainees equally. How many does each trainee get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One training cape is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many badges altogether?")],
+                vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of badges have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Emergency helpers often wear a badge so people can recognize them.")],
                 creativePrompt: "Draw the badge trays.",
                 storyEnding: "Every trainee gets a fair share. Great work, Nina!",
@@ -2920,7 +2920,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Iris can count the paintbrushes.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Artists count their supplies carefully before starting a new painting.")],
-                creativePrompt: "Draw 4 paintbrushes in a cup and circle them as you count.",
+                creativePrompt: "Draw 4 paintbrushes in a cup.",
                 storyEnding: "Iris's paintbrush count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 paint tubes on the left and 3 paintbrushes on the right. Which side has more?",
@@ -2938,7 +2938,7 @@ extension CuratedTopicLessonBank {
                     mcq("A supply box holds 10 brushes. Iris hands 4 brushes to her students. How many brushes are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Iris started the day with 8 blank canvases. She gives away 5 canvases to her students. How many canvases does Iris have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total paint tubes.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total paint tubes.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking supply numbers helps an art class run smoothly.")],
                 creativePrompt: "Draw 9 paint tubes ready for class.",
                 storyEnding: "The studio is ready for the art class.",
@@ -2965,7 +2965,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Iris packs 20 colored pencils into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Iris stacks canvases into 3 equal groups of 4 canvases. How many canvases are there?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A canvas frame is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -2990,7 +2990,7 @@ extension CuratedTopicLessonBank {
                     mcq("Iris shares 18 paint tubes among 3 young artists equally. How many does each artist get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One canvas frame is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many colors altogether?")],
+                vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 paint tubes.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Paint in tubes stays fresh until an artist squeezes some out.")],
                 creativePrompt: "Draw the paint-tube trays.",
                 storyEnding: "Every young artist gets a fair share. Great show, Iris!",
@@ -3146,7 +3146,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Milo can count the drums.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Musicians count beats carefully to stay together while playing.")],
-                creativePrompt: "Draw 4 drums in a row and circle them as you count.",
+                creativePrompt: "Draw 4 drums in a row.",
                 storyEnding: "Milo's drum count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 shakers on the left and 3 drums on the right. Which side has more?",
@@ -3164,7 +3164,7 @@ extension CuratedTopicLessonBank {
                     mcq("An instrument box holds 10 drumsticks. Milo hands 4 drumsticks to bandmates. How many drumsticks are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Milo wants 8 songs on tonight's list. He has chosen 5 already. How many more songs does he need?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total shakers.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total shakers.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking instrument numbers helps a band practice run smoothly.")],
                 creativePrompt: "Draw 9 shakers ready for practice.",
                 storyEnding: "The band is ready for practice.",
@@ -3191,7 +3191,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Milo packs 20 music sheets into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Milo opens 3 packs of shakers with 4 shakers in each pack. How many shakers does he carry?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A drumstick is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -3216,7 +3216,7 @@ extension CuratedTopicLessonBank {
                     mcq("Milo shares 18 shakers among 3 young musicians equally. How many does each musician get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One drumstick is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many songbooks altogether?")],
+                vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the songbooks into equal shares.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A beat is the steady pulse musicians count together.")],
                 creativePrompt: "Draw the songbook crates.",
                 storyEnding: "Every young musician gets a fair share. Great concert, Milo!",
@@ -3372,7 +3372,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Chef Dara can count the eggs.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Chefs count ingredients carefully before starting any recipe.")],
-                creativePrompt: "Draw 4 eggs in a bowl and circle them as you count.",
+                creativePrompt: "Draw 4 eggs in a bowl.",
                 storyEnding: "Chef Dara's egg count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 lemons on the left and 3 eggs on the right. Which side has more?",
@@ -3390,7 +3390,7 @@ extension CuratedTopicLessonBank {
                     mcq("A drawer holds 10 wooden spoons. Chef Dara hands 4 spoons to helpers. How many spoons are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Chef Dara counted 8 recipe cards before prep. After handing some out, only 5 cards are left. How many cards did she hand out?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total measuring cups.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total measuring cups.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking supply numbers helps a kitchen run smoothly.")],
                 creativePrompt: "Draw 9 measuring cups ready for cooking.",
                 storyEnding: "The kitchen is ready for the cooking day.",
@@ -3417,7 +3417,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Chef Dara packs 20 spice jars into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Chef Dara unpacks 3 packs with 4 measuring cups in each pack. How many measuring cups does she unpack?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A rolling pin is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -3442,7 +3442,7 @@ extension CuratedTopicLessonBank {
                     mcq("Chef Dara shares 18 cookies among 3 customers equally. How many does each customer get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One rolling pin is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many muffins altogether?")],
+                vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of muffins is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A recipe lists ingredients and the steps for making food.")],
                 creativePrompt: "Draw the muffin trays.",
                 storyEnding: "Every customer gets a fair share. Great bake sale, Chef Dara!",
@@ -3598,7 +3598,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Ranger Wren can count the pinecones.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Rangers count plants and animal signs carefully during every trail walk.")],
-                creativePrompt: "Draw 4 pinecones on a log and circle them as you count.",
+                creativePrompt: "Draw 4 pinecones on a log.",
                 storyEnding: "Ranger Wren's pinecone count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 feathers on the left and 3 pinecones on the right. Which side has more?",
@@ -3616,7 +3616,7 @@ extension CuratedTopicLessonBank {
                     mcq("A collecting bag holds 10 feathers. Ranger Wren hands 4 feathers to young hikers. How many feathers are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Ranger Wren started with 8 acorns on the trail. Then 5 acorns fall through a hole in her bag. How many acorns does she have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total leaves.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total leaves.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking how many finds you have helps organize a nature journal.")],
                 creativePrompt: "Draw 9 leaves ready for the nature journal.",
                 storyEnding: "The nature journal is ready for the trail day.",
@@ -3643,7 +3643,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Ranger Wren packs 20 acorns into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Ranger Wren fills 3 trays of leaves with 4 leaves in each tray. How many leaves does she save?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A fallen branch is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -3668,7 +3668,7 @@ extension CuratedTopicLessonBank {
                     mcq("Ranger Wren shares 18 seed packets among 3 hiking groups equally. How many does each group get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One fallen branch is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many packets altogether?")],
+                vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first branch is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A trail map shows the paths hikers can follow.")],
                 creativePrompt: "Draw the seed packets.",
                 storyEnding: "Every hiking group gets a fair share. Great hike, Ranger Wren!",
@@ -3824,7 +3824,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Sam can count the ladybugs.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Bug watchers count insects carefully to learn how many live in one place.")],
-                creativePrompt: "Draw 4 ladybugs on a leaf and circle them as you count.",
+                creativePrompt: "Draw 4 ladybugs on a leaf.",
                 storyEnding: "Sam's ladybug count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 ants on the left and 3 ladybugs on the right. Which side has more?",
@@ -3842,7 +3842,7 @@ extension CuratedTopicLessonBank {
                     mcq("A jar holds 10 beetles. Sam lets 4 beetles go back into the garden. How many beetles are left in the jar?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Sam spotted 8 ladybugs. Then 5 flew away. How many ladybugs are left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total ants.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total ants.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking how many bugs you find helps keep a good bug journal.")],
                 creativePrompt: "Draw 9 ants ready for the bug journal.",
                 storyEnding: "The bug journal is ready for the garden day.",
@@ -3869,7 +3869,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Sam packs 20 bug jars into groups of 10. How many full groups can he make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Sam sets out 3 equal groups of 4 magnifying glasses for bug club. How many magnifying glasses is that?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A butterfly net handle is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -3894,7 +3894,7 @@ extension CuratedTopicLessonBank {
                     mcq("Sam shares 18 bug jars among 3 young bug watchers equally. How many does each watcher get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One butterfly net handle is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many glasses altogether?")],
+                vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of glasses.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A magnifying glass makes tiny insect parts look bigger.")],
                 creativePrompt: "Draw the magnifying glass packs.",
                 storyEnding: "Every bug watcher gets a fair share. Great hunt, Sam!",
@@ -4050,7 +4050,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Dr. Nolan can count the rocks.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Volcano scientists count and label rock samples carefully during every visit.")],
-                creativePrompt: "Draw 4 rocks near the volcano and circle them as you count.",
+                creativePrompt: "Draw 4 rocks near the volcano.",
                 storyEnding: "Dr. Nolan's rock count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 sensors on the left and 3 rocks on the right. Which side has more?",
@@ -4068,7 +4068,7 @@ extension CuratedTopicLessonBank {
                     mcq("An equipment box holds 10 rock samples. Dr. Nolan gives 4 samples to another scientist. How many samples are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Dr. Nolan recorded 8 temperature readings. A colleague recorded only 5. How many more readings did Dr. Nolan take?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total sensors.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total sensors.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking equipment numbers helps a monitoring day run smoothly.")],
                 creativePrompt: "Draw 9 sensors ready for monitoring.",
                 storyEnding: "The monitoring station is ready for the day.",
@@ -4095,7 +4095,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Dr. Nolan packs 20 rock samples into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Dr. Nolan loads 3 trays of sensors with 4 sensors in each tray. How many sensors are loaded?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A crack in the volcano's slope is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -4120,7 +4120,7 @@ extension CuratedTopicLessonBank {
                     mcq("Dr. Nolan shares 18 data sheets among 3 research teams equally. How many does each team get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One crack in the volcano's slope is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many sensors altogether?")],
+                vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the sensors equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Lava is melted rock that flows out of a volcano.")],
                 creativePrompt: "Draw the rock-sample crates.",
                 storyEnding: "Every research team gets a fair share. Great research, Dr. Nolan!",
@@ -4276,7 +4276,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Piper can count the clouds.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Weather watchers count clouds carefully to help understand the sky.")],
-                creativePrompt: "Draw 4 clouds in the sky and circle them as you count.",
+                creativePrompt: "Draw 4 clouds in the sky.",
                 storyEnding: "Piper's cloud count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 raindrops on the left and 3 clouds on the right. Which side has more?",
@@ -4294,7 +4294,7 @@ extension CuratedTopicLessonBank {
                     mcq("A storage box holds 10 weather charts. Piper hands 4 charts to other forecasters. How many charts are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Piper started with 8 wind readings on her clipboard. She gives away 5 readings to a trainee. How many readings does Piper have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total rain gauges.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total rain gauges.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking equipment numbers helps a forecasting day run smoothly.")],
                 creativePrompt: "Draw 9 rain gauges ready for the forecast.",
                 storyEnding: "The weather station is ready for the forecast.",
@@ -4321,7 +4321,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Piper packs 20 weather charts into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Piper checks 3 boxes of thermometers with 4 thermometers in each box. How many thermometers does she use?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A wind vane pole is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -4346,7 +4346,7 @@ extension CuratedTopicLessonBank {
                     mcq("Piper shares 18 weather charts among 3 forecasting teams equally. How many does each team get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One wind vane pole is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many gauges altogether?")],
+                vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of gauges have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A rain gauge measures how much rain has fallen.")],
                 creativePrompt: "Draw the rain gauge boxes.",
                 storyEnding: "Every forecasting team gets a fair share. Great forecast, Piper!",
@@ -4502,7 +4502,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Farmer Jo can count the chicks.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Farmers count their animals every day to make sure everyone is safe and healthy.")],
-                creativePrompt: "Draw 4 chicks near the hen and circle them as you count.",
+                creativePrompt: "Draw 4 chicks near the hen.",
                 storyEnding: "Farmer Jo's chick count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 eggs on the left and 3 chicks on the right. Which side has more?",
@@ -4520,7 +4520,7 @@ extension CuratedTopicLessonBank {
                     mcq("A feed bin holds 10 scoops of grain. Farmer Jo gives 4 scoops to the hens. How many scoops are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Farmer Jo needs 8 baskets of eggs for market. She has filled 5 so far. How many more baskets does she need?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total eggs.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total eggs.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking egg numbers helps a farm morning run smoothly.")],
                 creativePrompt: "Draw 9 eggs ready for the basket.",
                 storyEnding: "The farm is ready for the morning chores.",
@@ -4547,7 +4547,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Farmer Jo packs 20 hay bales into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Farmer Jo sets out 3 rows with 4 feed buckets in each row. How many feed buckets does she set out?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A fence post is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -4572,7 +4572,7 @@ extension CuratedTopicLessonBank {
                     mcq("Farmer Jo shares 18 apples among 3 visiting families equally. How many does each family get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One fence post is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many apples altogether?")],
+                vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 apples.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Harvest is the time farmers gather crops from the fields.")],
                 creativePrompt: "Draw the apple baskets.",
                 storyEnding: "Every visiting family gets a fair share. Great harvest, Farmer Jo!",
@@ -4728,7 +4728,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Keeper Amara can count the penguins.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Zoo keepers count their animals every day to make sure everyone is healthy and accounted for.")],
-                creativePrompt: "Draw 4 penguins by the pool and circle them as you count.",
+                creativePrompt: "Draw 4 penguins by the pool.",
                 storyEnding: "Keeper Amara's penguin count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 fish on the left and 3 penguins on the right. Which side has more?",
@@ -4746,7 +4746,7 @@ extension CuratedTopicLessonBank {
                     mcq("A feeding bin holds 10 pieces of fruit. Keeper Amara hands 4 pieces to the monkeys. How many pieces are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Keeper Amara counted 8 feeding charts before rounds. After lending some, only 5 charts are left. How many charts did she lend?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total fish.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total fish.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking food numbers helps a feeding round run smoothly.")],
                 creativePrompt: "Draw 9 fish ready for feeding time.",
                 storyEnding: "The zoo is ready for the feeding round.",
@@ -4773,7 +4773,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Keeper Amara packs 20 enrichment toys into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Keeper Amara packs 3 crates of fruit baskets with 4 baskets in each crate. How many fruit baskets does she carry?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A fence rail is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -4798,7 +4798,7 @@ extension CuratedTopicLessonBank {
                     mcq("Keeper Amara shares 18 pieces of fruit among 3 monkey enclosures equally. How many does each enclosure get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One fence rail is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many pieces altogether?")],
+                vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the pieces into equal shares.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Zookeepers check every animal each day to be sure it is healthy.")],
                 creativePrompt: "Draw the fruit crates.",
                 storyEnding: "Every enclosure gets a fair share. Great work, Keeper Amara!",
@@ -4816,29 +4816,29 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return ReadingPack(
-                title: "Captain Wren Finds the Map",
-                storyOpening: "Captain Wren opens an old wooden chest. Will you help her look inside?",
-                missionPrompt: "Check what Captain Wren finds in the chest.",
-                readingPassage: "Captain Wren finds a map tucked inside the chest. The map shows an island far across the sea. An X marks a spot, and Captain Wren smiles wide.",
+                title: "Captain Wren Finds Treasure",
+                storyOpening: "Captain Wren holds an old map. An X marks a spot on an island. Will you help her follow it?",
+                missionPrompt: "Find what Captain Wren uncovers where the X marks the spot.",
+                readingPassage: "Captain Wren follows her map to an island. An X marks a spot in the sand. She digs where the X marks the spot. She opens a chest. Gold coins shine inside.",
                 questions: [
-                    mcq("What does Captain Wren find?", ["A map", "A spyglass", "A lantern"], "A map", "Captain Wren finds a map."),
-                    mcq("What does the map show?", ["An island", "A city", "A school"], "An island", "The map shows an island."),
-                    mcq("What marks a spot on the map?", ["An X", "A star", "A circle"], "An X", "An X marks a spot.")
+                    mcq("What marks a spot on the map?", ["An X", "A star", "A circle"], "An X", "An X marks a spot on the map."),
+                    mcq("Where does Captain Wren dig?", ["Where the X marks the spot", "Under the ship", "Beside a lantern"], "Where the X marks the spot", "She digs where the X marks the spot."),
+                    mcq("What is in the chest?", ["Gold coins", "A spyglass", "A lantern"], "Gold coins", "Gold coins shine inside the chest.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "map", definition: "A drawing that shows where places are.", exampleSentence: "Captain Wren finds a map."),
-                    VocabularyWord(word: "island", definition: "Land surrounded completely by water.", exampleSentence: "The map shows an island.")
+                    VocabularyWord(word: "map", definition: "A drawing that shows where places are.", exampleSentence: "Captain Wren follows her map to an island."),
+                    VocabularyWord(word: "chest", definition: "A strong box used to hold things.", exampleSentence: "Captain Wren opens a chest.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Old maps often used an X to mark an important or hidden spot.", explanation: "This is why people still say 'X marks the spot' today.")
+                    KnowledgeFact(fact: "A map can mark an important place with an X so a traveler can find it again.", explanation: "Captain Wren follows the X on her map and finds a chest of gold coins.")
                 ],
-                creativePrompt: "Draw Captain Wren's map with an X marking the spot.",
+                creativePrompt: "Draw the chest of gold coins Captain Wren found where the X marked the spot.",
                 creativeResponseType: .drawing,
-                storyEnding: "Captain Wren rolls up the map, ready for a new adventure.",
+                storyEnding: "Captain Wren found gold coins where the X marked the spot!",
                 readingSkill: "Follow a simple pirate story",
                 reflectionPrompt: "What did Captain Wren find in the chest?",
-                hints: ["Find the word map", "Look for the word island"],
-                commonMistakes: ["Choosing an item Captain Wren did not find"],
+                hints: ["Find the word chest", "Look for gold coins"],
+                commonMistakes: ["Choosing an item that was not in the chest"],
                 successCriteria: ["Names a real detail from the story"],
                 learningObjectives: ["Identify concrete details in a short pirate story"],
                 activityFingerprint: "pirates.k.map-find.detail",
@@ -4954,7 +4954,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Captain Wren can count the gold coins.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Pirates in stories often count their treasure carefully before sailing anywhere new.")],
-                creativePrompt: "Draw 4 gold coins in a chest and circle them as you count.",
+                creativePrompt: "Draw 4 gold coins in a chest.",
                 storyEnding: "Captain Wren's coin count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 maps on the left and 3 gold coins on the right. Which side has more?",
@@ -4972,7 +4972,7 @@ extension CuratedTopicLessonBank {
                     mcq("A supply chest holds 10 compasses. Captain Wren hands 4 compasses to her crew. How many compasses are left?", ["5", "6", "7"], "6", "10 − 4 = 6.", subject: .math),
                     mcq("Captain Wren found 8 gold coins in a pouch. Then 5 coins slipped into a crack. How many coins does she have left?", ["2", "3", "4"], "3", "8 − 5 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total maps.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total maps.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Checking supply numbers helps a voyage run smoothly.")],
                 creativePrompt: "Draw 9 maps ready for the voyage.",
                 storyEnding: "The ship is ready for the voyage.",
@@ -4999,7 +4999,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Captain Wren packs 20 gold coins into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("Captain Wren stacks 3 equal groups of 4 treasure chests. How many treasure chests are there?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
                     mcq("A ship's plank is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
@@ -5024,7 +5024,7 @@ extension CuratedTopicLessonBank {
                     mcq("Captain Wren shares 18 gold coins among 3 crew members equally. How many does each crew member get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
                     mcq("One ship's plank is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many coins altogether?")],
+                vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of coins is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A compass shows sailors which direction they are going.")],
                 creativePrompt: "Draw the treasure chests.",
                 storyEnding: "Every crew member gets a fair share. Captain Wren celebrates a great voyage with her crew!",

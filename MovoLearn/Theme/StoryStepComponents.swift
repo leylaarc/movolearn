@@ -46,6 +46,14 @@ struct StoryJourneyProgress: View {
                         )
                         .frame(width: progress <= 0 ? 0 : max(8, geometry.size.width * progress), height: 6)
                         .animation(DesignSystem.Animation.gentle, value: currentStep)
+                    if progress > 0 {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundStyle(accent)
+                            .offset(x: max(0, geometry.size.width * progress - 6))
+                            .symbolEffect(.bounce, value: currentStep)
+                            .accessibilityHidden(true)
+                    }
                 }
             }
             .frame(height: 6)

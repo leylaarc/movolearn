@@ -146,7 +146,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Kai can count the crabs.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Tide-pool watchers count animals to learn what lives between the rocks.")],
-                creativePrompt: "Draw 5 hermit crabs and circle them as you count.",
+                creativePrompt: "Draw 5 hermit crabs.",
                 storyEnding: "Kai's tide-pool count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 starfish on the left and 4 crabs on the right. Which side has more animals?",
@@ -164,7 +164,7 @@ extension CuratedTopicLessonBank {
                     mcq("A tray holds 12 sand dollars. Kai shares 5 with friends. How many sand dollars are left?", ["6", "7", "8"], "7", "12 − 5 = 7.", subject: .math),
                     mcq("Kai has 9 spiral shells. A friend has 6. How many more spiral shells does Kai have?", ["2", "3", "4"], "3", "9 − 6 = 3.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total shells.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total shells.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Seashells on the shore can show which ocean animals live nearby.")],
                 creativePrompt: "Draw 11 shells in two piles that add to the total.",
                 storyEnding: "The beach table shells match Kai's numbers.",
@@ -192,7 +192,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Kai packs 30 reef tags into groups of 10. How many full groups can Kai make?", ["2", "3", "4"], "3", "30 ÷ 10 = 3.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("A tray has 4 rows of 5 turtle tags. How many tags are there?", ["9", "20", "25"], "20", "4 × 5 = 20.", subject: .math),
                     mcq("A kelp strip is 18 centimeters long. Another is 11 centimeters long. How much longer is the first?", ["6", "7", "8"], "7", "18 − 11 = 7 centimeters.", subject: .math)
                 ],
@@ -213,16 +213,16 @@ extension CuratedTopicLessonBank {
                 missionPrompt: multi ? "Solve each bay problem." : "Solve each bay problem carefully.",
                 readingPassage: "Shell samples and tide charts help the team record ocean-animal sightings.",
                 problems: [
-                    mcq("Kai has 4 trays with 6 shell samples in each tray. How many samples altogether?", ["18", "24", "30"], "24", "4 × 6 = 24.", subject: .math),
+                    mcq("Kai has 4 trays with 6 shell samples in each tray. How many samples in all?", ["18", "24", "30"], "24", "4 × 6 = 24.", subject: .math),
                     mcq("Kai shares 24 shell samples among 4 friends equally. How many does each friend get?", ["5", "6", "8"], "6", "24 ÷ 4 = 6.", subject: .math),
                     mcq("A rope is 16 centimeters long. Another is 9. How much longer is the first?", ["6", "7", "8"], "7", "16 − 9 = 7.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many shell samples altogether?")],
+                vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first rope is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A tide chart shows when the ocean will be high or low.")],
                 creativePrompt: "Draw the shell-sample trays.",
                 storyEnding: "The sighting supplies are ready!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
-                reflectionPrompt: "Kai has 4 trays with 6 shell samples in each tray. How many samples altogether?",
+                reflectionPrompt: "Kai has 4 trays with 6 shell samples in each tray. How many samples in all?",
                 hints: mathHints(level),
                 activityFingerprint: "ocean-animals.math.advancing.packs"
             )
@@ -373,7 +373,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Remy can count the cards.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Rocky planets have solid ground, and giant planets are made mostly of gas.")],
-                creativePrompt: "Draw 6 planet cards and circle them as you count.",
+                creativePrompt: "Draw 6 planet cards.",
                 storyEnding: "Remy's planet count matches the table!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 3 Sun cards on the left and 5 planet cards on the right. Which side has more?",
@@ -391,7 +391,7 @@ extension CuratedTopicLessonBank {
                     mcq("A sheet holds 15 labels. Remy uses 6. How many labels are left?", ["8", "9", "10"], "9", "15 − 6 = 9.", subject: .math),
                     mcq("Remy has 11 Mars cards. A friend has 7. How many more cards does Remy have?", ["3", "4", "5"], "4", "11 − 7 = 4.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total cards.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total cards.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Planets travel around the Sun on paths called orbits.")],
                 creativePrompt: "Draw 13 planet cards in two groups that add to the total.",
                 storyEnding: "The solar-system poster supplies add up.",
@@ -419,7 +419,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Remy packs 40 dots into groups of 10. How many full groups can Remy make?", ["3", "4", "5"], "4", "40 ÷ 10 = 4.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("A board has 5 rows of 3 planet dots. How many dots are there?", ["8", "15", "20"], "15", "5 × 3 = 15.", subject: .math),
                     mcq("An orbit ribbon is 22 centimeters long. Another is 14 centimeters long. How much longer is the first?", ["7", "8", "9"], "8", "22 − 14 = 8 centimeters.", subject: .math)
                 ],
@@ -440,16 +440,16 @@ extension CuratedTopicLessonBank {
                 missionPrompt: multi ? "Solve each planet problem." : "Solve each planet problem carefully.",
                 readingPassage: "Rocky planets have solid ground. Giant planets are made mostly of gas.",
                 problems: [
-                    mcq("Remy has 5 packs of cards with 4 cards in each pack. How many cards altogether?", ["16", "20", "24"], "20", "5 × 4 = 20.", subject: .math),
+                    mcq("Remy has 5 packs of cards with 4 cards in each pack. How many cards in all?", ["16", "20", "24"], "20", "5 × 4 = 20.", subject: .math),
                     mcq("Remy shares 21 planet cards among 3 visitors equally. How many does each visitor get?", ["6", "7", "9"], "7", "21 ÷ 3 = 7.", subject: .math),
                     mcq("A yarn orbit is 19 centimeters long. Another is 12. How much longer is the first?", ["6", "7", "8"], "7", "19 − 12 = 7.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many cards altogether?")],
+                vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of cards.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Rocky planets have solid ground. Giant planets are made mostly of gas.")],
                 creativePrompt: "Draw the planet cards.",
                 storyEnding: "The planets fair booth is stocked!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
-                reflectionPrompt: "Remy has 5 packs of cards with 4 cards in each pack. How many cards altogether?",
+                reflectionPrompt: "Remy has 5 packs of cards with 4 cards in each pack. How many cards in all?",
                 hints: mathHints(level),
                 activityFingerprint: "planets.math.advancing.packs"
             )
@@ -600,7 +600,7 @@ extension CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Tess can count the wrenches.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Launch teams count tools so nothing important is missing.")],
-                creativePrompt: "Draw 7 wrenches and circle them as you count.",
+                creativePrompt: "Draw 7 wrenches.",
                 storyEnding: "Tess's tool count matches the pad table!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 helmets on the left and 5 wrenches on the right. Which side has more?",
@@ -618,7 +618,7 @@ extension CuratedTopicLessonBank {
                     mcq("A box holds 14 moon patches. Tess uses 5. How many patches are left?", ["8", "9", "10"], "9", "14 − 5 = 9.", subject: .math),
                     mcq("Tess has 12 red rocket patches. A friend has 8. How many more patches does Tess have?", ["3", "4", "5"], "4", "12 − 8 = 4.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total patches.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total patches.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Rocket teams count supplies so everyone has what they need.")],
                 creativePrompt: "Draw 15 star patches in two groups that add to the total.",
                 storyEnding: "The rocket patches are ready for practice!",
@@ -646,7 +646,7 @@ extension CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Tess packs 50 chips into groups of 10. How many full groups can Tess make?", ["4", "5", "6"], "5", "50 ÷ 10 = 5.", subject: .math),
+                    sort.groupingQuestion,
                     mcq("A tray has 3 rows of 6 rocket cards. How many cards are there?", ["9", "18", "24"], "18", "3 × 6 = 18.", subject: .math),
                     mcq("A model fin is 25 centimeters long. Another is 17 centimeters long. How much longer is the first?", ["7", "8", "9"], "8", "25 − 17 = 8 centimeters.", subject: .math)
                 ],
@@ -667,16 +667,16 @@ extension CuratedTopicLessonBank {
                 missionPrompt: multi ? "Solve each launch problem." : "Solve each launch problem carefully.",
                 readingPassage: "Kits and patches help new flyers practice countdown and thrust ideas.",
                 problems: [
-                    mcq("Tess has 3 packs of patches with 7 patches in each pack. How many patches altogether?", ["14", "21", "28"], "21", "3 × 7 = 21.", subject: .math),
+                    mcq("Tess has 3 packs of patches with 7 patches in each pack. How many patches in all?", ["14", "21", "28"], "21", "3 × 7 = 21.", subject: .math),
                     mcq("Tess shares 27 mission patches among 3 flyers equally. How many does each flyer get?", ["8", "9", "12"], "9", "27 ÷ 3 = 9.", subject: .math),
                     mcq("A guide rail is 21 centimeters long. Another is 13. How much longer is the first?", ["7", "8", "9"], "8", "21 − 13 = 8.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many patches altogether?")],
+                vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the patches equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A countdown helps a launch team get ready before a rocket lifts off.")],
                 creativePrompt: "Draw the patch packs.",
                 storyEnding: "The rocket club kits are ready for launch practice!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
-                reflectionPrompt: "Tess has 3 packs of patches with 7 patches in each pack. How many patches altogether?",
+                reflectionPrompt: "Tess has 3 packs of patches with 7 patches in each pack. How many patches in all?",
                 hints: mathHints(level),
                 activityFingerprint: "rockets.math.advancing.packs"
             )

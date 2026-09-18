@@ -79,6 +79,8 @@ enum CuratedTopicLessonBank {
         let successCriteria: [String]
         let learningObjectives: [String]
         let activityFingerprint: String
+        /// Checklist chips on the Art Quest drawing board.
+        let drawingGoals: [String]
     }
 
     // MARK: - Public lookup
@@ -214,11 +216,11 @@ enum CuratedTopicLessonBank {
         case .emerging:
             let count = drawableCount(from: problems, min: 2, max: 6)
                 ?? (3 + abs(seed) % 4)
-            return "Draw \(count) \(noun(count, scene)) \(location) and circle them as you count."
+            return "Draw \(count) \(noun(count, scene)) \(location)."
         case .developing:
             if let addition = firstEquation(from: problems, operators: ["+"]),
                addition.lhs <= 6, addition.rhs <= 6, addition.lhs + addition.rhs <= 10 {
-                return "Draw \(addition.lhs) \(noun(addition.lhs, scene)) \(location). Then draw \(addition.rhs) more \(noun(addition.rhs, scene)). Circle both groups as you add."
+                return "Draw \(addition.lhs) \(noun(addition.lhs, scene)) \(location). Then draw \(addition.rhs) more \(noun(addition.rhs, scene))."
             }
             let count = drawableCount(from: problems, min: 3, max: 8)
                 ?? (4 + abs(seed) % 4)
@@ -548,61 +550,61 @@ enum CuratedTopicLessonBank {
         }
     }
 
-    // MARK: - Ocean / sharks
+    // MARK: - Sharks
 
     private static func oceanReading(_ level: ReadingLevel) -> ReadingPack {
         switch level {
         case .beginner:
             return ReadingPack(
-                title: "Willa's Blue Wave",
-                storyOpening: "Willa the whale wakes to a calm ocean morning. Will you swim beside her?",
-                missionPrompt: "Check what Willa sees and does in the blue water.",
-                readingPassage: "Willa sees a blue wave rolling toward her. She swims slowly through the calm water. A small fish dashes by. Soft bubbles rise from the rocks.",
+                title: "Finn's Blue Wave",
+                storyOpening: "Finn the reef shark wakes to a calm ocean morning. Will you swim beside him?",
+                missionPrompt: "Check what Finn sees and does in the blue water.",
+                readingPassage: "Finn sees a blue wave rolling toward him. He swims slowly through the calm water. A small fish dashes by. Soft bubbles rise from the rocks.",
                 questions: [
-                    mcq("What does Willa see?", ["A blue wave", "A dry sand dune", "A quiet tide pool only"], "A blue wave", "Willa sees a blue wave."),
-                    mcq("How does Willa swim?", ["Slowly", "Only backward", "Without moving"], "Slowly", "She swims slowly."),
+                    mcq("What does Finn see?", ["A blue wave", "A dry sand dune", "A quiet tide pool only"], "A blue wave", "Finn sees a blue wave."),
+                    mcq("How does Finn swim?", ["Slowly", "Only backward", "Without moving"], "Slowly", "He swims slowly."),
                     mcq("What dashes by?", ["A small fish", "A large whale", "A sleeping crab"], "A small fish", "A small fish dashes by.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "wave", definition: "Moving water on the ocean surface.", exampleSentence: "Willa sees a blue wave."),
-                    VocabularyWord(word: "swim", definition: "To move through water.", exampleSentence: "Willa can swim slowly.")
+                    VocabularyWord(word: "wave", definition: "Moving water on the ocean surface.", exampleSentence: "Finn sees a blue wave."),
+                    VocabularyWord(word: "swim", definition: "To move through water.", exampleSentence: "Finn can swim slowly.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Ocean animals move through water in different ways.", explanation: "Whales swim; small fish can dash quickly.")
+                    KnowledgeFact(fact: "Sharks move through water in different ways.", explanation: "Reef sharks can swim slowly; small fish can dash quickly.")
                 ],
-                creativePrompt: "Draw Willa near a blue wave and a small fish.",
+                creativePrompt: "Draw Finn near a blue wave and a small fish.",
                 creativeResponseType: .drawing,
-                storyEnding: "Willa finishes her calm swim, and the ocean feels quiet and kind.",
+                storyEnding: "Finn finishes his calm swim, and the reef feels quiet and kind.",
                 readingSkill: "Find who and what in a short ocean story",
                 reflectionPrompt: "What is one ocean thing you remember?",
-                hints: ["Point to the word wave", "Find how Willa moves"],
+                hints: ["Point to the word wave", "Find how Finn moves"],
                 commonMistakes: ["Choosing land animals not in the story"],
-                successCriteria: ["Names a detail from Willa's swim"],
+                successCriteria: ["Names a detail from Finn's swim"],
                 learningObjectives: ["Identify concrete details in a short ocean passage"],
                 activityFingerprint: "ocean.k.wave-swim.detail",
-                characterNames: ["Willa"]
+                characterNames: ["Finn"]
             )
         case .earlyReader:
             return ReadingPack(
                 title: "Reef Shark Visit",
-                storyOpening: "Coral glows under sunny water as Willa glides toward the reef.",
-                missionPrompt: "Watch the reef shark with Willa. Notice how it moves past the little fish.",
-                readingPassage: "Willa glides near a sunny reef. She watches a gentle reef shark swim past. The shark moves slowly and does not chase the little fish. Willa counts the bubbles rising from the rocks. She stays still and watches until the shark glides away.",
+                storyOpening: "Coral glows under sunny water as Finn the reef shark glides toward the reef.",
+                missionPrompt: "Watch how Finn the reef shark moves past the little fish.",
+                readingPassage: "Finn the reef shark glides near a sunny reef. He swims slowly and does not chase the little fish. Soft bubbles rise from the rocks. Finn stays still and watches until he glides away.",
                 questions: [
-                    mcq("What kind of shark does Willa watch?", ["A gentle reef shark", "A giant whale shark only", "A tiny pond minnow"], "A gentle reef shark", "She watches a gentle reef shark."),
-                    mcq("Does the shark chase the little fish?", ["No", "Yes, very fast", "Only at night on land"], "No", "The shark does not chase the little fish."),
-                    mcq("What does Willa count?", ["Bubbles rising from the rocks", "Shells on the beach only", "Boats far out at sea"], "Bubbles rising from the rocks", "Willa counts the bubbles rising from the rocks.")
+                    mcq("What kind of shark is Finn?", ["A reef shark", "A giant whale shark only", "A tiny pond minnow"], "A reef shark", "Finn is a reef shark."),
+                    mcq("Does Finn chase the little fish?", ["No", "Yes, very fast", "Only at night on land"], "No", "Finn does not chase the little fish."),
+                    mcq("What rises from the rocks?", ["Soft bubbles", "Shells on the beach only", "Boats far out at sea"], "Soft bubbles", "Soft bubbles rise from the rocks.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "reef", definition: "A rocky ocean place where coral and fish live.", exampleSentence: "Willa glides near a sunny reef."),
-                    VocabularyWord(word: "gentle", definition: "Soft and careful, not rough.", exampleSentence: "The reef shark moves in a gentle way.")
+                    VocabularyWord(word: "reef", definition: "A rocky ocean place where coral and fish live.", exampleSentence: "Finn glides near a sunny reef."),
+                    VocabularyWord(word: "gentle", definition: "Soft and careful, not rough.", exampleSentence: "Finn moves in a gentle way.")
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(fact: "Many reef sharks swim calmly and are not hunting every fish they pass.", explanation: "Watching carefully helps us learn real ocean behavior.")
                 ],
-                creativePrompt: "Draw the sunny reef with Willa and one reef shark.",
+                creativePrompt: "Draw the sunny reef with Finn and one little fish.",
                 creativeResponseType: .drawing,
-                storyEnding: "Willa watched a gentle reef shark swim by. It moved slowly and did not chase the fish.",
+                storyEnding: "Finn the reef shark swam by. He moved slowly and did not chase the fish.",
                 readingSkill: "Recall reef details from the passage",
                 reflectionPrompt: "What reef detail would you tell a friend?",
                 hints: ["Find the shark sentence", "Look for bubbles"],
@@ -610,21 +612,21 @@ enum CuratedTopicLessonBank {
                 successCriteria: ["Uses a reef detail from the story"],
                 learningObjectives: ["Recall key details from a short reef passage"],
                 activityFingerprint: "ocean.early.reef-shark.detail",
-                characterNames: ["Willa"]
+                characterNames: ["Finn"]
             )
         case .growingReader:
             return ReadingPack(
                 title: "Where Reef Sharks Rest",
-                storyOpening: "Willa just finished a calm swim. She wants to learn where reef sharks spend quiet daytime hours.",
-                missionPrompt: "Find where reef sharks rest, and why do those spots matter.",
-                readingPassage: "Willa followed a sandy channel beside the coral after a calm morning swim. Bubbles rose near a dark ledge, and tiny fish darted into holes in the reef. A guide explained that reef sharks often rest in quiet pockets during the day. Willa watched one shark settle in the cooler shade under the ledge. The details helped her understand that resting places matter as much as hunting places in ocean life.",
+                storyOpening: "Finn the reef shark just finished a calm swim. He wants to find a quiet daytime rest spot.",
+                missionPrompt: "Find where reef sharks rest, and why those spots matter.",
+                readingPassage: "Finn followed a sandy channel beside the coral after a calm morning swim. Bubbles rose near a dark ledge, and tiny fish darted into holes in the reef. Reef sharks often rest in quiet pockets during the day. Finn settled in the cooler shade under the ledge. The details helped him understand that resting places matter as much as hunting places in ocean life.",
                 questions: [
-                    mcq("What is the main idea?", ["Reef sharks often rest in quiet pockets during the day", "Reef sharks never rest during the day", "Reef sharks only rest on dry land"], "Reef sharks often rest in quiet pockets during the day", "The guide explains daytime resting in quiet pockets."),
-                    mcq("Where did Willa see a shark settle?", ["In the cooler shade under the ledge", "On the brightest wave top", "In an empty boat"], "In the cooler shade under the ledge", "One shark settled under the ledge."),
+                    mcq("What is the main idea?", ["Reef sharks often rest in quiet pockets during the day", "Reef sharks never rest during the day", "Reef sharks only rest on dry land"], "Reef sharks often rest in quiet pockets during the day", "Reef sharks rest in quiet pockets during the day."),
+                    mcq("Where did Finn settle?", ["In the cooler shade under the ledge", "On the brightest wave top", "In an empty boat"], "In the cooler shade under the ledge", "Finn settled under the ledge."),
                     mcq("Where do the tiny fish dart?", ["Into holes in the reef", "Onto dry sand far inland", "Into a floating bottle"], "Into holes in the reef", "Tiny fish darted into holes in the reef.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "channel", definition: "A path of water between coral or sand.", exampleSentence: "Willa followed a sandy channel."),
+                    VocabularyWord(word: "channel", definition: "A path of water between coral or sand.", exampleSentence: "Finn followed a sandy channel."),
                     VocabularyWord(word: "rest", definition: "To stay quiet and still for a while.", exampleSentence: "Reef sharks rest in quiet pockets.")
                 ],
                 knowledgeFacts: [
@@ -632,47 +634,47 @@ enum CuratedTopicLessonBank {
                 ],
                 creativePrompt: "Draw the ledge resting spot and label one ocean detail from the story.",
                 creativeResponseType: .drawing,
-                storyEnding: "Willa now knows why quiet reef pockets matter on a sunny day.",
+                storyEnding: "Finn now knows why quiet reef pockets matter on a sunny day.",
                 readingSkill: "Identify the main idea about shark resting habitat",
                 reflectionPrompt: "Why might a quiet pocket be a good daytime place for a reef shark?",
-                hints: ["Reread the guide's sentence", "Find where the shark settled"],
+                hints: ["Reread the rest sentence", "Find where Finn settled"],
                 commonMistakes: ["Inventing a hunt that the story does not describe"],
                 successCriteria: ["States the resting-habitat main idea"],
                 learningObjectives: ["Identify the main idea of a reef habitat passage"],
                 activityFingerprint: "ocean.growing.resting-habitat.main-idea",
-                characterNames: ["Willa"]
+                characterNames: ["Finn"]
             )
         case .confidentReader:
             return ReadingPack(
                 title: "Clues Along the Reef",
-                storyOpening: "Ripples and fish dart past as Willa compares ocean clues before she picks a viewing spot.",
-                missionPrompt: "Explain what conclusion Willa reaches, and how the reef clues lead her there.",
+                storyOpening: "Ripples and fish dart past as Finn compares ocean clues before he picks a rest spot.",
+                missionPrompt: "Explain what conclusion Finn reaches, and how the reef clues lead him there.",
                 readingPassage: """
-                Willa studied the reef like a careful scientist. Morning light made the water look calm, but ripples near the rocks suggested something moved below. The guide said reef sharks choose resting spots for safety and cooler water. Willa compared two clues: fish fleeing toward the reef holes, and a smooth shape sliding through deeper water. Using both details, she concluded that the shark had already shifted locations. That conclusion changed her plan for the next observation, so she moved toward a safer viewing ledge. She wrote two evidence notes before leaving the busy channel.
+                Finn studied the reef like a careful young shark. Morning light made the water look calm, but ripples near the rocks suggested something moved below. Reef sharks choose resting spots for safety and cooler water. Finn compared two clues: fish fleeing toward the reef holes, and a smooth shape sliding through deeper water. Using both details, he concluded that another shark had already shifted locations. That conclusion changed his plan, so he moved toward a quieter rest ledge. He noticed two clear clues before leaving the busy channel.
                 """,
                 questions: [
-                    mcq("What can you conclude about the shark?", ["It had already shifted locations", "It never left the ledge", "It was resting on the beach"], "It had already shifted locations", "Willa concluded the shark had shifted locations."),
+                    mcq("What can you conclude about the other shark?", ["It had already shifted locations", "It never left the ledge", "It was resting on the beach"], "It had already shifted locations", "Finn concluded the other shark had shifted locations."),
                     mcq("Where did the fish flee?", ["Toward the reef holes", "Onto the dry beach", "Into the fishing boat"], "Toward the reef holes", "Fish were fleeing toward the reef holes."),
-                    mcq("Where did Willa go after she changed her plan?", ["Toward a safer viewing ledge", "Into the busy channel", "Back to the beach"], "Toward a safer viewing ledge", "She moved toward a safer viewing ledge."),
+                    mcq("Where did Finn go after he changed his plan?", ["Toward a quieter rest ledge", "Into the busy channel", "Back to the beach"], "Toward a quieter rest ledge", "He moved toward a quieter rest ledge."),
                 ],
                 vocabularyWords: [
                     VocabularyWord(word: "evidence", definition: "Clues that support an idea.", exampleSentence: "Bubbles and ripples can be evidence."),
-                    VocabularyWord(word: "conclude", definition: "To decide something after looking at clues.", exampleSentence: "Willa can conclude where the shark went.")
+                    VocabularyWord(word: "conclude", definition: "To decide something after looking at clues.", exampleSentence: "Finn can conclude where the other shark went.")
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(fact: "Ocean observers use more than one clue before deciding what an animal is doing.", explanation: "Comparing clues leads to stronger conclusions.")
                 ],
-                creativePrompt: "Write two sentences about why Willa thought the shark had moved and where she went next.",
+                creativePrompt: "Write two sentences about why Finn thought the other shark had moved and where he went next.",
                 creativeResponseType: .shortText,
-                storyEnding: "Willa's safer ledge came from two clear clues, not a lucky guess.",
+                storyEnding: "Finn's quieter ledge came from two clear clues, not a lucky guess.",
                 readingSkill: "Draw a conclusion using reef evidence",
                 reflectionPrompt: "Which clue was stronger for you, and why?",
-                hints: ["Look for where the fish fled", "Reread where Willa moved after her plan changed"],
+                hints: ["Look for where the fish fled", "Reread where Finn moved after his plan changed"],
                 commonMistakes: ["Using only one clue and ignoring the other"],
                 successCriteria: ["Supports a conclusion with two passage details"],
                 learningObjectives: ["Draw a text-based conclusion about animal movement"],
                 activityFingerprint: "ocean.confident.reef-clues.conclusion",
-                characterNames: ["Willa"]
+                characterNames: ["Finn"]
             )
         }
     }
@@ -952,7 +954,7 @@ enum CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Mia can count the ponies.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Stable hands count animals to keep every pony safe.")],
-                creativePrompt: "Draw 4 ponies by a fence and circle them as you count.",
+                creativePrompt: "Draw 4 ponies by a fence.",
                 storyEnding: "Mia's count matches the yard. Every pony is accounted for!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "There are 2 foals on the left and 3 ponies on the right. Which side has more animals?",
@@ -970,7 +972,7 @@ enum CuratedTopicLessonBank {
                     mcq("A stall holds 10 hay bales. Mia moves 4 bales to another stall. How many bales are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
                     mcq("Mia wants 8 apple treats in the lesson jar. She has dropped in 5 so far. How many more treats does she still need?", ["2", "3", "4"], "3", "8 − 5 = 3.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total hay bales.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total hay bales.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Horses eat hay, and caretakers measure feed so each horse gets enough.")],
                 creativePrompt: "Draw 9 hay bales stacked for the stalls.",
                 storyEnding: "The stalls are stocked because the numbers added up.",
@@ -997,7 +999,7 @@ enum CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Mia packs 20 hoof picks into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2."),
+                    sort.groupingQuestion,
                     mcq("Mia sets out 3 boxes of grooming brushes with 4 brushes in each box. How many brushes is that?", ["7", "12", "14"], "12", "3 × 4 = 12."),
                     mcq("A jump pole is 15 centimeters past a mark. Another is 9 centimeters past. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
                 ],
@@ -1022,7 +1024,7 @@ enum CuratedTopicLessonBank {
                     mcq("Mia shares 18 carrot sticks among 3 ponies equally. How many does each pony get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
                     mcq("One jump rail is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first than the second?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all, when groups are joined.", exampleSentence: "How many treats altogether?")],
+                vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of treats.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Horses can eat apples as a treat, along with hay and grass.")],
                 creativePrompt: "Draw the treat jars or crates.",
                 storyEnding: "Every pony gets a fair share. Nice math, Mia!",
@@ -1049,7 +1051,7 @@ enum CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Lina can count the toucans.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Scientists count animals to learn about a habitat.")],
-                creativePrompt: "Draw 4 toucans and circle them as you count.",
+                creativePrompt: "Draw 4 toucans.",
                 storyEnding: "Lina's canopy count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "What jungle animal did you count?",
@@ -1067,7 +1069,7 @@ enum CuratedTopicLessonBank {
                     mcq("A branch holds 10 berries. Birds eat 4. How many berries are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
                     mcq("Lina starts with 8 seed pods on the trail. Ants carry 5 away. How many seed pods are left?", ["2", "3", "4"], "3", "8 − 5 = 3.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total leaf pieces.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total leaf pieces.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Ant colonies move many leaf pieces to grow food.")],
                 creativePrompt: "Draw ants carrying 9 leaf pieces.",
                 storyEnding: "The ant trail numbers add up!",
@@ -1094,7 +1096,7 @@ enum CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Lina packs 20 seed pods into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2."),
+                    sort.groupingQuestion,
                     mcq("Lina fills 3 trays of berries with 4 berries in each tray. How many berries did she gather?", ["7", "12", "14"], "12", "3 × 4 = 12."),
                     mcq("A vine is 15 centimeters long. Another is 9 centimeters long. How much longer is the first vine?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
                 ],
@@ -1115,11 +1117,11 @@ enum CuratedTopicLessonBank {
                 missionPrompt: multi ? "Solve each rainforest problem." : "Solve each seed problem carefully.",
                 readingPassage: "Seed packs help growers plant trees that love warm, wet weather.",
                 problems: [
-                    mcq("Lina packs 3 boxes of seeds with 8 seeds in each box. How many seeds is that altogether?", ["16", "24", "32"], "24", "3 × 8 = 24."),
+                    mcq("Lina packs 3 boxes of seeds with 8 seeds in each box. How many seeds is that in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
                     mcq("Lina shares 18 seed pods among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
                     mcq("A vine is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many seeds altogether?")],
+                vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the seeds equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Rainforests get heavy rain, so many trees grow large leaves that shed water.")],
                 creativePrompt: "Draw the seed boxes and one sorting step.",
                 storyEnding: "The rainforest garden supplies are ready!",
@@ -1136,18 +1138,18 @@ enum CuratedTopicLessonBank {
         case .emerging:
             return MathScene(
                 title: "Count the Fish",
-                storyOpening: "Willa counts ocean friends near the reef.",
+                storyOpening: "Finn counts ocean friends near the reef.",
                 missionPrompt: "Count the fish and compare the groups.",
-                readingPassage: "Four fish dart by the coral. Two shells rest on the sand. Willa points and counts.",
+                readingPassage: "Four fish dart by the coral. Two shells rest on the sand. Finn points and counts.",
                 problems: [
-                    mcq("Willa sees 2 fish, then 2 more join. How many fish in all?", ["3", "4", "5"], "4", "2 + 2 = 4."),
+                    mcq("Finn sees 2 fish, then 2 more join. How many fish in all?", ["3", "4", "5"], "4", "2 + 2 = 4."),
                     mcq("There are 2 shells on the left and 3 fish on the right. Which side has more?", ["Right", "Left", "Same"], "Right", "3 is more than 2."),
-                    mcq("Willa counts 6, then one more. Which number comes next?", ["7", "5", "9"], "7", "6 + 1 = 7, so 7 comes next.")
+                    mcq("Finn counts 6, then one more. Which number comes next?", ["7", "5", "9"], "7", "6 + 1 = 7, so 7 comes next.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Willa can count the fish.")],
+                vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Finn can count the fish.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Ocean watchers count animals to learn about the reef.")],
-                creativePrompt: "Draw 4 fish by coral and circle them as you count.",
-                storyEnding: "Willa's reef count is done!",
+                creativePrompt: "Draw 4 fish by coral.",
+                storyEnding: "Finn's reef count is done!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "What ocean thing did you count?",
                 hints: ["Point to each fish", "Compare the two groups"],
@@ -1156,33 +1158,34 @@ enum CuratedTopicLessonBank {
         case .developing:
             return MathScene(
                 title: "Shells on the Sand",
-                storyOpening: "Willa sorts shells after a gentle tide.",
+                storyOpening: "Finn sorts shells after a gentle tide.",
                 missionPrompt: "Add and subtract to finish the beach jobs.",
-                readingPassage: "Willa sorts clam shells and sand dollars into piles on the sand. She checks each total before the next tide.",
+                readingPassage: "Finn sorts clam shells and sand dollars into piles on the sand. He checks each total before the next tide.",
                 problems: [
-                    mcq("Willa finds 6 clam shells. Then she finds 3 more. How many clam shells in all?", ["8", "9", "10"], "9", "6 + 3 = 9."),
-                    mcq("A bucket holds 10 sand dollars. Willa shares 4 with friends. How many sand dollars are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
-                    mcq("Willa finds 8 shells on the tide line. A wave washes 5 shells away. How many shells are left?", ["2", "3", "4"], "3", "8 − 5 = 3.")
+                    mcq("Finn finds 6 clam shells. Then he finds 3 more. How many clam shells in all?", ["8", "9", "10"], "9", "6 + 3 = 9."),
+                    mcq("A bucket holds 10 sand dollars. Finn shares 4 with friends. How many sand dollars are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
+                    mcq("Finn finds 8 shells on the tide line. A wave washes 5 shells away. How many shells are left?", ["2", "3", "4"], "3", "8 − 5 = 3.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total shells.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total shells.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Seashells on a beach can show which ocean animals live nearby.")],
                 creativePrompt: "Draw 9 shells on the sand.",
                 storyEnding: "The shell count matches the tide line.",
                 mathSkill: "Addition and subtraction",
-                reflectionPrompt: "A bucket holds 10 sand dollars. Willa shares 4 with friends. How many sand dollars are left?",
+                reflectionPrompt: "A bucket holds 10 sand dollars. Finn shares 4 with friends. How many sand dollars are left?",
                 hints: ["Write the numbers", "Decide add or subtract"],
                 activityFingerprint: "ocean.math.developing.add-sub"
             )
         case .secure:
             let sort = groupingSortCopy(
-                character: "Willa",
-                pronoun: "she",
+                character: "Finn",
+                pronoun: "he",
                 items: [
                     ("shells", "in the tide pool tray"),
                     ("coral", "in the display dish"),
                     ("sand dollars", "on the sand")
                 ],
                 packItem: "shells",
+                groupSize: 10,
                 purpose: "for the reef display"
             )
             return MathScene(
@@ -1191,8 +1194,8 @@ enum CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Willa packs 20 shell samples into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2."),
-                    mcq("Willa fills 3 trays of coral pieces. Each tray has 4 pieces. How many pieces is that?", ["7", "12", "14"], "12", "3 × 4 = 12."),
+                    sort.groupingQuestion,
+                    mcq("Finn fills 3 trays of coral pieces. Each tray has 4 pieces. How many pieces is that?", ["7", "12", "14"], "12", "3 × 4 = 12."),
                     mcq("A kelp strand is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten shell samples.")],
@@ -1200,7 +1203,7 @@ enum CuratedTopicLessonBank {
                 creativePrompt: "Draw 3 trays with 4 coral pieces in each tray.",
                 storyEnding: "The reef display is ready for visitors.",
                 mathSkill: "Place value and equal groups",
-                reflectionPrompt: "Willa fills 3 trays of coral pieces. Each tray has 4 pieces. How many pieces is that?",
+                reflectionPrompt: "Finn fills 3 trays of coral pieces. Each tray has 4 pieces. How many pieces is that?",
                 hints: ["Think about tens and ones", "Count the packs"],
                 activityFingerprint: "ocean.math.secure.groups"
             )
@@ -1208,20 +1211,20 @@ enum CuratedTopicLessonBank {
             let multi = reading.sortOrder >= ReadingLevel.growingReader.sortOrder
             return MathScene(
                 title: multi ? "Reef Field Trip" : "Equal Shares of Kelp Strips",
-                storyOpening: "Willa plans kelp samples for a reef field trip.",
+                storyOpening: "Finn plans kelp samples for a reef field trip.",
                 missionPrompt: multi ? "Solve each ocean problem." : "Solve each ocean problem carefully.",
                 readingPassage: "Kelp strips and shell samples are shared after the reef walk.",
                 problems: [
-                    mcq("Willa packs 3 boxes with 8 shell samples in each box. How many shell samples altogether?", ["16", "24", "32"], "24", "3 × 8 = 24."),
-                    mcq("Willa shares 18 kelp strips among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
+                    mcq("Finn packs 3 boxes with 8 shell samples in each box. How many shell samples in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
+                    mcq("Finn shares 18 kelp strips among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
                     mcq("One kelp strand is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many kelp strips altogether?")],
+                vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of kelp strips have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Kelp is a large seaweed that grows in cold ocean water.")],
                 creativePrompt: "Draw the kelp trays or sample boxes.",
                 storyEnding: "Everyone gets a fair ocean share!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
-                reflectionPrompt: "A tide pool tank holds 4 cups of water. Willa adds 2 more cups. How many cups are in the tank now?",
+                reflectionPrompt: "A tide pool tank holds 4 cups of water. Finn adds 2 more cups. How many cups are in the tank now?",
                 hints: mathHints(level),
                 activityFingerprint: "ocean.math.advancing.supplies"
             )
@@ -1243,7 +1246,7 @@ enum CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Nova can count the stars.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Astronauts count tools and map marks carefully.")],
-                creativePrompt: "Draw 4 stars and circle them as you count.",
+                creativePrompt: "Draw 4 stars.",
                 storyEnding: "Nova's star count matches the map!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "What did you count in space today?",
@@ -1261,7 +1264,7 @@ enum CuratedTopicLessonBank {
                     mcq("A shelf holds 10 tool kits. Nova sends 4 to another dome. How many kits are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
                     mcq("Nova's checklist shows 8 moon markers. She crosses off 5 used markers. How many markers are left on the list?", ["2", "3", "4"], "3", "8 − 5 = 3.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total markers.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total markers.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Crews check supply math before missions.")],
                 creativePrompt: "Draw 9 glow markers for the crew.",
                 storyEnding: "Supplies are ready for training.",
@@ -1288,7 +1291,7 @@ enum CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Nova packs 20 moon badges into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2."),
+                    sort.groupingQuestion,
                     mcq("Nova's glow map uses 3 rows of badges with 4 badges in each row. How many badges are on the map?", ["7", "12", "14"], "12", "3 × 4 = 12."),
                     mcq("An antenna is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
                 ],
@@ -1309,11 +1312,11 @@ enum CuratedTopicLessonBank {
                 missionPrompt: multi ? "Solve each space problem." : "Solve each space problem carefully.",
                 readingPassage: "Glow markers and battery cells are shared after practice.",
                 problems: [
-                    mcq("Nova charges 3 battery trays with 8 cells in each tray. How many cells altogether?", ["16", "24", "32"], "24", "3 × 8 = 24."),
+                    mcq("Nova charges 3 battery trays with 8 cells in each tray. How many cells in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
                     mcq("Nova shares 18 glow markers among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
                     mcq("One antenna is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many markers altogether?")],
+                vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 cells.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Astronauts use checklists so they do not lose tools in space.")],
                 creativePrompt: "Draw the marker boxes or battery trays.",
                 storyEnding: "The crew shares fairly before countdown!",
@@ -1340,7 +1343,7 @@ enum CuratedTopicLessonBank {
                 ],
                 vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Dottie can count the dinos.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Paleontology helpers count tracks and friends carefully.")],
-                creativePrompt: "Draw 4 dinos by the bank and circle them as you count.",
+                creativePrompt: "Draw 4 dinos by the bank.",
                 storyEnding: "Dottie's valley count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "What did you count in the valley?",
@@ -1358,7 +1361,7 @@ enum CuratedTopicLessonBank {
                     mcq("A tray holds 10 leaf snacks. Dottie shares 4 with friends. How many leaf snacks are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
                     mcq("Dottie gathers 8 leaf snacks for the share. A hatchling brings only 5. How many more snacks did Dottie gather?", ["2", "3", "4"], "3", "8 − 5 = 3.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many altogether.", exampleSentence: "Find the total fern piles.")],
+                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total fern piles.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Sharing plant snacks needs careful counting.")],
                 creativePrompt: "Draw 9 fern piles by the water.",
                 storyEnding: "The snack share numbers add up!",
@@ -1385,7 +1388,7 @@ enum CuratedTopicLessonBank {
                 missionPrompt: sort.mission,
                 readingPassage: sort.passage,
                 problems: [
-                    mcq("Dottie packs 20 fossil tags into groups of 10. How many full groups can she make?", ["1", "2", "3"], "2", "20 ÷ 10 = 2."),
+                    sort.groupingQuestion,
                     mcq("At the dig, Dottie sets out 3 baskets of leaf pads with 4 pads in each basket. How many leaf pads are there?", ["7", "12", "14"], "12", "3 × 4 = 12."),
                     mcq("A fern stem is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
                 ],
@@ -1406,11 +1409,11 @@ enum CuratedTopicLessonBank {
                 missionPrompt: multi ? "Solve each dig problem." : "Solve each dig problem carefully.",
                 readingPassage: "Leaf snacks and fern tips are shared after the cove visit.",
                 problems: [
-                    mcq("Dottie packs 3 boxes with 8 leaf snacks in each box. How many snacks altogether?", ["16", "24", "32"], "24", "3 × 8 = 24."),
+                    mcq("Dottie packs 3 boxes with 8 leaf snacks in each box. How many snacks in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
                     mcq("Dottie shares 18 fern tips among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
                     mcq("One fern stem is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "altogether", definition: "In all.", exampleSentence: "How many snacks altogether?")],
+                vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the snacks into equal shares.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Fossils are traces of ancient plants and animals preserved in rock.")],
                 creativePrompt: "Draw the lunch bags or snack boxes and one munching step.",
                 storyEnding: "Every friend gets a fair fossil-walk share!",
@@ -1451,17 +1454,27 @@ enum CuratedTopicLessonBank {
         mcq(prompt, choices, answer, explanation, subject: .math)
     }
 
-    /// Child-facing copy for equal-group math: kids match named items, then pack a story-sized group.
+    /// Child-facing copy for equal-group math: kids match named items, then solve a story-sized group problem.
+    /// The Read Along only names where items go. Grouping numbers live on the math question so younger
+    /// sessions can drop equal-groups math without leaving an unused "packs 20 into groups of 10" sentence.
     static func groupingSortCopy(
         character: String,
         pronoun: String,
         items: [(item: String, group: String)],
         packItem: String,
-        packCount: Int = 20,
+        packCount: Int? = nil,
         groupSize: Int? = nil,
         purpose: String
-    ) -> (opening: String, mission: String, passage: String) {
-        let size = groupSize ?? groupingSize(character: character, packItem: packItem, packCount: packCount)
+    ) -> (
+        opening: String,
+        mission: String,
+        passage: String,
+        groupSize: Int,
+        packCount: Int,
+        groupingQuestion: LessonQuestion
+    ) {
+        let size = groupSize ?? groupingSize(character: character, packItem: packItem, packCount: packCount ?? 20)
+        let count = packCount ?? groupingPackCount(character: character, packItem: packItem, groupSize: size)
         let trio = Array(items.prefix(3))
         let names = trio.map(\.item)
         let itemList: String
@@ -1471,7 +1484,7 @@ enum CuratedTopicLessonBank {
             itemList = names.joined(separator: " and ")
         }
         let put = pronoun == "they" ? "put" : "puts"
-        let pack = pronoun == "they" ? "pack" : "packs"
+        let be = pronoun == "they" ? "are" : "is"
         let they = pronoun.capitalized
 
         var sentences: [String] = []
@@ -1481,14 +1494,51 @@ enum CuratedTopicLessonBank {
         for extra in trio.dropFirst() {
             sentences.append("\(they) \(put) the \(extra.item) \(extra.group).")
         }
-        sentences.append(
-            "Then \(pronoun) \(pack) \(packCount) \(packItem) into groups of \(size) so they are easy to count \(purpose)."
-        )
+        sentences.append("Now \(pronoun) \(be) ready \(purpose).")
 
         return (
             opening: "\(character) is going to sort \(itemList) into groups.",
             mission: "Match the \(itemList) to their groups. Then find how many groups of \(size) \(packItem) \(character) can make.",
-            passage: sentences.joined(separator: " ")
+            passage: sentences.joined(separator: " "),
+            groupSize: size,
+            packCount: count,
+            groupingQuestion: groupingMathQuestion(
+                character: character,
+                pronoun: pronoun,
+                packItem: packItem,
+                packCount: count,
+                groupSize: size
+            )
+        )
+    }
+
+    /// Self-contained grouping math. Numbers live here, not in the Read Along.
+    static func groupingMathQuestion(
+        character: String,
+        pronoun: String,
+        packItem: String,
+        packCount: Int,
+        groupSize: Int
+    ) -> LessonQuestion {
+        let size = max(groupSize, 1)
+        let groups = max(1, packCount / size)
+        var nums = [groups]
+        for delta in [-1, 1, 2, -2, 3] {
+            let value = groups + delta
+            if value >= 1, !nums.contains(value) {
+                nums.append(value)
+            }
+            if nums.count == 3 { break }
+        }
+        let choices = nums.sorted().map(String.init)
+        let actor = pronoun == "they" ? character : pronoun.capitalized
+        let put = pronoun == "they" ? "put" : "puts"
+        return mcq(
+            "\(character) has \(packCount) \(packItem). \(actor) \(put) them in groups of \(size). How many groups is that?",
+            choices,
+            "\(groups)",
+            "\(packCount) ÷ \(size) = \(groups).",
+            subject: .math
         )
     }
 
@@ -1503,6 +1553,18 @@ enum CuratedTopicLessonBank {
             hash = hash &* 16_777_619
         }
         return pool[Int(hash % UInt64(pool.count))]
+    }
+
+    /// Stable per-story total so grouping math is not always 20 ÷ 10.
+    static func groupingPackCount(character: String, packItem: String, groupSize: Int) -> Int {
+        let size = max(groupSize, 1)
+        let groupCounts = [2, 3, 4]
+        var hash: UInt64 = 7_654_321
+        for byte in (character.lowercased() + "@" + packItem.lowercased()).utf8 {
+            hash ^= UInt64(byte)
+            hash = hash &* 16_777_619
+        }
+        return groupCounts[Int(hash % UInt64(groupCounts.count))] * size
     }
 
     private static func mathHints(_ level: MathLevel) -> [String] {

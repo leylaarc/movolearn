@@ -3,10 +3,18 @@ import PencilKit
 import OSLog
 
 private let drawingLog = Logger(subsystem: "com.movolearn.app", category: "DrawingCanvas")
+/// Fine enough for details (gills, stars) without feeling like a marker.
+private let drawingPenWidth: CGFloat = 1.5
 
 /// Topic-based checklist goals that turn drawing into a mini Art Quest.
 enum DrawingQuestGoals {
-    static func goals(for topic: Topic) -> [String] {
+    static func goals(for topic: Topic, authored: [String] = []) -> [String] {
+        let trimmed = authored
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+        if !trimmed.isEmpty {
+            return Array(trimmed.prefix(4))
+        }
         switch topic {
         case .horses:
             return ["A pony", "Sunny sky", "A story detail"]
@@ -26,6 +34,54 @@ enum DrawingQuestGoals {
     }
 }
 
+private struct DrawingSwatch: Identifiable {
+    let name: String
+    let uiColor: UIColor
+    var preview: Color? = nil
+    var needsDarkStroke: Bool = false
+
+    var id: String { name }
+    var color: Color { preview ?? Color(uiColor: uiColor) }
+}
+
+/// Converts a SwiftUI swatch into the opaque sRGB `UIColor` PencilKit inks with.
+private enum PencilKitInk {
+    static let black = rgbInk(red: 0, green: 0, blue: 0)
+    static let white = rgbInk(red: 1, green: 1, blue: 1)
+
+    static func color(from color: Color) -> UIColor {
+        let resolved = color.resolve(in: EnvironmentValues())
+        return rgbInk(
+            red: CGFloat(resolved.red),
+            green: CGFloat(resolved.green),
+            blue: CGFloat(resolved.blue)
+        )
+    }
+
+    /// PencilKit inverts grayscale `UIColor.white` / `.black` to the opposite color.
+    /// Keep a tiny RGB bias in sRGB so white stays white and black stays black.
+    private static func rgbInk(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        var r = min(max(red, 0), 1)
+        var g = min(max(green, 0), 1)
+        var b = min(max(blue, 0), 1)
+        if abs(r - g) < 0.002 && abs(g - b) < 0.002 {
+            if r > 0.9 {
+                r = 1
+                g = 0.998
+                b = 0.996
+            } else {
+                r = min(r + 0.004, 1)
+                g = min(g + 0.002, 1)
+            }
+        }
+        guard let space = CGColorSpace(name: CGColorSpace.sRGB),
+              let cgColor = CGColor(colorSpace: space, components: [r, g, b, 1]) else {
+            return UIColor(red: r, green: g, blue: b, alpha: 1)
+        }
+        return UIColor(cgColor: cgColor)
+    }
+}
+
 /// Child-friendly drawing canvas with colors, quest checklist, pen, eraser, undo, and clear.
 struct DrawingCanvasView: View {
     @Binding var hasContent: Bool
@@ -35,7 +91,7 @@ struct DrawingCanvasView: View {
 
     @State private var canvasView = PKCanvasView()
     @State private var tool: DrawingTool = .pen
-    @State private var inkColor: Color = DesignSystem.Colors.deepNavy
+    @State private var inkColor: UIColor = PencilKitInk.color(from: DesignSystem.Colors.deepNavy)
     @State private var completedGoals: Set<String> = []
     @State private var didClear = false
     @State private var starBounce = false
@@ -45,15 +101,23 @@ struct DrawingCanvasView: View {
         case eraser
     }
 
-    private let palette: [Color] = [
-        DesignSystem.Colors.deepNavy,
-        DesignSystem.Colors.warmOrange,
-        DesignSystem.Colors.skyBlue,
-        DesignSystem.Colors.freshGreen,
-        DesignSystem.Colors.coralPink,
-        DesignSystem.Colors.sunshineYellow,
-        Color(red: 0.45, green: 0.28, blue: 0.16),
-        Color.white
+    private let palette: [DrawingSwatch] = [
+        DrawingSwatch(name: "Black", uiColor: PencilKitInk.black, preview: Color.black),
+        DrawingSwatch(name: "White", uiColor: PencilKitInk.white, preview: Color.white, needsDarkStroke: true),
+        DrawingSwatch(name: "Navy", uiColor: PencilKitInk.color(from: DesignSystem.Colors.deepNavy)),
+        DrawingSwatch(name: "Red", uiColor: PencilKitInk.color(from: DesignSystem.Colors.softRed)),
+        DrawingSwatch(name: "Orange", uiColor: PencilKitInk.color(from: DesignSystem.Colors.warmOrange)),
+        DrawingSwatch(name: "Yellow", uiColor: PencilKitInk.color(from: DesignSystem.Colors.sunshineYellow)),
+        DrawingSwatch(name: "Green", uiColor: PencilKitInk.color(from: DesignSystem.Colors.freshGreen)),
+        DrawingSwatch(name: "Teal", uiColor: PencilKitInk.color(from: DesignSystem.Colors.oceanTurquoise)),
+        DrawingSwatch(name: "Blue", uiColor: PencilKitInk.color(from: DesignSystem.Colors.skyBlue)),
+        DrawingSwatch(name: "Purple", uiColor: PencilKitInk.color(from: DesignSystem.Colors.lavenderPurple)),
+        DrawingSwatch(name: "Pink", uiColor: PencilKitInk.color(from: DesignSystem.Colors.coralPink)),
+        DrawingSwatch(name: "Light pink", uiColor: PencilKitInk.color(from: DesignSystem.Colors.coralPinkLight), needsDarkStroke: true),
+        DrawingSwatch(name: "Light blue", uiColor: PencilKitInk.color(from: DesignSystem.Colors.skyBlueLight), needsDarkStroke: true),
+        DrawingSwatch(name: "Pale yellow", uiColor: PencilKitInk.color(from: DesignSystem.Colors.sunshineYellowLight), needsDarkStroke: true),
+        DrawingSwatch(name: "Brown", uiColor: PencilKitInk.color(from: Color(red: 0.45, green: 0.28, blue: 0.16))),
+        DrawingSwatch(name: "Gray", uiColor: PencilKitInk.color(from: Color(red: 0.55, green: 0.56, blue: 0.62)))
     ]
 
     private var starsEarned: Int {
@@ -196,7 +260,11 @@ struct DrawingCanvasView: View {
                 .accessibilityLabel("\(starsEarned) of 3 stars earned")
             }
 
-            HStack(spacing: 8) {
+            LazyVGrid(
+                columns: [GridItem(.adaptive(minimum: 88), spacing: 8)],
+                alignment: .leading,
+                spacing: 8
+            ) {
                 ForEach(questGoals, id: \.self) { goal in
                     let done = completedGoals.contains(goal)
                     Button {
@@ -213,10 +281,13 @@ struct DrawingCanvasView: View {
                                 .font(.system(size: 14, weight: .bold))
                             Text(goal)
                                 .font(DesignSystem.Typography.caption(12).weight(.bold))
+                                .lineLimit(2)
+                                .multilineTextAlignment(.leading)
                         }
                         .foregroundStyle(done ? DesignSystem.Colors.cardWhite : DesignSystem.Colors.deepNavy)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .background(done ? accent : DesignSystem.Colors.surfaceMuted)
                         .clipShape(Capsule())
                         .overlay(
@@ -232,35 +303,48 @@ struct DrawingCanvasView: View {
     }
 
     private var colorPalette: some View {
-        HStack(spacing: 10) {
-            ForEach(Array(palette.enumerated()), id: \.offset) { _, color in
-                let selected = colorsMatch(color, inkColor) && tool == .pen
+        LazyVGrid(
+            columns: [GridItem(.adaptive(minimum: 36), spacing: 8)],
+            alignment: .leading,
+            spacing: 8
+        ) {
+            ForEach(palette) { swatch in
+                let selected = colorsMatch(swatch.uiColor, inkColor) && tool == .pen
                 Button {
-                    inkColor = color
+                    inkColor = swatch.uiColor
                     tool = .pen
                 } label: {
                     Circle()
-                        .fill(color)
+                        .fill(swatch.color)
                         .frame(width: 28, height: 28)
                         .overlay(
                             Circle()
-                                .stroke(DesignSystem.Colors.deepNavy.opacity(color == .white ? 0.35 : 0.15), lineWidth: 1)
+                                .stroke(
+                                    DesignSystem.Colors.deepNavy.opacity(swatch.needsDarkStroke ? 0.35 : 0.15),
+                                    lineWidth: 1
+                                )
                         )
                         .overlay(
                             Circle()
                                 .stroke(selected ? accent : Color.clear, lineWidth: 3)
                                 .padding(-3)
                         )
+                        .frame(width: 36, height: 36)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("Ink color")
+                .accessibilityLabel("\(swatch.name) ink")
             }
-            Spacer(minLength: 0)
         }
     }
 
-    private func colorsMatch(_ a: Color, _ b: Color) -> Bool {
-        UIColor(a) == UIColor(b)
+    private func colorsMatch(_ a: UIColor, _ b: UIColor) -> Bool {
+        var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 0
+        var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 0
+        guard a.getRed(&r1, green: &g1, blue: &b1, alpha: &a1),
+              b.getRed(&r2, green: &g2, blue: &b2, alpha: &a2) else {
+            return a == b
+        }
+        return abs(r1 - r2) < 0.01 && abs(g1 - g2) < 0.01 && abs(b1 - b2) < 0.01
     }
 
     private func toolButton(
@@ -292,7 +376,8 @@ struct DrawingCanvasView: View {
     private func applyTool() {
         switch tool {
         case .pen:
-            canvasView.tool = PKInkingTool(.pen, color: UIColor(inkColor), width: 8)
+            canvasView.overrideUserInterfaceStyle = .light
+            canvasView.tool = PKInkingTool(.monoline, color: inkColor, width: drawingPenWidth)
         case .eraser:
             canvasView.tool = PKEraserTool(.bitmap)
         }
@@ -334,8 +419,9 @@ private struct PencilKitCanvas: UIViewRepresentable {
         canvasView.drawingPolicy = .anyInput
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
+        canvasView.overrideUserInterfaceStyle = .light
         canvasView.delegate = context.coordinator
-        canvasView.tool = PKInkingTool(.pen, color: UIColor(DesignSystem.Colors.deepNavy), width: 8)
+        canvasView.tool = PKInkingTool(.monoline, color: PencilKitInk.color(from: DesignSystem.Colors.deepNavy), width: drawingPenWidth)
         return canvasView
     }
 

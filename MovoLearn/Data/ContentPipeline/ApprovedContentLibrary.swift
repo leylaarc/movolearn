@@ -16,7 +16,7 @@ enum ApprovedContentLibrary {
     private static let buildQueue = DispatchQueue(label: "com.movolearn.approved-library.build")
 
     /// Bump when factory / curated packs change so the on-disk catalog is rebuilt.
-    private static let contentRevision = "13"
+    private static let contentRevision = "15"
 
     private struct HomePriority {
         let topics: [Topic]
