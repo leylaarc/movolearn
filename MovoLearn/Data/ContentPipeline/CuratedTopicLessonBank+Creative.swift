@@ -166,21 +166,21 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return sceneDrawing(
                 title: "Fossil Find Drawing",
-                scene: "A fossil bone sits inside a tan rock. A scientist brushes sand away. The sky is pale blue. Green ferns grow nearby.",
+                scene: "A Triceratops skull fossil sits inside a tan rock. Three horns show on the skull. A scientist brushes sand away. The sky is pale blue.",
                 vocab: "fossil",
                 vocabDef: "An old clue from long ago kept in rock.",
-                fact: "Fossils help scientists learn about dinosaurs.",
-                goals: ["Fossil bone", "Tan rock", "Green ferns"],
+                fact: "Fossils help scientists learn about dinosaur species.",
+                goals: ["Triceratops skull", "Three horns", "Tan rock"],
                 fingerprint: "dinos.creative.beginner.fossil"
             )
         case .earlyReader:
             return sceneDrawing(
-                title: "Plant-Eater Lunch Drawing",
-                scene: "A plant-eating dinosaur smiles with flat teeth. A plate holds green ferns and leaves. The dinosaur is olive green. A brown log sits beside the plate.",
-                vocab: "fern",
-                vocabDef: "A green plant with feathery leaves.",
-                fact: "Tooth shape gives clues about dinosaur diets.",
-                goals: ["Plant eater", "Ferns", "Flat teeth"],
+                title: "Two Dinosaur Species",
+                scene: "Triceratops stands with three horns and flat teeth. Tyrannosaurus stands nearby with sharp teeth. Triceratops is olive green. Tyrannosaurus is brown. A fossil bone lies between them.",
+                vocab: "species",
+                vocabDef: "A kind of living thing.",
+                fact: "Triceratops ate plants. Tyrannosaurus ate meat. Teeth help tell the species apart.",
+                goals: ["Triceratops", "Three horns", "Tyrannosaurus"],
                 fingerprint: "dinos.creative.early.plant-plate"
             )
         case .growingReader:

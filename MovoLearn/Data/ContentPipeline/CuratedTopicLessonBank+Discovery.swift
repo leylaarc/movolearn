@@ -126,7 +126,7 @@ extension CuratedTopicLessonBank {
                 creativePrompt: "Draw a horse head and mark the side eyes. Add an arrow to the blind spot behind.",
                 storyEnding: "Sunny the pony soft-nuzzles you — you used eye clues like a real horse scientist!",
                 readingSkill: "Connect eye placement to how horses watch for danger",
-                reflectionPrompt: "Why should a visitor stand where a horse can see them?",
+                reflectionPrompt: "Why should a visitor stand where a horse can see him or her?",
                 hints: ["Find the sentence about side eyes", "Look for the words blind spot"],
                 commonMistakes: ["Guessing a fact that is not in the notes"],
                 successCriteria: ["Explains side vision using the notes", "Names the blind-spot idea"],
@@ -341,216 +341,216 @@ extension CuratedTopicLessonBank {
 
         case .earlyReader:
             return DiscoveryPack(
-                title: "Leaves Built for Rain",
-                storyOpening: "Movo peeks at a shiny leaf. Come feel how jungle leaves handle all that rain!",
+                title: "Roots That Hold Tall Trees",
+                storyOpening: "Movo peeks at a giant trunk. Come see how a rainforest tree can stand in thin soil!",
                 missionPrompt: "Read the science notes. Answer using evidence from the notes.",
-                readingPassage: "Many rainforest leaves are broad and smooth. Water slides off them after a storm. Pointed tips help drops drip away faster. This leaf shape helps plants stay healthy in heavy rain. Scientists call these helpful tips drip tips.",
+                readingPassage: "Tall rainforest trees can have wide side roots. The roots look like walls above the ground. Scientists call them buttress roots. They help hold a tall tree in thin soil. Wide roots keep the tree from tipping.",
                 questions: [
                     discoveryMCQ(
-                        "What are many rainforest leaves like?",
-                        ["Broad and smooth", "Tiny and needle-thin", "Thick and fuzzy like fur"],
-                        "Broad and smooth",
-                        "Broad, smooth leaves let rainwater slide off after a heavy storm."
+                        "What can tall rainforest trees have?",
+                        ["Wide side roots", "Tiny hair roots only", "No roots at all"],
+                        "Wide side roots",
+                        "Tall rainforest trees can have wide side roots that look like walls above the ground."
                     ),
                     discoveryMCQ(
-                        "What do pointed tips help drops do?",
-                        ["Drip away faster", "Stick on the leaf longer", "Freeze into ice beads"],
-                        "Drip away faster",
-                        "Pointed drip tips guide raindrops off the leaf so water does not sit too long."
+                        "What do scientists call these roots?",
+                        ["Buttress roots", "Drip tips", "Tide pools"],
+                        "Buttress roots",
+                        "Scientists call the wide wall-like roots buttress roots."
                     ),
                     discoveryMCQ(
-                        "What do scientists call these helpful tips?",
-                        ["Drip tips", "Root tips", "Flower tips"],
-                        "Drip tips",
-                        "Scientists call these pointed leaf ends drip tips because they shed rain."
+                        "What do wide roots help the tree do?",
+                        ["Keep from tipping", "Turn into a river", "Hide from the Sun forever"],
+                        "Keep from tipping",
+                        "Wide roots hold the tall tree in thin soil so it does not tip."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "drip tip",
-                        definition: "A pointed leaf tip that helps water slide off.",
-                        exampleSentence: "A drip tip lets rain leave the leaf quickly."
+                        word: "buttress roots",
+                        definition: "Wide roots that hold up a tall tree.",
+                        exampleSentence: "Buttress roots keep a rainforest tree from tipping."
                     ),
                     VocabularyWord(
-                        word: "rainforest",
-                        definition: "A warm forest that gets heavy rain.",
-                        exampleSentence: "Rainforest plants grow large wet leaves."
+                        word: "soil",
+                        definition: "The dirt plants grow in.",
+                        exampleSentence: "Rainforest soil can be thin."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Many rainforest leaves are broad and smooth so water can slide off.",
-                        explanation: "Leaf shape is an adaptation to heavy rain."
+                        fact: "Rainforest trees can have wide buttress roots that look like walls above the ground.",
+                        explanation: "The roots help hold a tall tree in thin soil."
                     ),
                     KnowledgeFact(
-                        fact: "Pointed drip tips help raindrops leave a leaf faster.",
-                        explanation: "Shedding water helps plants stay healthy in wet climates."
+                        fact: "Wide roots hold a tall tree because rainforest soil can be thin.",
+                        explanation: "Wide roots keep the tree from tipping."
                     )
                 ],
-                creativePrompt: "Draw one broad leaf with a pointed drip tip and falling raindrops.",
-                storyEnding: "Movo twinkles — you used leaf clues like a real rainforest scientist!",
-                readingSkill: "Connect leaf shape to life in heavy rain",
-                reflectionPrompt: "Why might a pointed tip help a leaf after a storm?",
-                hints: ["Find the sentence about drip tips", "Look for broad and smooth"],
-                commonMistakes: ["Guessing a leaf fact that is not in the notes"],
-                successCriteria: ["Explains how leaves shed water using the notes"],
+                creativePrompt: "Draw a tall tree with wide wall-like roots. Label the roots.",
+                storyEnding: "Movo twinkles — you used root clues like a real rainforest scientist!",
+                readingSkill: "Connect wide roots to life in thin rainforest soil",
+                reflectionPrompt: "How do wide roots help a tall rainforest tree?",
+                hints: ["Find the sentence about buttress roots", "Look for thin soil"],
+                commonMistakes: ["Guessing a root fact that is not in the notes"],
+                successCriteria: ["Explains how wide roots hold the tree using the notes"],
                 learningObjectives: [
-                    "Explain how drip tips help rainforest leaves shed water",
+                    "Explain that buttress roots help tall rainforest trees stand in thin soil",
                     "fp:discovery.Jungle Animals.earlyReader"
                 ],
-                activityFingerprint: "jungle.discovery.early.drip-tips"
+                activityFingerprint: "jungle.discovery.early.buttress-roots"
             )
 
         case .growingReader:
             return DiscoveryPack(
-                title: "Hide or Warn",
-                storyOpening: "Movo holds still and stays quiet. Jungle animals have clever ways to stay safe — let's look together!",
+                title: "Leafcutter Ants Grow Food",
+                storyOpening: "Movo holds still beside a marching line of ants. Jungle ants have a surprising way to eat — let's look together!",
                 missionPrompt: "Find the main science idea. Use details from the notes as evidence.",
-                readingPassage: "Some rainforest animals blend into leaves and twigs so predators miss them. Stick insects hold still and look like plant parts. Jaguars have spotted coats that break up their shape in leafy shade. Other animals use bright colors as a warning that they may be unsafe to eat. A poison dart frog's bold colors can tell predators to stay away. Camouflage and warning colors are two different survival tools in the same forest.",
+                readingPassage: "Leafcutter ants clip bits of green leaves. They do not eat the leaf bits themselves. They carry the bits down into a nest. Inside, a fungus grows on the chewed leaves. The ants eat the fungus they grow. The main idea is that leafcutter ants farm fungus for food.",
                 questions: [
                     discoveryMCQ(
                         "What is the main science idea in these notes?",
                         [
-                            "Jungle animals stay safe with camouflage or warning colors",
-                            "Every jungle animal hides in exactly the same way",
-                            "Bright colors always mean an animal wants to play"
+                            "Leafcutter ants farm fungus for food",
+                            "Leafcutter ants eat only the green leaf bits",
+                            "Leafcutter ants never go into a nest"
                         ],
-                        "Jungle animals stay safe with camouflage or warning colors",
-                        "Some animals blend in to hide, while others use bright colors to warn predators away."
+                        "Leafcutter ants farm fungus for food",
+                        "The ants clip leaves to grow fungus, then eat the fungus, not the leaf bits."
                     ),
                     discoveryMCQ(
-                        "How can a jaguar's spots help?",
+                        "What do the ants carry into the nest?",
                         [
-                            "They break up the jaguar's shape in leafy shade",
-                            "They make the jaguar stand out in bright sun",
-                            "They keep the jaguar dry after rain"
+                            "Bits of green leaves",
+                            "Piles of dry desert sand",
+                            "Whole jungle trees"
                         ],
-                        "They break up the jaguar's shape in leafy shade",
-                        "Spotted coats break up a jaguar's shape so it is harder to spot in leafy shade."
+                        "Bits of green leaves",
+                        "Leafcutter ants clip bits of green leaves and carry them into the nest."
                     ),
                     discoveryMCQ(
-                        "What can a poison dart frog's bright colors signal?",
+                        "What grows on the chewed leaves?",
                         [
-                            "A warning to stay away",
-                            "That the frog is perfectly camouflaged",
-                            "That the frog wants predators to come closer"
+                            "A fungus",
+                            "Dry desert sand",
+                            "A layer of ice"
                         ],
-                        "A warning to stay away",
-                        "Bold warning colors can tell predators the frog may be unsafe to eat."
+                        "A fungus",
+                        "Inside the nest, a fungus grows on the chewed leaves, and the ants eat that fungus."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "camouflage",
-                        definition: "Colors or shapes that help an animal blend in.",
-                        exampleSentence: "Camouflage helps a stick insect hide on a twig."
+                        word: "fungus",
+                        definition: "A living thing, like a mushroom, that can grow on plants.",
+                        exampleSentence: "A fungus grows on the chewed leaves."
                     ),
                     VocabularyWord(
-                        word: "predator",
-                        definition: "An animal that hunts other animals for food.",
-                        exampleSentence: "A predator may miss a well-camouflaged insect."
+                        word: "nest",
+                        definition: "A home animals build or dig.",
+                        exampleSentence: "The ants carry leaves into a nest."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Camouflage helps some rainforest animals blend into leaves and twigs.",
-                        explanation: "Blending in makes prey harder for predators to spot."
+                        fact: "Leafcutter ants clip leaves and grow fungus on them for food.",
+                        explanation: "They do not eat the leaf bits themselves."
                     ),
                     KnowledgeFact(
-                        fact: "Bright warning colors can tell predators that an animal may be unsafe to eat.",
-                        explanation: "Warning coloration is a different survival strategy from camouflage."
+                        fact: "The fungus grows inside the nest on chewed leaves.",
+                        explanation: "Farming fungus is how these ants feed the colony."
                     )
                 ],
-                creativePrompt: "Draw one camouflaged animal and one brightly colored warning animal. Label each strategy.",
-                storyEnding: "Movo nods proudly. You compared two survival tools the way careful investigators do.",
-                readingSkill: "Identify the main idea and supporting camouflage details",
-                reflectionPrompt: "Which survival tool from the notes would help more in deep green shade?",
-                hints: ["Reread the last sentence about two survival tools", "Compare the jaguar and the frog"],
-                commonMistakes: ["Thinking every animal uses only one kind of color trick"],
-                successCriteria: ["States the hide-or-warn main idea", "Cites one supporting detail"],
+                creativePrompt: "Draw ants carrying leaf bits into a nest. Label the fungus.",
+                storyEnding: "Movo nods proudly. You found the fungus-farming main idea the way careful investigators do.",
+                readingSkill: "Identify the main idea about how leafcutter ants get food",
+                reflectionPrompt: "What do leafcutter ants grow for food?",
+                hints: ["Reread the last sentence about fungus", "Find they do not eat the leaf bits"],
+                commonMistakes: ["Thinking the ants eat the green leaves as their meal"],
+                successCriteria: ["States the fungus-farming main idea", "Cites one supporting detail"],
                 learningObjectives: [
-                    "Compare camouflage and warning colors as rainforest survival strategies",
+                    "Explain that leafcutter ants grow fungus on leaves for food",
                     "fp:discovery.Jungle Animals.growingReader"
                 ],
-                activityFingerprint: "jungle.discovery.growing.camouflage-warn"
+                activityFingerprint: "jungle.discovery.growing.leafcutter-ants"
             )
 
         case .confidentReader:
             return DiscoveryPack(
-                title: "Four Layers of the Rainforest",
-                storyOpening: "Movo points up through green layers. Partner up — how do rainforest floors and tops shape where life lives?",
-                missionPrompt: "Use evidence from the notes. Explain why different animals use different layers.",
-                readingPassage: "A rainforest is built in layers from bright sunlight to shady ground. The emergent layer has the tallest treetops that catch strong sun and wind. Below that, the canopy is a thick leafy roof where many birds and monkeys find fruit. The understory is dimmer and wetter, with shorter plants and quieter hunters. The forest floor is darkest; fallen leaves recycle nutrients back into the soil. Because light, food, and cover change by layer, animals are not spread evenly through the forest.",
+                title: "Trees Help Make Rain",
+                storyOpening: "Movo points up through wet leaves. Partner up — how can a rainforest help make its own rain?",
+                missionPrompt: "Use evidence from the notes. Explain how rainforest trees and rain are connected.",
+                readingPassage: "Rain does not only fall from far-off clouds. Rainforest leaves release water into the air. That water can join clouds above the trees. Clouds can then drop rain back on the forest. When many trees are removed, less water rises this way. You can infer that the forest helps make its own rain. Trees, air, and clouds work in a water cycle.",
                 questions: [
                     discoveryMCQ(
-                        "According to the notes, what is the canopy?",
+                        "What can you infer about rainforest rain?",
                         [
-                            "A thick leafy roof where many birds and monkeys find fruit",
-                            "The darkest ground layer where leaves recycle nutrients",
-                            "The tallest emergent tips that catch the strongest wind"
+                            "Trees help make some of the rain that falls back",
+                            "Rain only ever comes from deserts far away",
+                            "Leaves trap rain so it never rises again"
                         ],
-                        "A thick leafy roof where many birds and monkeys find fruit",
-                        "The canopy is the thick leafy roof where many birds and monkeys find fruit."
+                        "Trees help make some of the rain that falls back",
+                        "Leaves release water into the air, that water can join clouds, and rain can fall back on the forest."
                     ),
                     discoveryMCQ(
-                        "What happens on the forest floor?",
+                        "What do rainforest leaves release into the air?",
                         [
-                            "Fallen leaves recycle nutrients back into the soil",
-                            "Tall emergent trees grow their tops there",
-                            "Most monkeys find most of their fruit there"
+                            "Water",
+                            "Dry sand",
+                            "Cold moonlight"
                         ],
-                        "Fallen leaves recycle nutrients back into the soil",
-                        "On the dark forest floor, fallen leaves break down and return nutrients to the soil."
+                        "Water",
+                        "Rainforest leaves release water into the air, and that water can join clouds."
                     ),
                     discoveryMCQ(
-                        "What can you infer from the layer facts?",
+                        "What happens when many trees are removed?",
                         [
-                            "Animals use different layers because light, food, and cover change",
-                            "Every animal must live in the emergent layer",
-                            "Rainforest layers all share the same sunlight and food"
+                            "Less water rises this way",
+                            "The soil turns into ice rings",
+                            "The forest makes more rain at once"
                         ],
-                        "Animals use different layers because light, food, and cover change",
-                        "Light, food, and cover change by layer, so animals are not spread evenly through the forest."
+                        "Less water rises this way",
+                        "With fewer trees, less water is released into the air to join the rain loop."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "canopy",
-                        definition: "The high leafy roof of rainforest trees.",
-                        exampleSentence: "Monkeys move through the canopy looking for fruit."
+                        word: "cloud",
+                        definition: "A group of tiny water drops in the air.",
+                        exampleSentence: "Water from leaves can join clouds above the trees."
                     ),
                     VocabularyWord(
-                        word: "emergent",
-                        definition: "The tallest treetop layer above the canopy.",
-                        exampleSentence: "Emergent trees catch strong sun and wind."
+                        word: "water cycle",
+                        definition: "The path water takes from air to clouds to rain and back.",
+                        exampleSentence: "Trees, air, and clouds work in a water cycle."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Rainforests have layers such as emergent, canopy, understory, and forest floor.",
-                        explanation: "Each layer offers different light, food, and cover."
+                        fact: "Rainforest leaves release water into the air that can join clouds.",
+                        explanation: "Those clouds can drop rain back on the forest."
                     ),
                     KnowledgeFact(
-                        fact: "Fallen leaves on the forest floor recycle nutrients back into the soil.",
-                        explanation: "Decomposition returns nutrients that plants can use again."
+                        fact: "The forest helps make some of its own rain.",
+                        explanation: "Trees, air, and clouds work in a water cycle."
                     ),
                     KnowledgeFact(
-                        fact: "Animals are not spread evenly because conditions change by layer.",
-                        explanation: "Habitat differences drive where species live and feed."
+                        fact: "When many trees are removed, less water rises into the air this way.",
+                        explanation: "Fewer trees mean less water for the water cycle."
                     )
                 ],
-                creativePrompt: "Draw a rainforest cross-section with four labeled layers. Place one animal in a fitting layer.",
-                storyEnding: "Movo floats beside the canopy. You connected rainforest layers to animal homes like a careful investigator.",
-                readingSkill: "Infer why animals use different rainforest layers",
-                reflectionPrompt: "Which layer from the notes would you study first, and why?",
-                hints: ["Compare canopy fruit with floor nutrients", "Reread the sentence about light, food, and cover"],
-                commonMistakes: ["Picking a layer claim the notes never support"],
-                successCriteria: ["Names a layer with a correct detail", "Infers why animals split across layers"],
+                creativePrompt: "Draw trees, rising water, a cloud, and rain falling back. Label the water cycle.",
+                storyEnding: "Movo floats beside the wet leaves. You connected trees and rain like a careful investigator.",
+                readingSkill: "Infer how rainforest trees help make rain",
+                reflectionPrompt: "How do rainforest leaves help make rain?",
+                hints: ["Find leaves release water", "Reread the water cycle sentence"],
+                commonMistakes: ["Picking a rain claim the notes never support"],
+                successCriteria: ["Names water rising from leaves", "Infers that the forest helps make rain"],
                 learningObjectives: [
-                    "Explain how rainforest layers create different habitats",
+                    "Explain how rainforest trees release water that can fall again as rain",
                     "fp:discovery.Jungle Animals.confidentReader"
                 ],
-                activityFingerprint: "jungle.discovery.confident.layers"
+                activityFingerprint: "jungle.discovery.confident.rain-loop"
             )
         }
     }
@@ -888,13 +888,13 @@ extension CuratedTopicLessonBank {
                 title: "Plant Eaters and Meat Eaters",
                 storyOpening: "Dottie the dino grins at two kinds of teeth. Come sort plant-chewers from meat-tearers with her!",
                 missionPrompt: "Read the science notes. Answer using evidence from the notes.",
-                readingPassage: "Not all dinosaurs ate the same food. Some dinosaurs were plant eaters. Flat teeth helped them chew leaves and ferns. Other dinosaurs were meat eaters. Sharp teeth helped them tear food. Scientists look at teeth to learn what a dinosaur ate.",
+                readingPassage: "Not all dinosaurs were the same species. Triceratops was a plant eater with three horns and flat teeth. Tyrannosaurus was a meat eater with sharp teeth. Brachiosaurus had a long neck for high leaves. Stegosaurus had plates on its back. Scientists look at bones and teeth to tell dinosaur species apart.",
                 questions: [
                     discoveryMCQ(
-                        "What helped plant-eating dinosaurs chew leaves?",
-                        ["Flat teeth", "Sharp tearing teeth", "No teeth at all"],
-                        "Flat teeth",
-                        "Flat teeth helped plant eaters grind and chew leaves and ferns."
+                        "Which species was a plant eater?",
+                        ["Triceratops", "Tyrannosaurus", "A horse"],
+                        "Triceratops",
+                        "Triceratops was a plant eater with three horns and flat teeth."
                     ),
                     discoveryMCQ(
                         "What helped meat-eating dinosaurs tear food?",
@@ -916,9 +916,9 @@ extension CuratedTopicLessonBank {
                         exampleSentence: "Teeth give clues about a dinosaur's diet."
                     ),
                     VocabularyWord(
-                        word: "fern",
-                        definition: "A green plant with feathery leaves.",
-                        exampleSentence: "Plant eaters chewed ferns."
+                        word: "species",
+                        definition: "A kind of living thing.",
+                        exampleSentence: "Triceratops and Tyrannosaurus are different species."
                     )
                 ],
                 knowledgeFacts: [
@@ -931,7 +931,7 @@ extension CuratedTopicLessonBank {
                         explanation: "Flat teeth suit chewing plants; sharp teeth suit tearing meat."
                     )
                 ],
-                creativePrompt: "Draw two dinosaur mouths: flat plant-eater teeth and sharp meat-eater teeth. Label each.",
+                creativePrompt: "Draw Triceratops with three horns and Tyrannosaurus with sharp teeth. Label each species.",
                 storyEnding: "Dottie the dino claps her tiny arms — you used tooth clues like a real dinosaur scientist!",
                 readingSkill: "Connect tooth shape to dinosaur diet",
                 reflectionPrompt: "Which tooth clue would you check first on a fossil jaw?",
@@ -1564,7 +1564,7 @@ extension CuratedTopicLessonBank {
                 title: "Smell Leads the Way",
                 storyOpening: "Scout the puppy sniffs, listens, and watches. Partner up — how do dogs and people gather clues from the world?",
                 missionPrompt: "Use evidence from the notes. Explain why smell guides many dog choices.",
-                readingPassage: "People often explore a new place with their eyes first. Dogs usually lead with smell. A dog's nose has many more scent detectors than a human nose, so faint trails can still be useful clues. Sniffing the ground, the air, and other animals builds a scent map of who was here and which way they went. That is why a dog may stop to investigate a patch of grass that looks empty to you. Trainers and scientists who work with detection dogs rely on this smell-first way of knowing. Vision still matters, but for many dogs smell is the main sense for understanding the world.",
+                readingPassage: "People often explore a new place with their eyes first. Dogs usually lead with smell. A dog's nose has many more scent detectors than a human nose, so faint trails can still be useful clues. Sniffing the ground, the air, and other animals builds a scent map of who was here and which way the scent leads. That is why a dog may stop to investigate a patch of grass that looks empty to you. Trainers and scientists who work with detection dogs rely on this smell-first way of knowing. Vision still matters, but for many dogs smell is the main sense for understanding the world.",
                 questions: [
                     discoveryMCQ(
                         "According to the notes, how do dogs usually explore a new place?",
@@ -1620,7 +1620,7 @@ extension CuratedTopicLessonBank {
                     ),
                     KnowledgeFact(
                         fact: "Detection work relies on a dog's smell-first way of knowing the world.",
-                        explanation: "Sniffing builds a scent map of who was here and which way they went."
+                        explanation: "Sniffing builds a scent map of who was here and which way the scent leads."
                     )
                 ],
                 creativePrompt: "Draw a person looking and a dog sniffing the same path. Label vision-first and smell-first.",

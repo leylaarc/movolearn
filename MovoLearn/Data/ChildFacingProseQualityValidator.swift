@@ -428,13 +428,21 @@ enum ChildFacingProseQualityValidator {
                     storyConnection: polish(word.storyConnection)
                 )
             },
-            knowledgeFacts: lesson.knowledgeFacts.map { fact in
-                KnowledgeFact(
-                    id: fact.id,
-                    fact: polish(fact.fact),
-                    explanation: polish(fact.explanation)
-                )
-            },
+            knowledgeFacts: LessonContentCoherenceValidator.nonRepeatingFacts(
+                lesson.knowledgeFacts.map { fact in
+                    KnowledgeFact(
+                        id: fact.id,
+                        fact: polish(fact.fact),
+                        explanation: polish(fact.explanation)
+                    )
+                },
+                passage: [
+                    polish(lesson.storyOpening),
+                    polish(lesson.readingPassage),
+                    polish(lesson.creativePrompt)
+                ].filter { !$0.isEmpty }.joined(separator: "\n"),
+                vocabulary: lesson.vocabularyWords
+            ),
             creativePrompt: polish(lesson.creativePrompt),
             creativeResponseType: lesson.creativeResponseType,
             storyEnding: polish(lesson.storyEnding),

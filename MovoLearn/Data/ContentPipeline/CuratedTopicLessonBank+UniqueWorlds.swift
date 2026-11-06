@@ -176,7 +176,7 @@ extension CuratedTopicLessonBank {
         case .secure:
             let sort = groupingSortCopy(
                 character: "Kai",
-                pronoun: "they",
+                pronoun: "he",
                 items: [
                     ("dolphin tags", "in the blue tray"),
                     ("turtle tags", "in the green tray"),
@@ -266,7 +266,7 @@ extension CuratedTopicLessonBank {
         case .earlyReader:
             return ReadingPack(
                 title: "Rocky Worlds and Giant Worlds",
-                storyOpening: "Remy sorts planet cards into two trays. Can you help him decide?",
+                storyOpening: "Remy looks at the planets. Can you help him decide which are rocky and which are giant?",
                 missionPrompt: "Decide which planets are rocky, and which are giant.",
                 readingPassage: "Remy places Mercury, Venus, Earth, and Mars in the rocky tray. Those planets have solid surfaces you could stand on. Jupiter and Saturn go in the giant tray because they are huge and made mostly of gas. Remy labels each tray before he shares with the class.",
                 questions: [
@@ -315,7 +315,7 @@ extension CuratedTopicLessonBank {
                 creativeResponseType: .drawing,
                 storyEnding: "Remy now explains Venus's glow with real planet science.",
                 readingSkill: "Identify the main idea about Venus's brightness",
-                reflectionPrompt: "Which clue matters more for Venus's glow: clouds or closeness? Why?",
+                reflectionPrompt: "Name two clues from the story that help Venus look bright.",
                 hints: ["Reread the last sentence", "Find reflect sunlight"],
                 commonMistakes: ["Thinking Venus makes its own star-like fire"],
                 successCriteria: ["States the brightness main idea with a supporting detail"],
@@ -362,55 +362,54 @@ extension CuratedTopicLessonBank {
         switch level {
         case .emerging:
             return MathScene(
-                title: "Count the Planet Cards",
-                storyOpening: "Remy needs a careful count of planet cards.",
-                missionPrompt: "Count the cards and compare the groups.",
-                readingPassage: "Six planet cards sit on the table. Three Sun cards wait nearby. Remy points and counts.",
+                title: "Count the Planets",
+                storyOpening: "Remy needs a careful count of the planets.",
+                missionPrompt: "Count the planets and compare the groups.",
+                readingPassage: "Eight planets orbit the Sun. Remy puts 3 planets on the left. He puts 5 planets on the right. Remy points and counts.",
                 problems: [
-                    mcq("Remy sees 3 cards, then 3 more join. How many cards in all?", ["5", "6", "7"], "6", "3 + 3 = 6.", subject: .math),
-                    mcq("There are 3 Sun cards on the left and 5 planet cards on the right. Which side has more?", ["Right", "Left", "Same"], "Right", "5 is more than 3.", subject: .math),
-                    mcq("Remy counts 7, then one more. Which number comes next?", ["8", "6", "10"], "8", "7 + 1 = 8, so 8 comes next.", subject: .math)
+                    mcq("Remy lines up 4 rocky planets and 4 giant planets. How many planets in all?", ["6", "8", "10"], "8", "4 + 4 = 8.", subject: .math),
+                    mcq("There are 3 planets on the left and 5 planets on the right. Which side has more?", ["Right", "Left", "Same"], "Right", "5 is more than 3.", subject: .math),
+                    mcq("There are 7 planets in a line. 1 more planet joins the line. How many planets in all?", ["8", "6", "10"], "8", "7 + 1 = 8.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Remy can count the cards.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Rocky planets have solid ground, and giant planets are made mostly of gas.")],
-                creativePrompt: "Draw 6 planet cards.",
-                storyEnding: "Remy's planet count matches the table!",
+                vocabularyWords: [VocabularyWord(word: "planet", definition: "A large world that orbits a star.", exampleSentence: "Earth is a planet.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Our solar system has eight planets. Four are rocky, and four are giant.")],
+                creativePrompt: "Draw 8 planets around the Sun.",
+                storyEnding: "Remy's count matches the eight planets!",
                 mathSkill: "Number recognition and counting",
-                reflectionPrompt: "There are 3 Sun cards on the left and 5 planet cards on the right. Which side has more?",
-                hints: ["Point to each card", "Compare the two groups"],
+                reflectionPrompt: "There are 3 planets on the left and 5 planets on the right. Which side has more?",
+                hints: ["Point to each planet", "Compare the two groups"],
                 activityFingerprint: "planets.math.emerging.count"
             )
         case .developing:
             return MathScene(
-                title: "Cards for the Solar System",
-                storyOpening: "Remy sorts planet cards before a poster project.",
-                missionPrompt: "Add and subtract to finish the poster jobs.",
-                readingPassage: "Remy counts planet cards and name labels on the table. Remy checks how many are left for the poster.",
+                title: "Planets and Their Moons",
+                storyOpening: "Remy names the planets and the moons that travel with them.",
+                missionPrompt: "Add and subtract to finish the planet count.",
+                readingPassage: "Eight planets orbit the Sun. Four are rocky and four are giant. Earth has 1 moon. Mars has 2 moons. Jupiter has 4 big moons.",
                 problems: [
-                    mcq("Remy finds 8 planet cards. Then Remy finds 5 more. How many cards in all?", ["12", "13", "14"], "13", "8 + 5 = 13.", subject: .math),
-                    mcq("A sheet holds 15 labels. Remy uses 6. How many labels are left?", ["8", "9", "10"], "9", "15 − 6 = 9.", subject: .math),
-                    mcq("Remy has 11 Mars cards. A friend has 7. How many more cards does Remy have?", ["3", "4", "5"], "4", "11 − 7 = 4.", subject: .math)
+                    mcq("Remy lists 4 rocky planets and 4 giant planets. How many planets in all?", ["6", "8", "10"], "8", "4 + 4 = 8.", subject: .math),
+                    mcq("There are 8 planets. Remy has named 3. How many planets are left to name?", ["4", "5", "6"], "5", "8 − 3 = 5.", subject: .math),
+                    mcq("Jupiter has 4 big moons. Mars has 2 moons. How many of these moons in all?", ["5", "6", "7"], "6", "4 + 2 = 6.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total cards.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Planets travel around the Sun on paths called orbits.")],
-                creativePrompt: "Draw 13 planet cards in two groups that add to the total.",
-                storyEnding: "The solar-system poster supplies add up.",
+                vocabularyWords: [VocabularyWord(word: "orbit", definition: "The path a planet or moon takes around another world.", exampleSentence: "Earth's orbit goes around the Sun.")],
+                knowledgeFacts: [KnowledgeFact(fact: "There are eight planets. Earth has one moon, and Mars has two moons.")],
+                creativePrompt: "Draw the 8 planets. Add Earth's moon beside Earth.",
+                storyEnding: "The planet and moon count is complete.",
                 mathSkill: "Addition and subtraction",
-                reflectionPrompt: "A sheet holds 15 labels. Remy uses 6. How many labels are left?",
+                reflectionPrompt: "There are 8 planets. Remy has named 3. How many planets are left to name?",
                 hints: ["Write the numbers", "Decide add or subtract"],
                 activityFingerprint: "planets.math.developing.add-sub"
             )
         case .secure:
             let sort = groupingSortCopy(
                 character: "Remy",
-                pronoun: "they",
+                pronoun: "he",
                 items: [
                     ("orbit rings", "in the ring box"),
-                    ("planet dots", "in the dot tray"),
-                    ("poster stars", "on the poster board")
+                    ("planet models", "in the model tray"),
+                    ("moon models", "on the chart")
                 ],
-                packItem: "planet dots",
-                packCount: 40,
+                packItem: "moon models",
                 purpose: "for the model"
             )
             return MathScene(
@@ -420,36 +419,36 @@ extension CuratedTopicLessonBank {
                 readingPassage: sort.passage,
                 problems: [
                     sort.groupingQuestion,
-                    mcq("A board has 5 rows of 3 planet dots. How many dots are there?", ["8", "15", "20"], "15", "5 × 3 = 15.", subject: .math),
+                    mcq("A chart has 5 rows of 3 moons. How many moons are there?", ["8", "15", "20"], "15", "5 × 3 = 15.", subject: .math),
                     mcq("An orbit ribbon is 22 centimeters long. Another is 14 centimeters long. How much longer is the first?", ["7", "8", "9"], "8", "22 − 14 = 8 centimeters.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten dots.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Equal groups make solar-system models easier to build.")],
-                creativePrompt: "Draw 5 rows of 3 planet dots.",
-                storyEnding: "The orbit model pieces are ready.",
+                vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of moons.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Many planets have moons. Earth has one moon.")],
+                creativePrompt: "Draw 5 rows of 3 moons.",
+                storyEnding: "The orbit model is ready.",
                 mathSkill: "Place value and equal groups",
-                reflectionPrompt: "A board has 5 rows of 3 planet dots. How many dots are there?",
+                reflectionPrompt: "A chart has 5 rows of 3 moons. How many moons are there?",
                 hints: ["Think about tens and ones", "Draw the rows"],
                 activityFingerprint: "planets.math.secure.groups"
             )
         case .advancing:
             let multi = reading.sortOrder >= ReadingLevel.growingReader.sortOrder
             return MathScene(
-                title: multi ? "Planets Fair Booth" : "Equal Shares of Planet Cards",
-                storyOpening: "Remy plans planet cards for a planets fair booth.",
+                title: multi ? "Planets Around the Sun" : "Eight Planets",
+                storyOpening: "Remy lines up the eight planets for a solar-system model.",
                 missionPrompt: multi ? "Solve each planet problem." : "Solve each planet problem carefully.",
-                readingPassage: "Rocky planets have solid ground. Giant planets are made mostly of gas.",
+                readingPassage: "Rocky planets have solid ground. Giant planets are made mostly of gas. There are 4 rocky planets and 4 giant planets.",
                 problems: [
-                    mcq("Remy has 5 packs of cards with 4 cards in each pack. How many cards in all?", ["16", "20", "24"], "20", "5 × 4 = 20.", subject: .math),
-                    mcq("Remy shares 21 planet cards among 3 visitors equally. How many does each visitor get?", ["6", "7", "9"], "7", "21 ÷ 3 = 7.", subject: .math),
+                    mcq("Remy sets out 2 rows with 4 planets in each row. How many planets are there?", ["6", "8", "10"], "8", "2 × 4 = 8.", subject: .math),
+                    mcq("Remy shares 8 planets between 2 groups equally. How many planets does each group get?", ["3", "4", "6"], "4", "8 ÷ 2 = 4.", subject: .math),
                     mcq("A yarn orbit is 19 centimeters long. Another is 12. How much longer is the first?", ["6", "7", "8"], "7", "19 − 12 = 7.", subject: .math)
                 ],
-                vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of cards.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Rocky planets have solid ground. Giant planets are made mostly of gas.")],
-                creativePrompt: "Draw the planet cards.",
-                storyEnding: "The planets fair booth is stocked!",
+                vocabularyWords: [VocabularyWord(word: "orbit", definition: "The curved path a planet takes around the Sun.", exampleSentence: "Each planet has its own orbit.")],
+                knowledgeFacts: [KnowledgeFact(fact: "There are eight planets. Four are rocky and four are giant.")],
+                creativePrompt: "Draw 2 rows with 4 planets in each row.",
+                storyEnding: "The eight planets are lined up in the model!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
-                reflectionPrompt: "Remy has 5 packs of cards with 4 cards in each pack. How many cards in all?",
+                reflectionPrompt: "Remy sets out 2 rows with 4 planets in each row. How many planets are there?",
                 hints: mathHints(level),
                 activityFingerprint: "planets.math.advancing.packs"
             )
@@ -619,7 +618,7 @@ extension CuratedTopicLessonBank {
                     mcq("Tess has 12 red rocket patches. A friend has 8. How many more patches does Tess have?", ["3", "4", "5"], "4", "12 − 8 = 4.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total patches.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Rocket teams count supplies so everyone has what they need.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Rocket teams count supplies so each person has the right tools.")],
                 creativePrompt: "Draw 15 star patches in two groups that add to the total.",
                 storyEnding: "The rocket patches are ready for practice!",
                 mathSkill: "Addition and subtraction",
@@ -630,7 +629,7 @@ extension CuratedTopicLessonBank {
         case .secure:
             let sort = groupingSortCopy(
                 character: "Tess",
-                pronoun: "they",
+                pronoun: "she",
                 items: [
                     ("rocket cards", "in the card bin"),
                     ("countdown chips", "in the chip cup"),

@@ -21,6 +21,7 @@ struct ContentView: View {
     @State private var exploreFocusTopic: Topic?
     @State private var exploreFocusSubject: ExploreSubjectCategory?
     @State private var adventureBrowseToken = 0
+    @State private var pendingPlayKind: PlayGameKind?
     /// Loaded off the main thread — never call `LessonLoader.allLessons()` from `body`.
     @State private var catalogLessons: [Lesson] = []
     @State private var isRefreshingHome = false
@@ -131,13 +132,15 @@ struct ContentView: View {
                 onSelectInterest: openAdventures(topic:),
                 onSelectSubject: openAdventures(subject:),
                 onSeeAllSubjects: { openAdventures() },
-                onOpenAdventures: { openAdventures() }
+                onOpenAdventures: { openAdventures() },
+                onStartPlay: startPlay
             )
         } adventures: {
             AdventuresView(
                 profile: childProfile,
                 lessons: catalogLessons.isEmpty ? dailyLessonOptions : catalogLessons,
                 onStartLesson: startLesson,
+                onStartPlay: startPlay,
                 onEditInterests: { route = .editInterests },
                 initialTopic: exploreFocusTopic,
                 initialSubject: exploreFocusSubject,
@@ -427,6 +430,7 @@ struct ContentView: View {
             #if DEBUG
             print("Blocked unapproved lesson: \(lesson.title) status=\(lesson.contentApprovalStatus.rawValue)")
             #endif
+            pendingPlayKind = nil
             return
         }
         // Prefer exact-level approved content when the opened lesson is off-level legacy.
@@ -461,9 +465,16 @@ struct ContentView: View {
             lesson: prepared.lesson,
             childId: childProfile.id,
             profile: childProfile,
-            learningState: learningState
+            learningState: learningState,
+            playKind: pendingPlayKind
         )
+        pendingPlayKind = nil
         route = .lesson
+    }
+
+    private func startPlay(_ offer: PlayGameOffer) {
+        pendingPlayKind = offer.kind
+        startLesson(offer.lesson)
     }
 
     private func refreshHome(advance: Bool) {

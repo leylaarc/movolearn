@@ -391,6 +391,74 @@ enum LessonContentCoherenceValidator {
         return nil
     }
 
+    /// Did You Know cards that only restate the story or the vocabulary definition.
+    /// A card stays when it adds a new fact. If the headline repeats the story but the
+    /// explanation is new, the explanation becomes the card.
+    static func nonRepeatingFacts(
+        _ facts: [KnowledgeFact],
+        passage: String,
+        vocabulary: [VocabularyWord]
+    ) -> [KnowledgeFact] {
+        let passageWords = contentWords(passage)
+        let definitionSets = vocabulary.map { contentWords($0.definition) }
+        var kept: [KnowledgeFact] = []
+        var seen = Set<String>()
+
+        for fact in facts {
+            let factWords = contentWords(fact.fact)
+            let extra = fact.childFacingExplanation
+            let extraIsDistinct = !extra.isEmpty
+                && extra.compare(fact.fact, options: [.caseInsensitive, .diacriticInsensitive]) != .orderedSame
+            let extraWords = extraIsDistinct ? contentWords(extra) : []
+            let passageOverlap = wordOverlap(factWords, passageWords)
+            let definitionOverlap = definitionSets.map { wordOverlap(factWords, $0) }.max() ?? 0
+            let repeatsPassage = factWords.count >= 3 && passageOverlap >= 0.75
+            let repeatsDefinition = factWords.count >= 3 && definitionOverlap >= 0.8 && passageOverlap >= 0.5
+
+            let statement: String
+            if repeatsPassage || repeatsDefinition {
+                // The headline is already in the story or science note. Keep the card only
+                // when the explanation adds a new idea.
+                let extraOverlap = extraWords.isEmpty ? 1 : wordOverlap(extraWords, passageWords)
+                let novel = extraWords.subtracting(passageWords).subtracting(factWords)
+                guard novel.count >= 3, extraOverlap < 0.75 else { continue }
+                statement = extra
+            } else {
+                statement = fact.fact
+            }
+
+            let key = statement.lowercased()
+            guard seen.insert(key).inserted else { continue }
+            let replacedHeadline = repeatsPassage || repeatsDefinition
+            kept.append(KnowledgeFact(id: fact.id, fact: statement, explanation: replacedHeadline ? "" : extra))
+        }
+        return kept
+    }
+
+    private static func contentWords(_ text: String) -> Set<String> {
+        let stop: Set<String> = [
+            "a", "an", "the", "and", "or", "of", "to", "in", "on", "for", "with", "that", "this",
+            "these", "those", "is", "are", "was", "were", "be", "it", "its", "can", "may", "from",
+            "into", "than", "then", "also", "not", "but", "as", "at", "by", "their", "they", "them",
+            "has", "have", "had", "does", "did"
+        ]
+        let cleaned = text.lowercased().map { $0.isLetter || $0.isNumber ? $0 : " " }
+        return Set(String(cleaned).split(separator: " ").map(String.init).filter { word in
+            word.count > 2 && !stop.contains(word)
+        })
+    }
+
+    private static func wordOverlap(_ factWords: Set<String>, _ source: Set<String>) -> Double {
+        guard !factWords.isEmpty else { return 0 }
+        let hits = factWords.filter { word in
+            if source.contains(word) { return true }
+            if source.contains(word + "s") { return true }
+            if word.hasSuffix("s"), source.contains(String(word.dropLast())) { return true }
+            return false
+        }
+        return Double(hits.count) / Double(factWords.count)
+    }
+
     private static func combinedText(_ lesson: Lesson) -> String {
         ([
             lesson.title,

@@ -73,6 +73,8 @@ struct LearningPathEngine {
         let allLessons: [Lesson]
         let curriculum: MarbleCurriculumService
         let recentMistakeTopicIds: [String]
+        /// Subject just finished. The next open lesson should be a different kind of activity.
+        var lastCompletedSubject: PrimarySubject? = nil
     }
 
     static func recommendations(for context: Context, limitPerKind: Int = 1) -> [LessonRecommendation] {
@@ -97,11 +99,14 @@ struct LearningPathEngine {
             categoryHint: nil
         ))
 
-        take(kind: .continueLearning, from: scoreLessons(
-            mapped,
-            context: context,
-            preferInProgress: true,
-            categoryHint: nil
+        take(kind: .continueLearning, from: preferringDifferentSubject(
+            scoreLessons(
+                mapped,
+                context: context,
+                preferInProgress: true,
+                categoryHint: nil
+            ),
+            avoiding: context.lastCompletedSubject
         ))
 
         take(kind: .storyAdventure, from: scoreLessons(
@@ -160,6 +165,17 @@ struct LearningPathEngine {
             }
         }
         return lessons
+    }
+
+    /// Keep a just-finished subject (counting, reading, art) from being the next open lesson
+    /// when another kind of lesson is available.
+    private static func preferringDifferentSubject(
+        _ candidates: [(Lesson, Double, String)],
+        avoiding subject: PrimarySubject?
+    ) -> [(Lesson, Double, String)] {
+        guard let subject else { return candidates }
+        let fresh = candidates.filter { $0.0.primarySubject != subject }
+        return fresh.isEmpty ? candidates : fresh
     }
 
     private static func scoreLessons(

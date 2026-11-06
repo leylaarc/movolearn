@@ -70,6 +70,28 @@ struct MainTabShell<Home: View, Adventures: View, Rewards: View, Profile: View>:
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: selected]
             appearance.stackedLayoutAppearance.normal.iconColor = normal
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: normal]
+            if DesignSystem.Metrics.isPad {
+                let titleSize = DesignSystem.Metrics.scaled(13)
+                let titleFont = UIFont(name: "AvenirNext-DemiBold", size: titleSize)
+                    ?? UIFont.systemFont(ofSize: titleSize, weight: .semibold)
+                let layouts = [
+                    appearance.stackedLayoutAppearance,
+                    appearance.inlineLayoutAppearance,
+                    appearance.compactInlineLayoutAppearance
+                ]
+                for layout in layouts {
+                    layout.selected.iconColor = selected
+                    layout.normal.iconColor = normal
+                    layout.selected.titleTextAttributes = [
+                        .foregroundColor: selected,
+                        .font: titleFont
+                    ]
+                    layout.normal.titleTextAttributes = [
+                        .foregroundColor: normal,
+                        .font: titleFont
+                    ]
+                }
+            }
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }

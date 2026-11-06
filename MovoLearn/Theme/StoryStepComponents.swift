@@ -8,16 +8,33 @@ struct StoryJourneyProgress: View {
     let title: String
     var subtitle: String = ""
     var accent: Color = DesignSystem.Colors.oceanTurquoise
+    var showsStars: Bool = false
+    var earnedStars: Int = 0
 
     var body: some View {
         VStack(spacing: DesignSystem.Spacing.sm) {
-            HStack {
+            HStack(spacing: 8) {
                 Text("Step \(currentStep) of \(totalSteps)")
                     .font(DesignSystem.Typography.caption(12).weight(.bold))
                     .foregroundStyle(accent)
                     .monospacedDigit()
-                Spacer()
-                if !subtitle.isEmpty {
+                Spacer(minLength: 8)
+                SoundEffectsToggleButton(accent: accent)
+                if showsStars {
+                    HStack(spacing: 3) {
+                        ForEach(0..<3, id: \.self) { index in
+                            Image(systemName: index < min(earnedStars, 3) ? "star.fill" : "star")
+                                .font(.padScaled(size: 14, weight: .bold))
+                                .foregroundStyle(
+                                    index < min(earnedStars, 3)
+                                        ? DesignSystem.Colors.sunshineYellow
+                                        : DesignSystem.Colors.sunshineYellow.opacity(0.35)
+                                )
+                                .symbolEffect(.bounce, value: earnedStars)
+                        }
+                    }
+                    .accessibilityLabel("\(min(earnedStars, 3)) of 3 stars")
+                } else if !subtitle.isEmpty {
                     Text(subtitle)
                         .font(DesignSystem.Typography.caption(12))
                         .foregroundStyle(DesignSystem.Colors.textSecondary)
@@ -35,7 +52,7 @@ struct StoryJourneyProgress: View {
                 ZStack(alignment: .leading) {
                     Capsule()
                         .fill(DesignSystem.Colors.surfaceMuted)
-                        .frame(height: 6)
+                        .frame(height: DesignSystem.Metrics.scaled(6))
                     Capsule()
                         .fill(
                             LinearGradient(
@@ -44,11 +61,11 @@ struct StoryJourneyProgress: View {
                                 endPoint: .trailing
                             )
                         )
-                        .frame(width: progress <= 0 ? 0 : max(8, geometry.size.width * progress), height: 6)
+                        .frame(width: progress <= 0 ? 0 : max(DesignSystem.Metrics.scaled(8), geometry.size.width * progress), height: DesignSystem.Metrics.scaled(6))
                         .animation(DesignSystem.Animation.gentle, value: currentStep)
                     if progress > 0 {
                         Image(systemName: "star.fill")
-                            .font(.system(size: 11, weight: .bold))
+                            .font(.padScaled(size: 11, weight: .bold))
                             .foregroundStyle(accent)
                             .offset(x: max(0, geometry.size.width * progress - 6))
                             .symbolEffect(.bounce, value: currentStep)
@@ -56,7 +73,7 @@ struct StoryJourneyProgress: View {
                     }
                 }
             }
-            .frame(height: 6)
+            .frame(height: DesignSystem.Metrics.scaled(6))
         }
     }
 
@@ -86,7 +103,7 @@ struct StoryStepCard<Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: DesignSystem.Spacing.lg) {
-            TopicSceneView(topic: topic, height: 138)
+            TopicSceneView(topic: topic, height: DesignSystem.Metrics.scaled(138))
                 .overlay(alignment: .bottomLeading) {
                     Text(moment.title.uppercased())
                         .font(DesignSystem.Typography.label(11))
@@ -158,6 +175,50 @@ struct StoryStepCard<Content: View>: View {
     }
 }
 
+/// The lesson story, kept on screen while a child answers questions about it.
+struct ReadingPassageCard: View {
+    let text: String
+    var pointSize: CGFloat = 20
+
+    private var scrolls: Bool {
+        text.count > 320
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: DesignSystem.Spacing.sm) {
+            Text("The story")
+                .font(DesignSystem.Typography.label(13))
+                .foregroundStyle(DesignSystem.Colors.skyBlue)
+
+            if scrolls {
+                ScrollView {
+                    passageText
+                }
+                .frame(maxHeight: DesignSystem.Metrics.scaled(168))
+            } else {
+                passageText
+            }
+        }
+        .padding(DesignSystem.Spacing.md)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: DesignSystem.Radius.md, style: .continuous)
+                .fill(DesignSystem.Colors.skyBlue.opacity(0.12))
+        )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("The story. \(text)")
+    }
+
+    private var passageText: some View {
+        Text(text)
+            .font(DesignSystem.Typography.title(pointSize))
+            .foregroundStyle(DesignSystem.Colors.deepNavy)
+            .lineSpacing(DesignSystem.Metrics.scaled(6))
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 struct StoryTextBlock: View {
     let text: String
     var style: Style = .narrative
@@ -194,9 +255,9 @@ struct StoryTextBlock: View {
     private var lineSpacing: CGFloat {
         let boost: CGFloat = pointSize != nil && (pointSize ?? 0) >= 22 ? 2 : 0
         switch style {
-        case .narrative, .ending: return 10 + boost
-        case .mission: return 8 + boost
-        case .fact: return 8
+        case .narrative, .ending: return DesignSystem.Metrics.scaled(10 + boost)
+        case .mission: return DesignSystem.Metrics.scaled(8 + boost)
+        case .fact: return DesignSystem.Metrics.scaled(8)
         }
     }
 }
@@ -218,7 +279,7 @@ struct VocabularyTreasureCard: View {
             Text(definition)
                 .font(DesignSystem.Typography.title(21))
                 .foregroundStyle(DesignSystem.Colors.deepNavy)
-                .lineSpacing(7)
+                .lineSpacing(DesignSystem.Metrics.scaled(7))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -254,7 +315,7 @@ struct KnowledgeSparkCard: View {
             Text(fact)
                 .font(DesignSystem.Typography.headline(26))
                 .foregroundStyle(DesignSystem.Colors.deepNavy)
-                .lineSpacing(7)
+                .lineSpacing(DesignSystem.Metrics.scaled(7))
                 .minimumScaleFactor(0.7)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -262,7 +323,7 @@ struct KnowledgeSparkCard: View {
                 Text(shownExplanation)
                     .font(DesignSystem.Typography.title(20))
                     .foregroundStyle(DesignSystem.Colors.deepNavy)
-                    .lineSpacing(6)
+                    .lineSpacing(DesignSystem.Metrics.scaled(6))
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
@@ -343,7 +404,7 @@ struct LessonPageStage<Content: View, Footer: View>: View {
                             Text(kicker)
                                 .font(DesignSystem.Typography.title(compactHeader ? 16 : 18))
                                 .foregroundStyle(DesignSystem.Colors.deepNavy)
-                                .lineSpacing(4)
+                                .lineSpacing(DesignSystem.Metrics.scaled(4))
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                     }

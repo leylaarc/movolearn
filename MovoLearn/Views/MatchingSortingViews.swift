@@ -205,7 +205,7 @@ struct SortingQuestionView: View {
                             move(index, by: -1)
                         } label: {
                             Image(systemName: "chevron.up")
-                                .font(.system(size: 14, weight: .bold))
+                                .font(.padScaled(size: 14, weight: .bold))
                                 .foregroundStyle(DesignSystem.Colors.deepNavy)
                                 .frame(width: 36, height: 28)
                                 .background(DesignSystem.Colors.surfaceMuted)
@@ -219,7 +219,7 @@ struct SortingQuestionView: View {
                             move(index, by: 1)
                         } label: {
                             Image(systemName: "chevron.down")
-                                .font(.system(size: 14, weight: .bold))
+                                .font(.padScaled(size: 14, weight: .bold))
                                 .foregroundStyle(DesignSystem.Colors.deepNavy)
                                 .frame(width: 36, height: 28)
                                 .background(DesignSystem.Colors.surfaceMuted)

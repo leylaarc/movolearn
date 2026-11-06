@@ -98,7 +98,8 @@ final class AppStore {
                 completedLessonIDs: completedIDs,
                 allLessons: pool,
                 curriculum: curriculum,
-                recentMistakeTopicIds: recentMistakes
+                recentMistakeTopicIds: recentMistakes,
+                lastCompletedSubject: HomeFeedBuilder.subjectOfLatestCompletion(completions, lessons: pool)
             ),
             count: 4
         )
@@ -126,7 +127,8 @@ final class AppStore {
                 completedLessonIDs: Set(completions.map(\.lessonId)),
                 allLessons: pool,
                 curriculum: curriculum,
-                recentMistakeTopicIds: recentMistakes
+                recentMistakeTopicIds: recentMistakes,
+                lastCompletedSubject: HomeFeedBuilder.subjectOfLatestCompletion(completions, lessons: pool)
             )
         )
     }
@@ -163,7 +165,8 @@ final class AppStore {
                 learningState: learningState,
                 allLessons: pool,
                 pathRecommendations: pathRecs,
-                game: game
+                game: game,
+                lastCompletedSubject: HomeFeedBuilder.subjectOfLatestCompletion(completions, lessons: pool)
             )
         )
     }
@@ -185,13 +188,25 @@ final class AppStore {
         pickDailyOptions(for: profile, advance: advance).first
     }
 
-    /// Next child-facing lesson after a completion — excludes the lesson just finished.
+    /// Next child-facing lesson after a completion — a different activity than the one just finished.
     func suggestedNextLesson(for profile: ChildProfile, excluding lessonID: UUID?) -> Lesson? {
         let options = pickDailyOptions(for: profile, advance: true)
+        let finishedSubject = lessonID.flatMap { LessonLoader.lesson(id: $0)?.primarySubject }
+        if let next = options.first(where: {
+            $0.id != lessonID && (finishedSubject == nil || $0.primarySubject != finishedSubject)
+        }) {
+            return next
+        }
         if let next = options.first(where: { $0.id != lessonID }) {
             return next
         }
-        return homeRecommendations(for: profile).first(where: { $0.lesson.id != lessonID })?.lesson
+        let recommendations = homeRecommendations(for: profile)
+        if let next = recommendations.first(where: {
+            $0.lesson.id != lessonID && (finishedSubject == nil || $0.lesson.primarySubject != finishedSubject)
+        }) {
+            return next.lesson
+        }
+        return recommendations.first(where: { $0.lesson.id != lessonID })?.lesson
     }
 
     func recordCompletion(summary: ProgressSummary, lesson: Lesson, profile: inout ChildProfile) -> UserProgress {

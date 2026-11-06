@@ -1,6 +1,7 @@
 # Xcode
 DerivedData/
 .derivedData/
+.derived-screenshots/
 build/
 *.xcuserstate
 *.xccheckout
@@ -24,3 +25,7 @@ Package.resolved
 # Env / secrets
 .env
 *.pem
+
+# Raw App Store capture dumps (finished screenshots stay tracked)
+app-store/raw/
+app-store/raw-ipad/

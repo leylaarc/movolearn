@@ -374,7 +374,7 @@ enum CuratedTopicLessonBank {
                 knowledgeFacts: [
                     KnowledgeFact(fact: "Horses cannot see well directly behind them.", explanation: "Standing where a horse can see you feels safer for the animal.")
                 ],
-                creativePrompt: "Draw a visitor standing where a pony can see them. Add soft speech bubbles.",
+                creativePrompt: "Draw a visitor standing where a pony can see the visitor. Add soft speech bubbles.",
                 creativeResponseType: .drawing,
                 storyEnding: "The visitors leave with real horse manners they can use on their next visit.",
                 readingSkill: "Identify the main idea in a horse-safety passage",
@@ -814,124 +814,124 @@ enum CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return ReadingPack(
-                title: "Dottie's Green Leaf",
-                storyOpening: "Dottie the dino is hungry for plants. Will you find a snack with her?",
-                missionPrompt: "Check what Dottie finds, and how she shares her shady spot.",
-                readingPassage: "Dottie finds a green leaf by the trail. She munches slowly under the warm sun. A friend stomps nearby. They share a shady spot together.",
+                title: "Three Dinosaur Species",
+                storyOpening: "Dottie meets three kinds of dinosaurs. Will you learn their names?",
+                missionPrompt: "Check what each dinosaur looked like.",
+                readingPassage: "Triceratops had three horns. Stegosaurus had plates on its back. Tyrannosaurus had sharp teeth. They were different dinosaurs.",
                 questions: [
-                    mcq("What does Dottie find?", ["A green leaf", "A gray stone", "A dry twig only"], "A green leaf", "Dottie finds a green leaf."),
-                    mcq("How does Dottie munch?", ["Slowly", "Without chewing", "Only at night"], "Slowly", "She munches slowly."),
-                    mcq("Who stomps nearby?", ["A friend", "A stranger far away", "A sleeping hatchling only"], "A friend", "A friend stomps nearby.")
+                    mcq("How many horns did Triceratops have?", ["Three", "One", "Ten"], "Three", "Triceratops had three horns."),
+                    mcq("What did Stegosaurus have on its back?", ["Plates", "Sharp teeth", "A long neck"], "Plates", "Stegosaurus had plates on its back."),
+                    mcq("What did Tyrannosaurus have?", ["Sharp teeth", "Three horns", "Plates on its back"], "Sharp teeth", "Tyrannosaurus had sharp teeth.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "leaf", definition: "A flat green part of a plant.", exampleSentence: "Dottie finds a green leaf."),
-                    VocabularyWord(word: "munch", definition: "To chew food loudly or happily.", exampleSentence: "Dottie will munch the leaf.")
+                    VocabularyWord(word: "horn", definition: "A hard pointed part on an animal's head.", exampleSentence: "Triceratops had three horns."),
+                    VocabularyWord(word: "species", definition: "A kind of living thing.", exampleSentence: "Triceratops is one dinosaur species.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Some dinosaurs ate plants instead of meat.", explanation: "Plant-eating dinosaurs looked for leaves and ferns.")
+                    KnowledgeFact(fact: "Triceratops, Stegosaurus, and Tyrannosaurus were different dinosaur species.", explanation: "Horns, plates, and teeth help tell species apart.")
                 ],
-                creativePrompt: "Draw Dottie munching a green leaf in the shade.",
+                creativePrompt: "Draw Triceratops with three horns.",
                 creativeResponseType: .drawing,
-                storyEnding: "Dottie and her friend finish their plant snack side by side in the shade.",
+                storyEnding: "Dottie can name three dinosaur species by how they looked.",
                 readingSkill: "Find details in a short dinosaur story",
-                reflectionPrompt: "What did Dottie eat?",
-                hints: ["Find the word leaf", "Look at how Dottie munches"],
-                commonMistakes: ["Choosing meat when the story shows a leaf"],
-                successCriteria: ["Names Dottie's plant snack from the story"],
-                learningObjectives: ["Identify concrete details in a short dinosaur passage"],
-                activityFingerprint: "dinos.k.leaf-munch.detail",
+                reflectionPrompt: "Which dinosaur had plates on its back?",
+                hints: ["Find the word horns", "Look for plates"],
+                commonMistakes: ["Mixing up which body part belongs to which species"],
+                successCriteria: ["Names a dinosaur body part from the story"],
+                learningObjectives: ["Identify concrete details about three dinosaur species"],
+                activityFingerprint: "dinos.k.three-species.detail",
                 characterNames: ["Dottie"]
             )
         case .earlyReader:
             return ReadingPack(
-                title: "Sharing at the Watering Hole",
-                storyOpening: "Cool water shines in the valley as Dottie walks down for a drink.",
-                missionPrompt: "Discover how Dottie share at the watering hole.",
-                readingPassage: "Dottie walks to a cool watering hole. She finds four fern leaves by the water. A friend arrives hungry. Dottie gives two leaves away. They sit and chew together.",
+                title: "Plant Eaters and Meat Eaters",
+                storyOpening: "Dottie compares two famous dinosaurs. Can you tell them apart?",
+                missionPrompt: "Find which dinosaur ate plants, and which ate meat.",
+                readingPassage: "Triceratops was a plant eater with three horns and a big frill. Tyrannosaurus was a meat eater with sharp teeth. Flat teeth help plant eaters chew. Sharp teeth help meat eaters tear food. Scientists use teeth to tell these species apart.",
                 questions: [
-                    mcq("Where does Dottie walk?", ["To a cool watering hole", "To a dry hilltop", "To an empty cave"], "To a cool watering hole", "Dottie walks to a cool watering hole."),
-                    mcq("How many fern leaves does she find?", ["Four", "One", "Ten"], "Four", "She finds four fern leaves."),
-                    mcq("How many leaves does Dottie give away?", ["Two", "Four", "One"], "Two", "Dottie gives two leaves away.")
+                    mcq("Which dinosaur was a plant eater?", ["Triceratops", "Tyrannosaurus", "A horse"], "Triceratops", "Triceratops was a plant eater."),
+                    mcq("What kind of teeth did Tyrannosaurus have?", ["Sharp teeth", "Flat teeth", "No teeth at all"], "Sharp teeth", "Tyrannosaurus was a meat eater with sharp teeth."),
+                    mcq("What do scientists use to tell these species apart?", ["Teeth", "Only today's weather", "A boat sail"], "Teeth", "Scientists use teeth to tell these species apart.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "fern", definition: "A green plant with feathery leaves.", exampleSentence: "Dottie finds fern leaves."),
-                    VocabularyWord(word: "share", definition: "To give part of what you have.", exampleSentence: "Dottie can share leaves.")
+                    VocabularyWord(word: "species", definition: "A kind of living thing.", exampleSentence: "Triceratops and Tyrannosaurus are different species."),
+                    VocabularyWord(word: "frill", definition: "A bony shield at the back of a dinosaur's head.", exampleSentence: "Triceratops had a big frill.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Plant-eating dinosaurs needed places with water and green plants.", explanation: "Watering holes gathered animals that ate plants.")
+                    KnowledgeFact(fact: "Triceratops ate plants. Tyrannosaurus ate meat.", explanation: "Tooth shape helps scientists tell plant eaters from meat eaters.")
                 ],
-                creativePrompt: "Draw Dottie and a friend chewing fern leaves by the water.",
+                creativePrompt: "Draw Triceratops with three horns and Tyrannosaurus with sharp teeth. Label each species.",
                 creativeResponseType: .drawing,
-                storyEnding: "Two shared leaves turn a snack into a friendly moment by the water.",
-                readingSkill: "Recall details and simple amounts from the story",
-                reflectionPrompt: "Why was giving two leaves a kind choice?",
-                hints: ["Count the leaves in the story", "Find the watering hole sentence"],
-                commonMistakes: ["Mixing up how many leaves she found and gave"],
-                successCriteria: ["Uses a number detail from the passage"],
-                learningObjectives: ["Recall key details including quantities"],
-                activityFingerprint: "dinos.early.watering-hole.share",
+                storyEnding: "Dottie can tell a plant eater from a meat eater by the teeth.",
+                readingSkill: "Recall species details from the story",
+                reflectionPrompt: "Which species ate plants, and which ate meat?",
+                hints: ["Find Triceratops", "Find sharp teeth"],
+                commonMistakes: ["Mixing up which species ate plants"],
+                successCriteria: ["Matches a species to its diet using the passage"],
+                learningObjectives: ["Recall how two dinosaur species differed in diet and teeth"],
+                activityFingerprint: "dinos.early.species-diet.detail",
                 characterNames: ["Dottie"]
             )
         case .growingReader:
             return ReadingPack(
-                title: "Tracks by the Stone Cove",
-                storyOpening: "Morning mist hangs over the valley while Dottie gathers brushes for a fossil walk.",
-                missionPrompt: "Figure out why Dottie decide the stone cove is the best place to dig next.",
-                readingPassage: "Morning mist hung over the valley while Dottie gathered brushes and a notebook for a fossil walk. Wide footprints pressed into soft mud led toward a quiet cove of stones. A guide explained that some plant-eating dinosaurs rested near water in the morning. Dottie compared the muddy tracks with broken fern stems along the bank. The details helped her decide the cove was the best place to dig next — dinosaur clues near water can show a good place to dig.",
+                title: "Long Necks and Armor",
+                storyOpening: "Dottie compares two dinosaur species with very different bodies.",
+                missionPrompt: "Find the main idea about how these species were built.",
+                readingPassage: "Brachiosaurus had a very long neck. It could reach leaves high in the trees. Ankylosaurus stayed low to the ground. Thick armor covered its back. A heavy club sat at the end of its tail. Different species had bodies that fit how they lived. A long neck helped one species reach high plants. Armor helped another species stay safe near the ground.",
                 questions: [
-                    mcq("What is the main idea?", ["Dinosaur clues near water can show a good place to dig", "Dinosaur clues only appear on dry hilltops", "Footprints never form near water"], "Dinosaur clues near water can show a good place to dig", "Tracks and ferns near water guide Dottie's dig choice."),
-                    mcq("What led toward the stone cove?", ["Wide footprints in soft mud", "A smooth empty stone", "A broken digging tool only"], "Wide footprints in soft mud", "Footprints led toward a quiet cove of stones."),
-                    mcq("Where did some plant-eating dinosaurs rest in the morning?", ["Near water", "On a windy dry ridge", "Inside a deep dark cave only"], "Near water", "The guide said some rested near water in the morning.")
+                    mcq("What is the main idea?", ["Different species had bodies that fit how they lived", "All dinosaurs had the same body", "Dinosaurs lived only in the ocean"], "Different species had bodies that fit how they lived", "The passage says different species had bodies that fit how they lived."),
+                    mcq("What helped Brachiosaurus reach high plants?", ["A very long neck", "A tail club", "Thick armor"], "A very long neck", "Brachiosaurus had a very long neck."),
+                    mcq("What covered Ankylosaurus?", ["Thick armor", "A long neck", "Soft fur"], "Thick armor", "Thick armor covered its back.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "fossil", definition: "A preserved clue from an animal or plant of long ago.", exampleSentence: "Dottie looks for fossil clues."),
-                    VocabularyWord(word: "track", definition: "A footprint left in mud or sand.", exampleSentence: "Wide tracks lead to the cove.")
+                    VocabularyWord(word: "species", definition: "A kind of living thing.", exampleSentence: "Brachiosaurus and Ankylosaurus were different species."),
+                    VocabularyWord(word: "armor", definition: "A hard covering that protects the body.", exampleSentence: "Ankylosaurus had thick armor.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Fossil hunters look for tracks and plant clues near ancient water places.", explanation: "Watering areas often preserve footprints.")
+                    KnowledgeFact(fact: "Brachiosaurus had a long neck for high plants. Ankylosaurus had armor and a tail club.", explanation: "Body shape gives clues about how a dinosaur species lived.")
                 ],
-                creativePrompt: "Draw the stone cove and one footprint clue from the story.",
+                creativePrompt: "Draw Brachiosaurus with a long neck and Ankylosaurus with armor and a tail club.",
                 creativeResponseType: .drawing,
-                storyEnding: "Dottie's next dig starts where the muddy tracks and ferns agree.",
-                readingSkill: "Identify the main idea in a fossil-walk passage",
-                reflectionPrompt: "Which clue would you follow first — tracks or fern stems?",
-                hints: ["Reread the guide's sentence", "Find why Dottie chose the cove"],
-                commonMistakes: ["Ignoring the water connection"],
-                successCriteria: ["States the main idea about digging near water clues"],
-                learningObjectives: ["Identify the main idea of a fossil observation passage"],
-                activityFingerprint: "dinos.growing.fossil-cove.main-idea",
+                storyEnding: "Dottie can explain how two species were built for different lives.",
+                readingSkill: "Identify the main idea about dinosaur species",
+                reflectionPrompt: "Which species would you study next, and what body part would you look at first?",
+                hints: ["Reread the sentence about different species", "Find long neck and armor"],
+                commonMistakes: ["Thinking every dinosaur had the same body"],
+                successCriteria: ["States the main idea about species and body shape"],
+                learningObjectives: ["Identify the main idea about how dinosaur species differed"],
+                activityFingerprint: "dinos.growing.species-bodies.main-idea",
                 characterNames: ["Dottie"]
             )
         case .confidentReader:
             return ReadingPack(
-                title: "Two Clues in the Fossil Mud",
-                storyOpening: "Dottie is at the fossil cove. She must decide whether the animal is still nearby.",
-                missionPrompt: "Check what Dottie concludes from the muddy clues, and how that changes her plan.",
+                title: "Dinosaurs of Different Times",
+                storyOpening: "Dottie lays two fossils side by side. Did these species ever meet?",
+                missionPrompt: "Check what Dottie concludes about when these species lived.",
                 readingPassage: """
-                Dottie studied the fossil cove like a field scientist. Morning light made the mud look smooth, but shallow prints near the rocks suggested a larger animal had passed earlier. The guide said dinosaurs chose resting spots for safety and warmth. Dottie compared two clues: the footprints pointed inland, yet broken reeds floated from deeper water. Using both details — inland footprints and broken reeds from deeper water — she concluded that the animal had already moved on. That conclusion changed her digging plan. She wrote two evidence notes before choosing a safer observation spot farther from the bank.
+                Stegosaurus lived in a time called the Jurassic. Tyrannosaurus lived later, in the Cretaceous. They did not live at the same time. Fossil layers show which species lived earlier and which lived later. Birds are living relatives of dinosaurs. Dottie compared two clues: Stegosaurus fossils sit in older rock, and Tyrannosaurus fossils sit in younger rock. She concluded that these famous species missed each other by a very long time. That conclusion changed her museum labels. She wrote two evidence notes before placing the fossils in different time halls.
                 """,
                 questions: [
-                    mcq("What did Dottie conclude?", ["The animal had already moved on", "The animal was still resting nearby", "The animal never left any tracks"], "The animal had already moved on", "She concluded the animal had already moved on."),
-                    mcq("Which way did the footprints point?", ["Inland", "Straight into deeper water", "Up a dry hillside"], "Inland", "The footprints pointed inland."),
-                    mcq("How did the conclusion change her work?", ["She chose a safer observation spot farther from the bank", "She dug in the softest mud by the water", "She ignored both clues"], "She chose a safer observation spot farther from the bank", "She chose a safer spot farther from the bank.")
+                    mcq("What did Dottie conclude?", ["These famous species missed each other by a very long time", "The two species lived side by side every day", "Both species still roam the valley"], "These famous species missed each other by a very long time", "She concluded that these famous species missed each other by a very long time."),
+                    mcq("Where do Stegosaurus fossils sit?", ["In older rock", "In younger rock", "In today's bird nests"], "In older rock", "Stegosaurus fossils sit in older rock."),
+                    mcq("What living animals are relatives of dinosaurs?", ["Birds", "Sharks", "Horses"], "Birds", "Birds are living relatives of dinosaurs.")
                 ],
                 vocabularyWords: [
-                    VocabularyWord(word: "conclude", definition: "To decide after weighing clues.", exampleSentence: "Dottie can conclude the animal moved on."),
-                    VocabularyWord(word: "observation", definition: "Careful watching to learn something.", exampleSentence: "She chose a safer observation spot.")
+                    VocabularyWord(word: "Jurassic", definition: "A time long ago when Stegosaurus lived.", exampleSentence: "Stegosaurus lived in the Jurassic."),
+                    VocabularyWord(word: "Cretaceous", definition: "A later time when Tyrannosaurus lived.", exampleSentence: "Tyrannosaurus lived in the Cretaceous.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Scientists compare footprints and plant clues before deciding what happened.", explanation: "One clue alone can be misleading.")
+                    KnowledgeFact(fact: "Stegosaurus and Tyrannosaurus did not live at the same time.", explanation: "Fossil layers show which species lived earlier and which lived later.")
                 ],
-                creativePrompt: "Write two sentences about why Dottie thought the animal had moved on and where she observed next.",
+                creativePrompt: "Write two sentences about why Stegosaurus and Tyrannosaurus did not meet, using the rock clues.",
                 creativeResponseType: .shortText,
-                storyEnding: "A safer dig begins once two muddy clues point the same way.",
-                readingSkill: "Draw a conclusion from fossil-site evidence",
-                reflectionPrompt: "Which clue felt stronger to you, and why?",
-                hints: ["Look which way the footprints pointed", "Reread where Dottie chose to observe next"],
-                commonMistakes: ["Using only one clue"],
-                successCriteria: ["Supports a conclusion with two details"],
-                learningObjectives: ["Draw a text-based conclusion from competing clues"],
-                activityFingerprint: "dinos.confident.mud-clues.conclusion",
+                storyEnding: "The fossils go in different time halls because the species lived far apart in time.",
+                readingSkill: "Draw a conclusion about when dinosaur species lived",
+                reflectionPrompt: "Which rock clue told you a species lived earlier?",
+                hints: ["Compare older rock with younger rock", "Reread what Dottie concluded"],
+                commonMistakes: ["Thinking every famous dinosaur lived at the same time"],
+                successCriteria: ["Uses fossil-layer evidence to explain the time gap"],
+                learningObjectives: ["Conclude that different dinosaur species lived at different times"],
+                activityFingerprint: "dinos.confident.species-time.conclusion",
                 characterNames: ["Dottie"]
             )
         }
@@ -1022,7 +1022,7 @@ enum CuratedTopicLessonBank {
                 problems: [
                     mcq("Mia stacks 3 crates of apple treats with 8 treats in each crate. How many treats is that in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
                     mcq("Mia shares 18 carrot sticks among 3 ponies equally. How many does each pony get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
-                    mcq("One jump rail is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first than the second?", ["5", "6", "7"], "6", "15 − 9 = 6.")
+                    mcq("One jump rail is 15 centimeters long. Another is 9 centimeters long. How much longer is the first than the second?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
                 vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of treats.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Horses can eat apples as a treat, along with hay and grass.")],
@@ -1332,19 +1332,19 @@ enum CuratedTopicLessonBank {
         switch level {
         case .emerging:
             return MathScene(
-                title: "Count the Dinos",
-                storyOpening: "Dottie counts friends near the watering hole.",
-                missionPrompt: "Count the dinos and compare the groups.",
-                readingPassage: "Four dinos rest by the bank. Two hatchlings nap in the ferns. Dottie points and counts.",
+                title: "Count the Dinosaurs",
+                storyOpening: "Dottie counts dinosaurs near the fossil trail.",
+                missionPrompt: "Count the dinosaurs and compare the groups.",
+                readingPassage: "Four dinosaurs rest by the bank. Two are Triceratops. Two are Stegosaurus. Dottie points and counts.",
                 problems: [
-                    mcq("Dottie sees 2 dinos, then 2 more join. How many dinos in all?", ["3", "4", "5"], "4", "2 + 2 = 4."),
-                    mcq("There are 2 hatchlings on the left and 3 dinos on the right. Which side has more?", ["Right", "Left", "Same"], "Right", "3 is more than 2."),
-                    mcq("Dottie counts 6, then one more. Which number comes next?", ["7", "5", "9"], "7", "6 + 1 = 7, so 7 comes next.")
+                    mcq("Dottie sees 2 Triceratops, then 2 Stegosaurus join. How many dinosaurs in all?", ["3", "4", "5"], "4", "2 + 2 = 4."),
+                    mcq("There are 2 hatchlings on the left and 3 dinosaurs on the right. Which side has more?", ["Right", "Left", "Same"], "Right", "3 is more than 2."),
+                    mcq("There are 6 dinosaurs in a line. 1 more dinosaur joins them. How many dinosaurs in all?", ["7", "5", "9"], "7", "6 + 1 = 7.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "count", definition: "To find how many.", exampleSentence: "Dottie can count the dinos.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Paleontology helpers count tracks and friends carefully.")],
-                creativePrompt: "Draw 4 dinos by the bank.",
-                storyEnding: "Dottie's valley count is complete!",
+                vocabularyWords: [VocabularyWord(word: "species", definition: "A kind of living thing.", exampleSentence: "Triceratops is one dinosaur species.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Triceratops had three horns. Stegosaurus had plates on its back.")],
+                creativePrompt: "Draw 4 dinosaurs by the bank. Include one Triceratops.",
+                storyEnding: "Dottie's dinosaur count is complete!",
                 mathSkill: "Number recognition and counting",
                 reflectionPrompt: "What did you count in the valley?",
                 hints: ["Point to each dino", "Compare the two groups"],
@@ -1352,19 +1352,19 @@ enum CuratedTopicLessonBank {
             )
         case .developing:
             return MathScene(
-                title: "Ferns by the Water",
-                storyOpening: "Dottie gathers fern piles for a snack share.",
-                missionPrompt: "Add and subtract to finish the valley jobs.",
-                readingPassage: "Dottie sorts fern piles and leaf snacks by the water. She checks each total before the group eats.",
+                title: "Horns, Plates, and Bones",
+                storyOpening: "Dottie counts dinosaur species and fossils at the museum.",
+                missionPrompt: "Add and subtract to finish the dinosaur count.",
+                readingPassage: "The hall shows Triceratops, Stegosaurus, and Tyrannosaurus. Dottie counts horns, plates, fossil bones, and dinosaur eggs.",
                 problems: [
-                    mcq("Dottie finds 6 fern piles. Then she finds 3 more. How many piles in all?", ["8", "9", "10"], "9", "6 + 3 = 9."),
-                    mcq("A tray holds 10 leaf snacks. Dottie shares 4 with friends. How many leaf snacks are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
-                    mcq("Dottie gathers 8 leaf snacks for the share. A hatchling brings only 5. How many more snacks did Dottie gather?", ["2", "3", "4"], "3", "8 − 5 = 3.")
+                    mcq("Dottie sees 6 Triceratops. Then she sees 3 Stegosaurus. How many dinosaurs in all?", ["8", "9", "10"], "9", "6 + 3 = 9."),
+                    mcq("A nest holds 10 dinosaur eggs. 4 eggs have hatched. How many eggs are left?", ["5", "6", "7"], "6", "10 − 4 = 6."),
+                    mcq("Dottie counts 8 fossil bones. A friend counts 5. How many more bones did Dottie count?", ["2", "3", "4"], "3", "8 − 5 = 3.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "total", definition: "How many in all.", exampleSentence: "Find the total fern piles.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Sharing plant snacks needs careful counting.")],
-                creativePrompt: "Draw 9 fern piles by the water.",
-                storyEnding: "The snack share numbers add up!",
+                vocabularyWords: [VocabularyWord(word: "fossil", definition: "An old bone, tooth, or print kept in rock.", exampleSentence: "Dottie counts fossil bones.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Triceratops had three horns. Tyrannosaurus had sharp teeth. Stegosaurus had plates.")],
+                creativePrompt: "Draw 6 Triceratops and 3 Stegosaurus.",
+                storyEnding: "The dinosaur count adds up!",
                 mathSkill: "Addition and subtraction",
                 reflectionPrompt: "Which valley problem was hardest?",
                 hints: ["Write the numbers", "Decide add or subtract"],
@@ -1375,12 +1375,12 @@ enum CuratedTopicLessonBank {
                 character: "Dottie",
                 pronoun: "she",
                 items: [
-                    ("fossil tags", "in the tag box"),
-                    ("leaf pads", "in the snack basket"),
-                    ("bone chips", "on the dig tray")
+                    ("fossil bones", "in the bone box"),
+                    ("footprint casts", "in the cast tray"),
+                    ("dinosaur eggs", "in the nest crate")
                 ],
-                packItem: "fossil tags",
-                purpose: "at the cove"
+                packItem: "fossil bones",
+                purpose: "at the dig"
             )
             return MathScene(
                 title: "Groups at the Dig",
@@ -1389,36 +1389,36 @@ enum CuratedTopicLessonBank {
                 readingPassage: sort.passage,
                 problems: [
                     sort.groupingQuestion,
-                    mcq("At the dig, Dottie sets out 3 baskets of leaf pads with 4 pads in each basket. How many leaf pads are there?", ["7", "12", "14"], "12", "3 × 4 = 12."),
-                    mcq("A fern stem is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
+                    mcq("At the dig, Dottie sets out 3 rows of footprint casts with 4 casts in each row. How many footprint casts are there?", ["7", "12", "14"], "12", "3 × 4 = 12."),
+                    mcq("One dinosaur footprint is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten fossil tags.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Equal groups keep dig finds organized.")],
-                creativePrompt: "Draw 3 baskets of leaf pads with 4 pads in each basket.",
-                storyEnding: "The dig tray is ready.",
+                vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of fossil bones.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Fossil bones, teeth, and footprints help scientists tell dinosaur species apart.")],
+                creativePrompt: "Draw 3 rows of footprint casts with 4 casts in each row.",
+                storyEnding: "The fossil dig is ready.",
                 mathSkill: "Place value and equal groups",
-                reflectionPrompt: "At the dig, Dottie sets out 3 baskets of leaf pads with 4 pads in each basket. How many leaf pads are there?",
-                hints: ["Think about tens and ones", "Count the baskets"],
+                reflectionPrompt: "At the dig, Dottie sets out 3 rows of footprint casts with 4 casts in each row. How many footprint casts are there?",
+                hints: ["Think about tens and ones", "Count the rows"],
                 activityFingerprint: "dinos.math.secure.groups"
             )
         case .advancing:
             let multi = reading.sortOrder >= ReadingLevel.growingReader.sortOrder
             return MathScene(
-                title: multi ? "After the Fossil Walk" : "Equal Shares of Fern Tips",
-                storyOpening: "Dottie plans snacks after the fossil walk.",
-                missionPrompt: multi ? "Solve each dig problem." : "Solve each dig problem carefully.",
-                readingPassage: "Leaf snacks and fern tips are shared after the cove visit.",
+                title: multi ? "Species at the Dig" : "Fossil Bones to Share",
+                storyOpening: "Dottie sorts fossil finds from different dinosaur species.",
+                missionPrompt: multi ? "Solve each dinosaur problem." : "Solve each dinosaur problem carefully.",
+                readingPassage: "Fossil bones and dinosaur eggs from different species are sorted after the dig.",
                 problems: [
-                    mcq("Dottie packs 3 boxes with 8 leaf snacks in each box. How many snacks in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
-                    mcq("Dottie shares 18 fern tips among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
-                    mcq("One fern stem is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.")
+                    mcq("Dottie packs 3 boxes with 8 fossil bones in each box. How many bones in all?", ["16", "24", "32"], "24", "3 × 8 = 24."),
+                    mcq("Dottie shares 18 dinosaur eggs among 3 friends equally. How many does each friend get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6."),
+                    mcq("One dinosaur footprint is 15 centimeters long. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.")
                 ],
-                vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the snacks into equal shares.")],
-                knowledgeFacts: [KnowledgeFact(fact: "Fossils are traces of ancient plants and animals preserved in rock.")],
-                creativePrompt: "Draw the lunch bags or snack boxes and one munching step.",
-                storyEnding: "Every friend gets a fair fossil-walk share!",
+                vocabularyWords: [VocabularyWord(word: "species", definition: "A kind of living thing.", exampleSentence: "Fossil bones can show which species left them.")],
+                knowledgeFacts: [KnowledgeFact(fact: "Fossil bones and footprints help scientists name dinosaur species.")],
+                creativePrompt: "Draw 3 boxes of fossil bones and one dinosaur species.",
+                storyEnding: "Every fossil find is sorted by species!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
-                reflectionPrompt: "A watering-hole bucket holds 4 scoops of water. Dottie adds 2 more scoops. How many scoops are there now?",
+                reflectionPrompt: "Dottie packs 3 boxes with 8 fossil bones in each box. How many bones in all?",
                 hints: mathHints(level),
                 activityFingerprint: "dinos.math.advancing.supplies"
             )
@@ -1473,6 +1473,7 @@ enum CuratedTopicLessonBank {
         packCount: Int,
         groupingQuestion: LessonQuestion
     ) {
+        let voice = MathWordProblemGenerator.storyPronoun(for: character, preferred: pronoun)
         let size = groupSize ?? groupingSize(character: character, packItem: packItem, packCount: packCount ?? 20)
         let count = packCount ?? groupingPackCount(character: character, packItem: packItem, groupSize: size)
         let trio = Array(items.prefix(3))
@@ -1483,9 +1484,9 @@ enum CuratedTopicLessonBank {
         } else {
             itemList = names.joined(separator: " and ")
         }
-        let put = pronoun == "they" ? "put" : "puts"
-        let be = pronoun == "they" ? "are" : "is"
-        let they = pronoun.capitalized
+        let put = voice == "they" ? "put" : "puts"
+        let be = voice == "they" ? "are" : "is"
+        let they = voice.capitalized
 
         var sentences: [String] = []
         if let first = trio.first {
@@ -1494,7 +1495,7 @@ enum CuratedTopicLessonBank {
         for extra in trio.dropFirst() {
             sentences.append("\(they) \(put) the \(extra.item) \(extra.group).")
         }
-        sentences.append("Now \(pronoun) \(be) ready \(purpose).")
+        sentences.append("Now \(voice) \(be) ready \(purpose).")
 
         return (
             opening: "\(character) is going to sort \(itemList) into groups.",
@@ -1504,7 +1505,7 @@ enum CuratedTopicLessonBank {
             packCount: count,
             groupingQuestion: groupingMathQuestion(
                 character: character,
-                pronoun: pronoun,
+                pronoun: voice,
                 packItem: packItem,
                 packCount: count,
                 groupSize: size
@@ -1520,6 +1521,7 @@ enum CuratedTopicLessonBank {
         packCount: Int,
         groupSize: Int
     ) -> LessonQuestion {
+        let voice = MathWordProblemGenerator.storyPronoun(for: character, preferred: pronoun)
         let size = max(groupSize, 1)
         let groups = max(1, packCount / size)
         var nums = [groups]
@@ -1531,8 +1533,8 @@ enum CuratedTopicLessonBank {
             if nums.count == 3 { break }
         }
         let choices = nums.sorted().map(String.init)
-        let actor = pronoun == "they" ? character : pronoun.capitalized
-        let put = pronoun == "they" ? "put" : "puts"
+        let actor = voice == "they" ? character : voice.capitalized
+        let put = voice == "they" ? "put" : "puts"
         return mcq(
             "\(character) has \(packCount) \(packItem). \(actor) \(put) them in groups of \(size). How many groups is that?",
             choices,

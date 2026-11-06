@@ -32,6 +32,7 @@ final class LessonViewModel: ObservableObject {
     @Published private(set) var predictionChanged = false
 
     let lesson: Lesson
+    let playKind: PlayGameKind?
     private let childId: UUID?
     private let ability: LearnerAbilityProfile?
     private let steps: [LessonStep]
@@ -62,7 +63,37 @@ final class LessonViewModel: ObservableObject {
         return 22
     }
 
+    private var practiceHeading: String {
+        switch lesson.primarySubject {
+        case .math: return "Math Practice"
+        case .reading: return "Reading Practice"
+        case .science: return "Science Practice"
+        case .creative: return "Word Practice"
+        }
+    }
+
+    /// First-try correct answers, shown as stars during a play round.
+    var earnedStars: Int {
+        var seen = Set<UUID>()
+        var correct = 0
+        for response in responses {
+            guard seen.insert(response.questionId).inserted else { continue }
+            if response.isCorrect { correct += 1 }
+        }
+        return correct
+    }
+
     var phaseTitle: String {
+        if playKind != nil {
+            switch currentStep {
+            case .moment(.ending):
+                return "You did it!"
+            case .moment(.reading):
+                return "Read Along"
+            case .question, .moment, .creative, .reflection, .completion, .none:
+                return practiceHeading
+            }
+        }
         switch currentStep {
         case .question(_, _, let index, let total):
             return "\(currentMoment?.title ?? "Question") (\(index) of \(total))"
@@ -95,7 +126,13 @@ final class LessonViewModel: ObservableObject {
         lesson.reflectionResponseType
     }
 
-    init(lesson: Lesson, childId: UUID? = nil, profile: ChildProfile? = nil, learningState: ChildLearningState? = nil) {
+    init(
+        lesson: Lesson,
+        childId: UUID? = nil,
+        profile: ChildProfile? = nil,
+        learningState: ChildLearningState? = nil,
+        playKind: PlayGameKind? = nil
+    ) {
         self.lesson = lesson
         self.childId = childId
         if let profile {
@@ -103,8 +140,13 @@ final class LessonViewModel: ObservableObject {
         } else {
             self.ability = nil
         }
+        let resolvedPlayKind: PlayGameKind? = {
+            guard let playKind, !PlayGameCatalog.playQuestions(in: lesson, kind: playKind).isEmpty else { return nil }
+            return playKind
+        }()
+        self.playKind = resolvedPlayKind
         self.story = lesson.story
-        self.steps = Self.buildSteps(from: lesson, ability: self.ability)
+        self.steps = Self.buildSteps(from: lesson, ability: self.ability, playKind: resolvedPlayKind)
     }
 
     func selectAnswer(_ answer: String) {
@@ -481,6 +523,16 @@ final class LessonViewModel: ObservableObject {
     }
 
     func encouragement(for moment: StoryMoment) -> String {
+        if let playKind {
+            switch moment {
+            case .storyOpening, .question, .math:
+                return playKind.howToPlay
+            case .ending:
+                return "You did it!"
+            default:
+                break
+            }
+        }
         let mascot = MascotKind.forTopic(lesson.theme).name
         let young = (ability?.age ?? 7) <= 7
         switch moment {
@@ -493,7 +545,7 @@ final class LessonViewModel: ObservableObject {
                 ? "Read each sentence. Picture what you see."
                 : "Read carefully and notice details you can use later."
         case .question:
-            return young ? "Think about what you just read." : "Use evidence from the story to decide."
+            return young ? "Use the story above to choose." : "Use the story above to decide."
         case .math:
             return young ? "Use your fingers or count out loud if you need to." : "Use the story numbers to figure it out."
         case .vocabulary:
@@ -533,6 +585,11 @@ final class LessonViewModel: ObservableObject {
     }
 
     private func findQuestion(id: UUID) -> LessonQuestion? {
+        for step in steps {
+            if case .question(_, let question, _, _) = step, question.id == id {
+                return question
+            }
+        }
         for question in story.readingQuestions + story.mathQuestions {
             if question.id == id { return question }
         }
@@ -554,8 +611,31 @@ final class LessonViewModel: ObservableObject {
         return words[trimmed.lowercased()]
     }
 
-    private static func buildSteps(from lesson: Lesson, ability: LearnerAbilityProfile? = nil) -> [LessonStep] {
+    private static func buildSteps(
+        from lesson: Lesson,
+        ability: LearnerAbilityProfile? = nil,
+        playKind: PlayGameKind? = nil
+    ) -> [LessonStep] {
         let story = lesson.story
+
+        if let playKind {
+            let questions = PlayGameCatalog.playQuestions(in: lesson, kind: playKind)
+            if !questions.isEmpty {
+                let passage = story.readingPassage.trimmingCharacters(in: .whitespacesAndNewlines)
+                let asksAboutTheStory = questions.contains { $0.subject != .math && !$0.isProgressiveMystery }
+                // Comprehension rounds open on the story. A practice intro is not a reading.
+                var playSteps: [LessonStep] = (asksAboutTheStory && !passage.isEmpty)
+                    ? [.moment(.reading)]
+                    : [.moment(.storyOpening)]
+                for (index, question) in questions.enumerated() {
+                    let moment: StoryMoment = question.subject == .math ? .math : .question
+                    playSteps.append(.question(moment, question, index: index + 1, total: questions.count))
+                }
+                playSteps.append(.moment(.ending))
+                playSteps.append(.completion)
+                return playSteps
+            }
+        }
 
         // Pure Art Quests: open the drawing board. No quiz, reading, or reflection screens.
         if lesson.isArtQuest {
@@ -567,10 +647,13 @@ final class LessonViewModel: ObservableObject {
             return artSteps
         }
 
-        var steps: [LessonStep] = [
-            .moment(.storyOpening),
-            .moment(.reading)
-        ]
+        let passage = story.readingPassage.trimmingCharacters(in: .whitespacesAndNewlines)
+        let opensOnStory = !passage.isEmpty
+            && (lesson.primarySubject == .reading || lesson.category == .story)
+        // Reading lessons start with the story. A one-line hook is not the reading.
+        var steps: [LessonStep] = opensOnStory
+            ? [.moment(.reading)]
+            : [.moment(.storyOpening), .moment(.reading)]
 
         // Teach vocabulary and facts before testing when scaffolding is needed.
         let scaffold = ability?.needsScaffolding == true

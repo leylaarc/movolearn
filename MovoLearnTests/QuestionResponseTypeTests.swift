@@ -472,6 +472,111 @@ final class QuestionResponseTypeTests: XCTestCase {
         XCTAssertTrue(QuestionQualityValidator.isUnsupportedArranging(question))
     }
 
+    func testShortChoicesFitBubblePopAndPassageDependentChoicesDoNot() {
+        let short = LessonQuestion(
+            subject: .math,
+            type: .multipleChoice,
+            responseType: .multipleChoice,
+            prompt: "Dottie packs 3 boxes with 8 fossil bones in each box. How many bones in all?",
+            choices: ["16", "24", "32"],
+            correctAnswer: "24",
+            explanation: "3 times 8 is 24."
+        )
+        XCTAssertTrue(PlayGameCatalog.fitsBubble(short))
+        XCTAssertTrue(PlayGameCatalog.fitsPlayableBubble(short))
+
+        let passageBound = LessonQuestion(
+            subject: .reading,
+            type: .multipleChoice,
+            responseType: .multipleChoice,
+            prompt: "According to the story, how many arms did the octopus show?",
+            choices: ["6", "8", "10"],
+            correctAnswer: "8",
+            explanation: "The passage says eight arms."
+        )
+        XCTAssertTrue(PlayGameCatalog.fitsBubble(passageBound))
+        XCTAssertFalse(PlayGameCatalog.fitsPlayableBubble(passageBound))
+    }
+
+    func testVocabularyAdventureBecomesMemoryMatch() {
+        let lesson = Lesson(
+            title: "Tide Pool Words",
+            theme: .oceanAnimals,
+            lessonType: .explorer,
+            category: .discovery,
+            primarySubject: .science,
+            storyOpening: "Willa visits a tide pool.",
+            missionPrompt: "Learn the tide pool words.",
+            readingPassage: "A tide pool holds seawater, kelp, and small animals when the tide is low.",
+            questions: [],
+            mathChallenges: [],
+            vocabularyWords: [
+                VocabularyWord(word: "tide pool", definition: "A rocky pool left by the low tide."),
+                VocabularyWord(word: "kelp", definition: "A large brown seaweed."),
+                VocabularyWord(word: "habitat", definition: "The place an animal lives.")
+            ],
+            knowledgeFacts: [KnowledgeFact(fact: "A tide pool keeps water after the tide goes out.")],
+            creativePrompt: "Draw a tide pool with kelp.",
+            creativeResponseType: .drawing,
+            storyEnding: "Willa can name what lives in the tide pool.",
+            readingSkill: "Vocabulary",
+            mathSkill: "Number sense",
+            skillsPracticed: ["Vocabulary"],
+            contentApprovalStatus: .approved
+        )
+
+        let offers = PlayGameCatalog.offers(from: [lesson], favoriteTopics: [.oceanAnimals], limit: 2)
+        XCTAssertEqual(offers.map(\.kind), [.memoryMatch])
+
+        let round = PlayGameCatalog.playQuestions(in: lesson, kind: .memoryMatch)
+        XCTAssertEqual(round.count, 1)
+        XCTAssertEqual(round.first?.pairs.count, 3)
+        XCTAssertEqual(round.first?.pairs.map(\.left), ["tide pool", "kelp", "habitat"])
+    }
+
+    func testApprovedMathLessonOffersBubblePop() throws {
+        let lesson = try XCTUnwrap(LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .dinosaurs,
+            category: .math,
+            readingLevel: .beginner,
+            mathLevel: .emerging
+        ))
+        let offers = PlayGameCatalog.offers(from: [lesson], favoriteTopics: [.dinosaurs], limit: 1)
+        XCTAssertEqual(offers.map(\.kind), [.bubblePop])
+        let round = PlayGameCatalog.playQuestions(in: lesson, kind: .bubblePop)
+        XCTAssertGreaterThanOrEqual(round.count, 2)
+        XCTAssertTrue(round.allSatisfy { $0.subject == .math && PlayGameCatalog.fitsPlayableBubble($0) })
+    }
+
+    @MainActor
+    func testBiscuitNapQuestionsKeepTheStory() throws {
+        let lesson = try XCTUnwrap(LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .cats,
+            category: .story,
+            readingLevel: .beginner,
+            mathLevel: .emerging
+        ))
+        XCTAssertEqual(lesson.title, "Biscuit Naps in the Sun")
+        XCTAssertTrue(lesson.readingPassage.localizedCaseInsensitiveContains("stretches"))
+        XCTAssertTrue(lesson.readingPassage.localizedCaseInsensitiveContains("purrs"))
+
+        let storyLesson = LessonViewModel(lesson: lesson)
+        XCTAssertEqual(storyLesson.currentMoment, .reading)
+        storyLesson.advance()
+        guard case .question = storyLesson.currentStep else {
+            return XCTFail("Expected a story question after the reading")
+        }
+
+        let practice = LessonViewModel(lesson: lesson, playKind: .bubblePop)
+        XCTAssertEqual(practice.currentMoment, .reading)
+        practice.advance()
+        guard case .question(_, let question, _, _) = practice.currentStep else {
+            return XCTFail("Expected a story question after the reading in practice")
+        }
+        XCTAssertTrue(question.prompt.localizedCaseInsensitiveContains("Biscuit"))
+        XCTAssertNotEqual(question.subject, .math)
+    }
+
     func testDrawThisSceneWithDrawbridgeStillCountsAsDrawing() {
         XCTAssertTrue(
             QuestionResponseTypeResolver.looksLikeDrawingPrompt(

@@ -21,7 +21,9 @@ struct LessonView: View {
                     totalSteps: viewModel.totalSteps,
                     title: viewModel.phaseTitle,
                     subtitle: viewModel.lesson.title,
-                    accent: topicAccent
+                    accent: topicAccent,
+                    showsStars: viewModel.playKind != nil,
+                    earnedStars: viewModel.earnedStars
                 )
                 .padding(.horizontal, DesignSystem.Spacing.lg)
                 .padding(.top, DesignSystem.Spacing.md)
@@ -69,6 +71,7 @@ struct LessonView: View {
     private func triggerCelebration() {
         celebrationTick += 1
         showCelebration = true
+        CorrectAnswerChime.shared.playIfVolumeOn()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
             showCelebration = false
         }
@@ -93,7 +96,7 @@ struct LessonView: View {
     private func storyMomentView(_ moment: StoryMoment) -> some View {
         LessonPageStage(
             topic: viewModel.lesson.theme,
-            title: moment.title,
+            title: viewModel.playKind == nil ? moment.title : viewModel.phaseTitle,
             kicker: (moment == .vocabulary || moment == .knowledge) ? "" : viewModel.encouragement(for: moment),
             accent: moment.pageAccent(topic: viewModel.lesson.theme),
             cardOpacity: (moment == .vocabulary || moment == .knowledge) ? 0.46 : 0.82
@@ -105,9 +108,10 @@ struct LessonView: View {
     }
 
     private func continueButton(for moment: StoryMoment) -> some View {
-        PrimaryGradientButton(
-            title: moment == .ending ? "See My Results" : moment.continueLabel,
-            icon: moment == .ending ? "star.fill" : "arrow.right"
+        let playOpening = viewModel.playKind != nil && moment == .storyOpening
+        return PrimaryGradientButton(
+            title: playOpening ? "Start Practice" : (moment == .ending ? "See My Results" : moment.continueLabel),
+            icon: playOpening ? "play.fill" : (moment == .ending ? "star.fill" : "arrow.right")
         ) {
             if moment == .ending {
                 onComplete(viewModel.makeProgressSummary())
@@ -123,19 +127,41 @@ struct LessonView: View {
     private func momentContent(_ moment: StoryMoment) -> some View {
         switch moment {
         case .storyOpening:
-            StoryTextBlock(
-                text: story.storyOpening,
-                style: .narrative,
-                pointSize: viewModel.storyBodyFontSize,
-                centered: false
-            )
+            if let playKind = viewModel.playKind {
+                PlayRoundIntro(
+                    topic: viewModel.lesson.theme,
+                    kind: playKind,
+                    lessonTitle: viewModel.lesson.title
+                )
+            } else {
+                StoryTextBlock(
+                    text: story.storyOpening,
+                    style: .narrative,
+                    pointSize: viewModel.storyBodyFontSize,
+                    centered: false
+                )
+            }
         case .reading:
-            StoryTextBlock(
-                text: story.readingPassage,
-                style: .narrative,
-                pointSize: viewModel.storyBodyFontSize,
-                centered: false
-            )
+            VStack(alignment: .leading, spacing: DesignSystem.Spacing.lg) {
+                let opening = story.storyOpening.trimmingCharacters(in: .whitespacesAndNewlines)
+                let passage = story.readingPassage.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !opening.isEmpty {
+                    StoryTextBlock(
+                        text: opening,
+                        style: .narrative,
+                        pointSize: viewModel.storyBodyFontSize,
+                        centered: false
+                    )
+                }
+                if !passage.isEmpty, passage != opening {
+                    StoryTextBlock(
+                        text: passage,
+                        style: .narrative,
+                        pointSize: viewModel.storyBodyFontSize,
+                        centered: false
+                    )
+                }
+            }
         case .vocabulary:
             VocabularyWordsList(words: story.vocabularyWords)
         case .knowledge:
@@ -160,6 +186,18 @@ struct LessonView: View {
         }
     }
 
+    private var readingPassageText: String {
+        story.readingPassage.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private func showsStoryWithQuestion(_ question: LessonQuestion, moment: StoryMoment) -> Bool {
+        guard moment == .question else { return false }
+        guard !readingPassageText.isEmpty else { return false }
+        guard !question.isProgressiveMystery else { return false }
+        guard question.displayResponseType != .drawing else { return false }
+        return true
+    }
+
     private func questionView(
         moment: StoryMoment,
         question: LessonQuestion,
@@ -167,13 +205,14 @@ struct LessonView: View {
         total: Int
     ) -> some View {
         let isDrawing = question.displayResponseType == .drawing
+        let showsStory = showsStoryWithQuestion(question, moment: moment)
 
         return LessonPageStage(
             topic: viewModel.lesson.theme,
-            title: moment.title,
+            title: viewModel.playKind == nil ? moment.title : viewModel.phaseTitle,
             kicker: viewModel.encouragement(for: moment),
             accent: moment.pageAccent(topic: viewModel.lesson.theme),
-            compactHeader: isDrawing,
+            compactHeader: isDrawing || showsStory,
             expandsContent: isDrawing
         ) {
             questionBody(moment: moment, question: question, index: index, total: total)
@@ -197,6 +236,13 @@ struct LessonView: View {
                 Text("\(index) of \(total)")
                     .font(DesignSystem.Typography.title(14))
                     .foregroundStyle(DesignSystem.Colors.deepNavy)
+            }
+
+            if showsStoryWithQuestion(question, moment: moment) {
+                ReadingPassageCard(
+                    text: readingPassageText,
+                    pointSize: min(viewModel.storyBodyFontSize, 22)
+                )
             }
 
             if question.isProgressiveMystery {
@@ -228,6 +274,7 @@ struct LessonView: View {
                     pairs: question.pairs,
                     items: question.items,
                     accent: topicAccent,
+                    interactionID: question.id.uuidString,
                     textAnswer: $viewModel.openResponse,
                     selectedChoice: $viewModel.selectedAnswer,
                     hasDrawing: $viewModel.hasDrawingContent,
@@ -260,6 +307,14 @@ struct LessonView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: isDrawing ? .infinity : nil)
+        .onChange(of: viewModel.matchingComplete) { _, done in
+            guard done, viewModel.matchingCorrect, !viewModel.showFeedback else { return }
+            guard PlayGameCatalog.fitsMemory(question) else { return }
+            viewModel.submitMatchingAnswer()
+            if viewModel.isAnswerCorrect {
+                triggerCelebration()
+            }
+        }
     }
 
     private func shouldShowQuestionFeedback(for question: LessonQuestion) -> Bool {
@@ -469,6 +524,13 @@ struct LessonView: View {
             accent: moment.pageAccent(topic: viewModel.lesson.theme)
         ) {
             VStack(spacing: DesignSystem.Spacing.xl) {
+                if viewModel.lesson.primarySubject != .math, !readingPassageText.isEmpty {
+                    ReadingPassageCard(
+                        text: readingPassageText,
+                        pointSize: min(viewModel.storyBodyFontSize, 22)
+                    )
+                }
+
                 StoryTextBlock(text: displayPrompt, style: .mission)
 
                 QuestionAnswerInput(

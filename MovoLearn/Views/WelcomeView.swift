@@ -25,19 +25,11 @@ struct WelcomeView: View {
                         .opacity(appeared ? 1 : 0)
 
                     VStack(spacing: DesignSystem.Spacing.md) {
-                        Text("Movo Learn")
-                            .font(DesignSystem.Typography.heroTitle)
-                            .foregroundStyle(
-                                LinearGradient(
-                                    colors: [
-                                        DesignSystem.Colors.deepNavy,
-                                        DesignSystem.Colors.skyBlue,
-                                        DesignSystem.Colors.lavenderPurple
-                                    ],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
+                        Image("BrandLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: DesignSystem.Metrics.scaled(280), maxHeight: DesignSystem.Metrics.scaled(120))
+                            .accessibilityLabel("Movo Learn")
 
                         Text("Learning built around what your child loves.")
                             .font(DesignSystem.Typography.screenTitle)

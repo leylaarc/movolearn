@@ -276,7 +276,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Lena fills 3 boxes with 8 goal medals in each box. How many medals does she have in all?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Lena shares 18 orange slices among 3 teammates equally. How many does each teammate get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One corner flag pole is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One corner flag pole is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of medals is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Teams often share orange slices at halftime.")],
@@ -502,7 +502,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Theo packs 3 boxes with 8 victory medals in each box. How many medals does he pack?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Theo shares 18 orange slices among 3 teammates equally. How many does each teammate get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One hoop net string is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One hoop net string is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first net string is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Players score in basketball by shooting the ball through a hoop.")],
@@ -707,7 +707,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Ben opens 3 packs of puppy bandanas with 4 bandanas in each pack. How many bandanas does he open?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("Scout's leash is 15 centimeters longer than a mark. Another leash is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("Scout's leash is 15 centimeters long. Another leash is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten treats.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that all the gear is ready for class.")],
@@ -728,7 +728,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Ben fills 3 treat jars with 8 dog biscuits in each jar. How many biscuits are in the jars?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Ben shares 18 training treats among 3 puppy friends equally. How many does each puppy get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One leash is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One leash is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of biscuits.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Dogs learn faster when trainers reward the behavior they want.")],
@@ -1159,7 +1159,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Elin places 3 rows of banquet settings with 4 settings in each row. How many table settings is that?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A ballroom banner is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A ballroom banner is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten roses.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the ballroom is ready for guests.")],
@@ -1180,7 +1180,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Elin makes 3 pouches with 8 jeweled hairpins in each pouch. How many hairpins does she make?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Elin shares 18 berry tarts among 3 tables of guests equally. How many does each table get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One ballroom banner is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One ballroom banner is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of hairpins have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A banquet is a large feast held in a castle hall.")],
@@ -1385,7 +1385,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Mr. Bram fills 3 trays of banners with 4 banners in each tray. How many banners are ready?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("The drawbridge chain is 15 centimeters longer than a mark. Another chain is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("The drawbridge chain is 15 centimeters long. Another chain is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten stones.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that wall repairs have enough materials.")],
@@ -1406,7 +1406,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Mr. Bram packs 3 cases with 8 iron keys in each case. How many keys does he pack?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Mr. Bram shares 18 bread rolls among 3 guard posts equally. How many does each post get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One drawbridge chain is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One drawbridge chain is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 keys.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A moat is a water-filled ditch that helped protect a castle.")],
@@ -1837,7 +1837,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Zoe counts seats in 3 cabin sections with 4 seats in each section. How many seats does she count?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A runway marker is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A runway marker is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten luggage tags.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the terminal is ready for travelers.")],
@@ -1858,7 +1858,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Zoe fills 3 gift bags with 8 pilot wing pins in each bag. How many pins does she put in the bags?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Zoe shares 18 pretzel bags among 3 rows of passengers equally. How many does each row get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One runway marker is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One runway marker is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of pins is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "The cockpit is where the pilots sit to fly the plane.")],
@@ -2063,7 +2063,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Owen sets out 3 rows of train benches with 4 benches in each row. How many benches does he place?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A rail section is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A rail section is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten bolts.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the station is ready for travelers.")],
@@ -2084,7 +2084,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Owen stacks 3 trays with 8 conductor badges in each tray. How many badges does he prepare in all?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Owen shares 18 biscuits among 3 train cars of passengers equally. How many does each car get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One rail section is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One rail section is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first rail section is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A conductor helps passengers and checks that the train is ready to leave.")],
@@ -2289,7 +2289,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Rosa unpacks 3 boxes with 4 wheels in each box. How many wheels does she unpack?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("One fuel hose is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("One fuel hose is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten engine bolts.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the garage has enough car parts.")],
@@ -2310,7 +2310,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Rosa builds 3 sets of shiny hubcaps with 8 hubcaps in each set. How many hubcaps does she build?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Rosa shares 18 spare bolts among 3 customers equally. How many does each customer get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One seat belt strap is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One seat belt strap is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of hubcaps.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A hubcap covers the center of a car's wheel.")],
@@ -2515,7 +2515,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Max builds 3 groups of sensors with 4 sensors in each group. How many sensors does he build?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A robot arm is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A robot arm is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten screws.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the workbench has enough parts.")],
@@ -2536,7 +2536,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Max assembles 3 kits with 8 circuit boards in each kit. How many boards does he assemble?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Max shares 18 batteries among 3 robots equally. How many does each robot get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One robot arm is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One robot arm is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the boards equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A circuit board carries electricity to a robot's parts.")],
@@ -2622,7 +2622,7 @@ extension CuratedTopicLessonBank {
                 readingPassage: "A younger student once asked Nina how she always seemed to know the right way to help when something went wrong. Nina explained that being a good helper is not about running in without thinking — it is about pausing for just a moment to notice what is actually happening before acting. She said that if someone is hurt, she first checks whether it is safe to approach, then decides whether she can help herself or needs to get an adult. Nina added that rushing in without checking can sometimes make a situation worse, even when someone means well. By taking a brief moment to observe and think, Nina is able to choose the action that helps the most without causing new problems.",
                 questions: [
                     mcq("What is the main idea of this passage?", ["Pausing to think before acting leads to better, safer choices", "Helping always means running in as fast as possible", "Thinking before acting makes a person less helpful"], "Pausing to think before acting leads to better, safer choices", "Nina explains that pausing to think leads to safer, better choices."),
-                    mcq("What does Nina check first when someone is hurt?", ["Whether it is safe to approach", "What color their clothes are", "How far away the nearest store is"], "Whether it is safe to approach", "She first checks whether it is safe to approach."),
+                    mcq("What does Nina check first when someone is hurt?", ["Whether it is safe to approach", "What color the person's clothes are", "How far away the nearest store is"], "Whether it is safe to approach", "She first checks whether it is safe to approach."),
                     mcq("What can happen if someone rushes in without checking?", ["The situation can sometimes get worse", "The problem always disappears instantly", "Nothing changes at all"], "The situation can sometimes get worse", "Rushing in without checking can sometimes make things worse.")
                 ],
                 vocabularyWords: [
@@ -2650,7 +2650,7 @@ extension CuratedTopicLessonBank {
                 storyOpening: "A classmate is crying at recess. Nina pauses to notice two small details before she steps in.",
                 missionPrompt: "Compare the social clues. Check what Nina conclude is the kindest way to help.",
                 readingPassage: """
-                When Nina saw a classmate crying quietly at recess, she did not rush over and ask loud questions in front of everyone. Instead, she noticed two things first: the classmate had moved to a spot away from the other kids, and he kept glancing toward the group as if worried about being noticed. Nina reasoned that someone who wanted a lot of attention would likely be crying somewhere more visible, while someone who moved away and kept checking who was watching probably wanted privacy, not a crowd. Based on these two clues, Nina concluded that the kindest way to help was to walk over calmly, sit down quietly beside him, and ask a simple, gentle question instead of announcing the situation to the whole playground. Her calm approach worked, and the classmate soon opened up about a hard morning at home. Nina later told a teacher that noticing where someone chooses to be, and how they act around others, can reveal what kind of help they actually need.
+                When Nina saw a classmate crying quietly at recess, she did not rush over and ask loud questions in front of everyone. Instead, she noticed two things first: the classmate had moved to a spot away from the other kids, and he kept glancing toward the group as if worried about being noticed. Nina reasoned that someone who wanted a lot of attention would likely be crying somewhere more visible, while someone who moved away and kept checking who was watching probably wanted privacy, not a crowd. Based on these two clues, Nina concluded that the kindest way to help was to walk over calmly, sit down quietly beside him, and ask a simple, gentle question instead of announcing the situation to the whole playground. Her calm approach worked, and the classmate soon opened up about a hard morning at home. Nina later told a teacher that noticing where a classmate chooses to sit, and how he acts around other kids, can show what kind of help he needs.
                 """,
                 questions: [
                     mcq("What did Nina conclude was the kindest way to help?", ["Walk over calmly and ask a gentle question quietly", "Announce the situation loudly to the whole playground", "Ignore the classmate completely"], "Walk over calmly and ask a gentle question quietly", "Nina concluded a calm, quiet approach was kindest."),
@@ -2662,7 +2662,7 @@ extension CuratedTopicLessonBank {
                     VocabularyWord(word: "approach", definition: "A way of dealing with a situation.", exampleSentence: "Nina's calm approach helped her classmate feel safe.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Noticing small social clues, like where someone chooses to sit, can reveal how they want to be helped.", explanation: "Paying attention to behavior, not just words, helps people offer the right kind of support.")
+                    KnowledgeFact(fact: "Noticing small social clues, like where a person chooses to sit, can show how he or she wants to be helped.", explanation: "Paying attention to behavior, not just words, helps people offer the right kind of support.")
                 ],
                 creativePrompt: "Write two sentences about why Nina approached quietly and how that helped her classmate.",
                 creativeResponseType: .shortText,
@@ -2741,7 +2741,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Nina fills 3 trays of masks with 4 masks in each tray. How many masks are ready for training?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A training cape is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A training cape is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten badges.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that training gear is ready.")],
@@ -2762,7 +2762,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Nina packs 3 boxes with 8 badges in each box. How many badges does she pack?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Nina shares 18 wristbands among 3 trainees equally. How many does each trainee get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One training cape is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One training cape is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of badges have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Emergency helpers often wear a badge so people can recognize them.")],
@@ -2967,7 +2967,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Iris stacks canvases into 3 equal groups of 4 canvases. How many canvases are there?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A canvas frame is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A canvas frame is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten pencils.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the studio has enough supplies.")],
@@ -2988,7 +2988,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Iris fills 3 trays with 8 paint tubes in each tray. How many tubes does she prepare?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Iris shares 18 paint tubes among 3 young artists equally. How many does each artist get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One canvas frame is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One canvas frame is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 paint tubes.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Paint in tubes stays fresh until an artist squeezes some out.")],
@@ -3193,7 +3193,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Milo opens 3 packs of shakers with 4 shakers in each pack. How many shakers does he carry?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A drumstick is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A drumstick is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten sheets.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the band has enough supplies.")],
@@ -3214,7 +3214,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Milo packs 3 crates with 8 songbooks in each crate. How many songbooks does he pack?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Milo shares 18 shakers among 3 young musicians equally. How many does each musician get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One drumstick is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One drumstick is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the songbooks into equal shares.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A beat is the steady pulse musicians count together.")],
@@ -3419,7 +3419,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Chef Dara unpacks 3 packs with 4 measuring cups in each pack. How many measuring cups does she unpack?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A rolling pin is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A rolling pin is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten spice jars.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the kitchen has enough supplies.")],
@@ -3440,7 +3440,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Chef Dara bakes 3 trays of muffins with 8 muffins in each tray. How many muffins does she bake in all?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Chef Dara shares 18 cookies among 3 customers equally. How many does each customer get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One rolling pin is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One rolling pin is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of muffins is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A recipe lists ingredients and the steps for making food.")],
@@ -3645,7 +3645,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Ranger Wren fills 3 trays of leaves with 4 leaves in each tray. How many leaves does she save?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A fallen branch is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A fallen branch is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten acorns.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check how many nature finds you have collected.")],
@@ -3659,18 +3659,18 @@ extension CuratedTopicLessonBank {
         case .advancing:
             let multi = reading.sortOrder >= ReadingLevel.growingReader.sortOrder
             return MathScene(
-                title: multi ? "Trail Day" : "Equal Shares of Seed Packets",
+                title: multi ? "Trail Day" : "Seeds on the Trail",
                 storyOpening: "Ranger Wren plans supplies for a full day on the trail.",
                 missionPrompt: multi ? "Solve each trail problem." : "Solve each trail problem carefully.",
-                readingPassage: "Seed packets and trail maps are shared with young hikers during the trail day.",
+                readingPassage: "Pinecones and trail maps are shared with young hikers during the trail day.",
                 problems: [
-                    mcq("Ranger Wren gathers 3 pouches with 8 seed packets in each pouch. How many packets does she gather?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
-                    mcq("Ranger Wren shares 18 seed packets among 3 hiking groups equally. How many does each group get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One fallen branch is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("Ranger Wren gathers 3 baskets with 8 pinecones in each basket. How many pinecones in all?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
+                    mcq("Ranger Wren shares 18 pinecones among 3 hiking groups equally. How many does each group get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
+                    mcq("One branch is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "difference", definition: "How much more one number is than another.", exampleSentence: "The difference tells how much longer the first branch is.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A trail map shows the paths hikers can follow.")],
-                creativePrompt: "Draw the seed packets.",
+                creativePrompt: "Draw the pinecone baskets.",
                 storyEnding: "Every hiking group gets a fair share. Great hike, Ranger Wren!",
                 mathSkill: LevelSkillProgressions.mathFocus(for: level),
                 reflectionPrompt: "A water bottle holder holds 4 bottles. Ranger Wren adds 2 more bottles. How many bottles are in the holder now?",
@@ -3871,7 +3871,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Sam sets out 3 equal groups of 4 magnifying glasses for bug club. How many magnifying glasses is that?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A butterfly net handle is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A butterfly net handle is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten bug jars.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check insect collections.")],
@@ -3892,7 +3892,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Sam packs 3 boxes with 8 magnifying glasses in each box. How many glasses does he pack?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Sam shares 18 bug jars among 3 young bug watchers equally. How many does each watcher get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One butterfly net handle is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One butterfly net handle is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "each", definition: "For every one group.", exampleSentence: "Each box holds the same number of glasses.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A magnifying glass makes tiny insect parts look bigger.")],
@@ -4097,7 +4097,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Dr. Nolan loads 3 trays of sensors with 4 sensors in each tray. How many sensors are loaded?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A crack in the volcano's slope is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A crack in the volcano's slope is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten rock samples.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the monitoring station has enough supplies.")],
@@ -4118,7 +4118,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Dr. Nolan loads 3 crates with 8 rock samples in each crate. How many samples does she load?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Dr. Nolan shares 18 data sheets among 3 research teams equally. How many does each team get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One crack in the volcano's slope is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One crack in the volcano's slope is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "share", definition: "To split into equal parts.", exampleSentence: "Share the sensors equally.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Lava is melted rock that flows out of a volcano.")],
@@ -4323,7 +4323,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Piper checks 3 boxes of thermometers with 4 thermometers in each box. How many thermometers does she use?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A wind vane pole is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A wind vane pole is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten weather charts.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the weather station has enough supplies.")],
@@ -4344,7 +4344,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Piper orders 3 boxes with 8 rain gauges in each box. How many gauges does she order?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Piper shares 18 weather charts among 3 forecasting teams equally. How many does each team get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One wind vane pole is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One wind vane pole is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "equal", definition: "The same number in each group.", exampleSentence: "Equal groups of gauges have the same count.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A rain gauge measures how much rain has fallen.")],
@@ -4549,7 +4549,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Farmer Jo sets out 3 rows with 4 feed buckets in each row. How many feed buckets does she set out?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A fence post is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A fence post is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten hay bales.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the barn has enough supplies.")],
@@ -4570,7 +4570,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Farmer Jo picks 3 baskets with 8 apples in each basket. How many apples does she pick?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Farmer Jo shares 18 apples among 3 visiting families equally. How many does each family get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One fence post is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One fence post is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "times", definition: "Groups of the same size counted that many times.", exampleSentence: "3 times 8 is 24 apples.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Harvest is the time farmers gather crops from the fields.")],
@@ -4775,7 +4775,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Keeper Amara packs 3 crates of fruit baskets with 4 baskets in each crate. How many fruit baskets does she carry?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A fence rail is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A fence rail is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten enrichment toys.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the zoo has enough supplies.")],
@@ -4796,7 +4796,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Keeper Amara packs 3 crates with 8 pieces of fruit in each crate. How many pieces of fruit does she pack?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Keeper Amara shares 18 pieces of fruit among 3 monkey enclosures equally. How many does each enclosure get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One fence rail is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One fence rail is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "split", definition: "To divide into parts.", exampleSentence: "Split the pieces into equal shares.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Zookeepers check every animal each day to be sure it is healthy.")],
@@ -5001,7 +5001,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     sort.groupingQuestion,
                     mcq("Captain Wren stacks 3 equal groups of 4 treasure chests. How many treasure chests are there?", ["7", "12", "14"], "12", "3 × 4 = 12.", subject: .math),
-                    mcq("A ship's plank is 15 centimeters longer than a mark. Another is 9 centimeters longer. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
+                    mcq("A ship's plank is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6 centimeters.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "group", definition: "A set of things counted together.", exampleSentence: "Make groups of ten gold coins.")],
                 knowledgeFacts: [KnowledgeFact(fact: "Equal groups make it easier to check that the ship has enough supplies.")],
@@ -5022,7 +5022,7 @@ extension CuratedTopicLessonBank {
                 problems: [
                     mcq("Captain Wren opens 3 chests with 8 gold coins in each chest. How many coins does she open?", ["16", "24", "32"], "24", "3 × 8 = 24.", subject: .math),
                     mcq("Captain Wren shares 18 gold coins among 3 crew members equally. How many does each crew member get?", ["5", "6", "9"], "6", "18 ÷ 3 = 6.", subject: .math),
-                    mcq("One ship's plank is 15 centimeters longer than a mark. Another is 9. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
+                    mcq("One ship's plank is 15 centimeters long. Another is 9 centimeters long. How much longer is the first?", ["5", "6", "7"], "6", "15 − 9 = 6.", subject: .math)
                 ],
                 vocabularyWords: [VocabularyWord(word: "fair", definition: "The same amount for everyone.", exampleSentence: "A fair share of coins is the same for each.")],
                 knowledgeFacts: [KnowledgeFact(fact: "A compass shows sailors which direction they are going.")],

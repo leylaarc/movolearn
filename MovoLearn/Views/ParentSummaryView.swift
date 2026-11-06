@@ -88,7 +88,7 @@ struct ParentSummaryView: View {
                 }
                 Spacer()
                 Image(systemName: "chart.line.uptrend.xyaxis.circle.fill")
-                    .font(.system(size: 40))
+                    .font(.padScaled(size: 40))
                     .foregroundStyle(DesignSystem.Colors.skyBlue.opacity(0.7))
             }
         }

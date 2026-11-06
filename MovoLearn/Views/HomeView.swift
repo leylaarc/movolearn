@@ -10,6 +10,7 @@ struct HomeView: View {
     var onSelectSubject: ((ExploreSubjectCategory) -> Void)? = nil
     var onSeeAllSubjects: (() -> Void)? = nil
     var onOpenAdventures: (() -> Void)? = nil
+    var onStartPlay: ((PlayGameOffer) -> Void)? = nil
 
     @State private var appeared = false
 
@@ -38,6 +39,11 @@ struct HomeView: View {
 
                     continueSection
                         .entrance(appeared: appeared, delay: 0.06)
+
+                    if !feed.playOffers.isEmpty, onStartPlay != nil {
+                        playSection
+                            .entrance(appeared: appeared, delay: 0.08)
+                    }
 
                     if let stats = feed.playerStats {
                         HomeTodayStrip(stats: stats, onTap: onOpenAdventures)
@@ -85,6 +91,29 @@ struct HomeView: View {
                 )
             ) {
                 onStartLesson(first.lesson)
+            }
+        }
+    }
+
+    private var playSection: some View {
+        VStack(alignment: .leading, spacing: DesignSystem.Spacing.md) {
+            HomeSectionTitle(
+                title: "Practice",
+                actionTitle: onOpenAdventures == nil ? nil : "All lessons",
+                action: onOpenAdventures
+            )
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: DesignSystem.Spacing.md) {
+                    ForEach(Array(feed.playOffers.enumerated()), id: \.element.id) { index, offer in
+                        PlayGameCard(offer: offer) {
+                            onStartPlay?(offer)
+                        }
+                        .floating(offset: 5, delay: Double(index) * 0.12)
+                    }
+                }
+                .padding(.vertical, 8)
+                .padding(.trailing, 4)
             }
         }
     }
@@ -212,7 +241,8 @@ struct HomeView: View {
             ],
             discovery: nil,
             recentRewards: [],
-            mascotTopic: .dinosaurs
+            mascotTopic: .dinosaurs,
+            playOffers: []
         ),
         onStartLesson: { _ in },
         onEditInterests: {},

@@ -40,275 +40,275 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return DiscoveryPack(
-                title: "Tide Pool Homes",
-                storyOpening: "Willa the whale nudges you toward the shore. When the ocean pulls back, little pools of water stay trapped like secret bathtubs in the rocks.",
-                missionPrompt: "Hunt for one fact about tide pools in the notes.",
-                readingPassage: "A tide pool is a small pool of ocean water. Rocks hold the water when the tide goes out. Tiny crabs can hide there between wet stones. Cool water keeps the pool wet even in the sun.",
+                title: "Kelp Forests",
+                storyOpening: "Willa the whale glides through tall green ribbons. The ribbons are kelp, and together they make a kelp forest in the ocean.",
+                missionPrompt: "Hunt for one fact about kelp in the notes.",
+                readingPassage: "Kelp is a tall ocean plant. It grows toward sunlight. Fish can hide in kelp. A kelp forest is a wet home.",
                 questions: [
                     discoveryMCQ(
-                        "According to the notes, what is a tide pool?",
-                        ["A small pool of ocean water", "A deep open-ocean trench", "A freshwater pond on a hill"],
-                        "A small pool of ocean water",
-                        "When the tide goes out, seawater stays trapped among rocks and forms a small pool."
+                        "According to the notes, what is kelp?",
+                        ["A tall ocean plant", "A dry desert cactus", "A kind of cloud"],
+                        "A tall ocean plant",
+                        "Kelp is a tall plant that grows in the ocean."
                     ),
                     discoveryMCQ(
-                        "What holds the water when the tide goes out?",
-                        ["Rocks", "Loose sand alone", "Open water with no rim"],
-                        "Rocks",
-                        "Hard rock edges act like a bowl and trap seawater after the tide drops."
+                        "Where does kelp grow toward?",
+                        ["Sunlight", "The dark ocean floor only", "A dry sandy hill"],
+                        "Sunlight",
+                        "Kelp grows toward sunlight near the water's surface."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "tide pool",
-                        definition: "A small pool of ocean water left among rocks.",
-                        exampleSentence: "A crab hides in a tide pool."
+                        word: "kelp",
+                        definition: "A tall plant that grows in ocean water.",
+                        exampleSentence: "Fish hide in the kelp."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Tide pools hold ocean water among rocks when the tide goes out.",
-                        explanation: "Rocks trap seawater and make tiny wet homes."
+                        fact: "Kelp is a tall ocean plant that grows toward sunlight.",
+                        explanation: "Sunlight helps kelp grow in the sea."
                     ),
                     KnowledgeFact(
-                        fact: "Tiny crabs can hide in tide pools.",
-                        explanation: "Cool water and rocks give small animals shelter."
+                        fact: "Fish can hide in a kelp forest.",
+                        explanation: "Tall kelp makes a wet home for ocean animals."
                     )
                 ],
-                creativePrompt: "Draw a tide pool with a rock edge and one tiny crab.",
-                storyEnding: "Willa the whale smiles. You logged a real tide-pool fact. Great science work!",
-                readingSkill: "Use a science note to name what a tide pool is",
-                reflectionPrompt: "Name one thing that helps make a tide pool.",
+                creativePrompt: "Draw tall kelp in ocean water with one fish hiding.",
+                storyEnding: "Willa the whale smiles. You logged a real kelp fact. Great science work!",
+                readingSkill: "Use a science note to name what kelp is",
+                reflectionPrompt: "Name one thing kelp does in the ocean.",
                 hints: [
-                    "Look for the words tide pool",
-                    "Find the sentence about rocks"
+                    "Look for the word kelp",
+                    "Find the sentence about sunlight"
                 ],
                 commonMistakes: [
-                    "Choosing a place that is not wet ocean water"
+                    "Choosing a land plant that is not kelp"
                 ],
                 successCriteria: [
-                    "Names a tide-pool detail from the notes",
-                    "Uses a stated rock fact"
+                    "Names kelp as an ocean plant",
+                    "Uses a sunlight fact"
                 ],
                 learningObjectives: [
-                    "Identify that tide pools are small pools of ocean water among rocks",
+                    "Identify kelp as a tall ocean plant that grows toward sunlight",
                     "fp:discovery.Ocean Animals.beginner"
                 ],
-                activityFingerprint: "ocean-animals.discovery.beginner.tide-pools"
+                activityFingerprint: "ocean-animals.discovery.beginner.kelp"
             )
 
         case .earlyReader:
             return DiscoveryPack(
-                title: "Dolphins Need Air",
-                storyOpening: "Willa the whale surfaces beside you with a soft splash. Come wonder with her—how do dolphins breathe?",
+                title: "A Hermit Crab's Shell",
+                storyOpening: "Willa the whale peeks at a tiny crab on the sand. Come wonder with her—why does it carry a seashell?",
                 missionPrompt: "Read the science notes. Answer using evidence from the notes.",
-                readingPassage: "Dolphins are mammals that live in the ocean. They must breathe air at the surface. A dolphin rises, takes a breath, and can dive again. Dolphins do not use gills like fish. Fresh air keeps a dolphin alive under the waves.",
+                readingPassage: "A hermit crab has a soft belly. It lives in an empty seashell. When the crab grows, it finds a bigger shell. The old shell is left behind. A fitting shell protects the crab.",
                 questions: [
                     discoveryMCQ(
-                        "What kind of animals are dolphins?",
-                        ["Mammals", "Fish with gills", "Birds with feathers"],
-                        "Mammals",
-                        "Dolphins are mammals: they breathe air and cannot pull oxygen from water with gills."
+                        "What does a hermit crab live in?",
+                        ["An empty seashell", "A hard shell it grows itself", "A nest in a tall tree"],
+                        "An empty seashell",
+                        "A hermit crab lives in an empty seashell that it finds."
                     ),
                     discoveryMCQ(
-                        "Where must dolphins breathe air?",
-                        ["At the surface", "Only through gills underwater", "Only from the ocean floor"],
-                        "At the surface",
-                        "A dolphin must rise to the top of the water to take a breath of air."
+                        "What does the crab do when it grows?",
+                        ["It finds a bigger shell", "It grows wings and flies", "It leaves the ocean forever"],
+                        "It finds a bigger shell",
+                        "As the crab grows, it moves into a bigger empty seashell."
                     ),
                     discoveryMCQ(
-                        "What do dolphins not use like fish?",
-                        ["Gills", "Lungs for air", "A blowhole at the surface"],
-                        "Gills",
-                        "Fish take oxygen from water with gills, but dolphins use lungs and must breathe air."
+                        "What does a fitting shell do?",
+                        ["It protects the crab", "It helps the crab fly", "It turns the crab into a fish"],
+                        "It protects the crab",
+                        "The shell covers the crab's soft belly and helps keep it safe."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "mammal",
-                        definition: "A warm animal that breathes air and often has hair or fur.",
-                        exampleSentence: "A dolphin is a mammal that breathes air."
+                        word: "seashell",
+                        definition: "A hard cover left by a sea animal.",
+                        exampleSentence: "The hermit crab lives in a seashell."
                     ),
                     VocabularyWord(
-                        word: "surface",
-                        definition: "The top of the water.",
-                        exampleSentence: "Dolphins breathe at the surface."
+                        word: "protect",
+                        definition: "To keep something safe.",
+                        exampleSentence: "A fitting shell protects the crab."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Dolphins are mammals that breathe air at the ocean surface.",
-                        explanation: "They rise to breathe, then can dive again."
+                        fact: "A hermit crab lives in an empty seashell because its belly is soft.",
+                        explanation: "The crab does not grow a hard shell of its own."
                     ),
                     KnowledgeFact(
-                        fact: "Dolphins do not use gills like fish.",
-                        explanation: "Air, not water through gills, keeps them alive."
+                        fact: "When a hermit crab grows, it moves into a bigger seashell.",
+                        explanation: "A fitting shell protects the crab."
                     )
                 ],
-                creativePrompt: "Draw a dolphin rising to breathe, and label the surface.",
-                storyEnding: "Willa the whale nods. You used evidence about dolphin breathing. Careful science reading!",
-                readingSkill: "Use evidence to explain how dolphins breathe",
-                reflectionPrompt: "Why must a dolphin come to the surface?",
+                creativePrompt: "Draw a hermit crab in a seashell, and label the shell.",
+                storyEnding: "Willa the whale nods. You used evidence about hermit crabs. Careful science reading!",
+                readingSkill: "Use evidence to explain how a hermit crab uses a seashell",
+                reflectionPrompt: "Why does a hermit crab need a seashell?",
                 hints: [
-                    "Find the mammal sentence",
-                    "Look for gills"
+                    "Find the soft belly sentence",
+                    "Look for bigger shell"
                 ],
                 commonMistakes: [
-                    "Thinking dolphins breathe like fish with gills"
+                    "Thinking the crab grows a hard shell like a turtle"
                 ],
                 successCriteria: [
-                    "States that dolphins breathe air",
-                    "Cites a surface detail"
+                    "States that the crab lives in a seashell",
+                    "Cites protection or growing"
                 ],
                 learningObjectives: [
-                    "Explain that dolphins are air-breathing mammals",
+                    "Explain that hermit crabs use empty seashells for protection",
                     "fp:discovery.Ocean Animals.earlyReader"
                 ],
-                activityFingerprint: "ocean-animals.discovery.early.dolphin-air"
+                activityFingerprint: "ocean-animals.discovery.early.hermit-crab"
             )
 
         case .growingReader:
             return DiscoveryPack(
-                title: "Octopus Camouflage",
-                storyOpening: "Willa the whale glides past a reef crack and invites you closer. Watch carefully—an octopus can hide in plain sight!",
-                missionPrompt: "Find the main idea about how an octopus stays safe. Use details from the notes.",
-                readingPassage: "An octopus can change the color and texture of its skin. Matching the reef helps it hide from hunters. The same camouflage can help it sneak toward crabs. Soft arms feel ahead as it moves into a narrow crack. The main idea is clear: camouflage and careful movement help an octopus stay safe on a busy reef.",
+                title: "Coral Is an Animal",
+                storyOpening: "Willa the whale drifts beside a colorful reef. Come wonder with her—is coral a rock or a living thing?",
+                missionPrompt: "Find the main idea about coral. Use details from the notes.",
+                readingPassage: "Coral can look like colorful rock. Each piece is a tiny animal called a polyp. Polyps build a hard skeleton around their bodies. Many polyps together make a coral reef. The hard homes stay as the animals grow. The main idea is that coral is made by tiny animals.",
                 questions: [
                     discoveryMCQ(
                         "What is the main idea of the notes?",
-                        ["Camouflage and careful movement help an octopus stay safe", "An octopus stays safe only by swimming fast", "An octopus stays safe only by living in deep open water"],
-                        "Camouflage and careful movement help an octopus stay safe",
-                        "Blending into the reef and moving carefully into cracks both help an octopus avoid hunters."
+                        ["Coral is made by tiny animals", "Coral is only colorful painted rock", "Coral is a kind of seaweed"],
+                        "Coral is made by tiny animals",
+                        "Each piece of coral is a tiny animal called a polyp that builds a hard skeleton."
                     ),
                     discoveryMCQ(
-                        "What can an octopus change on its skin?",
-                        ["Color and texture", "Only its eye color", "Only the length of its arms"],
-                        "Color and texture",
-                        "Changing both color and how bumpy the skin feels helps the octopus match rocks and coral."
+                        "What is a polyp?",
+                        ["A tiny animal", "A piece of dry sand only", "A kind of ocean bird"],
+                        "A tiny animal",
+                        "A polyp is a tiny animal that lives in a hard coral skeleton."
                     ),
                     discoveryMCQ(
-                        "How else does camouflage help an octopus?",
-                        ["It can sneak toward crabs", "It can breathe air on dry land", "It can swim faster than every fish"],
-                        "It can sneak toward crabs",
-                        "Matching the reef hides the octopus so it can creep close to crabs it wants to catch."
+                        "What do many polyps together make?",
+                        ["A coral reef", "A kelp forest", "A tide pool"],
+                        "A coral reef",
+                        "Many polyps living together build the hard structure of a coral reef."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "camouflage",
-                        definition: "Colors or patterns that help an animal blend in.",
-                        exampleSentence: "Octopus camouflage matches the reef."
+                        word: "coral",
+                        definition: "A reef builder made of tiny animals in hard skeletons.",
+                        exampleSentence: "Coral can look like rock, but it is made by animals."
                     ),
                     VocabularyWord(
-                        word: "texture",
-                        definition: "How a surface feels, such as smooth or bumpy.",
-                        exampleSentence: "Octopus skin can change texture."
+                        word: "polyp",
+                        definition: "A tiny animal that helps build coral.",
+                        exampleSentence: "Each polyp builds a hard skeleton."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Octopuses can change skin color and texture to blend into the reef.",
-                        explanation: "Camouflage helps them hide and hunt."
+                        fact: "Coral is made by tiny animals called polyps.",
+                        explanation: "Polyps build hard skeletons around their bodies."
                     ),
                     KnowledgeFact(
-                        fact: "Careful movement into cracks also helps an octopus stay safe.",
-                        explanation: "Hiding spots and blending colors work together."
+                        fact: "Many polyps together make a coral reef.",
+                        explanation: "The hard homes stay as the animals grow."
                     )
                 ],
-                creativePrompt: "Draw an octopus that matches nearby seaweed, and label camouflage.",
-                storyEnding: "Willa the whale glows with pride. You found the camouflage main idea like a careful reef scientist.",
-                readingSkill: "Identify the main idea in octopus camouflage notes",
-                reflectionPrompt: "Which octopus clue best explains how it stays safe?",
+                creativePrompt: "Draw a coral reef. Label one polyp and the hard skeleton.",
+                storyEnding: "Willa the whale glows with pride. You found the coral main idea like a careful reef scientist.",
+                readingSkill: "Identify the main idea that coral is made by animals",
+                reflectionPrompt: "What is coral made by, according to the notes?",
                 hints: [
                     "Reread the last sentence for the main idea.",
-                    "Find color and texture"
+                    "Find the word polyp"
                 ],
                 commonMistakes: [
-                    "Missing the camouflage main idea"
+                    "Thinking coral is only lifeless rock"
                 ],
                 successCriteria: [
-                    "States the safety main idea",
-                    "Cites one supporting detail"
+                    "States the coral main idea",
+                    "Cites polyps or a reef"
                 ],
                 learningObjectives: [
-                    "Explain how octopus camouflage supports safety on a reef",
+                    "Explain that coral reefs are built by tiny animals called polyps",
                     "fp:discovery.Ocean Animals.growingReader"
                 ],
-                activityFingerprint: "ocean-animals.discovery.growing.octopus-camouflage"
+                activityFingerprint: "ocean-animals.discovery.growing.coral-animal"
             )
 
         case .confidentReader:
             return DiscoveryPack(
-                title: "Jobs on One Reef",
-                storyOpening: "Willa the whale circles a busy reef and asks you to notice the neighbors. Together you investigate how reef animals share one home.",
-                missionPrompt: "Use evidence from the notes. Explain why many ocean animals can live on the same reef.",
-                readingPassage: "A coral reef can work like a busy neighborhood with many jobs. Parrotfish scrape algae from coral so the reef is not smothered. Cleaner shrimp nibble tiny pests off larger fish that visit their station. Sea turtles may feed on nearby seagrass and rest in the area. Animals that use different foods and spaces compete less for one resource. When one neighbor disappears, the whole balance can tip. Diversity of jobs helps one reef support many ocean animals.",
+                title: "The Moon Pulls the Tides",
+                storyOpening: "Willa the whale watches the shore change as water rises. Together you investigate why the ocean does not stay still.",
+                missionPrompt: "Use evidence from the notes. Explain why ocean water rises and falls.",
+                readingPassage: "Ocean water does not stay at one height all day. The Moon pulls on Earth with gravity. That pull tugs ocean water into a bulge. As Earth turns, coasts move through the bulge. Water rises as high tide, then falls as low tide. Most coasts see this pattern about twice a day. You can infer that tides follow the Moon's pull, not only the weather.",
                 questions: [
                     discoveryMCQ(
-                        "What can you infer about why many animals share one reef?",
-                        ["They use different foods and spaces", "They all eat only the same coral rock", "They all need the exact same hiding spot"],
-                        "They use different foods and spaces",
-                        "When neighbors eat different foods and use different spaces, they compete less and can share one reef."
+                        "What can you infer about why tides happen?",
+                        ["The Moon's gravity pulls ocean water", "The weather alone fills every tide pool", "Fish push the water up twice a day"],
+                        "The Moon's gravity pulls ocean water",
+                        "The Moon's gravity tugs ocean water into a bulge, so coasts see high tide and low tide."
                     ),
                     discoveryMCQ(
-                        "How do parrotfish help the reef?",
-                        ["They scrape algae so coral is not smothered", "They nibble pests off visiting fish", "They feed only on nearby seagrass"],
-                        "They scrape algae so coral is not smothered",
-                        "Too much algae can cover coral; parrotfish scrape it away so the reef stays healthy."
+                        "What is high tide?",
+                        ["Water that has risen", "Water that has frozen", "Water that has left Earth"],
+                        "Water that has risen",
+                        "When a coast moves through the water bulge, the water rises as high tide."
                     ),
                     discoveryMCQ(
-                        "What do cleaner shrimp do?",
-                        ["Nibble tiny pests off larger fish", "Scrape algae from coral rocks", "Feed only on seagrass beds"],
-                        "Nibble tiny pests off larger fish",
-                        "Cleaner shrimp pick tiny pests off larger fish that visit their station. That is a different reef job than parrotfish or turtles."
+                        "About how often do most coasts see this pattern?",
+                        ["About twice a day", "Once each year", "Only during a storm"],
+                        "About twice a day",
+                        "Most coasts see high tide and low tide about twice a day as Earth turns."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "balance",
-                        definition: "A steady mix where parts work well together.",
-                        exampleSentence: "Reef balance depends on many animal neighbors."
+                        word: "tide",
+                        definition: "The rise and fall of ocean water along a coast.",
+                        exampleSentence: "High tide is when the water has risen."
                     ),
                     VocabularyWord(
-                        word: "resource",
-                        definition: "Something living things need, such as food or space.",
-                        exampleSentence: "Animals share different resources on a reef."
+                        word: "gravity",
+                        definition: "A pull that draws objects toward each other.",
+                        exampleSentence: "The Moon's gravity pulls on Earth's oceans."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Reef animals can share one home by using different foods and spaces.",
-                        explanation: "Diverse roles help keep coral reefs in balance."
+                        fact: "The Moon's gravity pulls ocean water and helps make tides.",
+                        explanation: "The pull tugs water into a bulge that coasts move through."
                     ),
                     KnowledgeFact(
-                        fact: "Parrotfish help coral by scraping algae.",
-                        explanation: "Too much algae can smother a reef."
+                        fact: "High tide is risen water, and low tide is fallen water.",
+                        explanation: "Most coasts see this pattern about twice a day."
                     ),
                     KnowledgeFact(
-                        fact: "Cleaner shrimp remove tiny pests from larger fish.",
-                        explanation: "Different jobs support reef neighbors."
+                        fact: "Tides follow the Moon's pull, not only the weather.",
+                        explanation: "Earth's turn moves coasts through the water bulge."
                     )
                 ],
-                creativePrompt: "Write three sentences naming two reef neighbors and how their jobs differ.",
-                storyEnding: "Willa the whale swims beside you. You connected reef jobs and balance like a careful investigator.",
-                readingSkill: "Infer ecosystem roles from reef neighbor evidence",
-                reflectionPrompt: "Which reef job from the notes would you want to study first?",
+                creativePrompt: "Write three sentences explaining how the Moon's pull changes the water at a coast.",
+                storyEnding: "Willa the whale swims beside you. You connected the Moon and tides like a careful investigator.",
+                readingSkill: "Infer why ocean tides rise and fall",
+                reflectionPrompt: "What pulls on the ocean to help make tides?",
                 hints: [
-                    "Compare parrotfish with cleaner shrimp",
-                    "Reread the idea about foods and spaces"
+                    "Find the Moon and gravity",
+                    "Reread high tide and low tide"
                 ],
                 commonMistakes: [
-                    "Treating the reef as one animal with one job"
+                    "Blaming tides on weather alone"
                 ],
                 successCriteria: [
-                    "Explains shared reef life using passage evidence",
-                    "Links jobs to balance"
+                    "Uses Moon or gravity evidence",
+                    "Links the pull to high tide or low tide"
                 ],
                 learningObjectives: [
-                    "Infer why diverse ocean animals can share a reef",
+                    "Infer that the Moon's gravity helps cause ocean tides",
                     "fp:discovery.Ocean Animals.confidentReader"
                 ],
-                activityFingerprint: "ocean-animals.discovery.confident.reef-jobs"
+                activityFingerprint: "ocean-animals.discovery.confident.tides-moon"
             )
         }
     }
@@ -320,275 +320,275 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return DiscoveryPack(
-                title: "Earth Is Our Home",
-                storyOpening: "Nova the star twinkles beside you in the night sky. Look up—our whole world is one bright blue ball spinning in space.",
-                missionPrompt: "Spot one fact about Earth from the science notes.",
-                readingPassage: "Earth is the planet where we live. It has land, water, and air. The Sun gives Earth light and warmth. Without that warmth, oceans would freeze solid. Earth is our home in space.",
+                title: "The Moon Is Not a Planet",
+                storyOpening: "Nova the star twinkles beside a round silver Moon. Look closely—is that bright neighbor a planet?",
+                missionPrompt: "Spot one fact about the Moon from the science notes.",
+                readingPassage: "The Moon travels around Earth. It is not a planet. Planets travel around the Sun. The Moon has no air like Earth.",
                 questions: [
                     discoveryMCQ(
-                        "According to the notes, which planet is our home?",
-                        ["Earth", "The Moon", "The Sun"],
+                        "According to the notes, what does the Moon travel around?",
+                        ["Earth", "The Sun only", "A nearby kite"],
                         "Earth",
-                        "Earth is the planet with land, water, and air where people live."
+                        "The Moon travels around Earth, not around the Sun the way planets do."
                     ),
                     discoveryMCQ(
-                        "What does the Sun give Earth?",
-                        ["Light and warmth", "Only cold darkness", "Only empty space dust"],
-                        "Light and warmth",
-                        "Sunlight reaches Earth and warms it so living things can survive."
+                        "What is the Moon not?",
+                        ["A planet", "Earth's neighbor", "A round world in the sky"],
+                        "A planet",
+                        "The notes say the Moon is not a planet. Planets travel around the Sun."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "planet",
-                        definition: "A large world that moves around a star.",
-                        exampleSentence: "Earth is the planet where we live."
+                        word: "Moon",
+                        definition: "The round world that travels around Earth.",
+                        exampleSentence: "The Moon travels around Earth."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Earth is the planet where people live.",
-                        explanation: "It has land, water, and air."
+                        fact: "The Moon travels around Earth and is not a planet.",
+                        explanation: "Planets travel around the Sun."
                     ),
                     KnowledgeFact(
-                        fact: "The Sun gives Earth light and warmth.",
-                        explanation: "Without the Sun, Earth would be dark and cold."
+                        fact: "The Moon has no air like Earth.",
+                        explanation: "Earth has air; the Moon does not."
                     )
                 ],
-                creativePrompt: "Draw Earth with land, water, and sunlight.",
-                storyEnding: "Nova the star sparkles. You logged a real Earth fact. Great science work!",
-                readingSkill: "Use a science note to name Earth as our home planet",
-                reflectionPrompt: "Name one thing Earth has that helps living things.",
+                creativePrompt: "Draw Earth and the Moon. Label which one people live on.",
+                storyEnding: "Nova the star sparkles. You logged a real Moon fact. Great science work!",
+                readingSkill: "Use a science note to tell the Moon from a planet",
+                reflectionPrompt: "What does the Moon travel around?",
                 hints: [
-                    "Look for the word Earth",
-                    "Find the Sun sentence"
+                    "Look for the word Moon",
+                    "Find travels around Earth"
                 ],
                 commonMistakes: [
-                    "Choosing a place that is not Earth"
+                    "Calling the Moon a planet"
                 ],
                 successCriteria: [
-                    "Names Earth as home",
-                    "Uses a Sun fact"
+                    "Names Earth as the Moon's path",
+                    "States the Moon is not a planet"
                 ],
                 learningObjectives: [
-                    "Identify Earth as the planet where we live",
+                    "Identify that the Moon orbits Earth and is not a planet",
                     "fp:discovery.Planets.beginner"
                 ],
-                activityFingerprint: "planets.discovery.beginner.earth-home"
+                activityFingerprint: "planets.discovery.beginner.moon-not-planet"
             )
 
         case .earlyReader:
             return DiscoveryPack(
-                title: "Rocky Worlds and Gas Giants",
-                storyOpening: "Nova the star glows warmly and invites you to compare worlds. Some planets are rocky, and some are giant balls of gas!",
+                title: "Saturn's Rings",
+                storyOpening: "Nova the star glows beside a striped giant. Come look at Saturn's bright rings!",
                 missionPrompt: "Read the science notes. Answer using evidence from the notes.",
-                readingPassage: "Some planets are rocky worlds with solid ground. Earth is a rocky planet. Other planets are gas giants made mostly of thick gases. Jupiter is a gas giant. Rocky and gas planets are not built the same way.",
+                readingPassage: "Saturn is a giant planet. Bright rings circle Saturn. The rings are made of ice and rock. Ice chunks orbit Saturn together. The rings look solid from far away. They are many pieces.",
                 questions: [
                     discoveryMCQ(
-                        "What kind of planet is Earth?",
-                        ["A rocky planet", "A gas giant", "An icy moon only"],
-                        "A rocky planet",
-                        "Earth has solid ground, so scientists call it a rocky planet, not a gas giant."
+                        "What circles Saturn?",
+                        ["Bright rings", "A single ocean", "A hard rocky desert"],
+                        "Bright rings",
+                        "Bright rings made of ice and rock circle the planet Saturn."
                     ),
                     discoveryMCQ(
-                        "What are gas giants made mostly of?",
-                        ["Thick gases", "Mostly solid rock", "Mostly liquid water"],
-                        "Thick gases",
-                        "Gas giants are huge worlds built mostly of thick gases instead of hard rocky ground."
+                        "What are Saturn's rings made of?",
+                        ["Ice and rock", "Only thick clouds of steam", "Only green forest leaves"],
+                        "Ice and rock",
+                        "The rings are many pieces of ice and rock, not one solid hoop."
                     ),
                     discoveryMCQ(
-                        "Which planet is named as a gas giant?",
-                        ["Jupiter", "Earth", "The Moon"],
-                        "Jupiter",
-                        "Jupiter is a gas giant made mostly of thick gases, unlike rocky Earth."
+                        "How do the ice chunks move?",
+                        ["They orbit Saturn together", "They sit still on Saturn's ground", "They fall into the Sun each day"],
+                        "They orbit Saturn together",
+                        "The ice and rock pieces travel around Saturn in a ring."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "rocky",
-                        definition: "Made of solid rock or hard ground.",
-                        exampleSentence: "Earth is a rocky planet."
+                        word: "ring",
+                        definition: "A band of ice and rock that circles a planet.",
+                        exampleSentence: "Saturn has bright rings."
                     ),
                     VocabularyWord(
-                        word: "gas giant",
-                        definition: "A huge planet made mostly of thick gases.",
-                        exampleSentence: "Jupiter is a gas giant."
+                        word: "ice",
+                        definition: "Frozen water.",
+                        exampleSentence: "Saturn's rings hold ice and rock."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Earth is a rocky planet with solid ground.",
-                        explanation: "Rocky planets have hard surfaces."
+                        fact: "Saturn is circled by bright rings of ice and rock.",
+                        explanation: "The rings are many pieces, not one solid hoop."
                     ),
                     KnowledgeFact(
-                        fact: "Gas giants like Jupiter are made mostly of thick gases.",
-                        explanation: "They are not built like Earth."
+                        fact: "Ice chunks in Saturn's rings orbit the planet together.",
+                        explanation: "From far away the rings can look solid."
                     )
                 ],
-                creativePrompt: "Draw one rocky planet and one gas giant, and label each kind.",
-                storyEnding: "Nova the star shines. You compared rocky and gas planets with evidence.",
-                readingSkill: "Use evidence to tell rocky planets from gas giants",
-                reflectionPrompt: "How is Earth different from a gas giant?",
+                creativePrompt: "Draw Saturn with rings. Label ice and rock.",
+                storyEnding: "Nova the star shines. You used evidence about Saturn's rings.",
+                readingSkill: "Use evidence to explain what Saturn's rings are",
+                reflectionPrompt: "What are Saturn's rings made of?",
                 hints: [
-                    "Find Earth as rocky",
-                    "Look for Jupiter"
+                    "Find ice and rock",
+                    "Look for orbit Saturn"
                 ],
                 commonMistakes: [
-                    "Mixing up rocky planets with gas giants"
+                    "Thinking the rings are one solid hoop"
                 ],
                 successCriteria: [
-                    "Names Earth as rocky",
-                    "Names a gas giant fact"
+                    "Names ice and rock",
+                    "States that rings circle Saturn"
                 ],
                 learningObjectives: [
-                    "Distinguish rocky planets from gas giants",
+                    "Explain that Saturn's rings are ice and rock orbiting the planet",
                     "fp:discovery.Planets.earlyReader"
                 ],
-                activityFingerprint: "planets.discovery.early.rocky-gas"
+                activityFingerprint: "planets.discovery.early.saturn-rings"
             )
 
         case .growingReader:
             return DiscoveryPack(
-                title: "Why Venus Looks Bright",
-                storyOpening: "Nova the star points to a bright spot near the horizon. Come wonder with her—why does Venus look so bright?",
-                missionPrompt: "Find the main idea about Venus brightness. Use details from the notes.",
-                readingPassage: "Venus can look very bright in the sky. Thick clouds wrap around the planet. Those clouds reflect a lot of sunlight back toward Earth. The reflected light makes Venus easy to notice. The main idea is that Venus looks bright because its clouds bounce sunlight toward us.",
+                title: "Why Mars Looks Red",
+                storyOpening: "Nova the star points to a rusty-looking world. Come wonder with her—why does Mars look so red?",
+                missionPrompt: "Find the main idea about why Mars looks red. Use details from the notes.",
+                readingPassage: "Mars can look rusty red in the sky. Fine dust covers much of the planet. That dust has iron in it. The iron has rusted, the way iron turns reddish over time. The rust-colored dust makes Mars look red from Earth. The main idea is that rusty iron dust makes Mars look red.",
                 questions: [
                     discoveryMCQ(
                         "What is the main idea of the notes?",
-                        ["Venus looks bright because its clouds bounce sunlight toward us", "Venus looks bright because it is closer than every star", "Venus looks bright because it makes its own firelight"],
-                        "Venus looks bright because its clouds bounce sunlight toward us",
-                        "Thick clouds around Venus reflect sunlight back toward Earth, so Venus looks bright in our sky."
+                        ["Mars looks red because rusty iron dust covers the planet", "Mars looks red because thick clouds bounce sunlight toward us", "Mars looks red because it is closer than every star"],
+                        "Mars looks red because rusty iron dust covers the planet",
+                        "Rusty iron in the dust covers Mars, so the planet looks red from Earth."
                     ),
                     discoveryMCQ(
-                        "What wraps around Venus?",
-                        ["Thick clouds", "A thin clear sky only", "A ring of solid ice only"],
-                        "Thick clouds",
-                        "A thick cloud layer wraps Venus and covers much of the planet."
+                        "What covers much of Mars?",
+                        ["Fine dust", "A thick ocean of water", "A ring of solid ice only"],
+                        "Fine dust",
+                        "Fine dust covers much of the planet."
                     ),
                     discoveryMCQ(
-                        "What do the clouds do to sunlight?",
-                        ["Reflect a lot of sunlight back toward Earth", "Absorb all sunlight so none returns", "Block the Sun from ever warming Venus"],
-                        "Reflect a lot of sunlight back toward Earth",
-                        "The clouds bounce sunlight outward, and some of that reflected light reaches our eyes on Earth."
+                        "What has happened to the iron in the dust?",
+                        ["It has rusted", "It has turned into ice rings", "It has become a gas giant"],
+                        "It has rusted",
+                        "The iron in the dust has rusted, and that rust-colored dust makes Mars look red."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "reflect",
-                        definition: "To bounce light back from a surface.",
-                        exampleSentence: "Clouds reflect sunlight."
+                        word: "rust",
+                        definition: "A reddish coating that forms when iron meets air over time.",
+                        exampleSentence: "Iron in Mars dust has rusted."
                     ),
                     VocabularyWord(
-                        word: "cloud",
-                        definition: "A thick layer of tiny drops or ice in the air.",
-                        exampleSentence: "Venus has thick clouds."
+                        word: "dust",
+                        definition: "Tiny bits of dry soil or rock.",
+                        exampleSentence: "Fine dust covers much of Mars."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Venus looks bright because thick clouds reflect sunlight toward Earth.",
-                        explanation: "Reflected light makes Venus easy to notice."
+                        fact: "Mars looks red because rusty iron dust covers the planet.",
+                        explanation: "The rust-colored dust is easy to notice from Earth."
                     ),
                     KnowledgeFact(
-                        fact: "Thick clouds wrap around Venus.",
-                        explanation: "Those clouds bounce a lot of sunlight."
+                        fact: "Dust on Mars has iron that has rusted.",
+                        explanation: "Rusted iron gives the dust a reddish color."
                     )
                 ],
-                creativePrompt: "Draw Venus with cloud layers. Add arrows for reflected sunlight.",
-                storyEnding: "Nova the star twinkles proudly. You found the brightness main idea like a careful sky scientist.",
-                readingSkill: "Identify the main idea about Venus reflecting sunlight",
-                reflectionPrompt: "What do Venus clouds do to sunlight?",
+                creativePrompt: "Draw Mars covered in rusty red dust. Label the dust.",
+                storyEnding: "Nova the star twinkles proudly. You found the Mars color main idea like a careful sky scientist.",
+                readingSkill: "Identify the main idea about why Mars looks red",
+                reflectionPrompt: "What makes Mars look red?",
                 hints: [
                     "Reread the last sentence for the main idea.",
-                    "Find reflect"
+                    "Find rust"
                 ],
                 commonMistakes: [
-                    "Missing the reflection main idea"
+                    "Mixing Mars dust with Venus clouds"
                 ],
                 successCriteria: [
-                    "States the brightness main idea",
-                    "Cites clouds reflecting light"
+                    "States the Mars color main idea",
+                    "Cites rusty iron dust"
                 ],
                 learningObjectives: [
-                    "Explain why Venus looks bright using cloud reflection",
+                    "Explain why Mars looks red using rusty iron dust",
                     "fp:discovery.Planets.growingReader"
                 ],
-                activityFingerprint: "planets.discovery.growing.venus-bright"
+                activityFingerprint: "planets.discovery.growing.mars-red"
             )
 
         case .confidentReader:
             return DiscoveryPack(
-                title: "Orbits Need Motion and Gravity",
-                storyOpening: "Nova the star shines like a curious science partner. Together you investigate how gravity and motion shape planet paths.",
-                missionPrompt: "Use evidence from the notes. Explain why planets stay in orbits around the Sun.",
-                readingPassage: "A planet moves forward through space with steady motion. The Sun pulls on the planet with gravity. Gravity bends the path so the planet curves instead of flying straight away. Together, motion and gravity make an orbit. Without forward motion, a planet would fall toward the Sun. Without gravity, a planet would not curve into a path around the Sun. Orbit science joins pull and travel.",
+                title: "Moons Orbit Planets",
+                storyOpening: "Nova the star shines like a curious science partner. Together you investigate what moons travel around.",
+                missionPrompt: "Use evidence from the notes. Explain how a moon's path is different from a planet's path.",
+                readingPassage: "Planets travel around the Sun. A moon travels around a planet. Earth has one Moon that loops around us. Jupiter has many moons of different sizes. Gravity keeps a moon on a curved path around its planet. You can infer that not every path in space goes around the Sun. Some paths go around planets instead.",
                 questions: [
                     discoveryMCQ(
-                        "What can you infer about why planets stay in orbits?",
-                        ["Motion and gravity work together to make a curved path", "Only gravity matters and motion does not", "Only forward motion matters and gravity does not"],
-                        "Motion and gravity work together to make a curved path",
-                        "Forward motion keeps a planet traveling, while the Sun's gravity bends that path into a curve called an orbit."
+                        "What can you infer about a moon's path?",
+                        ["A moon travels around a planet", "Every moon travels around the Sun only", "Moons sit still beside the Sun"],
+                        "A moon travels around a planet",
+                        "Planets go around the Sun, but a moon follows a curved path around its planet."
                     ),
                     discoveryMCQ(
-                        "What does the Sun pull with?",
-                        ["Gravity", "Magnetism only", "Wind from empty space"],
+                        "What keeps a moon on a curved path?",
+                        ["Gravity", "Ocean waves", "Sticky tape in space"],
                         "Gravity",
-                        "The Sun's gravity pulls on planets and helps bend their paths into orbits."
+                        "Gravity keeps a moon on a curved path around its planet."
                     ),
                     discoveryMCQ(
-                        "What would happen without forward motion?",
-                        ["A planet would fall toward the Sun", "A planet would fly straight into deep space", "A planet would stop feeling any pull"],
-                        "A planet would fall toward the Sun",
-                        "Without forward motion, gravity alone would pull the planet inward toward the Sun."
+                        "Which planet is named as having many moons?",
+                        ["Jupiter", "Earth", "The Sun"],
+                        "Jupiter",
+                        "Earth has one Moon; Jupiter has many moons of different sizes."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "orbit",
-                        definition: "A curved path one object follows around another.",
-                        exampleSentence: "Earth follows an orbit around the Sun."
+                        word: "moon",
+                        definition: "A world that travels around a planet.",
+                        exampleSentence: "Earth's Moon travels around Earth."
                     ),
                     VocabularyWord(
                         word: "gravity",
                         definition: "A pull that draws objects toward each other.",
-                        exampleSentence: "The Sun pulls planets with gravity."
+                        exampleSentence: "Gravity keeps a moon on its path."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Planets orbit the Sun because motion and gravity work together.",
-                        explanation: "Gravity curves a planet path while motion keeps it traveling."
+                        fact: "A moon travels around a planet, not around the Sun the way planets do.",
+                        explanation: "Earth's Moon loops around Earth."
                     ),
                     KnowledgeFact(
-                        fact: "Without forward motion, a planet would fall toward the Sun.",
-                        explanation: "Orbits need both pull and travel."
+                        fact: "Gravity keeps a moon on a curved path around its planet.",
+                        explanation: "Some paths in space go around planets."
                     ),
                     KnowledgeFact(
-                        fact: "Without gravity, a planet would not curve into a path around the Sun.",
-                        explanation: "Gravity bends the path."
+                        fact: "Jupiter has many moons of different sizes.",
+                        explanation: "Not every planet has only one moon."
                     )
                 ],
-                creativePrompt: "Draw the Sun and one planet path, and label gravity and motion.",
-                storyEnding: "Nova the star glows beside you. You connected gravity and motion like a careful investigator.",
-                readingSkill: "Infer how gravity and motion create orbits",
-                reflectionPrompt: "Which orbit clue from the notes feels most important?",
+                creativePrompt: "Draw the Sun, Earth, and Earth's Moon. Label each path.",
+                storyEnding: "Nova the star glows beside you. You compared planet paths and moon paths like a careful investigator.",
+                readingSkill: "Infer how moon paths differ from planet paths",
+                reflectionPrompt: "What does a moon travel around?",
                 hints: [
-                    "Compare gravity with forward motion",
-                    "Reread what happens without each one"
+                    "Compare the Sun path with a planet path",
+                    "Find Jupiter's moons"
                 ],
                 commonMistakes: [
-                    "Picking a claim the notes never support"
+                    "Thinking every moon travels around the Sun only"
                 ],
                 successCriteria: [
-                    "Uses gravity evidence",
-                    "Links motion to orbit shape"
+                    "States that moons orbit planets",
+                    "Uses gravity or a named example"
                 ],
                 learningObjectives: [
-                    "Infer why planets stay in orbits using gravity and motion",
+                    "Infer that moons orbit planets while planets orbit the Sun",
                     "fp:discovery.Planets.confidentReader"
                 ],
-                activityFingerprint: "planets.discovery.confident.orbits"
+                activityFingerprint: "planets.discovery.confident.moons-orbit"
             )
         }
     }
@@ -600,275 +600,275 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return DiscoveryPack(
-                title: "Countdown Ready",
-                storyOpening: "Nova the star hovers near the launch pad and counts with you. Before a rocket leaves the ground, every number in the countdown matters.",
-                missionPrompt: "Find one fact about how countdown checks keep a launch ready.",
-                readingPassage: "A countdown helps a rocket team get ready. Each step checks a part of the launch. Teams listen for go or wait. Careful checks keep people safe. One missed check can stop a whole liftoff.",
+                title: "Rockets Need Fuel",
+                storyOpening: "Nova the star hovers near a tall rocket. Before it can leave the pad, it needs something in its tanks.",
+                missionPrompt: "Find one fact about rocket fuel in the notes.",
+                readingPassage: "A rocket needs fuel. Fuel is stored in tanks. Burning fuel makes hot gas. The team fills the tanks before launch.",
                 questions: [
                     discoveryMCQ(
-                        "According to the notes, what does a countdown help a team do?",
-                        ["Get ready", "Skip every safety check", "Launch with no waiting"],
-                        "Get ready",
-                        "A countdown is a timed set of steps that helps the team prepare before launch."
+                        "According to the notes, what does a rocket need?",
+                        ["Fuel", "Only cold water", "Only dry sand"],
+                        "Fuel",
+                        "A rocket needs fuel stored in tanks before it can launch."
                     ),
                     discoveryMCQ(
-                        "What do careful checks keep?",
-                        ["People safe", "The fuel unused forever", "The engines silent only"],
-                        "People safe",
-                        "Checking each step for go or wait helps the team notice problems and keep people safe."
+                        "What does burning fuel make?",
+                        ["Hot gas", "Cold ice", "Still lake water"],
+                        "Hot gas",
+                        "When fuel burns, it makes hot gas that the rocket can use."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "countdown",
-                        definition: "A timed set of steps before a launch.",
-                        exampleSentence: "The countdown checks each launch step."
+                        word: "fuel",
+                        definition: "What a rocket burns to make hot gas.",
+                        exampleSentence: "The team fills the rocket with fuel."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "A countdown helps a rocket team prepare for launch.",
-                        explanation: "Each step checks part of the plan."
+                        fact: "A rocket needs fuel stored in tanks.",
+                        explanation: "The team fills the tanks before launch."
                     ),
                     KnowledgeFact(
-                        fact: "Careful checks help keep people safe.",
-                        explanation: "Teams listen for go or wait."
+                        fact: "Burning fuel makes hot gas.",
+                        explanation: "Rockets use that hot gas when they leave the pad."
                     )
                 ],
-                creativePrompt: "Draw a countdown board with the word go and the word wait.",
-                storyEnding: "Nova the star sparkles. You logged a real countdown fact. Great science work!",
-                readingSkill: "Use a science note to explain countdown readiness",
-                reflectionPrompt: "Name one reason teams use a countdown.",
+                creativePrompt: "Draw a rocket with a fuel tank. Label the fuel.",
+                storyEnding: "Nova the star sparkles. You logged a real fuel fact. Great science work!",
+                readingSkill: "Use a science note to name why rockets need fuel",
+                reflectionPrompt: "What does burning fuel make?",
                 hints: [
-                    "Look for get ready",
-                    "Find the safety sentence"
+                    "Look for the word fuel",
+                    "Find hot gas"
                 ],
                 commonMistakes: [
-                    "Choosing a claim that skips checks"
+                    "Choosing something a rocket does not burn"
                 ],
                 successCriteria: [
-                    "Names a countdown purpose",
-                    "Uses a safety fact"
+                    "Names fuel",
+                    "Uses a hot-gas fact"
                 ],
                 learningObjectives: [
-                    "Identify that countdowns prepare teams with careful checks",
+                    "Identify that rockets store and burn fuel to make hot gas",
                     "fp:discovery.Rockets.beginner"
                 ],
-                activityFingerprint: "rockets.discovery.beginner.countdown"
+                activityFingerprint: "rockets.discovery.beginner.fuel"
             )
 
         case .earlyReader:
             return DiscoveryPack(
-                title: "Thrust Pushes Up",
-                storyOpening: "Nova the star sparks with excitement by the rocket engines. Feel that push—today we wonder how thrust lifts a rocket.",
+                title: "A Pointed Nose Cone",
+                storyOpening: "Nova the star sparks beside the rocket's tip. Come wonder why the front is pointed, not flat.",
                 missionPrompt: "Read the science notes. Answer using evidence from the notes.",
-                readingPassage: "A rocket burns fuel and pushes hot gas downward. When gas pushes down, the rocket is pushed up. That upward push is called thrust. Thrust must be strong enough to lift the rocket. Downward gas and upward push work as a pair.",
+                readingPassage: "A rocket has a pointed nose cone. The nose cone meets the air first. A pointed shape slips through air more easily. A flat front would push more air. The nose cone helps the rocket climb.",
                 questions: [
                     discoveryMCQ(
-                        "Where does the rocket push hot gas?",
-                        ["Downward", "Only upward into the sky", "Only sideways into open air"],
-                        "Downward",
-                        "Burning fuel sends hot gas down; that downward push is what starts the upward lift."
+                        "What does a rocket have at the front?",
+                        ["A pointed nose cone", "A wide flat door", "A wide open hole"],
+                        "A pointed nose cone",
+                        "The front of the rocket is a pointed nose cone that meets the air first."
                     ),
                     discoveryMCQ(
-                        "What is the upward push called?",
-                        ["Thrust", "Drag only", "Weight only"],
-                        "Thrust",
-                        "Thrust is the upward push that lifts the rocket when gas is forced downward."
+                        "What does a pointed shape do?",
+                        ["It slips through air more easily", "It stops the rocket from moving", "It fills the tanks with rain"],
+                        "It slips through air more easily",
+                        "A pointed nose cone slips through air more easily than a flat front."
                     ),
                     discoveryMCQ(
-                        "What must thrust be strong enough to do?",
-                        ["Lift the rocket", "Cool the fuel only", "Push the rocket downward"],
-                        "Lift the rocket",
-                        "If thrust is weaker than the rocket's weight, the rocket cannot rise into the sky."
+                        "What would a flat front do?",
+                        ["Push more air", "Stop the rocket from climbing", "Make the rocket heavier"],
+                        "Push more air",
+                        "A flat front would push more air and make climbing harder."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "thrust",
-                        definition: "A push that can lift or move a rocket.",
-                        exampleSentence: "Thrust lifts the rocket upward."
+                        word: "nose cone",
+                        definition: "The pointed front of a rocket.",
+                        exampleSentence: "The nose cone meets the air first."
                     ),
                     VocabularyWord(
-                        word: "fuel",
-                        definition: "Material a rocket burns to make hot gas.",
-                        exampleSentence: "The rocket burns fuel for thrust."
+                        word: "air",
+                        definition: "The gas around Earth that we breathe.",
+                        exampleSentence: "A pointed shape slips through air more easily."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Rockets push hot gas downward to create upward thrust.",
-                        explanation: "Downward gas and upward push work as a pair."
+                        fact: "A rocket's pointed nose cone meets the air first.",
+                        explanation: "The pointed shape slips through air more easily."
                     ),
                     KnowledgeFact(
-                        fact: "Thrust must be strong enough to lift the rocket.",
-                        explanation: "Weak thrust cannot raise a heavy rocket into the sky."
+                        fact: "A flat front would push more air and make climbing harder.",
+                        explanation: "The nose cone helps the rocket climb."
                     )
                 ],
-                creativePrompt: "Draw a rocket with arrows down for gas and up for thrust.",
-                storyEnding: "Nova the star shines. You used evidence about thrust. Careful science reading!",
-                readingSkill: "Use evidence to explain rocket thrust",
-                reflectionPrompt: "Why does gas going down help a rocket go up?",
+                creativePrompt: "Draw a rocket with a pointed nose cone. Label the nose cone.",
+                storyEnding: "Nova the star shines. You used evidence about the nose cone. Careful science reading!",
+                readingSkill: "Use evidence to explain why a rocket nose cone is pointed",
+                reflectionPrompt: "Why is a rocket's nose cone pointed?",
                 hints: [
-                    "Find downward gas",
-                    "Look for the word thrust"
+                    "Find slips through air",
+                    "Look for flat front"
                 ],
                 commonMistakes: [
-                    "Thinking rockets rise with no push"
+                    "Thinking a flat front would help the rocket climb"
                 ],
                 successCriteria: [
-                    "States thrust as an upward push",
-                    "Links gas direction to lift"
+                    "Names the nose cone",
+                    "Links the pointed shape to moving through air"
                 ],
                 learningObjectives: [
-                    "Explain that downward gas creates upward thrust",
+                    "Explain that a pointed nose cone helps a rocket slip through air",
                     "fp:discovery.Rockets.earlyReader"
                 ],
-                activityFingerprint: "rockets.discovery.early.thrust"
+                activityFingerprint: "rockets.discovery.early.nose-cone"
             )
 
         case .growingReader:
             return DiscoveryPack(
-                title: "Stages Shed Weight",
-                storyOpening: "Nova the star watches a stage fall away and invites you to ask why. Come see how dropping empty parts helps a rocket climb.",
-                missionPrompt: "Find the main idea about rocket stages. Use details from the notes.",
-                readingPassage: "Many rockets travel in stages. A lower stage burns fuel and then drops away. Shedding an empty stage makes the rocket lighter. A lighter rocket needs less thrust to keep climbing. The main idea is that stages help a rocket by dropping weight after fuel is used.",
+                title: "Rockets Carry Oxygen",
+                storyOpening: "Nova the star watches a rocket climb above the clouds. Come see why its engines still burn when the air is gone.",
+                missionPrompt: "Find the main idea about why rockets carry oxygen. Use details from the notes.",
+                readingPassage: "A campfire needs air to burn. Space has almost no air. Rocket fuel still needs oxygen to burn. So a rocket carries oxygen in a tank. That oxygen lets the engines work high above the clouds. The main idea is that rockets carry oxygen because space has no air.",
                 questions: [
                     discoveryMCQ(
                         "What is the main idea of the notes?",
-                        ["Stages help a rocket by dropping weight after fuel is used", "Stages help a rocket by adding weight after fuel is used", "Stages stop a rocket from climbing higher"],
-                        "Stages help a rocket by dropping weight after fuel is used",
-                        "Empty stages fall away so the rocket is lighter and can keep climbing with less thrust."
+                        ["Rockets carry oxygen because space has no air", "Rockets carry oxygen because space is full of air", "Rockets never need anything to burn fuel"],
+                        "Rockets carry oxygen because space has no air",
+                        "Fuel needs oxygen to burn, and space has almost no air, so the rocket brings oxygen with it."
                     ),
                     discoveryMCQ(
-                        "What happens to a lower stage after it burns fuel?",
-                        ["It drops away", "It fills with more fuel", "It stays attached forever"],
-                        "It drops away",
-                        "After a lower stage uses its fuel, it separates and drops away so the rest of the rocket is lighter."
+                        "What does space have almost none of?",
+                        ["Air", "Sunlight", "Ocean water"],
+                        "Air",
+                        "Space has almost no air, so a rocket cannot use outside air to burn fuel."
                     ),
                     discoveryMCQ(
-                        "Why does a lighter rocket help?",
-                        ["It needs less thrust to keep climbing", "It must carry more empty tanks forever", "It must stay on the ground"],
-                        "It needs less thrust to keep climbing",
-                        "Less weight means the same engines can push the rocket higher more easily."
+                        "Where does a rocket carry oxygen?",
+                        ["In a tank", "In a picnic basket", "Only in ocean water"],
+                        "In a tank",
+                        "The rocket carries oxygen in a tank so the engines can keep burning."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "stage",
-                        definition: "One part of a rocket that can burn fuel and then separate.",
-                        exampleSentence: "The first stage drops away after use."
+                        word: "oxygen",
+                        definition: "The part of air that helps fuel burn.",
+                        exampleSentence: "A rocket carries oxygen in a tank."
                     ),
                     VocabularyWord(
-                        word: "weight",
-                        definition: "How heavy something is.",
-                        exampleSentence: "Dropping a stage lowers weight."
+                        word: "space",
+                        definition: "The area beyond Earth's air.",
+                        exampleSentence: "Space has almost no air."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Rocket stages drop away after their fuel is used.",
-                        explanation: "Shedding empty stages makes the rocket lighter."
+                        fact: "Rockets carry oxygen because space has almost no air.",
+                        explanation: "Fuel still needs oxygen to burn."
                     ),
                     KnowledgeFact(
-                        fact: "A lighter rocket needs less thrust to keep climbing.",
-                        explanation: "Stages help manage weight during flight."
+                        fact: "A rocket stores oxygen in a tank so engines can work above the clouds.",
+                        explanation: "A campfire uses air; a rocket must bring oxygen along."
                     )
                 ],
-                creativePrompt: "Draw a rocket with one stage falling away, and label lighter.",
-                storyEnding: "Nova the star twinkles proudly. You found the stages main idea like a careful flight scientist.",
-                readingSkill: "Identify the main idea about rocket stages and weight",
-                reflectionPrompt: "How does dropping a stage help a climbing rocket?",
+                creativePrompt: "Draw a rocket with a fuel tank and an oxygen tank. Label both.",
+                storyEnding: "Nova the star twinkles proudly. You found the oxygen main idea like a careful flight scientist.",
+                readingSkill: "Identify the main idea about why rockets carry oxygen",
+                reflectionPrompt: "Why do rockets carry oxygen into space?",
                 hints: [
                     "Reread the last sentence for the main idea.",
-                    "Find lighter"
+                    "Find almost no air"
                 ],
                 commonMistakes: [
-                    "Missing the weight main idea"
+                    "Thinking engines can burn fuel with no oxygen"
                 ],
                 successCriteria: [
-                    "States the stages main idea",
-                    "Cites dropping weight"
+                    "States the oxygen main idea",
+                    "Cites that space has little air"
                 ],
                 learningObjectives: [
-                    "Explain how rocket stages shed weight to help climbing",
+                    "Explain that rockets carry oxygen because space has almost no air",
                     "fp:discovery.Rockets.growingReader"
                 ],
-                activityFingerprint: "rockets.discovery.growing.stages"
+                activityFingerprint: "rockets.discovery.growing.oxygen"
             )
 
         case .confidentReader:
             return DiscoveryPack(
-                title: "Checklists Catch Mistakes",
-                storyOpening: "Nova the star joins your launch team as a careful science partner. Together you investigate how checklists help teams launch more safely.",
-                missionPrompt: "Use evidence from the notes. Explain why launch teams use checklists and cross-checks.",
-                readingPassage: "Launch teams follow checklists so each important step is reviewed. A second person may cross-check the same item to catch a missed detail. Small errors can grow into big problems during a fast countdown. Cross-checks slow the rush just enough to notice trouble early. Together, written steps and second looks reduce the chance that one person overlooks a hazard. Careful process is part of rocket science, not only engines and fuel.",
+                title: "Heat Shields Come Home",
+                storyOpening: "Nova the star joins your return team as a careful science partner. Together you investigate how a spacecraft stays safer on the way home.",
+                missionPrompt: "Use evidence from the notes. Explain why a returning spacecraft needs a heat shield.",
+                readingPassage: "A spacecraft can come home through Earth's atmosphere. The atmosphere is the air around our planet. Air rubs the craft as it moves very fast. That rubbing makes intense heat. A heat shield is a special layer on the bottom. It takes the heat so the crew stays safer. You can infer that returning from space is not only about leaving. Coming home needs protection from hot air.",
                 questions: [
                     discoveryMCQ(
-                        "What can you infer about why teams use checklists and cross-checks?",
-                        ["They help catch missed details before launch", "They make the countdown finish faster by skipping steps", "They replace the need for trained launch teams"],
-                        "They help catch missed details before launch",
-                        "Written steps plus a second look help the team notice hazards before a fast countdown begins."
+                        "What can you infer about why spacecraft use heat shields?",
+                        ["Fast air makes intense heat on the way home", "Space snow covers the craft on the way home", "Heat shields make the countdown start sooner"],
+                        "Fast air makes intense heat on the way home",
+                        "Air rubs a fast-moving craft and makes intense heat, so a heat shield protects the crew."
                     ),
                     discoveryMCQ(
-                        "What may a second person do?",
-                        ["Cross-check the same item", "Rewrite the checklist from memory only", "Skip items the first person already marked"],
-                        "Cross-check the same item",
-                        "A second person reviews the same step so a missed detail is less likely to slip through."
+                        "Where is a heat shield?",
+                        ["A special layer on the bottom", "A layer on the nose cone only", "A tank of extra fuel"],
+                        "A special layer on the bottom",
+                        "The heat shield is a special layer on the bottom of the spacecraft."
                     ),
                     discoveryMCQ(
-                        "Why can small errors matter in a countdown?",
-                        ["They can grow into big problems", "They only matter after the rocket lands", "They disappear once the countdown starts"],
-                        "They can grow into big problems",
-                        "During a fast countdown, a small missed detail can turn into a serious hazard if nobody catches it early."
+                        "What does the heat shield do?",
+                        ["It takes the heat so the crew stays safer", "It fills the tanks with extra fuel", "It cools the launch pad"],
+                        "It takes the heat so the crew stays safer",
+                        "The shield takes the heat from fast air so people inside stay safer."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
-                        word: "checklist",
-                        definition: "A written list of steps to review.",
-                        exampleSentence: "The team follows a launch checklist."
+                        word: "heat shield",
+                        definition: "A special layer that takes heat off a returning spacecraft.",
+                        exampleSentence: "The heat shield is on the bottom of the craft."
                     ),
                     VocabularyWord(
-                        word: "cross-check",
-                        definition: "A second look that confirms a step was done correctly.",
-                        exampleSentence: "A cross-check can catch a missed detail."
+                        word: "atmosphere",
+                        definition: "The layer of air around Earth.",
+                        exampleSentence: "A spacecraft comes home through Earth's atmosphere."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Launch checklists help teams review each important step.",
-                        explanation: "Written steps reduce overlooked hazards."
+                        fact: "A returning spacecraft gets hot because air rubs it as it moves very fast.",
+                        explanation: "That rubbing makes intense heat."
                     ),
                     KnowledgeFact(
-                        fact: "Cross-checks let a second person catch missed details.",
-                        explanation: "Two looks are safer than one rushed look."
+                        fact: "A heat shield is a special layer on the bottom that takes the heat.",
+                        explanation: "The shield helps the crew stay safer."
                     ),
                     KnowledgeFact(
-                        fact: "Small errors can grow into big problems during a fast countdown.",
-                        explanation: "Careful process is part of rocket science."
+                        fact: "Coming home from space needs protection from hot air.",
+                        explanation: "Returning is not only about leaving Earth."
                     )
                 ],
-                creativePrompt: "Write three sentences about a checklist item and a cross-check.",
-                storyEnding: "Nova the star glows beside you. You connected process and safety like a careful investigator.",
-                readingSkill: "Infer why checklists and cross-checks support safer launches",
-                reflectionPrompt: "Which checklist idea from the notes would you trust most?",
+                creativePrompt: "Write three sentences about why a heat shield is on the bottom of a returning craft.",
+                storyEnding: "Nova the star glows beside you. You connected fast air and heat shields like a careful investigator.",
+                readingSkill: "Infer why returning spacecraft need heat shields",
+                reflectionPrompt: "Why does a spacecraft need a heat shield to come home?",
                 hints: [
-                    "Compare checklist with cross-check",
-                    "Reread the small-errors sentence"
+                    "Find air rubs the craft",
+                    "Reread what the heat shield does"
                 ],
                 commonMistakes: [
-                    "Treating process as unrelated to rocket science"
+                    "Thinking the trip home has no heat"
                 ],
                 successCriteria: [
-                    "Uses checklist evidence",
-                    "Links cross-checks to catching mistakes"
+                    "Uses fast-air or rubbing evidence",
+                    "Links the heat shield to protection"
                 ],
                 learningObjectives: [
-                    "Infer how checklists and cross-checks reduce launch mistakes",
+                    "Infer that heat shields protect spacecraft from heat made by fast air",
                     "fp:discovery.Rockets.confidentReader"
                 ],
-                activityFingerprint: "rockets.discovery.confident.checklist"
+                activityFingerprint: "rockets.discovery.confident.heat-shield"
             )
         }
     }
@@ -4520,58 +4520,64 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return DiscoveryPack(
-                title: "Habitats Are Homes",
-                storyOpening: "Movo pauses on a forest trail. Every animal needs a place that fits—food, water, and a safe spot to rest.",
-                missionPrompt: "Look for one fact about habitats in the notes.",
-                readingPassage: "A habitat is a home for living things in nature. A forest trail can give food, water, and shelter. A frog may need a wet stream near plants and leaf cover. Habitats help animals stay alive among the trees. One shady stream can be a whole frog neighborhood.",
+                title: "Three Forest Homes",
+                storyOpening: "Movo stops in a forest. A frog, a woodpecker, and a deer each need a different place.",
+                missionPrompt: "Find the place each animal needs.",
+                readingPassage: "A frog needs a wet stream. A woodpecker pecks a nest in a tree. A deer rests in the shady woods. Each animal uses a different habitat.",
                 questions: [
                     discoveryMCQ(
-                        "According to the notes, what is a habitat?",
-                        ["A home for living things in nature", "A toy shelf indoors only", "A single rock with no water or food"],
-                        "A home for living things in nature",
-                        "A habitat is a home for living things in nature."
+                        "What does the frog need?",
+                        ["A wet stream", "A dry desert", "A high snowy peak"],
+                        "A wet stream",
+                        "A frog needs a wet stream."
                     ),
                     discoveryMCQ(
-                        "What can a forest trail habitat give?",
-                        ["Food, water, and shelter", "Only painted trail signs", "Only empty dry air forever"],
-                        "Food, water, and shelter",
-                        "A forest trail habitat can give food, water, and shelter."
+                        "Where does the woodpecker peck a nest?",
+                        ["In a tree", "Under the ocean", "Inside a snow cave"],
+                        "In a tree",
+                        "A woodpecker pecks a nest in a tree."
+                    ),
+                    discoveryMCQ(
+                        "Where does the deer rest?",
+                        ["In the shady woods", "On a sunny beach", "In a bird nest"],
+                        "In the shady woods",
+                        "A deer rests in the shady woods."
                     )
                 ],
                 vocabularyWords: [
                     VocabularyWord(
                         word: "habitat",
-                        definition: "A home that gives living things what they need.",
-                        exampleSentence: "A wet stream habitat can help a frog."
+                        definition: "The place where an animal finds food, water, and shelter.",
+                        exampleSentence: "A wet stream is part of a frog's habitat."
                     )
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "A habitat is a nature home that gives food, water, and shelter.",
-                        explanation: "Forest trails and streams help animals stay alive."
+                        fact: "A frog's skin dries out without water nearby.",
+                        explanation: "That is why a frog stays by a stream."
                     ),
                     KnowledgeFact(
-                        fact: "Different animals need different habitats among plants and trees.",
-                        explanation: "A frog may need a wet stream near leaf cover."
+                        fact: "Deer eat leaves and rest in the shade.",
+                        explanation: "Food and shade are both part of a deer's habitat."
                     )
                 ],
-                creativePrompt: "Draw an animal on a forest trail habitat with a plant, a stream, and leaf cover.",
-                storyEnding: "You logged a real nature habitat fact. Great science work!",
-                readingSkill: "Use a science note to define habitat",
-                reflectionPrompt: "Name one thing a forest trail habitat gives living things.",
+                creativePrompt: "Draw a frog by a stream, a woodpecker in a tree, and a deer in the woods.",
+                storyEnding: "Movo can point to three different homes in one forest.",
+                readingSkill: "Match forest animals to the places they need",
+                reflectionPrompt: "Which animal needs the wet stream?",
                 hints: [
-                    "Look for forest trail",
-                    "Find food, water, and shelter"
+                    "Find the frog's stream",
+                    "Find the woodpecker's tree"
                 ],
                 commonMistakes: [
-                    "Choosing a claim with no needs met"
+                    "Giving every animal the same place"
                 ],
                 successCriteria: [
-                    "Defines habitat as a home",
-                    "Lists a need"
+                    "Names the frog's stream or the woodpecker's tree",
+                    "Uses a detail from the notes"
                 ],
                 learningObjectives: [
-                    "Identify that habitats provide food, water, and shelter",
+                    "Match forest animals to the habitats they need",
                     "fp:discovery.Nature.beginner"
                 ],
                 activityFingerprint: "nature.discovery.beginner.habitats"
@@ -5643,7 +5649,7 @@ extension CuratedTopicLessonBank {
                 title: "Habitat Needs",
                 storyOpening: "Movo stands by a zoo habitat sign. A polar bear would overheat in a desert cage—animals need homes that fit their bodies.",
                 missionPrompt: "Find one fact about habitat needs in the notes.",
-                readingPassage: "Zoo animals need habitats that fit them. A polar animal needs cool space. A desert animal needs dry space. Good homes match animal needs. Cool ice and rock can keep a polar animal from getting too hot.",
+                readingPassage: "Zoo animals need habitats that fit them. A polar bear needs cool space. A camel needs dry space. Cool ice and rock can keep a polar bear from getting too hot.",
                 questions: [
                     discoveryMCQ(
                         "According to the notes, what do zoo animals need?",
@@ -5652,10 +5658,10 @@ extension CuratedTopicLessonBank {
                         "Zoo animals need habitats that fit them."
                     ),
                     discoveryMCQ(
-                        "What does a polar animal need?",
+                        "What does a polar bear need?",
                         ["Cool space", "Only hot dry sand always", "Only steamy jungle heat"],
                         "Cool space",
-                        "A polar animal needs cool space that matches its home climate."
+                        "A polar bear needs cool space."
                     )
                 ],
                 vocabularyWords: [
@@ -5667,12 +5673,12 @@ extension CuratedTopicLessonBank {
                 ],
                 knowledgeFacts: [
                     KnowledgeFact(
-                        fact: "Zoo habitats should match animal needs.",
-                        explanation: "Polar animals need cool space."
+                        fact: "Polar bears have thick fur and a fat layer for cold places.",
+                        explanation: "A hot desert would make a polar bear too warm."
                     ),
                     KnowledgeFact(
-                        fact: "Desert animals need dry space.",
-                        explanation: "Good homes match animal needs."
+                        fact: "Camels can go a long time with little water in the desert.",
+                        explanation: "A cold ice habitat would not fit a camel."
                     )
                 ],
                 creativePrompt: "Draw two zoo homes, one cool and one dry, and label each animal need.",

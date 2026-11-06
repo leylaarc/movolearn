@@ -297,7 +297,7 @@ enum LevelSpecificContentFactory {
         case ("dinosaurs", .beginner):
             return "Dottie finds a green leaf. She munches slowly. A friend stomps nearby."
         case ("dinosaurs", .earlyReader):
-            return "Dottie walks to a cool watering hole. She finds four fern leaves by the water. A friend arrives hungry. Dottie gives two leaves away. They sit and chew together."
+            return "Dottie walks to a cool watering hole. She finds four fern leaves by the water. A friend arrives hungry. Dottie gives two leaves away. Dottie and her friend sit and chew together."
         case ("dinosaurs", .growingReader):
             return "Morning mist hung over the valley while Dottie gathered tools for a fossil walk. Footprints led toward a quiet cove of stones. A guide explained that some dinosaurs rested near water in the morning. Dottie predicted fresh tracks would appear when the sun warmed the ground. Later she checked the prediction against what she found. The details helped her decide where to dig next."
         case ("dinosaurs", .confidentReader):

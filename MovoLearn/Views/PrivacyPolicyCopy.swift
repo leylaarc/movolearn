@@ -10,8 +10,8 @@ enum PrivacyPolicyCopy {
     static let title = "Privacy Policy"
     static let productName = "Movo Learn"
     static let effectiveDate = "September 16, 2026"
-    static let lastUpdated = "September 16, 2026"
-    static let contactEmail = "privacy@movolearn.app"
+    static let lastUpdated = "October 19, 2026"
+    static let contactEmail = "privacy@movolearn.com"
     static let publicURLString = "https://movolearn.com/privacy"
     static let bundleID = "com.movolearn.app"
 
@@ -54,7 +54,7 @@ enum PrivacyPolicyCopy {
             id: "who",
             title: "1. Who we are",
             body: """
-            This Privacy Policy describes how Movo Learn (“Movo Learn,” “we,” “us,” or “our”) handles information in the Movo Learn iOS app (bundle ID \(bundleID)). Movo Learn is a learning game for children, intended for use with a parent or guardian.
+            This Privacy Policy describes how Ley Labs LLC (“Ley Labs,” “we,” “us,” or “our”) handles information in the Movo Learn iOS app (bundle ID \(bundleID)). Movo Learn is a learning game for children, intended for use with a parent or guardian.
 
             This is the policy for the Launch version of the app, in which family cloud save is turned off. The in-app Privacy screen and the policy we publish at \(publicURLString) are the same document.
             """
@@ -174,15 +174,28 @@ enum PrivacyPolicyCopy {
             """
         ),
         Section(
+            id: "kvkk",
+            title: "14. Turkey’s data protection law (KVKK)",
+            body: """
+            If you are in Turkey, the Law on the Protection of Personal Data (KVKK, Law No. 6698) may apply to personal information you send us.
+
+            This version does not send a child’s profile or learning progress to Movo Learn. That information stays on the device. We do not transfer it to a server in Turkey or in another country.
+
+            If you email us, that message is personal information we process so we can reply and handle your request. You may ask us to tell you whether we are processing it, to give you access, to correct it, to delete it, to tell you why we have it, and to tell you whether we transferred it and to whom. You may also object to a result that comes only from automated processing of that message, and you may contact us about compensation if you believe unlawful processing caused you harm.
+
+            Send those requests to \(contactEmail).
+            """
+        ),
+        Section(
             id: "changes",
-            title: "14. Changes to this policy",
+            title: "15. Changes to this policy",
             body: """
             If we change how Movo Learn handles information — including if we turn on parent accounts or send any child data off the device — we will update this Policy and the in-app Privacy screen, change the “Last updated” date, and, where required by law, obtain parental consent before the new collection begins.
             """
         ),
         Section(
             id: "contact",
-            title: "15. Contact",
+            title: "16. Contact",
             body: """
             Questions, parental requests, or privacy complaints: \(contactEmail). You can also read this policy in the app under Profile → Privacy.
 

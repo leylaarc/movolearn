@@ -8,7 +8,7 @@ This is an internal operator guide. Do not put it in the App Store listing. It m
 
 1. Host the site in `website/` at **https://movolearn.com**. The App Store privacy URL is **https://movolearn.com/privacy**. Paste that exact URL into App Store Connect → App Privacy and App Information.
 2. Terms live at `https://movolearn.com/terms` (optional for a free Kids app; useful next to the privacy URL).
-3. Create and monitor **privacy@movolearn.app**. The policy promises parents can write there.
+3. Create and monitor **privacy@movolearn.com**. The policy promises parents can write there.
 4. Confirm the mailbox, URL, and in-app Privacy screen all describe **on-device Launch** — not parent accounts.
 5. Do **not** turn on `FamilyCloudSync` in a build that still uses this policy.
 

@@ -56,29 +56,31 @@ struct AnimatedTopicIllustration: View {
     var size: CGFloat = 80
     var animate: Bool = true
 
+    private var layoutSize: CGFloat { DesignSystem.Metrics.scaled(size) }
+
     var body: some View {
         Group {
             switch topic {
-            case .sharks: SharksIllustration(size: size)
-            case .oceanAnimals: OceanIllustration(size: size)
-            case .horses: HorsesIllustration(size: size)
-            case .dinosaurs: DinosaursIllustration(size: size)
-            case .space, .planets, .rockets: SpaceIllustration(size: size)
-            case .soccer: SoccerIllustration(size: size)
-            case .basketball: BasketballIllustration(size: size)
-            case .princesses, .castles, .fairies: PrincessIllustration(size: size)
-            case .dogs: DogsIllustration(size: size)
-            case .cats: CatsIllustration(size: size)
-            case .airplanes: AirplanesIllustration(size: size)
-            case .trains: TrainsIllustration(size: size)
-            case .cars: VehiclesIllustration(size: size)
-            case .robots: RobotsIllustration(size: size)
-            case .nature, .bugs, .jungleAnimals: NatureBugsIllustration(size: size)
-            default: GenericTopicIllustration(topic: topic, size: size)
+            case .sharks: SharksIllustration(size: layoutSize)
+            case .oceanAnimals: OceanIllustration(size: layoutSize)
+            case .horses: HorsesIllustration(size: layoutSize)
+            case .dinosaurs: DinosaursIllustration(size: layoutSize)
+            case .space, .planets, .rockets: SpaceIllustration(size: layoutSize)
+            case .soccer: SoccerIllustration(size: layoutSize)
+            case .basketball: BasketballIllustration(size: layoutSize)
+            case .princesses, .castles, .fairies: PrincessIllustration(size: layoutSize)
+            case .dogs: DogsIllustration(size: layoutSize)
+            case .cats: CatsIllustration(size: layoutSize)
+            case .airplanes: AirplanesIllustration(size: layoutSize)
+            case .trains: TrainsIllustration(size: layoutSize)
+            case .cars: VehiclesIllustration(size: layoutSize)
+            case .robots: RobotsIllustration(size: layoutSize)
+            case .nature, .bugs, .jungleAnimals: NatureBugsIllustration(size: layoutSize)
+            default: GenericTopicIllustration(topic: topic, size: layoutSize)
             }
         }
         .environment(\.illustrationAnimates, animate)
-        .frame(width: size, height: size * 0.85)
+        .frame(width: layoutSize, height: layoutSize * 0.85)
     }
 }
 
@@ -106,7 +108,7 @@ struct TopicCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 88, height: 88)
+                        .frame(width: DesignSystem.Metrics.scaled(88), height: DesignSystem.Metrics.scaled(88))
                         .shadow(
                             color: accent.opacity(isSelected ? 0.38 : 0.22),
                             radius: isSelected ? 14 : 10,
@@ -135,7 +137,7 @@ struct TopicCard: View {
                     .foregroundStyle(DesignSystem.Colors.deepNavy)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
-                    .frame(minHeight: 36, alignment: .top)
+                    .frame(minHeight: DesignSystem.Metrics.scaled(36), alignment: .top)
             }
             .padding(.vertical, 16)
             .padding(.horizontal, 10)

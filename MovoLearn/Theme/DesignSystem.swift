@@ -4,6 +4,22 @@ import SwiftUI
 
 enum DesignSystem {
 
+    /// Phone layouts stay exactly as designed. iPad uses a larger canvas, so type,
+    /// prompts, spacing, and controls grow together and only on iPad.
+    enum Metrics {
+        static var isPad: Bool {
+            UIDevice.current.userInterfaceIdiom == .pad
+        }
+
+        /// Layout multiplier for spacing, controls, and illustrations.
+        /// Paired with an accessibility text size so prompts match the bigger controls.
+        static var scale: CGFloat { isPad ? 1.7 : 1 }
+
+        static func scaled(_ value: CGFloat) -> CGFloat {
+            value * scale
+        }
+    }
+
     // MARK: Colors
 
     enum Colors {
@@ -252,94 +268,112 @@ enum DesignSystem {
     // MARK: Typography
 
     enum Typography {
+        /// Avenir Next ships on iOS: geometric, highly readable for early readers,
+        /// and less “default kids-app rounded SF” than the previous typeface.
+        private static let familyName = "Avenir Next"
+
+        private static func appFont(
+            size: CGFloat,
+            weight: Font.Weight,
+            relativeTo textStyle: Font.TextStyle
+        ) -> Font {
+            // Point size stays the phone size. On iPad, `padLayout()` raises Dynamic Type
+            // so these styles render much larger without changing iPhone.
+            .custom(familyName, size: size, relativeTo: textStyle).weight(weight)
+        }
+
         // Named text styles
-        static let heroTitle = Font.system(.largeTitle, design: .rounded).weight(.heavy)
-        static let screenTitle = Font.system(.title, design: .rounded).weight(.bold)
-        static let sectionTitle = Font.system(.title2, design: .rounded).weight(.bold)
-        static let cardTitle = Font.system(.title3, design: .rounded).weight(.semibold)
-        static let storyText = Font.system(.title3, design: .rounded).weight(.medium)
-        static let questionText = Font.system(.title2, design: .rounded).weight(.bold)
-        static let bodyText = Font.system(.body, design: .rounded)
-        static let buttonText = Font.system(.headline, design: .rounded).weight(.bold)
-        static let captionText = Font.system(.caption, design: .rounded).weight(.medium)
-        static let parentInsightText = Font.system(.body, design: .rounded).weight(.regular)
+        static let heroTitle = appFont(size: 34, weight: .heavy, relativeTo: .largeTitle)
+        static let screenTitle = appFont(size: 28, weight: .bold, relativeTo: .title)
+        static let sectionTitle = appFont(size: 22, weight: .bold, relativeTo: .title2)
+        static let cardTitle = appFont(size: 20, weight: .semibold, relativeTo: .title3)
+        static let storyText = appFont(size: 20, weight: .medium, relativeTo: .title3)
+        static let questionText = appFont(size: 22, weight: .bold, relativeTo: .title2)
+        static let bodyText = appFont(size: 17, weight: .medium, relativeTo: .body)
+        static let buttonText = appFont(size: 17, weight: .bold, relativeTo: .headline)
+        static let captionText = appFont(size: 12, weight: .medium, relativeTo: .caption)
+        static let parentInsightText = appFont(size: 17, weight: .regular, relativeTo: .body)
 
         static func display(_ size: CGFloat = 40) -> Font {
-            .system(size: size, weight: .heavy, design: .rounded)
+            appFont(size: size, weight: .heavy, relativeTo: .largeTitle)
         }
 
         static func headline(_ size: CGFloat = 32) -> Font {
-            .system(size: size, weight: .bold, design: .rounded)
+            appFont(size: size, weight: .bold, relativeTo: .title)
         }
 
         static func title(_ size: CGFloat = 22) -> Font {
-            .system(size: size, weight: .semibold, design: .rounded)
+            appFont(size: size, weight: .semibold, relativeTo: .title2)
         }
 
         static func sectionHeader(_ size: CGFloat = 18) -> Font {
-            .system(size: size, weight: .bold, design: .rounded)
+            appFont(size: size, weight: .bold, relativeTo: .headline)
         }
 
         static func subtitle(_ size: CGFloat = 17) -> Font {
-            .system(size: size, weight: .medium, design: .rounded)
+            appFont(size: size, weight: .medium, relativeTo: .body)
         }
 
         static func body(_ size: CGFloat = 17) -> Font {
-            .system(size: size, weight: .regular, design: .rounded)
+            appFont(size: size, weight: .medium, relativeTo: .body)
         }
 
         static func question(_ size: CGFloat = 24) -> Font {
-            .system(size: size, weight: .bold, design: .rounded)
+            appFont(size: size, weight: .bold, relativeTo: .title2)
         }
 
         static func button(_ size: CGFloat = 18) -> Font {
-            .system(size: size, weight: .bold, design: .rounded)
+            appFont(size: size, weight: .bold, relativeTo: .headline)
         }
 
         static func label(_ size: CGFloat = 12) -> Font {
-            .system(size: size, weight: .bold, design: .rounded)
+            appFont(size: size, weight: .bold, relativeTo: .caption)
         }
 
         static func caption(_ size: CGFloat = 13) -> Font {
-            .system(size: size, weight: .medium, design: .rounded)
+            appFont(size: size, weight: .medium, relativeTo: .caption)
         }
     }
 
     // MARK: Spacing
 
     enum Spacing {
-        static let xs: CGFloat = 4
-        static let sm: CGFloat = 8
-        static let md: CGFloat = 16
-        static let lg: CGFloat = 24
-        static let xl: CGFloat = 32
-        static let xxl: CGFloat = 48
+        private static func s(_ value: CGFloat) -> CGFloat { Metrics.scaled(value) }
 
-        static let screenPadding: CGFloat = 22
-        static let cardPadding: CGFloat = 20
-        static let sectionSpacing: CGFloat = 28
-        static let elementSpacing: CGFloat = 14
-        static let compactSpacing: CGFloat = 8
+        static var xs: CGFloat { s(4) }
+        static var sm: CGFloat { s(8) }
+        static var md: CGFloat { s(16) }
+        static var lg: CGFloat { s(24) }
+        static var xl: CGFloat { s(32) }
+        static var xxl: CGFloat { s(48) }
 
-        static let screenHorizontal: CGFloat = screenPadding
-        static let screenBottom: CGFloat = 32
-        static let cardInner: CGFloat = cardPadding
+        static var screenPadding: CGFloat { s(22) }
+        static var cardPadding: CGFloat { s(20) }
+        static var sectionSpacing: CGFloat { s(28) }
+        static var elementSpacing: CGFloat { s(14) }
+        static var compactSpacing: CGFloat { s(8) }
+
+        static var screenHorizontal: CGFloat { screenPadding }
+        static var screenBottom: CGFloat { s(32) }
+        static var cardInner: CGFloat { cardPadding }
     }
 
     // MARK: Radius
 
     enum Radius {
-        static let smallRadius: CGFloat = 14
-        static let mediumRadius: CGFloat = 18
-        static let largeRadius: CGFloat = 24
-        static let pillRadius: CGFloat = 100
+        private static func r(_ value: CGFloat) -> CGFloat { Metrics.scaled(value) }
 
-        static let sm: CGFloat = smallRadius
-        static let md: CGFloat = mediumRadius
-        static let lg: CGFloat = largeRadius
-        static let xl: CGFloat = 28
-        static let xxl: CGFloat = 36
-        static let pill: CGFloat = pillRadius
+        static var smallRadius: CGFloat { r(14) }
+        static var mediumRadius: CGFloat { r(18) }
+        static var largeRadius: CGFloat { r(24) }
+        static var pillRadius: CGFloat { r(100) }
+
+        static var sm: CGFloat { smallRadius }
+        static var md: CGFloat { mediumRadius }
+        static var lg: CGFloat { largeRadius }
+        static var xl: CGFloat { r(28) }
+        static var xxl: CGFloat { r(36) }
+        static var pill: CGFloat { pillRadius }
     }
 
     // MARK: Shadow
@@ -442,7 +476,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .font(DesignSystem.Typography.buttonText)
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
-            .frame(minHeight: 58)
+            .frame(minHeight: DesignSystem.Metrics.scaled(58))
             .background {
                 Group {
                     if isEnabled {
@@ -477,7 +511,7 @@ struct SecondaryButtonStyle: ButtonStyle {
             .font(DesignSystem.Typography.button(16))
             .foregroundStyle(DesignSystem.Colors.deepNavy)
             .frame(maxWidth: .infinity)
-            .frame(minHeight: 54)
+            .frame(minHeight: DesignSystem.Metrics.scaled(54))
             .background(DesignSystem.Colors.cardWhite.opacity(0.88))
             .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Radius.mediumRadius, style: .continuous))
             .overlay(
@@ -537,6 +571,30 @@ extension View {
 
     func shake(trigger: Bool) -> some View {
         modifier(ShakeModifier(trigger: trigger))
+    }
+
+    /// Enlarges system text styles on iPad. iPhone keeps the reader's current text size.
+    func padLayout() -> some View {
+        modifier(PadLayoutModifier())
+    }
+}
+
+private struct PadLayoutModifier: ViewModifier {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    func body(content: Content) -> some View {
+        if DesignSystem.Metrics.isPad {
+            content.dynamicTypeSize(max(dynamicTypeSize, .accessibility2))
+        } else {
+            content
+        }
+    }
+}
+
+extension Font {
+    /// Fixed system size that follows the iPad layout scale. Unchanged on iPhone.
+    static func padScaled(size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        .system(size: DesignSystem.Metrics.scaled(size), weight: weight)
     }
 }
 

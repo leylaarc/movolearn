@@ -5,6 +5,7 @@ struct AdventuresView: View {
     let profile: ChildProfile
     let lessons: [Lesson]
     let onStartLesson: (Lesson) -> Void
+    var onStartPlay: ((PlayGameOffer) -> Void)? = nil
     var onEditInterests: (() -> Void)? = nil
     var initialTopic: Topic? = nil
     var initialSubject: ExploreSubjectCategory? = nil
@@ -15,6 +16,7 @@ struct AdventuresView: View {
     @State private var selectedCategory: LessonCategory?
     @State private var selectedTopic: Topic?
     @State private var selectedSubject: ExploreSubjectCategory?
+    @State private var gameOffers: [PlayGameOffer] = []
     @State private var appeared = false
     @State private var didApplyInitialFocus = false
 
@@ -114,6 +116,7 @@ struct AdventuresView: View {
         }
         .onAppear {
             applyInitialFocusIfNeeded()
+            refreshGameOffers()
             withAnimation(DesignSystem.Animation.stagger.delay(0.04)) { appeared = true }
         }
         .onChange(of: initialTopic) { _, newValue in
@@ -135,6 +138,18 @@ struct AdventuresView: View {
             selectedTopic = nil
             selectedSubject = nil
         }
+        .onChange(of: lessons.map(\.id)) { _, _ in
+            refreshGameOffers()
+        }
+    }
+
+    private func refreshGameOffers() {
+        let pool = CatalogBrowseSelector.levelMatchedLessons(from: lessons, profile: profile)
+        gameOffers = PlayGameCatalog.offers(
+            from: pool,
+            favoriteTopics: profile.favoriteTopics,
+            limit: 8
+        )
     }
 
     private func applyInitialFocusIfNeeded() {
@@ -203,6 +218,10 @@ struct AdventuresView: View {
             DiscoveryChallengeCard(model: discovery) {
                 onStartLesson(lesson)
             }
+        }
+
+        if !visiblePractice.isEmpty {
+            practiceSection
         }
 
         filterChips
@@ -276,6 +295,36 @@ struct AdventuresView: View {
                         .padding(.vertical, 2)
                     }
                 }
+            }
+        }
+    }
+
+    private var visiblePractice: [PlayGameOffer] {
+        gameOffers.filter { offer in
+            if let selectedTopic, offer.lesson.theme != selectedTopic { return false }
+            if let selectedSubject, !(selectedSubject.topics.contains(offer.lesson.theme)) { return false }
+            if let selectedCategory, offer.lesson.category != selectedCategory { return false }
+            return true
+        }
+    }
+
+    private var practiceSection: some View {
+        VStack(alignment: .leading, spacing: DesignSystem.Spacing.md) {
+            HomeSectionTitle(title: "Practice")
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: DesignSystem.Spacing.md) {
+                    ForEach(visiblePractice) { offer in
+                        PlayGameCard(offer: offer) {
+                            if let onStartPlay {
+                                onStartPlay(offer)
+                            } else {
+                                onStartLesson(offer.lesson)
+                            }
+                        }
+                    }
+                }
+                .padding(.vertical, 8)
+                .padding(.trailing, 4)
             }
         }
     }

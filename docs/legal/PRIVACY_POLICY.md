@@ -1,7 +1,7 @@
 # Movo Learn Privacy Policy
 
 **Effective date:** September 16, 2026  
-**Last updated:** September 16, 2026  
+**Last updated:** October 19, 2026  
 **Applies to:** the Movo Learn iOS app (bundle ID `com.movolearn.app`)  
 **Public URL:** https://movolearn.com/privacy
 
@@ -26,7 +26,7 @@ This version of Movo Learn does not create an account and does not send a child�
 
 ## 1. Who we are
 
-This Privacy Policy describes how Movo Learn (“Movo Learn,” “we,” “us,” or “our”) handles information in the Movo Learn iOS app (bundle ID `com.movolearn.app`). Movo Learn is a learning game for children, intended for use with a parent or guardian.
+This Privacy Policy describes how Ley Labs LLC (“Ley Labs,” “we,” “us,” or “our”) handles information in the Movo Learn iOS app (bundle ID `com.movolearn.app`). Movo Learn is a learning game for children, intended for use with a parent or guardian.
 
 This is the policy for the Launch version of the app, in which family cloud save is turned off. The in-app Privacy screen and the policy we publish at https://movolearn.com/privacy are the same document.
 
@@ -136,19 +136,29 @@ If you are in the EEA, UK, or a similar jurisdiction: we are not using the app t
 
 We do not sell or share personal information as those terms are used in the California Consumer Privacy Act (CCPA/CPRA) or similar US state laws, because this version does not send us consumer personal information from the app. We do not use or disclose sensitive personal information for purposes other than the on-device app.
 
-If those laws apply to a request about information you emailed to us, you may request access or deletion of that correspondence at **privacy@movolearn.app**. We will not discriminate against you for exercising privacy rights.
+If those laws apply to a request about information you emailed to us, you may request access or deletion of that correspondence at **privacy@movolearn.com**. We will not discriminate against you for exercising privacy rights.
 
 The app does not track users across third-party apps or websites. We do not respond to browser Do Not Track signals because the app is not a website and does not track.
 
-## 14. Changes to this policy
+## 14. Turkey’s data protection law (KVKK)
+
+If you are in Turkey, the Law on the Protection of Personal Data (KVKK, Law No. 6698) may apply to personal information you send us.
+
+This version does not send a child’s profile or learning progress to Movo Learn. That information stays on the device. We do not transfer it to a server in Turkey or in another country.
+
+If you email us, that message is personal information we process so we can reply and handle your request. You may ask us to tell you whether we are processing it, to give you access, to correct it, to delete it, to tell you why we have it, and to tell you whether we transferred it and to whom. You may also object to a result that comes only from automated processing of that message, and you may contact us about compensation if you believe unlawful processing caused you harm.
+
+Send those requests to **privacy@movolearn.com**.
+
+## 15. Changes to this policy
 
 If we change how Movo Learn handles information — including if we turn on parent accounts or send any child data off the device — we will update this Policy and the in-app Privacy screen, change the “Last updated” date, and, where required by law, obtain parental consent before the new collection begins.
 
-## 15. Contact
+## 16. Contact
 
 Questions, parental requests, or privacy complaints:
 
-**Email:** privacy@movolearn.app  
+**Email:** privacy@movolearn.com  
 **In the app:** Profile → Privacy
 
 Please do not include a child’s last name, school, or other extra personal details in your email unless they are needed to fulfill your request.

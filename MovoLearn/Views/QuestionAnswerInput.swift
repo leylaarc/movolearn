@@ -12,6 +12,7 @@ struct QuestionAnswerInput: View {
     let pairs: [MatchingPair]
     let items: [SortingItem]
     let accent: Color
+    var interactionID: String = ""
 
     @Binding var textAnswer: String
     @Binding var selectedChoice: String?
@@ -30,7 +31,20 @@ struct QuestionAnswerInput: View {
         Group {
             switch resolvedType {
             case .multipleChoice:
-                multipleChoiceInput
+                if PlayGameCatalog.fitsBubble(choices: choices, correctAnswer: correctAnswer) {
+                    BubblePopGameView(
+                        choices: choices,
+                        correctAnswer: correctAnswer,
+                        accent: accent,
+                        showFeedback: showFeedback,
+                        isAnswerCorrect: isAnswerCorrect,
+                        selectedChoice: selectedChoice,
+                        onSelect: { onSelectChoice?($0) }
+                    )
+                    .id(interactionID)
+                } else {
+                    multipleChoiceInput
+                }
             case .drawing:
                 DrawingCanvasView(
                     hasContent: $hasDrawing,
@@ -55,7 +69,16 @@ struct QuestionAnswerInput: View {
             case .number:
                 NumberPadInput(text: $textAnswer, accent: accent)
             case .matching:
-                if pairs.count >= 2 {
+                if pairs.count >= 2, PlayGameCatalog.fitsMemory(pairs: pairs) {
+                    MemoryCardGameView(
+                        pairs: pairs,
+                        accent: accent
+                    ) { complete, correct in
+                        matchingComplete = complete
+                        matchingCorrect = correct
+                    }
+                    .id(interactionID)
+                } else if pairs.count >= 2 {
                     MatchingQuestionView(
                         pairs: pairs,
                         accent: accent,
@@ -204,7 +227,10 @@ struct NumberPadInput: View {
                 )
                 .environment(\.colorScheme, .light)
 
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
+            LazyVGrid(
+                columns: Array(repeating: GridItem(.flexible(), spacing: DesignSystem.Metrics.scaled(10)), count: 3),
+                spacing: DesignSystem.Metrics.scaled(10)
+            ) {
                 ForEach(keys, id: \.self) { key in
                     Button {
                         handle(key)
@@ -213,7 +239,7 @@ struct NumberPadInput: View {
                             .font(DesignSystem.Typography.title(key.count > 1 ? 16 : 22))
                             .foregroundStyle(DesignSystem.Colors.deepNavy)
                             .frame(maxWidth: .infinity)
-                            .frame(height: 56)
+                            .frame(height: DesignSystem.Metrics.scaled(56))
                             .background(DesignSystem.Colors.surfaceMuted)
                             .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Radius.sm, style: .continuous))
                             .overlay(

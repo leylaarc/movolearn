@@ -121,7 +121,7 @@ struct LessonContextBank: Equatable {
         case .horses:
             return ["horse", "foal", "hay", "stall", "saddle", "mane", "stable"]
         case .dinosaurs:
-            return ["dinosaur", "fossil", "footprint", "egg", "herd", "fern", "nest"]
+            return ["dinosaur", "fossil", "footprint", "egg", "herd", "species", "horn", "nest"]
         case .space, .planets, .rockets:
             return ["rocket", "moon", "orbit", "crew", "suit", "supply", "star"]
         default:

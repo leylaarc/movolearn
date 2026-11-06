@@ -213,7 +213,7 @@ struct DrawingCanvasView: View {
             if !hasContent {
                 VStack(spacing: 8) {
                     Image(systemName: "paintbrush.pointed.fill")
-                        .font(.system(size: 32, weight: .medium))
+                        .font(.padScaled(size: 32, weight: .medium))
                         .foregroundStyle(accent.opacity(0.45))
                     Text("Start drawing!")
                         .font(DesignSystem.Typography.title(18))
@@ -222,7 +222,7 @@ struct DrawingCanvasView: View {
                 .allowsHitTesting(false)
             }
         }
-        .frame(minHeight: 460)
+        .frame(minHeight: DesignSystem.Metrics.scaled(460))
         .frame(maxHeight: .infinity)
         .overlay(
             RoundedRectangle(cornerRadius: DesignSystem.Radius.mediumRadius, style: .continuous)
@@ -248,7 +248,7 @@ struct DrawingCanvasView: View {
                 HStack(spacing: 4) {
                     ForEach(0..<3, id: \.self) { index in
                         Image(systemName: index < starsEarned ? "star.fill" : "star")
-                            .font(.system(size: 16, weight: .bold))
+                            .font(.padScaled(size: 16, weight: .bold))
                             .foregroundStyle(
                                 index < starsEarned
                                     ? DesignSystem.Colors.sunshineYellow
@@ -261,7 +261,7 @@ struct DrawingCanvasView: View {
             }
 
             LazyVGrid(
-                columns: [GridItem(.adaptive(minimum: 88), spacing: 8)],
+                columns: [GridItem(.adaptive(minimum: DesignSystem.Metrics.scaled(88)), spacing: DesignSystem.Metrics.scaled(8))],
                 alignment: .leading,
                 spacing: 8
             ) {
@@ -278,7 +278,7 @@ struct DrawingCanvasView: View {
                     } label: {
                         HStack(spacing: 5) {
                             Image(systemName: done ? "checkmark.circle.fill" : "circle")
-                                .font(.system(size: 14, weight: .bold))
+                                .font(.padScaled(size: 14, weight: .bold))
                             Text(goal)
                                 .font(DesignSystem.Typography.caption(12).weight(.bold))
                                 .lineLimit(2)
@@ -304,7 +304,7 @@ struct DrawingCanvasView: View {
 
     private var colorPalette: some View {
         LazyVGrid(
-            columns: [GridItem(.adaptive(minimum: 36), spacing: 8)],
+            columns: [GridItem(.adaptive(minimum: DesignSystem.Metrics.scaled(36)), spacing: DesignSystem.Metrics.scaled(8))],
             alignment: .leading,
             spacing: 8
         ) {

@@ -52,7 +52,7 @@ final class FamilyAPIClientTests: XCTestCase {
             "Rewrite docs/legal and PrivacyPolicyCopy before enabling FamilyCloudSync"
         )
         XCTAssertTrue(PrivacyPolicyCopy.fullText.contains("not sent to Movo Learn"))
-        XCTAssertTrue(PrivacyPolicyCopy.fullText.contains("privacy@movolearn.app"))
+        XCTAssertTrue(PrivacyPolicyCopy.fullText.contains("privacy@movolearn.com"))
         XCTAssertEqual(PrivacyPolicyCopy.publicURLString, "https://movolearn.com/privacy")
         XCTAssertFalse(PrivacyPolicyCopy.fullText.contains("App Store listing"))
     }

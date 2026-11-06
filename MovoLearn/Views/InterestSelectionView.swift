@@ -32,10 +32,6 @@ struct InterestSelectionView: View {
     @State private var appeared = false
 
     private let topics = Topic.allCases
-    private let columns = [
-        GridItem(.flexible(), spacing: DesignSystem.Spacing.md),
-        GridItem(.flexible(), spacing: DesignSystem.Spacing.md)
-    ]
 
     var body: some View {
         ZStack {
@@ -54,7 +50,7 @@ struct InterestSelectionView: View {
                     editToolbar
                 }
 
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: DesignSystem.Spacing.lg) {
                         headerCopy
                             .opacity(appeared ? 1 : 0)
@@ -72,22 +68,16 @@ struct InterestSelectionView: View {
                             selectionCounter
                         }
 
-                        LazyVGrid(columns: columns, spacing: DesignSystem.Spacing.md) {
-                            ForEach(topics) { topic in
-                                TopicCard(
-                                    topic: topic,
-                                    isSelected: selectedTopics.contains(topic)
-                                ) {
-                                    toggle(topic)
-                                }
-                            }
-                        }
+                        topicGrid
                     }
                     .padding(.horizontal, DesignSystem.Spacing.screenHorizontal)
                     .padding(.top, mode == .editing ? DesignSystem.Spacing.sm : DesignSystem.Spacing.lg)
-                    .padding(.bottom, DesignSystem.Spacing.md)
+                    .padding(.bottom, DesignSystem.Spacing.lg)
                 }
-
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
                 continueBar
             }
         }
@@ -179,6 +169,33 @@ struct InterestSelectionView: View {
         .padding(.top, DesignSystem.Spacing.md)
     }
 
+    /// Eager rows so every world stays in the scroll content and can be tapped.
+    private var topicGrid: some View {
+        VStack(spacing: DesignSystem.Spacing.md) {
+            ForEach(Array(stride(from: 0, to: topics.count, by: 2)), id: \.self) { index in
+                HStack(alignment: .top, spacing: DesignSystem.Spacing.md) {
+                    topicCard(topics[index])
+                    if index + 1 < topics.count {
+                        topicCard(topics[index + 1])
+                    } else {
+                        Color.clear
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+            }
+        }
+    }
+
+    private func topicCard(_ topic: Topic) -> some View {
+        TopicCard(
+            topic: topic,
+            isSelected: selectedTopics.contains(topic)
+        ) {
+            toggle(topic)
+        }
+        .frame(maxWidth: .infinity, alignment: .top)
+    }
+
     private var selectionCounter: some View {
         HStack(spacing: DesignSystem.Spacing.sm) {
             Image(systemName: "heart.fill")
@@ -222,9 +239,11 @@ struct InterestSelectionView: View {
                 }
             )
             .padding(DesignSystem.Spacing.screenHorizontal)
-            .padding(.vertical, DesignSystem.Spacing.md)
+            .padding(.top, DesignSystem.Spacing.md)
+            .padding(.bottom, DesignSystem.Spacing.sm)
         }
         .background(.ultraThinMaterial)
+        .fixedSize(horizontal: false, vertical: true)
     }
 
     private func toggle(_ topic: Topic) {

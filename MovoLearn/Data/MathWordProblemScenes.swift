@@ -35,10 +35,22 @@ struct MathCountableScene: Equatable {
         objectSingular: String,
         objectPlural: String
     ) -> MathCountableScene {
-        MathCountableScene(
+        let resolvedPronoun = pronoun ?? self.pronoun
+        let resolvedPossessive: String
+        if pronoun == nil {
+            resolvedPossessive = possessive
+        } else {
+            switch resolvedPronoun {
+            case "she": resolvedPossessive = "her"
+            case "he": resolvedPossessive = "his"
+            case "it": resolvedPossessive = "its"
+            default: resolvedPossessive = "their"
+            }
+        }
+        return MathCountableScene(
             character: character ?? self.character,
-            pronoun: pronoun ?? self.pronoun,
-            possessive: possessive,
+            pronoun: resolvedPronoun,
+            possessive: resolvedPossessive,
             objectSingular: objectSingular,
             objectPlural: objectPlural,
             location: location,
@@ -69,7 +81,7 @@ enum MathWordProblemScenes {
                 scene("Mia", "she", "her", "seashell", "seashells", "on the beach", "were lying", "washed up", "washed away", "washed away", "collected", "shared"),
                 scene(nil, "they", "their", "dolphin", "dolphins", "near the boat", "were swimming", "swam over", "swam away", "swam away", "counted", "watched"),
                 scene(nil, "they", "their", "crab", "crabs", "on the sand", "were crawling", "scuttled over", "scuttled away", "scuttled away", "spotted", "followed"),
-                scene("a diver", "they", "their", "pearl", "pearls", "in a treasure chest", "were glowing", "were found", "was taken", "were taken", "gathered", "gave")
+                scene("a diver", "she", "her", "pearl", "pearls", "in a treasure chest", "were glowing", "were found", "was taken", "were taken", "gathered", "gave")
             ]
         case .horses:
             return [
@@ -80,8 +92,8 @@ enum MathWordProblemScenes {
         case .dinosaurs:
             return [
                 scene(nil, "they", "their", "dinosaur egg", "dinosaur eggs", "in a nest", "were resting", "were found", "rolled away", "rolled away", "discovered", "moved"),
-                scene(nil, "they", "their", "fern leaf", "fern leaves", "by the watering hole", "were growing", "sprouted nearby", "blew away", "blew away", "picked", "shared"),
-                scene("a paleontologist", "they", "their", "fossil", "fossils", "at the dig site", "were waiting", "were uncovered", "was packed away", "were packed away", "collected", "gave"),
+                scene("Dottie", "she", "her", "horned dinosaur", "horned dinosaurs", "by the fossil trail", "were walking", "walked up", "walked away", "walked away", "counted", "led"),
+                scene("a paleontologist", "she", "her", "fossil", "fossils", "at the dig site", "were waiting", "were uncovered", "was packed away", "were packed away", "collected", "gave"),
                 scene("Dottie", "she", "her", "dinosaur bone", "dinosaur bones", "in the sand", "were half buried", "were dug up", "was carried off", "were carried off", "found", "shared")
             ]
         case .space, .planets, .rockets:
@@ -142,7 +154,7 @@ enum MathWordProblemScenes {
         case .robots:
             return [
                 scene(nil, "they", "their", "robot", "robots", "in a line", "were waiting", "rolled over", "rolled away", "rolled away", "counted", "checked"),
-                scene("a builder", "they", "their", "battery", "batteries", "on the workbench", "were ready", "were delivered", "was used", "were used", "sorted", "shared"),
+                scene("a builder", "he", "his", "battery", "batteries", "on the workbench", "were ready", "were delivered", "was used", "were used", "sorted", "shared"),
                 scene(nil, "they", "their", "robot part", "robot parts", "on the repair table", "were sorted", "were added", "was installed", "were installed", "gathered", "handed out")
             ]
         case .bugs:

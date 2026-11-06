@@ -68,6 +68,7 @@ struct HomeFeedModel {
     let discovery: DiscoveryChallengeModel?
     let recentRewards: [AdventureReward]
     let mascotTopic: Topic
+    let playOffers: [PlayGameOffer]
 
     static func loadingPlaceholder(name: String = "there") -> HomeFeedModel {
         HomeFeedModel(
@@ -83,7 +84,8 @@ struct HomeFeedModel {
             worlds: [],
             discovery: nil,
             recentRewards: [],
-            mascotTopic: .space
+            mascotTopic: .space,
+            playOffers: []
         )
     }
 }
@@ -101,6 +103,8 @@ enum HomeFeedBuilder {
         let pathRecommendations: [LessonRecommendation]
         let game: GameProgressSnapshot
         let now: Date
+        /// Subject of the lesson the child just finished. Next up should be a different activity.
+        let lastCompletedSubject: PrimarySubject?
 
         init(
             profile: ChildProfile,
@@ -110,7 +114,8 @@ enum HomeFeedBuilder {
             allLessons: [Lesson],
             pathRecommendations: [LessonRecommendation],
             game: GameProgressSnapshot = .empty,
-            now: Date = Date()
+            now: Date = Date(),
+            lastCompletedSubject: PrimarySubject? = nil
         ) {
             self.profile = profile
             self.activity = activity
@@ -120,7 +125,20 @@ enum HomeFeedBuilder {
             self.pathRecommendations = pathRecommendations
             self.game = game
             self.now = now
+            self.lastCompletedSubject = lastCompletedSubject
         }
+    }
+
+    /// Subject of the most recently finished lesson, used so Home does not offer the same activity again.
+    static func subjectOfLatestCompletion(
+        _ records: [LessonCompletionRecord],
+        lessons: [Lesson] = []
+    ) -> PrimarySubject? {
+        guard let latest = records.max(by: { $0.completedAt < $1.completedAt }) else { return nil }
+        if let lesson = lessons.first(where: { $0.id == latest.lessonId }) {
+            return lesson.primarySubject
+        }
+        return LessonLoader.lesson(id: latest.lessonId)?.primarySubject
     }
 
     static func build(context: Context, recommendedCount: Int = 2) -> HomeFeedModel {
@@ -144,6 +162,12 @@ enum HomeFeedBuilder {
         let discovery = discoveryChallenge(context: context, excluding: continueCard?.lesson.id)
         let rewards = recentRewards(from: context.game)
         let mascot = interests.first ?? .space
+        let playOffers = PlayGameCatalog.offers(
+            from: context.allLessons,
+            favoriteTopics: interests,
+            completedIDs: context.completedLessonIDs,
+            limit: 4
+        )
 
         return HomeFeedModel(
             greetingTitle: greeting,
@@ -158,7 +182,8 @@ enum HomeFeedBuilder {
             worlds: worlds,
             discovery: discovery,
             recentRewards: rewards,
-            mascotTopic: mascot
+            mascotTopic: mascot,
+            playOffers: playOffers
         )
     }
 
@@ -183,7 +208,8 @@ enum HomeFeedBuilder {
 
         if let path = context.pathRecommendations.first(where: { $0.kind == .continueLearning }),
            !context.completedLessonIDs.contains(path.lesson.id),
-           !context.activity.dismissedLessonIDs.contains(path.lesson.id) {
+           !context.activity.dismissedLessonIDs.contains(path.lesson.id),
+           lessonFitsNextActivity(path.lesson, context: context) {
             return ContinueLearningCardModel(
                 lesson: path.lesson,
                 progressPercent: 0,
@@ -222,22 +248,51 @@ enum HomeFeedBuilder {
         }
         .sorted { $0.score > $1.score }
 
-        var results: [RecommendedLessonCardModel] = []
-        var seenTopics = Set<Topic>()
-        for item in scored {
-            if seenTopics.contains(item.lesson.theme), results.count >= max(1, count - 1) {
-                continue
+        let fresh = scored.filter { lessonFitsNextActivity($0.lesson, context: context) }
+        var results = pickVariedLessons(from: fresh, count: count)
+        if results.count < count {
+            let sameKind = scored.filter { !lessonFitsNextActivity($0.lesson, context: context) }
+            for item in pickVariedLessons(from: sameKind, count: count - results.count)
+            where !results.contains(where: { $0.id == item.id }) {
+                results.append(item)
             }
+        }
+        return results
+    }
+
+    /// A finished counting lesson should be followed by reading, art, or science — not another count.
+    private static func lessonFitsNextActivity(_ lesson: Lesson, context: Context) -> Bool {
+        guard let last = context.lastCompletedSubject else { return true }
+        return lesson.primarySubject != last
+    }
+
+    /// One card per activity, then a new world. Two suggestions should not both be counting lessons.
+    private static func pickVariedLessons(
+        from scored: [RecommendedLessonCardModel],
+        count: Int
+    ) -> [RecommendedLessonCardModel] {
+        guard count > 0 else { return [] }
+        var results: [RecommendedLessonCardModel] = []
+        var seenSubjects = Set<PrimarySubject>()
+        var seenTopics = Set<Topic>()
+
+        func take(_ item: RecommendedLessonCardModel) {
             results.append(item)
+            seenSubjects.insert(item.lesson.primarySubject)
             seenTopics.insert(item.lesson.theme)
-            if results.count >= count { break }
         }
 
-        if results.count < count {
-            for item in scored where !results.contains(where: { $0.id == item.id }) {
-                results.append(item)
-                if results.count >= count { break }
-            }
+        for item in scored where !seenSubjects.contains(item.lesson.primarySubject) && !seenTopics.contains(item.lesson.theme) {
+            take(item)
+            if results.count >= count { return results }
+        }
+        for item in scored where !results.contains(where: { $0.id == item.id }) && !seenSubjects.contains(item.lesson.primarySubject) {
+            take(item)
+            if results.count >= count { return results }
+        }
+        for item in scored where !results.contains(where: { $0.id == item.id }) {
+            take(item)
+            if results.count >= count { break }
         }
         return results
     }
@@ -586,9 +641,16 @@ enum HomeFeedBuilder {
         let favoritePool = context.allLessons.filter {
             baseFilter($0) && (favorites.isEmpty || favorites.contains($0.theme))
         }
-        let pool = favoritePool.isEmpty
+        let unrotated = favoritePool.isEmpty
             ? context.allLessons.filter(baseFilter)
             : favoritePool
+        let pool: [Lesson]
+        if let avoid = context.lastCompletedSubject {
+            let fresh = unrotated.filter { $0.primarySubject != avoid }
+            pool = fresh.isEmpty ? unrotated : fresh
+        } else {
+            pool = unrotated
+        }
         let daySeed = Calendar.current.ordinality(of: .day, in: .year, for: context.now) ?? 1
         let lesson: Lesson?
         if pool.isEmpty {

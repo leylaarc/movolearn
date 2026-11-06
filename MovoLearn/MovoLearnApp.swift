@@ -9,6 +9,8 @@ struct MovoLearnApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .font(DesignSystem.Typography.bodyText)
+                .padLayout()
         }
     }
 }

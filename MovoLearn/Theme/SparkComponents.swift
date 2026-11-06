@@ -229,7 +229,7 @@ private struct IdleSparkle: View {
             .accessibilityHidden(true)
     }
 
-    private var size: CGFloat { [9, 12, 8, 11, 10][index % 5] }
+    private var size: CGFloat { DesignSystem.Metrics.scaled([9, 12, 8, 11, 10][index % 5]) }
 
     private var x: CGFloat {
         let xs: [CGFloat] = [0.08, 0.22, 0.38, 0.55, 0.72, 0.88, 0.14, 0.64, 0.81, 0.42, 0.93, 0.31]
@@ -310,7 +310,7 @@ struct SoftStatBubble: View {
                     .frame(width: 56, height: 56)
                     .shadow(color: tint.opacity(0.38), radius: 8, y: 3)
                 Image(systemName: icon)
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.padScaled(size: 20, weight: .semibold))
                     .foregroundStyle(.white)
                     .symbolEffect(.bounce, value: value)
             }
@@ -535,7 +535,7 @@ struct LessonOptionCard: View {
 
                     HStack(spacing: 5) {
                         Image(systemName: lesson.category.iconSystemName)
-                            .font(.system(size: 10, weight: .bold))
+                            .font(.padScaled(size: 10, weight: .bold))
                         Text(lesson.category.shortLabel.uppercased())
                             .font(DesignSystem.Typography.label(10))
                     }
@@ -569,7 +569,7 @@ struct LessonOptionCard: View {
 
                 metaChip(icon: "sparkles", text: lesson.difficultyLabel)
 
-                FlowLayout(spacing: 6) {
+                FlowLayout(spacing: DesignSystem.Metrics.scaled(6)) {
                     ForEach(Array(lesson.skillsPracticed.prefix(3)), id: \.self) { skill in
                         SkillPill(skill: skill)
                     }
@@ -604,7 +604,7 @@ struct LessonOptionCard: View {
     private func metaChip(icon: String, text: String) -> some View {
         HStack(spacing: 4) {
             Image(systemName: icon)
-                .font(.system(size: 10, weight: .semibold))
+                .font(.padScaled(size: 10, weight: .semibold))
             Text(text)
                 .font(DesignSystem.Typography.caption(11).weight(.semibold))
         }
@@ -666,6 +666,8 @@ struct MascotView: View {
     private var kind: MascotKind { MascotKind.forTopic(topic) }
     private var themeColor: Color { TopicPalette.color(for: topic) }
     private var motionEnabled: Bool { animates && !reduceMotion }
+    /// Phone size is unchanged. On iPad the mascot grows with the rest of the layout.
+    private var layoutSize: CGFloat { DesignSystem.Metrics.scaled(size) }
     private let blinkTimer = Timer.publish(every: 3.4, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -676,10 +678,10 @@ struct MascotView: View {
                         colors: [themeColor.opacity(0.35), themeColor.opacity(0.1)],
                         center: .center,
                         startRadius: 0,
-                        endRadius: size * 0.5
+                        endRadius: layoutSize * 0.5
                     )
                 )
-                .frame(width: size * 1.1, height: size * 1.1)
+                .frame(width: layoutSize * 1.1, height: layoutSize * 1.1)
                 .scaleEffect(celebrate && pulse ? 1.12 : 1)
 
             mascotFace
@@ -719,23 +721,23 @@ struct MascotView: View {
         ZStack {
             Triangle()
                 .fill(themeColor)
-                .frame(width: size * 0.22, height: size * 0.2)
+                .frame(width: layoutSize * 0.22, height: layoutSize * 0.2)
                 .rotationEffect(.degrees(-90))
-                .offset(y: -size * 0.2)
+                .offset(y: -layoutSize * 0.2)
                 .wiggle(degrees: 8, delay: 0.15)
             Ellipse()
                 .fill(themeColor)
-                .frame(width: size * 0.62, height: size * 0.34)
+                .frame(width: layoutSize * 0.62, height: layoutSize * 0.34)
             Ellipse()
                 .fill(themeColor)
-                .frame(width: size * 0.3, height: size * 0.2)
-                .offset(x: -size * 0.22)
+                .frame(width: layoutSize * 0.3, height: layoutSize * 0.2)
+                .offset(x: -layoutSize * 0.22)
             Triangle()
                 .fill(themeColor.opacity(0.75))
-                .frame(width: size * 0.16, height: size * 0.16)
-                .offset(x: size * 0.3)
-            mascotEyes(offsetY: -size * 0.04)
-            smileArc.offset(x: -size * 0.1, y: size * 0.06)
+                .frame(width: layoutSize * 0.16, height: layoutSize * 0.16)
+                .offset(x: layoutSize * 0.3)
+            mascotEyes(offsetY: -layoutSize * 0.04)
+            smileArc.offset(x: -layoutSize * 0.1, y: layoutSize * 0.06)
         }
     }
 
@@ -743,18 +745,18 @@ struct MascotView: View {
         ZStack {
             Ellipse()
                 .fill(themeColor.opacity(0.85))
-                .frame(width: size * 0.55, height: size * 0.38)
-                .offset(y: size * 0.06)
+                .frame(width: layoutSize * 0.55, height: layoutSize * 0.38)
+                .offset(y: layoutSize * 0.06)
             Circle()
                 .fill(themeColor)
-                .frame(width: size * 0.42, height: size * 0.42)
-                .offset(x: -size * 0.08)
-            mascotEyes(offsetY: -size * 0.04)
-            smileArc.offset(x: -size * 0.08, y: size * 0.06)
+                .frame(width: layoutSize * 0.42, height: layoutSize * 0.42)
+                .offset(x: -layoutSize * 0.08)
+            mascotEyes(offsetY: -layoutSize * 0.04)
+            smileArc.offset(x: -layoutSize * 0.08, y: layoutSize * 0.06)
             Circle()
                 .fill(themeColor.opacity(0.5))
-                .frame(width: size * 0.12)
-                .offset(x: size * 0.22, y: -size * 0.02)
+                .frame(width: layoutSize * 0.12)
+                .offset(x: layoutSize * 0.22, y: -layoutSize * 0.02)
         }
     }
 
@@ -767,42 +769,42 @@ struct MascotView: View {
                         startPoint: .top, endPoint: .bottom
                     )
                 )
-                .frame(width: size * 0.5, height: size * 0.5)
+                .frame(width: layoutSize * 0.5, height: layoutSize * 0.5)
                 .wiggle(degrees: 6, delay: 0.2)
-            mascotEyes(offsetY: -size * 0.02)
-            smileArc.offset(y: size * 0.1)
+            mascotEyes(offsetY: -layoutSize * 0.02)
+            smileArc.offset(y: layoutSize * 0.1)
         }
     }
 
     private var dinoFace: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: size * 0.15, style: .continuous)
+            RoundedRectangle(cornerRadius: layoutSize * 0.15, style: .continuous)
                 .fill(themeColor)
-                .frame(width: size * 0.5, height: size * 0.42)
+                .frame(width: layoutSize * 0.5, height: layoutSize * 0.42)
             ForEach(0..<3, id: \.self) { i in
                 Circle()
                     .fill(themeColor.opacity(0.7))
-                    .frame(width: size * 0.1)
-                    .offset(x: CGFloat(i - 1) * size * 0.12, y: -size * 0.28)
+                    .frame(width: layoutSize * 0.1)
+                    .offset(x: CGFloat(i - 1) * layoutSize * 0.12, y: -layoutSize * 0.28)
             }
-            mascotEyes(offsetY: -size * 0.02)
-            smileArc.offset(y: size * 0.08)
+            mascotEyes(offsetY: -layoutSize * 0.02)
+            smileArc.offset(y: layoutSize * 0.08)
         }
     }
 
     private var horseFace: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: size * 0.2, style: .continuous)
+            RoundedRectangle(cornerRadius: layoutSize * 0.2, style: .continuous)
                 .fill(themeColor)
-                .frame(width: size * 0.48, height: size * 0.44)
+                .frame(width: layoutSize * 0.48, height: layoutSize * 0.44)
             Ellipse()
                 .fill(themeColor.opacity(0.6))
-                .frame(width: size * 0.18, height: size * 0.28)
-                .offset(x: -size * 0.2, y: -size * 0.12)
+                .frame(width: layoutSize * 0.18, height: layoutSize * 0.28)
+                .offset(x: -layoutSize * 0.2, y: -layoutSize * 0.12)
                 .rotationEffect(.degrees(-20))
                 .wiggle(degrees: 7, delay: 0.25)
-            mascotEyes(offsetY: -size * 0.02)
-            smileArc.offset(y: size * 0.08)
+            mascotEyes(offsetY: -layoutSize * 0.02)
+            smileArc.offset(y: layoutSize * 0.08)
         }
     }
 
@@ -815,38 +817,44 @@ struct MascotView: View {
                         startPoint: .topLeading, endPoint: .bottomTrailing
                     )
                 )
-                .frame(width: size * 0.5, height: size * 0.5)
-            mascotEyes(offsetY: -size * 0.02)
-            smileArc.offset(y: size * 0.08)
+                .frame(width: layoutSize * 0.5, height: layoutSize * 0.5)
+            mascotEyes(offsetY: -layoutSize * 0.02)
+            smileArc.offset(y: layoutSize * 0.08)
         }
     }
 
     private func mascotEyes(offsetY: CGFloat) -> some View {
-        HStack(spacing: size * 0.12) {
+        HStack(spacing: layoutSize * 0.12) {
             eye
             eye
         }
         .offset(y: offsetY)
-        .offset(x: looking ? size * 0.02 : -size * 0.02)
+        .offset(x: looking ? layoutSize * 0.02 : -layoutSize * 0.02)
     }
 
     private var eye: some View {
         ZStack {
-            Circle().fill(.white).frame(width: size * 0.12, height: size * 0.12)
+            Circle().fill(.white).frame(width: layoutSize * 0.12, height: layoutSize * 0.12)
             Circle()
                 .fill(DesignSystem.Colors.deepNavy)
-                .frame(width: size * 0.06, height: size * 0.06)
-                .offset(x: looking ? 1 : -1)
+                .frame(width: layoutSize * 0.06, height: layoutSize * 0.06)
+                .offset(x: looking ? DesignSystem.Metrics.scaled(1) : -DesignSystem.Metrics.scaled(1))
         }
         .scaleEffect(x: 1, y: blink ? 0.12 : 1)
     }
 
     private var smileArc: some View {
         Path { path in
-            path.addArc(center: .zero, radius: 8, startAngle: .degrees(20), endAngle: .degrees(160), clockwise: false)
+            path.addArc(
+                center: .zero,
+                radius: DesignSystem.Metrics.scaled(8),
+                startAngle: .degrees(20),
+                endAngle: .degrees(160),
+                clockwise: false
+            )
         }
-        .stroke(DesignSystem.Colors.deepNavy, lineWidth: 2)
-        .frame(width: 16, height: 8)
+        .stroke(DesignSystem.Colors.deepNavy, lineWidth: DesignSystem.Metrics.scaled(2))
+        .frame(width: DesignSystem.Metrics.scaled(16), height: DesignSystem.Metrics.scaled(8))
     }
 }
 
@@ -954,14 +962,14 @@ struct LessonProgressBar: View {
                 ZStack(alignment: .leading) {
                     Capsule()
                         .fill(DesignSystem.Colors.surfaceMuted)
-                        .frame(height: 8)
+                        .frame(height: DesignSystem.Metrics.scaled(8))
                     Capsule()
                         .fill(DesignSystem.Gradients.progressBar)
-                        .frame(width: max(8, geometry.size.width * progress), height: 8)
+                        .frame(width: max(DesignSystem.Metrics.scaled(8), geometry.size.width * progress), height: DesignSystem.Metrics.scaled(8))
                         .animation(DesignSystem.Animation.gentle, value: progress)
                 }
             }
-            .frame(height: 8)
+            .frame(height: DesignSystem.Metrics.scaled(8))
         }
     }
 }
@@ -974,7 +982,7 @@ struct QuestionCard: View {
             .font(DesignSystem.Typography.question(26))
             .foregroundStyle(DesignSystem.Colors.deepNavy)
             .multilineTextAlignment(.leading)
-            .lineSpacing(7)
+            .lineSpacing(DesignSystem.Metrics.scaled(7))
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -1017,7 +1025,7 @@ struct AnswerButton: View {
             }
             .foregroundStyle(DesignSystem.Colors.deepNavy)
             .padding(DesignSystem.Spacing.lg)
-            .frame(minHeight: 64)
+            .frame(minHeight: DesignSystem.Metrics.scaled(64))
             .background {
                 RoundedRectangle(cornerRadius: DesignSystem.Radius.mediumRadius, style: .continuous)
                     .fill(backgroundColor)
@@ -1151,7 +1159,7 @@ struct CelebrationView: View {
             ForEach(particles.indices, id: \.self) { i in
                 let p = particles[i]
                 Image(systemName: p.symbol)
-                    .font(.system(size: p.size))
+                    .font(.padScaled(size: p.size))
                     .foregroundStyle(p.color)
                     .offset(x: animate ? p.x : 0, y: animate ? p.y : 0)
                     .opacity(animate ? 0 : 1)
@@ -1205,7 +1213,7 @@ struct ConfettiView: View {
         Group {
             if i.isMultiple(of: 3) {
                 Image(systemName: i.isMultiple(of: 2) ? "star.fill" : "sparkle")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.padScaled(size: 10, weight: .bold))
                     .foregroundStyle(colors[i % colors.count])
             } else {
                 RoundedRectangle(cornerRadius: 1.5)
@@ -1343,7 +1351,7 @@ struct SelectableChip: View {
             }
             .foregroundStyle(DesignSystem.Colors.deepNavy)
             .padding(.horizontal, DesignSystem.Spacing.md)
-            .padding(.vertical, 14)
+            .padding(.vertical, DesignSystem.Metrics.scaled(14))
             .background {
                 RoundedRectangle(cornerRadius: DesignSystem.Radius.sm, style: .continuous)
                     .fill(isSelected ? DesignSystem.Gradients.kidCardFill(accent: accent) : LinearGradient(colors: [DesignSystem.Colors.skyBlueLight.opacity(0.45), DesignSystem.Colors.cardWhite], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -1365,7 +1373,7 @@ struct SparkTextFieldStyle: TextFieldStyle {
             .foregroundStyle(DesignSystem.Colors.inputText)
             .tint(DesignSystem.Colors.inputCursor)
             .padding(.horizontal, DesignSystem.Spacing.md)
-            .padding(.vertical, 14)
+            .padding(.vertical, DesignSystem.Metrics.scaled(14))
             .background(DesignSystem.Colors.inputBackground)
             .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Radius.sm, style: .continuous))
             .overlay(
@@ -1500,11 +1508,11 @@ struct EmptyStateCard: View {
                         endRadius: 48
                     )
                     )
-                    .frame(width: 88, height: 88)
+                    .frame(width: DesignSystem.Metrics.scaled(88), height: DesignSystem.Metrics.scaled(88))
                     .floating(offset: 5, delay: 0.2)
 
                 Image(systemName: icon)
-                    .font(.system(size: 32, weight: .semibold))
+                    .font(.padScaled(size: 32, weight: .semibold))
                     .foregroundStyle(accent)
                     .symbolEffect(.bounce, value: title)
                     .idlePulse(scale: 1.08, delay: 0.15)
@@ -1539,7 +1547,7 @@ struct EmptyStateCard: View {
 
 struct WelcomeHeroIllustration: View {
     private let orbitTopics: [Topic] = [.space, .sharks, .dinosaurs, .horses, .soccer, .princesses]
-    private let orbitRadius: CGFloat = 100
+    private var orbitRadius: CGFloat { DesignSystem.Metrics.scaled(100) }
     @State private var orbitAngle: Double = 0
     @State private var glowPulse = false
 
@@ -1555,17 +1563,17 @@ struct WelcomeHeroIllustration: View {
                             .clear
                         ],
                         center: .center,
-                        startRadius: 30,
-                        endRadius: 150
+                        startRadius: DesignSystem.Metrics.scaled(30),
+                        endRadius: DesignSystem.Metrics.scaled(150)
                     )
                 )
-                .frame(width: 300, height: 300)
+                .frame(width: DesignSystem.Metrics.scaled(300), height: DesignSystem.Metrics.scaled(300))
 
             ForEach(0..<6, id: \.self) { i in
                 ZStack {
                     Circle()
                         .fill(TopicPalette.color(for: orbitTopics[i]).opacity(0.15))
-                        .frame(width: 52, height: 52)
+                        .frame(width: DesignSystem.Metrics.scaled(52), height: DesignSystem.Metrics.scaled(52))
                     TopicIllustrationView(topic: orbitTopics[i], size: 36, animate: true)
                 }
                 .offset(orbitOffset(for: i))
@@ -1575,7 +1583,7 @@ struct WelcomeHeroIllustration: View {
             MascotView(topic: .space, size: 130, animates: true)
                 .floating(offset: 6, delay: 0.5)
         }
-        .frame(height: 270)
+        .frame(height: DesignSystem.Metrics.scaled(270))
         .onAppear {
             withAnimation(.linear(duration: 60).repeatForever(autoreverses: false)) {
                 orbitAngle = 360

@@ -195,7 +195,7 @@ enum MathWordProblemGenerator {
         if let spec {
             packScene = scenes[0].applyingStory(
                 character: spec.character,
-                pronoun: spec.pronoun,
+                pronoun: spec.character == nil && spec.pronoun == "they" ? nil : spec.pronoun,
                 objectSingular: spec.singular,
                 objectPlural: spec.plural
             )
@@ -623,11 +623,50 @@ enum MathWordProblemGenerator {
         return name.isEmpty ? nil : name
     }
 
+    /// One named person is he or she. "They" stays for a group, or when no person is named.
+    static func storyPronoun(for name: String, preferred: String) -> String {
+        if preferred == "he" || preferred == "she" || preferred == "it" {
+            return preferred
+        }
+        let resolved = pronounForName(name, passage: "")
+        if resolved == "he" || resolved == "she" || resolved == "it" {
+            return resolved
+        }
+        return preferred
+    }
+
+    private static let personPronouns: [String: String] = [
+        "lena": "she", "ana": "she", "elin": "she", "luma": "she", "zoe": "she",
+        "rosa": "she", "nina": "she", "iris": "she", "tess": "she", "mia": "she",
+        "lina": "she", "nova": "she", "dottie": "she", "sunny": "she", "willa": "she",
+        "piper": "she", "priya": "she", "coach priya": "she",
+        "dara": "she", "chef dara": "she",
+        "wren": "she", "ranger wren": "she", "captain wren": "she",
+        "jo": "she", "farmer jo": "she",
+        "amara": "she", "keeper amara": "she",
+        "nolan": "she", "dr. nolan": "she", "dr nolan": "she",
+        "princess": "she", "the princess": "she",
+        "diver": "she", "a diver": "she",
+        "paleontologist": "she", "a paleontologist": "she",
+        "theo": "he", "ben": "he", "owen": "he", "max": "he", "milo": "he",
+        "sam": "he", "kai": "he", "remy": "he", "finn": "he", "scout": "he",
+        "pirate": "he", "a pirate": "he",
+        "builder": "he", "a builder": "he"
+    ]
+
     private static func pronounForName(_ name: String, passage: String) -> String {
-        let lower = passage.lowercased()
-        if lower.contains(" she ") || lower.contains(" she.") { return "she" }
-        if lower.contains(" he ") || lower.contains(" he.") { return "he" }
-        if name.lowercased() == "they" { return "they" }
+        let key = name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let lower = " \(passage.lowercased()) "
+        let hasShe = lower.contains(" she ") || lower.contains(" she.")
+        let hasHe = lower.contains(" he ") || lower.contains(" he.")
+        if let known = personPronouns[key] {
+            if known == "she", hasHe, !hasShe { return "he" }
+            if known == "he", hasShe, !hasHe { return "she" }
+            return known
+        }
+        if hasShe { return "she" }
+        if hasHe { return "he" }
+        if lower.contains(" it ") || lower.contains(" its ") { return "it" }
         return "they"
     }
 

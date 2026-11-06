@@ -357,15 +357,12 @@ struct AcknowledgementsView: View {
                 VStack(alignment: .leading, spacing: DesignSystem.Spacing.md) {
                     Text("Marble Skill Taxonomy")
                         .font(DesignSystem.Typography.title(22))
-                    Text("Movo Learn uses the open Marble Skill Taxonomy (withmarbleapp/os-taxonomy) as a curriculum map for skills and prerequisites. Lesson stories and activities are original Movo Learn content.")
+                    Text("Movo Learn uses the open Marble Skill Taxonomy as a curriculum map for skills and prerequisites. Lesson stories and activities are original Movo Learn content.")
                         .font(DesignSystem.Typography.subtitle(15))
                         .foregroundStyle(DesignSystem.Colors.mutedText)
-                    Text("License: Open Data Commons Open Database License (ODbL). See ThirdParty/Marble/LICENSE in the project repository.")
+                    Text("License: Open Data Commons Open Database License (ODbL). Source: Marble Skill Taxonomy by withmarbleapp.")
                         .font(DesignSystem.Typography.caption(13))
                         .foregroundStyle(DesignSystem.Colors.textTertiary)
-                    Text("Upstream: https://github.com/withmarbleapp/os-taxonomy")
-                        .font(DesignSystem.Typography.caption(13))
-                        .foregroundStyle(DesignSystem.Colors.skyBlue)
                 }
                 .padding()
             }

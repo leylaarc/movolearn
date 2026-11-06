@@ -792,11 +792,11 @@ extension CuratedTopicLessonBank {
         switch level {
         case .beginner:
             return sceneDrawing(
-                title: "Habitat Home Drawing",
-                scene: "In nature, a rabbit sits in a meadow. Green plants are food. A burrow is shelter. A stream gives water near a tree.",
+                title: "Rabbit's Meadow",
+                scene: "A rabbit sits in a meadow. Green plants are its food. A burrow is its shelter. A stream gives water near a tree.",
                 vocab: "habitat",
-                vocabDef: "A habitat is a place where a plant or animal lives and finds what it needs.",
-                fact: "Habitats can give animals food, water, shelter, and space.",
+                vocabDef: "The place where an animal finds food, water, and shelter.",
+                fact: "A rabbit eats meadow plants and hides in a burrow.",
                 goals: ["Rabbit", "Burrow", "Stream"],
                 fingerprint: "nature.creative.beginner.habitat"
             )

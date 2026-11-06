@@ -118,7 +118,7 @@ struct LessonCompletionView: View {
                             .idlePulse(scale: 1.12, delay: 0.2)
                     }
                     .padding(DesignSystem.Spacing.md)
-                    .frame(minHeight: 72)
+                    .frame(minHeight: DesignSystem.Metrics.scaled(72))
                     .background(
                         LinearGradient(
                             colors: TopicPalette.gradientColors(for: nextLesson.theme),
@@ -197,7 +197,7 @@ struct LessonCompletionView: View {
                     .scaleEffect(badgePulse ? 1.06 : 1)
 
                 Image(systemName: "star.fill")
-                    .font(.system(size: 44, weight: .bold))
+                    .font(.padScaled(size: 44, weight: .bold))
                     .foregroundStyle(.white)
                     .symbolEffect(.bounce, value: showSparkles)
                     .scaleEffect(badgePulse ? 1.08 : 1)

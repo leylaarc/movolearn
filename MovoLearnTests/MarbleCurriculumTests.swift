@@ -74,6 +74,99 @@ final class MarbleCurriculumTests: XCTestCase {
         XCTAssertFalse(options.isEmpty)
     }
 
+    func testCompletedCountingLessonIsNotFollowedByAnotherCountingLesson() throws {
+        let topics: [Topic] = [.sharks, .space, .dinosaurs]
+        var lessons: [Lesson] = []
+        for topic in topics {
+            for category in [LessonCategory.math, .story, .discovery, .creative] {
+                guard let lesson = LevelSpecificContentFactory.makeApprovedLesson(
+                    topic: topic,
+                    category: category,
+                    readingLevel: .earlyReader,
+                    mathLevel: .emerging
+                ) else { continue }
+                lessons.append(lesson)
+            }
+        }
+        let counting = lessons.filter { $0.primarySubject == .math }
+        XCTAssertGreaterThanOrEqual(counting.count, 2, "Need counting lessons in more than one world")
+        let finished = counting[0]
+        let otherCounting = counting[1]
+        let profile = ChildProfile(
+            nickname: "Mia",
+            age: 6,
+            readingLevel: .earlyReader,
+            mathLevel: .emerging,
+            favoriteTopics: topics,
+            hasCompletedOnboarding: true
+        )
+        let context = HomeFeedBuilder.Context(
+            profile: profile,
+            activity: .empty,
+            completedLessonIDs: [finished.id],
+            learningState: .empty(childId: profile.id),
+            allLessons: lessons,
+            pathRecommendations: [
+                LessonRecommendation(
+                    kind: .continueLearning,
+                    lesson: otherCounting,
+                    reason: "Another counting quest",
+                    score: 200
+                )
+            ],
+            lastCompletedSubject: .math
+        )
+
+        let feed = HomeFeedBuilder.build(context: context)
+        let next = try XCTUnwrap(feed.continueLearning?.lesson)
+        XCTAssertNotEqual(next.id, finished.id)
+        XCTAssertNotEqual(next.primarySubject, .math)
+        XCTAssertTrue(
+            next.primarySubject == .reading
+                || next.primarySubject == .science
+                || next.primarySubject == .creative
+        )
+
+        let recommended = HomeFeedBuilder.recommendedLessons(context: context, excluding: [], count: 2)
+        XCTAssertEqual(recommended.count, 2)
+        XCTAssertFalse(recommended.contains { $0.lesson.primarySubject == .math })
+        XCTAssertNotEqual(recommended[0].lesson.primarySubject, recommended[1].lesson.primarySubject)
+    }
+
+    func testHomeStillOffersCountingWhenNothingElseIsLeft() throws {
+        let counting = [Topic.sharks, .space].compactMap {
+            LevelSpecificContentFactory.makeApprovedLesson(
+                topic: $0,
+                category: .math,
+                readingLevel: .earlyReader,
+                mathLevel: .emerging
+            )
+        }
+        XCTAssertEqual(counting.count, 2)
+        let profile = ChildProfile(
+            nickname: "Mia",
+            age: 6,
+            readingLevel: .earlyReader,
+            mathLevel: .emerging,
+            favoriteTopics: [.sharks, .space],
+            hasCompletedOnboarding: true
+        )
+        let feed = HomeFeedBuilder.build(
+            context: .init(
+                profile: profile,
+                activity: .empty,
+                completedLessonIDs: [counting[0].id],
+                learningState: .empty(childId: profile.id),
+                allLessons: counting,
+                pathRecommendations: [],
+                lastCompletedSubject: .math
+            )
+        )
+        let next = try XCTUnwrap(feed.continueLearning?.lesson)
+        XCTAssertEqual(next.primarySubject, .math)
+        XCTAssertNotEqual(next.id, counting[0].id)
+    }
+
     func testLegacyLessonsStillDecode() throws {
         for name in ["sharks", "horses", "space", "dinosaurs"] {
             let url = Bundle.main.url(forResource: name, withExtension: "json")

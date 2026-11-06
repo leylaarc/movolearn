@@ -1,10 +1,10 @@
 # Movo Learn Terms of Use
 
 **Effective date:** September 16, 2026  
-**Last updated:** September 16, 2026  
+**Last updated:** October 19, 2026  
 **Public URL:** https://movolearn.com/terms
 
-These Terms of Use (“Terms”) are an agreement between you (a parent or legal guardian) and Movo Learn for use of the Movo Learn iOS app. If you do not agree, do not use the app.
+These Terms of Use (“Terms”) are an agreement between you (a parent or legal guardian) and Ley Labs LLC (“Ley Labs,” “we,” “us,” or “our”) for use of the Movo Learn iOS app. If you do not agree, do not use the app.
 
 The [Privacy Policy](PRIVACY_POLICY.md) explains how information is handled. If there is a conflict about information practices, the Privacy Policy controls.
 
@@ -38,7 +38,7 @@ The app is provided “as is.” To the fullest extent allowed by law, we discla
 
 ## 8. Limitation of liability
 
-To the fullest extent allowed by law, Movo Learn is not liable for indirect, incidental, special, consequential, or punitive damages, or for lost progress if the app is deleted or a device is lost. Our total liability for any claim arising from the app is limited to the amount you paid us for the app in the twelve months before the claim (which is zero if the app is free). These limits do not apply to liability that cannot be limited under applicable law.
+To the fullest extent allowed by law, Ley Labs LLC is not liable for indirect, incidental, special, consequential, or punitive damages, or for lost progress if the app is deleted or a device is lost. Our total liability for any claim arising from the app is limited to the amount you paid us for the app in the twelve months before the claim (which is zero if the app is free). These limits do not apply to liability that cannot be limited under applicable law.
 
 ## 9. Changes and termination
 
@@ -46,4 +46,4 @@ We may update the app or these Terms. Continued use after an update means you ac
 
 ## 10. Contact
 
-privacy@movolearn.app
+privacy@movolearn.com

@@ -982,7 +982,7 @@ enum QuestionQualityValidator {
         case .jungleAnimals:
             return ["canopy", "rainforest", "toucan", "jaguar", "frog", "vine", "leaf", "jungle", "habitat", "camouflage"]
         case .dinosaurs:
-            return ["fossil", "herd", "fern", "valley", "footprint", "egg", "horn", "plant", "bone", "museum"]
+            return ["fossil", "herd", "species", "triceratops", "stegosaurus", "tyrannosaurus", "brachiosaurus", "ankylosaurus", "valley", "footprint", "egg", "horn", "plant", "bone", "museum"]
         case .space, .planets, .rockets:
             return ["moon", "orbit", "suit", "rocket", "crew", "planet", "asteroid", "gravity", "launch"]
         case .princesses, .castles, .fairies:

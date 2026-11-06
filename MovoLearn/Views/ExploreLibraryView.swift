@@ -42,7 +42,7 @@ struct CatalogSearchSheet: View {
                                                 Text(lesson.title)
                                                     .foregroundStyle(DesignSystem.Colors.deepNavy)
                                                 Text(TopicPalette.displayTitle(for: lesson.theme))
-                                                    .font(.caption)
+                                                    .font(DesignSystem.Typography.captionText)
                                                     .foregroundStyle(DesignSystem.Colors.mutedText)
                                             }
                                         }

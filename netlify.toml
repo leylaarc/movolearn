@@ -2,6 +2,11 @@
   publish = "website"
 
 [[redirects]]
+  from = "/support"
+  to = "/support/"
+  status = 301
+
+[[redirects]]
   from = "/privacy"
   to = "/privacy/"
   status = 301

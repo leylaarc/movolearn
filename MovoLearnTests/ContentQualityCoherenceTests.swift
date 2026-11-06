@@ -3,6 +3,60 @@ import XCTest
 
 final class ContentQualityCoherenceTests: XCTestCase {
 
+    func testDidYouKnowDropsAFactThatOnlyRepeatsTheScienceNote() {
+        let fact = "Farm animals need food, water, and shelter every day."
+        let kept = LessonContentCoherenceValidator.nonRepeatingFacts(
+            [
+                KnowledgeFact(fact: fact, explanation: fact)
+            ],
+            passage: "Science note: \(fact)",
+            vocabulary: []
+        )
+        XCTAssertTrue(kept.isEmpty)
+    }
+
+    func testBarnMorningDrawingDoesNotRepeatItsCareFact() throws {
+        let lesson = try XCTUnwrap(LevelSpecificContentFactory.makeApprovedLesson(
+            topic: .farmAnimals,
+            category: .creative,
+            readingLevel: .beginner,
+            mathLevel: .emerging
+        ))
+        let sentence = "farm animals need food, water, and shelter every day"
+        let alreadySaid = [
+            lesson.storyOpening,
+            lesson.readingPassage,
+            lesson.creativePrompt
+        ].joined(separator: " ").lowercased()
+        let repeatedOnCard = lesson.knowledgeFacts.contains { fact in
+            let card = (fact.fact + " " + fact.childFacingExplanation).lowercased()
+            return card.contains(sentence) && alreadySaid.contains(sentence)
+        }
+        XCTAssertFalse(repeatedOnCard)
+    }
+
+    func testDidYouKnowDropsAFactThatOnlyRepeatsTheStory() {
+        let passage = "A habitat is a home for living things. A frog needs a wet stream."
+        let kept = LessonContentCoherenceValidator.nonRepeatingFacts(
+            [
+                KnowledgeFact(
+                    fact: "A habitat is a home for living things.",
+                    explanation: "A habitat is a home for living things."
+                ),
+                KnowledgeFact(
+                    fact: "A frog's skin dries out without water nearby.",
+                    explanation: "That is why a frog stays near water."
+                )
+            ],
+            passage: passage,
+            vocabulary: [
+                VocabularyWord(word: "habitat", definition: "A home for living things.")
+            ]
+        )
+        XCTAssertEqual(kept.count, 1)
+        XCTAssertTrue(kept[0].fact.localizedCaseInsensitiveContains("skin"))
+    }
+
     func testAcademicSkillTitlesAreBlocked() {
         XCTAssertTrue(LessonContentCoherenceValidator.hasAcademicSkillTitle("Horses: Main idea and sequencing"))
         XCTAssertTrue(LessonContentCoherenceValidator.hasAcademicSkillTitle("Horses and Sequencing"))

@@ -52,12 +52,14 @@ struct HomeKidHeader: View {
 
             Spacer(minLength: 4)
 
+            SoundEffectsToggleButton(accent: TopicPalette.color(for: mascotTopic))
+
             if let onSearch {
                 Button(action: onSearch) {
                     Image(systemName: "magnifyingglass")
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(.padScaled(size: 17, weight: .semibold))
                         .foregroundStyle(.white)
-                        .frame(width: 48, height: 48)
+                        .frame(width: DesignSystem.Metrics.scaled(48), height: DesignSystem.Metrics.scaled(48))
                         .background(
                             LinearGradient(
                                 colors: [DesignSystem.Colors.skyBlue, DesignSystem.Colors.lavenderPurple],
@@ -115,12 +117,12 @@ struct SkillOrbChip: View {
         VStack(spacing: 6) {
             ZStack {
                 Circle()
-                    .stroke(orb.tint.opacity(0.2), lineWidth: 5)
-                    .frame(width: 44, height: 44)
+                    .stroke(orb.tint.opacity(0.2), lineWidth: DesignSystem.Metrics.scaled(5))
+                    .frame(width: DesignSystem.Metrics.scaled(44), height: DesignSystem.Metrics.scaled(44))
                 Circle()
                     .trim(from: 0, to: CGFloat(orb.masteryPercent) / 100)
-                    .stroke(orb.tint, style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                    .frame(width: 44, height: 44)
+                    .stroke(orb.tint, style: StrokeStyle(lineWidth: DesignSystem.Metrics.scaled(5), lineCap: .round))
+                    .frame(width: DesignSystem.Metrics.scaled(44), height: DesignSystem.Metrics.scaled(44))
                     .rotationEffect(.degrees(-90))
                 Text("\(orb.masteryPercent)")
                     .font(DesignSystem.Typography.label(11))
@@ -130,7 +132,7 @@ struct SkillOrbChip: View {
                 .font(DesignSystem.Typography.caption(11))
                 .foregroundStyle(DesignSystem.Colors.mutedText)
                 .lineLimit(1)
-                .frame(width: 64)
+                .frame(width: DesignSystem.Metrics.scaled(64))
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(orb.title) skill \(orb.masteryPercent) percent")
@@ -183,7 +185,7 @@ struct ContinueLearningCard: View {
                     ZStack {
                         Circle()
                             .fill(.white.opacity(0.22))
-                            .frame(width: 96, height: 96)
+                            .frame(width: DesignSystem.Metrics.scaled(96), height: DesignSystem.Metrics.scaled(96))
                         TopicIllustrationView(topic: model.lesson.theme, size: 72, animate: true)
                     }
 
@@ -224,7 +226,7 @@ struct ContinueLearningCard: View {
                     Text(ctaTitle)
                         .font(DesignSystem.Typography.button(18))
                     Image(systemName: "arrow.right")
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.padScaled(size: 16, weight: .bold))
                         .offset(x: ctaPulse ? 4 : 0)
                 }
                 .foregroundStyle(accent)
@@ -369,7 +371,7 @@ struct DailyGoalCard: View {
                             endPoint: .bottomTrailing
                         )
                     )
-                    .frame(width: 58, height: 58)
+                    .frame(width: DesignSystem.Metrics.scaled(58), height: DesignSystem.Metrics.scaled(58))
                     .shadow(color: (goalMet ? DesignSystem.Colors.freshGreen : DesignSystem.Colors.warmOrange).opacity(0.35), radius: 10, y: 4)
 
                 Image(systemName: goalMet ? "star.fill" : "flag.checkered")
@@ -437,7 +439,7 @@ struct TodayMissionCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 56, height: 56)
+                        .frame(width: DesignSystem.Metrics.scaled(56), height: DesignSystem.Metrics.scaled(56))
                         .shadow(color: (mission.isComplete ? DesignSystem.Colors.freshGreen : mission.accent).opacity(0.28), radius: 8, y: 3)
 
                     Image(systemName: mission.isComplete ? "checkmark" : mission.systemImage)
@@ -527,7 +529,7 @@ struct CatchSparksPlay: View {
                 HStack(spacing: 8) {
                     ForEach(0..<target, id: \.self) { i in
                         Image(systemName: "star.fill")
-                            .font(.system(size: 14, weight: .bold))
+                            .font(.padScaled(size: 14, weight: .bold))
                             .foregroundStyle(sparkColors[i % sparkColors.count])
                             .floating(offset: 3, delay: Double(i) * 0.1)
                     }
@@ -551,7 +553,7 @@ struct CatchSparksPlay: View {
                                 collectSpark(spark)
                             } label: {
                                 Image(systemName: spark.tintIndex.isMultiple(of: 2) ? "star.fill" : "sparkle")
-                                    .font(.system(size: spark.size, weight: .bold))
+                                    .font(.padScaled(size: spark.size, weight: .bold))
                                     .foregroundStyle(sparkColors[spark.tintIndex % sparkColors.count])
                                     .shadow(color: sparkColors[spark.tintIndex % sparkColors.count].opacity(0.45), radius: 8, y: 2)
                                     .scaleEffect(popID == spark.id ? 1.4 : 1)
@@ -562,13 +564,13 @@ struct CatchSparksPlay: View {
                             .accessibilityLabel("Catch a spark")
                         }
                     }
-                    .frame(height: 120)
+                    .frame(height: DesignSystem.Metrics.scaled(120))
                     .frame(maxWidth: .infinity)
 
                     HStack(spacing: 6) {
                         ForEach(0..<target, id: \.self) { i in
                             Image(systemName: i < collected ? "star.fill" : "star")
-                                .font(.system(size: 12, weight: .bold))
+                                .font(.padScaled(size: 12, weight: .bold))
                                 .foregroundStyle(
                                     i < collected
                                         ? sparkColors[i % sparkColors.count]
@@ -687,7 +689,7 @@ struct WorldBubbleCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 92, height: 92)
+                        .frame(width: DesignSystem.Metrics.scaled(92), height: DesignSystem.Metrics.scaled(92))
                         .shadow(color: world.accent.opacity(0.28), radius: 12, y: 6)
 
                     TopicIllustrationView(topic: world.illustrationTopic, size: 58, animate: true)
@@ -700,8 +702,8 @@ struct WorldBubbleCard: View {
                     .foregroundStyle(DesignSystem.Colors.deepNavy)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
-                    .frame(width: 100)
-                    .frame(minHeight: 36, alignment: .top)
+                    .frame(width: DesignSystem.Metrics.scaled(100))
+                    .frame(minHeight: DesignSystem.Metrics.scaled(36), alignment: .top)
 
                 if world.masteryPercent > 0 {
                     HomeProgressBar(
@@ -709,7 +711,7 @@ struct WorldBubbleCard: View {
                         tint: world.accent,
                         height: 5
                     )
-                    .frame(width: 72)
+                    .frame(width: DesignSystem.Metrics.scaled(72))
                 }
             }
             .padding(.vertical, 14)
@@ -747,7 +749,7 @@ struct CompactAdventureChip: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 52, height: 52)
+                        .frame(width: DesignSystem.Metrics.scaled(52), height: DesignSystem.Metrics.scaled(52))
                     TopicIllustrationView(topic: model.lesson.theme, size: 34, animate: false)
                 }
 
@@ -765,7 +767,7 @@ struct CompactAdventureChip: View {
                 Spacer(minLength: 0)
             }
             .padding(12)
-            .frame(width: 220, alignment: .leading)
+            .frame(width: DesignSystem.Metrics.scaled(220), alignment: .leading)
             .background(DesignSystem.Gradients.kidCardFill(accent: accent))
             .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Radius.lg, style: .continuous))
             .overlay(
@@ -808,7 +810,7 @@ struct DiscoveryChallengeCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 64, height: 64)
+                        .frame(width: DesignSystem.Metrics.scaled(64), height: DesignSystem.Metrics.scaled(64))
                     Image(systemName: model.systemImage)
                         .font(.title2.weight(.bold))
                         .foregroundStyle(.white)
@@ -829,7 +831,7 @@ struct DiscoveryChallengeCard: View {
                 Spacer(minLength: 0)
 
                 Image(systemName: "play.circle.fill")
-                    .font(.system(size: 32))
+                    .font(.padScaled(size: 32))
                     .foregroundStyle(model.accent)
             }
             .padding(16)
@@ -863,7 +865,7 @@ struct HomeRewardChip: View {
                             endPoint: .bottomTrailing
                         )
                     )
-                    .frame(width: 64, height: 64)
+                    .frame(width: DesignSystem.Metrics.scaled(64), height: DesignSystem.Metrics.scaled(64))
                     .shadow(color: reward.accent.opacity(0.25), radius: 10, y: 4)
                 Image(systemName: reward.systemImage)
                     .font(.title3.weight(.semibold))
@@ -879,8 +881,8 @@ struct HomeRewardChip: View {
                 .foregroundStyle(DesignSystem.Colors.deepNavy)
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
-                .frame(width: 88)
-                .frame(minHeight: 32, alignment: .top)
+                .frame(width: DesignSystem.Metrics.scaled(88))
+                .frame(minHeight: DesignSystem.Metrics.scaled(32), alignment: .top)
         }
         .accessibilityLabel("\(reward.title). \(reward.detail)")
     }
@@ -906,7 +908,7 @@ struct RecommendedLessonCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 68, height: 68)
+                        .frame(width: DesignSystem.Metrics.scaled(68), height: DesignSystem.Metrics.scaled(68))
                         .shadow(color: accent.opacity(0.22), radius: 8, y: 3)
                     TopicIllustrationView(topic: model.lesson.theme, size: 42, animate: true)
                 }
@@ -938,7 +940,7 @@ struct RecommendedLessonCard: View {
                 Spacer(minLength: 0)
 
                 Image(systemName: "play.circle.fill")
-                    .font(.system(size: 28))
+                    .font(.padScaled(size: 28))
                     .foregroundStyle(accent)
             }
             .padding(14)
@@ -979,7 +981,7 @@ struct InterestCategoryCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 84, height: 84)
+                        .frame(width: DesignSystem.Metrics.scaled(84), height: DesignSystem.Metrics.scaled(84))
                         .shadow(color: accent.opacity(0.28), radius: 12, y: 6)
 
                     TopicIllustrationView(topic: topic, size: 52, animate: true)
@@ -991,8 +993,8 @@ struct InterestCategoryCard: View {
                     .foregroundStyle(DesignSystem.Colors.deepNavy)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
-                    .frame(width: 96)
-                    .frame(minHeight: 34, alignment: .top)
+                    .frame(width: DesignSystem.Metrics.scaled(96))
+                    .frame(minHeight: DesignSystem.Metrics.scaled(34), alignment: .top)
             }
         }
         .buttonStyle(BouncyCardButtonStyle())
@@ -1020,11 +1022,11 @@ struct ExploreSubjectCard: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 86, height: 86)
+                        .frame(width: DesignSystem.Metrics.scaled(86), height: DesignSystem.Metrics.scaled(86))
                         .shadow(color: category.accent.opacity(0.26), radius: 12, y: 6)
 
                     Image(systemName: category.systemImage)
-                        .font(.system(size: 28, weight: .semibold))
+                        .font(.padScaled(size: 28, weight: .semibold))
                         .foregroundStyle(.white)
                 }
                 .floating(offset: 5, delay: floatDelay)
@@ -1034,8 +1036,8 @@ struct ExploreSubjectCard: View {
                     .foregroundStyle(DesignSystem.Colors.deepNavy)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
-                    .frame(width: 104)
-                    .frame(minHeight: 34, alignment: .top)
+                    .frame(width: DesignSystem.Metrics.scaled(104))
+                    .frame(minHeight: DesignSystem.Metrics.scaled(34), alignment: .top)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 14)
