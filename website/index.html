@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://movolearn.com/">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#fff8f0">
-  <link rel="stylesheet" href="/assets/site.css?v=4">
+  <link rel="stylesheet" href="/assets/site.css?v=19">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,6 +29,13 @@
   </script>
 </head>
 <body>
+  <div class="atmosphere" aria-hidden="true">
+    <span class="orb orb-sky"></span>
+    <span class="orb orb-sun"></span>
+    <span class="orb orb-coral"></span>
+    <span class="orb orb-lilac"></span>
+    <span class="orb orb-mint"></span>
+  </div>
   <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <symbol id="shark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17c7-2 11-8 18-7 3 .4 5 3 5 6s-2 5-6 5c-5 0-9-1.5-13-4"/><path d="M18 10l2-5 3 5"/><path d="M7 20l-3 4 5-1.5"/><circle cx="24" cy="15" r="1" fill="currentColor" stroke="none"/></symbol>
     <symbol id="whale" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18c4-7 12-10 20-7 3 1 5 4 5 7 0 2.5-2.5 4-7 4H13"/><path d="M26 12c2-3 4-4 6-4"/><path d="M4 18c0 3-1 6 1 8"/><circle cx="11" cy="15.5" r="1" fill="currentColor" stroke="none"/></symbol>
@@ -49,134 +56,147 @@
     <symbol id="star" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M16 5l2.6 7.4H26l-6 4.6 2.3 7.5L16 20.2 9.7 24.5 12 17 6 12.4h7.4z"/></symbol>
   </svg>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="blobs" aria-hidden="true">
-    <div class="blob blob-a"></div>
-    <div class="blob blob-b"></div>
-    <div class="blob blob-c"></div>
-    <div class="blob blob-d"></div>
-  </div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="/">
         <img src="/assets/logo.png?v=3" alt="Movo Learn">
       </a>
-      <div class="nav-links">
-        <a class="hide-sm" href="/#how">How it works</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <div class="nav-links" id="nav-menu">
+        <a href="/#how">How it works</a>
         <a href="/support/">Support</a>
         <a href="/privacy/">Privacy</a>
-        <a data-app-store href="https://apps.apple.com/app/movo-learn">App Store</a>
+        <a data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">App Store</a>
       </div>
     </nav>
   </header>
 
   <main id="main">
     <section class="wrap hero">
-      <div>
-        <p class="kicker">iPhone &amp; iPad · Ages 5–8</p>
+      <div class="hero-copy">
+        <p class="kicker">For iPhone and iPad · Ages 5–8</p>
         <h1>Learning built around what your child loves.</h1>
-        <p class="lede">Personalized reading, math, vocabulary, and discovery lessons through sharks, space, horses, dinosaurs, and the rest of their favorite topics. A parent sets up the app. Kids just play.</p>
-        <div class="hero-actions">
-          <a class="app-store-badge" data-app-store href="https://apps.apple.com/app/movo-learn">
-            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="168" height="56">
-          </a>
-        </div>
-        <p class="fine">Designed for parents. Delightful for kids.</p>
-      </div>
-
-      <div class="phone-stage" aria-hidden="true">
-        <div class="orbit">
-          <span class="chip c1"><svg class="i"><use href="#shark"/></svg> Sharks</span>
-          <span class="chip c2"><svg class="i"><use href="#star"/></svg> Space</span>
-          <span class="chip c3"><svg class="i"><use href="#horse"/></svg> Horses</span>
-          <span class="chip c4"><svg class="i"><use href="#dino"/></svg> Dinosaurs</span>
-          <span class="chip c5"><svg class="i"><use href="#leaf"/></svg> Nature</span>
-          <span class="chip c6"><svg class="i"><use href="#palette"/></svg> Art</span>
-          <div class="phone">
-            <p class="phone-kicker">Today’s lesson</p>
-            <h2>Ocean Sighting Day</h2>
-            <div class="lesson-card">
-              <strong>Tide pool walk</strong>
-              <p>Read about a kelp forest, then count seashells and learn the word habitat.</p>
-              <div class="dots"><span></span><span></span><span></span><span></span></div>
+        <div class="play" id="lesson-play" role="region" aria-labelledby="play-title">
+          <div class="play-head">
+            <p class="play-kicker">Try a lesson</p>
+            <h2 id="play-title">Countdown to Launch</h2>
+            <p class="play-step" id="play-step">Story · 1 of 4</p>
+            <div class="play-pips" aria-hidden="true">
+              <span class="play-pip"></span>
+              <span class="play-pip"></span>
+              <span class="play-pip"></span>
+              <span class="play-pip"></span>
+            </div>
+          </div>
+          <div class="play-sky">
+            <p class="play-num" id="play-num" aria-live="polite"></p>
+            <div class="rocket" id="rocket">
+              <svg viewBox="0 0 80 120" aria-hidden="true">
+                <path d="M22 78 L8 102 L30 90 Z" fill="#ff7510"/>
+                <path d="M58 78 L72 102 L50 90 Z" fill="#ff7510"/>
+                <path d="M26 46 Q40 10 54 46 L54 86 Q40 96 26 86 Z" fill="#e23b62"/>
+                <path d="M26 46 Q40 14 54 46 Z" fill="#141f47"/>
+                <circle cx="40" cy="58" r="8" fill="#d7efff" stroke="#141f47" stroke-width="2.5"/>
+                <rect x="26" y="74" width="28" height="6" fill="#ffc700"/>
+              </svg>
+              <span class="flame" aria-hidden="true"></span>
+            </div>
+            <span class="puff puff-a" aria-hidden="true"></span>
+            <span class="puff puff-b" aria-hidden="true"></span>
+            <span class="play-pad" aria-hidden="true"></span>
+          </div>
+          <div class="play-body">
+            <div class="play-slide is-on" data-beat="story">
+              <p>Tess stands by a small model rocket pad. She is ready for countdown.</p>
+              <button type="button" class="play-next" data-go="launch">Start countdown</button>
+            </div>
+            <div class="play-slide" data-beat="count" hidden>
+              <p class="play-countline" tabindex="-1">Watch the pad.</p>
+            </div>
+            <div class="play-slide" data-beat="read" hidden>
+              <p>Tess checks the rocket one more time. She counts down from five. Then the rocket lifts off. Soft smoke floats near the pad.</p>
+              <button type="button" class="play-next" data-go="ask">Try a question</button>
+            </div>
+            <div class="play-slide" data-beat="ask" hidden>
+              <p class="play-q" tabindex="-1">What does Tess count down from?</p>
+              <div class="play-choices" role="group" aria-label="Answers">
+                <button type="button" data-answer="wrong">Ten</button>
+                <button type="button" data-answer="right">Five</button>
+                <button type="button" data-answer="wrong">Three</button>
+              </div>
+              <p class="play-note" id="play-note" role="status"></p>
+              <button type="button" class="play-next" data-go="word" hidden>Next</button>
+            </div>
+            <div class="play-slide" data-beat="word" hidden>
+              <p class="play-word">countdown</p>
+              <p>Counting backward before something starts.</p>
+              <p class="play-fact">A countdown helps a launch team get ready before a rocket lifts off.</p>
+              <button type="button" class="play-next" data-go="story">Play again</button>
             </div>
           </div>
         </div>
+
+        <p class="lede">Lessons in reading, math, vocabulary, and discovery, built from the topics your child already likes, such as sharks, horses, space, dinosaurs, and whatever else they pick. A parent sets up the app. Kids just play.</p>
+        <div class="hero-actions">
+          <a class="app-store-badge" data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">
+            <img src="/assets/app-store-badge.svg?v=2" alt="Download on the App Store" width="168" height="56">
+          </a>
+        </div>
+        <p class="fine">No ads. No account. Progress stays on the device.</p>
       </div>
     </section>
 
     <section class="wrap band" id="how">
       <h2>A short lesson, matched to your child</h2>
       <p class="band-intro">A parent picks a nickname, age, reading level, and math level. Then the child chooses topics. Each lesson uses those choices, not a one-size worksheet with a new sticker on top.</p>
-      <div class="grid-3">
-        <article class="card">
-          <div class="icon icon-sky"><svg class="i"><use href="#book"/></svg></div>
-          <h3>Reading &amp; words</h3>
+      <ol class="lesson-parts">
+        <li>
+          <h3><svg class="i" aria-hidden="true"><use href="#book"/></svg> Reading &amp; words</h3>
           <p>Stories, comprehension, and vocabulary with real subject words a ranger or scientist would use: tide chart, orbit, fossil, lava.</p>
-        </article>
-        <article class="card">
-          <div class="icon icon-sun"><svg class="i"><use href="#count"/></svg></div>
-          <h3>Math in the story</h3>
+        </li>
+        <li>
+          <h3><svg class="i" aria-hidden="true"><use href="#count"/></svg> Math in the story</h3>
           <p>Counting, comparing, and problem-solving inside the same world: trays of snacks, boxes of rocks, or moons in a sky map.</p>
-        </article>
-        <article class="card">
-          <div class="icon icon-coral"><svg class="i"><use href="#lens"/></svg></div>
-          <h3>Discovery</h3>
+        </li>
+        <li>
+          <h3><svg class="i" aria-hidden="true"><use href="#lens"/></svg> Discovery</h3>
           <p>Science facts and a creative prompt so kids can draw what they learned, then celebrate and come back tomorrow.</p>
-        </article>
-      </div>
+        </li>
+      </ol>
     </section>
 
     <section class="wrap band">
-      <h2>Start with what they already care about</h2>
-      <p class="band-intro">Lessons follow the child’s topics. Original mascots tag along: Willa the Whale, Nova the Star, Dottie the Dino, and Sunny the Horse.</p>
-      <div class="topics">
-        <span class="chip"><svg class="i"><use href="#shark"/></svg> Sharks</span>
-        <span class="chip"><svg class="i"><use href="#fish"/></svg> Ocean animals</span>
-        <span class="chip"><svg class="i"><use href="#star"/></svg> Space</span>
-        <span class="chip"><svg class="i"><use href="#planet"/></svg> Planets</span>
-        <span class="chip"><svg class="i"><use href="#horse"/></svg> Horses</span>
-        <span class="chip"><svg class="i"><use href="#dino"/></svg> Dinosaurs</span>
-        <span class="chip"><svg class="i"><use href="#ball"/></svg> Soccer</span>
-        <span class="chip"><svg class="i"><use href="#robot"/></svg> Robots</span>
-        <span class="chip"><svg class="i"><use href="#volcano"/></svg> Volcanoes</span>
-        <span class="chip"><svg class="i"><use href="#train"/></svg> Trains</span>
-        <span class="chip"><svg class="i"><use href="#palette"/></svg> Art</span>
-        <span class="chip"><svg class="i"><use href="#note"/></svg> Music</span>
-      </div>
-      <div class="mascots">
-        <div class="mascot">
-          <div class="face face-ocean"><svg class="i-lg"><use href="#whale"/></svg></div>
-          <strong>Willa</strong>
-          <span>Ocean</span>
-        </div>
-        <div class="mascot">
-          <div class="face face-space"><svg class="i-lg"><use href="#star"/></svg></div>
-          <strong>Nova</strong>
-          <span>Space</span>
-        </div>
-        <div class="mascot">
-          <div class="face face-dino"><svg class="i-lg"><use href="#dino"/></svg></div>
-          <strong>Dottie</strong>
-          <span>Dinosaurs</span>
-        </div>
-        <div class="mascot">
-          <div class="face face-horse"><svg class="i-lg"><use href="#horse"/></svg></div>
-          <strong>Sunny</strong>
-          <span>Horses</span>
-        </div>
-      </div>
+      <h2>Topics they already talk about</h2>
+      <p class="band-intro">Lessons follow the child’s topics.</p>
+      <ul class="topic-index">
+        <li><svg class="i" aria-hidden="true"><use href="#shark"/></svg><span>Sharks</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#fish"/></svg><span>Ocean animals</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#star"/></svg><span>Space</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#planet"/></svg><span>Planets</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#horse"/></svg><span>Horses</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#dino"/></svg><span>Dinosaurs</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#ball"/></svg><span>Soccer</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#robot"/></svg><span>Robots</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#volcano"/></svg><span>Volcanoes</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#train"/></svg><span>Trains</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#palette"/></svg><span>Art</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#note"/></svg><span>Music</span></li>
+      </ul>
     </section>
 
     <section class="wrap band" id="parents">
       <h2>Parents stay in the loop</h2>
       <p class="band-intro">Kids go from lesson to celebration, then home. The Learning Report lives in Profile, behind For Parents: short scores and recent lessons, without pulling children through an adult screen.</p>
-      <div class="grid-2">
-        <article class="card">
+      <div class="split">
+        <article>
           <h3>Setup once</h3>
           <p>A parent or guardian creates the profile. Children never sign in and never have a password.</p>
         </article>
-        <article class="card">
+        <article>
           <h3>Change interests anytime</h3>
           <p>Edit favorite topics from Home without resetting progress. New lessons follow the new list.</p>
         </article>
@@ -184,29 +204,22 @@
     </section>
 
     <section class="wrap band" id="privacy">
-      <div class="privacy-callout">
+      <div class="privacy-note">
         <div>
           <h2>Learning stays on this iPhone or iPad.</h2>
           <p>This version does not create an account and does not send a child’s name, age, or lesson scores to Movo Learn servers. No ads, no tracking, no analytics SDKs.</p>
           <p><a href="/privacy/">Read the Privacy Policy</a></p>
         </div>
-        <div class="card">
-          <h3>At a glance</h3>
-          <p>Profile and progress stay on the device. Reset in Profile, or delete the app, to erase them. The same policy is in the app under Profile → Privacy.</p>
-        </div>
+        <p class="privacy-aside">Profile and progress stay on the device. Reset in Profile, or delete the app, to erase them. The same policy is in the app under Profile → Privacy.</p>
       </div>
     </section>
 
-    <section class="wrap band">
-      <div class="cta-row">
-        <div>
-          <h2>Ready for today’s lesson?</h2>
-          <p class="band-intro" style="margin:0;">Download Movo Learn on the App Store.</p>
-        </div>
-        <a class="app-store-badge" data-app-store href="https://apps.apple.com/app/movo-learn">
-          <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="168" height="56">
-        </a>
-      </div>
+    <section class="wrap band cta">
+      <h2>Get Movo Learn</h2>
+      <p class="band-intro">On the App Store for iPhone and iPad.</p>
+      <a class="app-store-badge" data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">
+        <img src="/assets/app-store-badge.svg?v=2" alt="Download on the App Store" width="168" height="56">
+      </a>
     </section>
   </main>
 
@@ -221,6 +234,6 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/site.js"></script>
+  <script src="/assets/site.js?v=9"></script>
 </body>
 </html>
