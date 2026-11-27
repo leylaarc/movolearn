@@ -3973,7 +3973,7 @@ extension CuratedTopicLessonBank {
         case .growingReader:
             return ReadingPack(
                 title: "Why Dr. Nolan Watches for Small Earthquakes",
-                storyOpening: "A student asks why tiny earthquakes matter when studying a volcano.",
+                storyOpening: "Tiny shakes tick through Dr. Nolan's instruments. She counts them before she says a word about the volcano.",
                 missionPrompt: "Figure out why Dr. Nolan watches for small earthquakes.",
                 readingPassage: "A student once asked Dr. Nolan why she paid so much attention to tiny earthquakes that people could not even feel, when studying whether a volcano might erupt soon. Dr. Nolan explained that as melted rock, called magma, pushes upward through cracks in a volcano, it can crack the surrounding rock and cause small tremors. These tiny earthquakes are often too small for people to notice, but sensitive instruments can detect them clearly. When the number of these small earthquakes increases day after day, it often means magma is actively moving closer to the surface. Scientists combine this earthquake data with other clues, like gas temperature and ground swelling, to make a more complete and accurate prediction about when a volcano might erupt.",
                 questions: [
@@ -4817,9 +4817,9 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return ReadingPack(
                 title: "Captain Wren Finds Treasure",
-                storyOpening: "Captain Wren holds an old map. An X marks a spot on an island. Will you help her follow it?",
+                storyOpening: "Captain Wren holds an old map to an island. Will you help her follow it?",
                 missionPrompt: "Find what Captain Wren uncovers where the X marks the spot.",
-                readingPassage: "Captain Wren follows her map to an island. An X marks a spot in the sand. She digs where the X marks the spot. She opens a chest. Gold coins shine inside.",
+                readingPassage: "Captain Wren follows her map to an island. She digs in the sand where an X marks the spot. She opens a chest. Gold coins shine inside.",
                 questions: [
                     mcq("What marks a spot on the map?", ["An X", "A star", "A circle"], "An X", "An X marks a spot on the map."),
                     mcq("Where does Captain Wren dig?", ["Where the X marks the spot", "Under the ship", "Beside a lantern"], "Where the X marks the spot", "She digs where the X marks the spot."),
@@ -4877,7 +4877,7 @@ extension CuratedTopicLessonBank {
         case .growingReader:
             return ReadingPack(
                 title: "Why Captain Wren Checks the Tide Tables",
-                storyOpening: "A new crew member wonders why Captain Wren studies a chart of numbers before sailing near the reef.",
+                storyOpening: "The ship is close to a rocky reef, and Captain Wren will not give the sailing order yet.",
                 missionPrompt: "Figure out why Captain Wren checks the tide tables.",
                 readingPassage: "A new crew member once asked Captain Wren why she carefully studied a chart of numbers, called a tide table, before sailing near the rocky reef surrounding the hidden island. Captain Wren explained that ocean water rises and falls throughout the day in a pattern called the tide, and at low tide, parts of the reef that are normally underwater can become dangerously shallow. If the ship tried to sail over the reef during low tide, it could scrape against rocks and take on damaging water. By checking the tide table, she can time the ship's journey to cross the reef safely during high tide, when there is enough deep water beneath the hull. Ignoring the tide table has wrecked many careless ships throughout history. That is why she checks it every single time before approaching unfamiliar waters.",
                 questions: [

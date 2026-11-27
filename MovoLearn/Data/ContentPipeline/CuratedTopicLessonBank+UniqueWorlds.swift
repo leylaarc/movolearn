@@ -236,26 +236,26 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return ReadingPack(
                 title: "Earth Is Our Planet",
-                storyOpening: "Remy points at a bright solar-system poster. Will you look with him?",
+                storyOpening: "Remy stops in front of a bright solar-system poster.",
                 missionPrompt: "Check what Remy learns about Earth.",
-                readingPassage: "Earth is our home planet. It has land and blue oceans. Soft clouds float high above. Earth goes around the Sun.",
+                readingPassage: "Remy taps the blue-and-green world on the poster. That world is our home planet, Earth. Land and blue oceans cover it, and soft clouds float high above. A curved arrow shows Earth going around the Sun.",
                 questions: [
-                    mcq("What is our planet?", ["Earth", "Only a tiny pebble", "A kitchen spoon"], "Earth", "Earth is our planet."),
-                    mcq("What does Earth have?", ["Land and blue oceans", "Only dry desert dust", "No water at all"], "Land and blue oceans", "Earth has land and blue oceans."),
-                    mcq("What does Earth go around?", ["The Sun", "The nearby Moon only", "A lunchbox"], "The Sun", "Earth goes around the Sun.")
+                    mcq("Which world does Remy tap?", ["Earth", "The Moon", "The Sun"], "Earth", "Remy taps Earth, our home planet."),
+                    mcq("What covers Earth?", ["Land and blue oceans", "Only dry sand", "Only clouds"], "Land and blue oceans", "Land and blue oceans cover Earth."),
+                    mcq("What does the curved arrow show?", ["Earth going around the Sun", "The Sun going around Earth", "Earth going around the Moon"], "Earth going around the Sun", "The arrow shows Earth going around the Sun.")
                 ],
                 vocabularyWords: [
                     VocabularyWord(word: "planet", definition: "A large world that moves around a star.", exampleSentence: "Earth is our planet."),
                     VocabularyWord(word: "ocean", definition: "A huge body of salt water.", exampleSentence: "Earth has blue oceans.")
                 ],
                 knowledgeFacts: [
-                    KnowledgeFact(fact: "Earth is the planet where we live, with land and oceans, orbiting the Sun.", explanation: "Knowing our home planet is the first solar-system step.")
+                    KnowledgeFact(fact: "Earth has one moon.", explanation: "The Moon travels around Earth.")
                 ],
                 creativePrompt: "Draw Earth with land, blue oceans, and clouds. Label Earth.",
                 creativeResponseType: .drawing,
                 storyEnding: "Remy can point to Earth on the poster with confidence.",
                 readingSkill: "Find concrete details about Earth",
-                reflectionPrompt: "Name one thing Earth has from the story.",
+                reflectionPrompt: "Where do the soft clouds float?",
                 hints: ["Find land and oceans", "Look for the Sun"],
                 commonMistakes: ["Choosing objects that are not planets"],
                 successCriteria: ["Names an Earth detail from the passage"],

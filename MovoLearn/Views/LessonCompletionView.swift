@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct LessonCompletionView: View {
     let summary: ProgressSummary
@@ -13,6 +14,8 @@ struct LessonCompletionView: View {
     @State private var showSparkles = false
     @State private var sparkleSpin: Double = 0
     @State private var badgePulse = false
+    @ObservedObject private var speech = LessonSpeechReader.shared
+    @State private var readGeneration = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var topic: Topic {
@@ -79,6 +82,48 @@ struct LessonCompletionView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 showSparkles = true
             }
+            scheduleCelebrationReading()
+        }
+        .onDisappear {
+            readGeneration += 1
+            speech.stop()
+        }
+        .overlay(alignment: .topTrailing) {
+            ReadAloudButton(isSpeaking: speech.isSpeaking, accent: DesignSystem.Colors.warmOrange) {
+                if speech.isSpeaking {
+                    readGeneration += 1
+                    speech.stop()
+                } else {
+                    readGeneration += 1
+                    speech.speak(celebrationLines)
+                }
+            }
+            .padding(.top, DesignSystem.Spacing.md)
+            .padding(.trailing, DesignSystem.Spacing.lg)
+        }
+    }
+
+    private var celebrationLines: [String] {
+        var lines = ["Mission complete!", summary.completionHeadline]
+        if summary.totalQuestions > 0 {
+            lines.append("\(summary.correctAnswers) of \(summary.totalQuestions) correct.")
+        }
+        lines.append(nextLesson == nil
+                     ? "Amazing work. Head home for more adventures!"
+                     : "Want to keep exploring? Another adventure is ready!")
+        return lines
+    }
+
+    private func scheduleCelebrationReading() {
+        guard LessonSpeechReader.isEnabled else { return }
+        guard !UIAccessibility.isVoiceOverRunning else { return }
+        guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else { return }
+        readGeneration += 1
+        let generation = readGeneration
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 600_000_000)
+            guard generation == readGeneration else { return }
+            speech.speak(celebrationLines)
         }
     }
 

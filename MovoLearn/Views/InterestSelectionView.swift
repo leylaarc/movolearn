@@ -6,7 +6,7 @@ enum InterestSelectionMode {
 
     var primaryButtonTitle: String {
         switch self {
-        case .onboarding: return "Continue"
+        case .onboarding: return "Start learning"
         case .editing: return "Save Interests"
         }
     }
@@ -35,19 +35,28 @@ struct InterestSelectionView: View {
 
     var body: some View {
         ZStack {
-            DesignSystem.Gradients.homeGradient
-                .ignoresSafeArea()
-
-            SoftBubbleAtmosphere(
-                accent: DesignSystem.Colors.coralPink,
-                secondary: DesignSystem.Colors.sunshineYellow,
-                tertiary: DesignSystem.Colors.skyBlue,
-                intensity: 1.15
-            )
+            ZStack {
+                if mode == .onboarding {
+                    OnboardingBackdrop()
+                } else {
+                    ZStack {
+                        DesignSystem.Gradients.homeGradient
+                            .ignoresSafeArea()
+                        SoftBubbleAtmosphere(
+                            accent: DesignSystem.Colors.coralPink,
+                            secondary: DesignSystem.Colors.sunshineYellow,
+                            tertiary: DesignSystem.Colors.skyBlue,
+                            intensity: 1.15
+                        )
+                    }
+                }
+            }
 
             VStack(spacing: 0) {
                 if mode == .editing {
                     editToolbar
+                } else {
+                    onboardingToolbar
                 }
 
                 ScrollView(showsIndicators: false) {
@@ -56,13 +65,13 @@ struct InterestSelectionView: View {
                             .opacity(appeared ? 1 : 0)
                             .offset(y: appeared ? 0 : 12)
 
-                        CharacterBubble(
-                            topic: .dinosaurs,
-                            message: mode == .editing
-                                ? "Update \(childName)'s favorites anytime — new interests mean new adventures!"
-                                : "Pick the topics that make \(childName) light up — we'll build adventures around them!",
-                            animates: true
-                        )
+                        if mode == .editing {
+                            CharacterBubble(
+                                topic: .dinosaurs,
+                                message: "Update \(childName)'s favorites anytime — new interests mean new adventures!",
+                                animates: true
+                            )
+                        }
 
                         if !selectedTopics.isEmpty {
                             selectionCounter
@@ -71,7 +80,7 @@ struct InterestSelectionView: View {
                         topicGrid
                     }
                     .padding(.horizontal, DesignSystem.Spacing.screenHorizontal)
-                    .padding(.top, mode == .editing ? DesignSystem.Spacing.sm : DesignSystem.Spacing.lg)
+                    .padding(.top, DesignSystem.Spacing.sm)
                     .padding(.bottom, DesignSystem.Spacing.lg)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -95,14 +104,14 @@ struct InterestSelectionView: View {
 
     private var headerCopy: some View {
         VStack(alignment: .leading, spacing: DesignSystem.Spacing.sm) {
-            Text(mode == .editing ? "Update \(childName)'s interests" : "What would you like to learn about?")
+            Text(mode == .editing ? "Update \(childName)'s interests" : "What does \(childName) love?")
                 .font(DesignSystem.Typography.screenTitle)
                 .foregroundStyle(DesignSystem.Colors.deepNavy)
 
             Text(
                 mode == .editing
                     ? "Children’s interests change. You can update these anytime."
-                    : "Pick at least 3 favorites. We’ll personalize the home page around them."
+                    : "Choose at least 3. Home and lessons follow these topics."
             )
             .font(DesignSystem.Typography.subtitle(16))
             .foregroundStyle(DesignSystem.Colors.mutedText)
@@ -117,29 +126,73 @@ struct InterestSelectionView: View {
             Button {
                 surpriseMe()
             } label: {
-                HStack(spacing: 8) {
-                    Image(systemName: "sparkles")
-                        .font(.body.weight(.semibold))
-                        .symbolEffect(.bounce, value: selectedTopics.count)
+                if mode == .onboarding {
                     Text("Surprise me")
                         .font(DesignSystem.Typography.sectionHeader(15))
-                }
-                .foregroundStyle(.white)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 10)
-                .background(
-                    LinearGradient(
-                        colors: [DesignSystem.Colors.lavenderPurple, DesignSystem.Colors.coralPink],
-                        startPoint: .leading,
-                        endPoint: .trailing
+                        .foregroundStyle(DesignSystem.Colors.deepNavy)
+                        .underline()
+                } else {
+                    HStack(spacing: 8) {
+                        Image(systemName: "sparkles")
+                            .font(.body.weight(.semibold))
+                            .symbolEffect(.bounce, value: selectedTopics.count)
+                        Text("Surprise me")
+                            .font(DesignSystem.Typography.sectionHeader(15))
+                    }
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .background(
+                        LinearGradient(
+                            colors: [DesignSystem.Colors.lavenderPurple, DesignSystem.Colors.coralPink],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
                     )
-                )
-                .clipShape(Capsule())
-                .shadow(color: DesignSystem.Colors.lavenderPurple.opacity(0.32), radius: 8, y: 3)
+                    .clipShape(Capsule())
+                    .shadow(color: DesignSystem.Colors.lavenderPurple.opacity(0.32), radius: 8, y: 3)
+                }
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Surprise me with interest suggestions")
         }
+    }
+
+    private var onboardingToolbar: some View {
+        VStack(alignment: .leading, spacing: DesignSystem.Spacing.sm) {
+            HStack {
+                Button {
+                    onCancel?()
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "chevron.left")
+                            .font(.body.weight(.semibold))
+                        Text("Back")
+                            .font(DesignSystem.Typography.sectionHeader(15))
+                    }
+                    .foregroundStyle(DesignSystem.Colors.deepNavy)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Back to learning levels")
+
+                Spacer()
+
+                Text("Step 4 of 4")
+                    .font(DesignSystem.Typography.captionText)
+                    .foregroundStyle(DesignSystem.Colors.textTertiary)
+            }
+
+            HStack(spacing: 6) {
+                ForEach(0..<4, id: \.self) { _ in
+                    Capsule()
+                        .fill(DesignSystem.Colors.deepNavy)
+                        .frame(height: 4)
+                }
+            }
+        }
+        .padding(.horizontal, DesignSystem.Spacing.screenHorizontal)
+        .padding(.top, DesignSystem.Spacing.md)
+        .padding(.bottom, DesignSystem.Spacing.xs)
     }
 
     private var editToolbar: some View {
@@ -171,12 +224,12 @@ struct InterestSelectionView: View {
 
     /// Eager rows so every world stays in the scroll content and can be tapped.
     private var topicGrid: some View {
-        VStack(spacing: DesignSystem.Spacing.md) {
+        VStack(spacing: DesignSystem.Spacing.lg) {
             ForEach(Array(stride(from: 0, to: topics.count, by: 2)), id: \.self) { index in
                 HStack(alignment: .top, spacing: DesignSystem.Spacing.md) {
-                    topicCard(topics[index])
+                    topicChoice(topics[index])
                     if index + 1 < topics.count {
-                        topicCard(topics[index + 1])
+                        topicChoice(topics[index + 1])
                     } else {
                         Color.clear
                             .frame(maxWidth: .infinity)
@@ -184,6 +237,62 @@ struct InterestSelectionView: View {
                 }
             }
         }
+    }
+
+    @ViewBuilder
+    private func topicChoice(_ topic: Topic) -> some View {
+        if mode == .onboarding {
+            worldBubble(topic)
+        } else {
+            topicCard(topic)
+        }
+    }
+
+    private func worldBubble(_ topic: Topic) -> some View {
+        let selected = selectedTopics.contains(topic)
+        let accent = TopicPalette.color(for: topic)
+        return Button {
+            toggle(topic)
+        } label: {
+            VStack(spacing: 10) {
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    accent.opacity(selected ? 1 : 0.88),
+                                    accent.opacity(selected ? 0.72 : 0.5)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: DesignSystem.Metrics.scaled(92), height: DesignSystem.Metrics.scaled(92))
+
+                    WorldBubbleMark(topic: topic, size: 56)
+                }
+                .overlay(alignment: .topTrailing) {
+                    if selected {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title3)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, DesignSystem.Colors.deepNavy)
+                            .offset(x: 4, y: -4)
+                    }
+                }
+
+                Text(TopicPalette.displayTitle(for: topic))
+                    .font(DesignSystem.Typography.sectionHeader(14))
+                    .foregroundStyle(selected ? DesignSystem.Colors.deepNavy : DesignSystem.Colors.deepNavy.opacity(0.55))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .frame(minHeight: DesignSystem.Metrics.scaled(36), alignment: .top)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(TopicPalette.displayTitle(for: topic))\(selected ? ", selected" : "")")
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 
     private func topicCard(_ topic: Topic) -> some View {
@@ -197,53 +306,74 @@ struct InterestSelectionView: View {
     }
 
     private var selectionCounter: some View {
-        HStack(spacing: DesignSystem.Spacing.sm) {
-            Image(systemName: "heart.fill")
-                .font(.caption.weight(.bold))
-                .foregroundStyle(DesignSystem.Colors.coralPink)
-                .symbolEffect(.bounce, value: selectedTopics.count)
-                .idlePulse(scale: 1.16)
-            Text("\(selectedTopics.count) topic\(selectedTopics.count == 1 ? "" : "s") selected\(selectedTopics.count < 3 ? " · pick \(3 - selectedTopics.count) more" : "")")
-                .font(DesignSystem.Typography.sectionHeader(14))
-                .foregroundStyle(DesignSystem.Colors.deepNavy)
+        Group {
+            if mode == .onboarding {
+                Text("\(selectedTopics.count) selected\(selectedTopics.count < 3 ? " · pick \(3 - selectedTopics.count) more" : "")")
+                    .font(DesignSystem.Typography.subtitle(15))
+                    .foregroundStyle(DesignSystem.Colors.mutedText)
+            } else {
+                HStack(spacing: DesignSystem.Spacing.sm) {
+                    Image(systemName: "heart.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(DesignSystem.Colors.coralPink)
+                        .symbolEffect(.bounce, value: selectedTopics.count)
+                        .idlePulse(scale: 1.16)
+                    Text("\(selectedTopics.count) topic\(selectedTopics.count == 1 ? "" : "s") selected\(selectedTopics.count < 3 ? " · pick \(3 - selectedTopics.count) more" : "")")
+                        .font(DesignSystem.Typography.sectionHeader(14))
+                        .foregroundStyle(DesignSystem.Colors.deepNavy)
+                }
+                .padding(.horizontal, DesignSystem.Spacing.md)
+                .padding(.vertical, 10)
+                .background(DesignSystem.Colors.coralPink.opacity(0.10))
+                .clipShape(Capsule())
+                .overlay(Capsule().stroke(DesignSystem.Colors.coralPink.opacity(0.25), lineWidth: 1.5))
+                .shadow(color: DesignSystem.Colors.coralPink.opacity(0.12), radius: 6, y: 2)
+            }
         }
-        .padding(.horizontal, DesignSystem.Spacing.md)
-        .padding(.vertical, 10)
-        .background(DesignSystem.Colors.coralPink.opacity(0.10))
-        .clipShape(Capsule())
-        .overlay(Capsule().stroke(DesignSystem.Colors.coralPink.opacity(0.25), lineWidth: 1.5))
-        .shadow(color: DesignSystem.Colors.coralPink.opacity(0.12), radius: 6, y: 2)
         .transition(.opacity.combined(with: .scale(scale: 0.95)))
         .animation(DesignSystem.Animation.select, value: selectedTopics.count)
     }
 
     private var continueBar: some View {
-        VStack(spacing: 0) {
-            Divider()
-                .overlay(DesignSystem.Colors.cardBorder)
+        Group {
+            if mode == .onboarding {
+                OnboardingActionButton(
+                    title: mode.primaryButtonTitle,
+                    isEnabled: selectedTopics.count >= 3,
+                    action: submitSelection
+                )
+                .padding(.horizontal, DesignSystem.Spacing.screenHorizontal)
+                .padding(.bottom, DesignSystem.Spacing.sm)
+            } else {
+                VStack(spacing: 0) {
+                    Divider()
+                        .overlay(DesignSystem.Colors.cardBorder)
 
-            PrimaryGradientButton(
-                title: mode.primaryButtonTitle,
-                icon: mode.primaryButtonIcon,
-                isEnabled: selectedTopics.count >= 3,
-                action: {
-                    // Prefer tap order; fall back to initial/edit order, then enum order.
-                    var ordered = selectionOrder.filter { selectedTopics.contains($0) }
-                    for topic in initialTopics where selectedTopics.contains(topic) && !ordered.contains(topic) {
-                        ordered.append(topic)
-                    }
-                    for topic in topics where selectedTopics.contains(topic) && !ordered.contains(topic) {
-                        ordered.append(topic)
-                    }
-                    onContinue(ordered)
+                    PrimaryGradientButton(
+                        title: mode.primaryButtonTitle,
+                        icon: mode.primaryButtonIcon,
+                        isEnabled: selectedTopics.count >= 3,
+                        action: submitSelection
+                    )
+                    .padding(DesignSystem.Spacing.screenHorizontal)
+                    .padding(.top, DesignSystem.Spacing.md)
+                    .padding(.bottom, DesignSystem.Spacing.sm)
                 }
-            )
-            .padding(DesignSystem.Spacing.screenHorizontal)
-            .padding(.top, DesignSystem.Spacing.md)
-            .padding(.bottom, DesignSystem.Spacing.sm)
+                .background(.ultraThinMaterial)
+            }
         }
-        .background(.ultraThinMaterial)
         .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private func submitSelection() {
+        var ordered = selectionOrder.filter { selectedTopics.contains($0) }
+        for topic in initialTopics where selectedTopics.contains(topic) && !ordered.contains(topic) {
+            ordered.append(topic)
+        }
+        for topic in topics where selectedTopics.contains(topic) && !ordered.contains(topic) {
+            ordered.append(topic)
+        }
+        onContinue(ordered)
     }
 
     private func toggle(_ topic: Topic) {

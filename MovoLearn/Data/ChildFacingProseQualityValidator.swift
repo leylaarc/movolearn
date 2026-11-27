@@ -188,6 +188,9 @@ enum ChildFacingProseQualityValidator {
         ) {
             issues.append(.subjectVerbAgreement(bad.1.isEmpty ? bad.0 : bad.1))
         }
+        if let bad = subjectVerbAgreementSnippet(in: trimmed) {
+            issues.append(.subjectVerbAgreement(bad))
+        }
 
         // Placeholder / fallback markers
         let placeholders = ["lorem ipsum", "todo:", "placeholder", "tbd", "coming soon", "[insert", "xxx", "FIXME", "FIXME:"]
@@ -810,6 +813,134 @@ enum ChildFacingProseQualityValidator {
             "material", "sound", "brakes", "trail", "gate", "path"
         ]
         return dangling.contains(word)
+    }
+
+    /// Catches agreement errors such as "One chicken were" and "There were 1 chicken".
+    /// Subjunctive "if a train were" is left alone.
+    private static func subjectVerbAgreementSnippet(in text: String) -> String? {
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\bthere (?:were|are) (?:1|one)\b"#
+        ) {
+            return match.snippet
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\bthere (?:was|is) (?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|[2-9]\d*)\b"#
+        ) {
+            return match.snippet
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\b(?:1|one) (?:inches|cents|feet|meters|hours|minutes)\b|\b1 (?:more )?steps\b|\b(?:1|one) (?:friends|groups|boxes|bags|baskets|rows|piles)\b"#
+        ) {
+            return match.snippet
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\ba group of\b[^.!?]{0,60}\bwere\b"#
+        ) {
+            return match.snippet
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\b((?:one|a|an|1)\s+([a-z]+(?:\s+[a-z]+){0,2})\s+(?:were|are))\b"#
+        ) {
+            let phrase = match.groups.count > 1 ? match.groups[1] : ""
+            let words = phrase.split(separator: " ").map(String.init)
+            let head = words.first?.lowercased() ?? ""
+            let last = words.last ?? ""
+            // "a few were" and "a lot are" are plural. "a group of chickens were" is handled separately.
+            let pluralQuantifiers: Set<String> = ["few", "lot", "pair", "number", "couple", "dozen"]
+            if !pluralQuantifiers.contains(head),
+               !looksLikePluralNoun(last),
+               !precededBySubjunctive(match.range, in: text) {
+                return match.snippet
+            }
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\b(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|[2-9]|[1-9]\d+)\s+([a-z]+)\s+(?:was|is)\b"#
+        ) {
+            let noun = match.groups.first ?? ""
+            let measures: Set<String> = [
+                "inches", "cents", "feet", "meters", "steps", "hours", "minutes", "seconds", "dollars"
+            ]
+            if looksLikePluralNoun(noun), !measures.contains(noun.lowercased()) {
+                return match.snippet
+            }
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\b(?:she|he|it) (?:were|are)\b"#
+        ), !precededBySubjunctive(match.range, in: text) {
+            return match.snippet
+        }
+        if let match = firstRegexHit(
+            in: text,
+            pattern: #"\b(?:they|we) (?:was|is)\b"#
+        ) {
+            return match.snippet
+        }
+        if let singular = firstRegexHit(
+            in: text,
+            pattern: #"\b(?:there was (?:1|one)\b|(?:^|[.!?]\s+)(?:one|a|an) [a-z]+ was\b)"#
+        ),
+           let joined = firstRegexHit(in: text, pattern: #"\bjoined them\b"#),
+           joined.range.lowerBound >= singular.range.lowerBound,
+           text.distance(from: singular.range.lowerBound, to: joined.range.lowerBound) < 180 {
+            return joined.snippet
+        }
+        return nil
+    }
+
+    private static func looksLikePluralNoun(_ word: String) -> Bool {
+        let lower = word.lowercased()
+        let singularEndingInS: Set<String> = [
+            "bus", "octopus", "cactus", "glass", "lens", "series", "species",
+            "this", "his", "its", "was", "is", "as", "plus", "gas"
+        ]
+        if singularEndingInS.contains(lower) || lower.hasSuffix("ss") {
+            return false
+        }
+        return lower.hasSuffix("s")
+    }
+
+    private static func precededBySubjunctive(_ range: Range<String.Index>, in text: String) -> Bool {
+        let start = text.index(range.lowerBound, offsetBy: -48, limitedBy: text.startIndex) ?? text.startIndex
+        let prefix = text[start..<range.lowerBound].lowercased()
+        if prefix.contains("as though") || prefix.contains("as if") {
+            return true
+        }
+        return prefix.range(of: #"\b(if|wish)\b"#, options: .regularExpression) != nil
+    }
+
+    private struct RegexHit {
+        let snippet: String
+        let range: Range<String.Index>
+        let groups: [String]
+    }
+
+    private static func firstRegexHit(in text: String, pattern: String) -> RegexHit? {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
+            return nil
+        }
+        let nsRange = NSRange(text.startIndex..., in: text)
+        guard let match = regex.firstMatch(in: text, options: [], range: nsRange),
+              let range = Range(match.range, in: text) else {
+            return nil
+        }
+        var groups: [String] = []
+        if match.numberOfRanges > 1 {
+            for index in 1..<match.numberOfRanges {
+                if let groupRange = Range(match.range(at: index), in: text) {
+                    groups.append(String(text[groupRange]))
+                } else {
+                    groups.append("")
+                }
+            }
+        }
+        return RegexHit(snippet: String(text[range]), range: range, groups: groups)
     }
 
     private static func firstMatch(

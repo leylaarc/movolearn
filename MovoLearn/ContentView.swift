@@ -25,24 +25,34 @@ struct ContentView: View {
     /// Loaded off the main thread — never call `LessonLoader.allLessons()` from `body`.
     @State private var catalogLessons: [Lesson] = []
     @State private var isRefreshingHome = false
+    @State private var profileSetupStep: ChildProfileSetupStep = .name
 
     var body: some View {
         Group {
             switch route {
             case .welcome:
                 WelcomeView {
+                    profileSetupStep = .name
                     route = FamilyCloudSync.isEnabled ? .parentAccount : .profileSetup
                 }
 
             case .parentAccount:
                 ParentAccountView(
                     onSignedIn: handleParentSignedIn,
-                    onContinueLocally: { route = .profileSetup }
+                    onContinueLocally: {
+                        profileSetupStep = .name
+                        route = .profileSetup
+                    }
                 )
 
             case .profileSetup:
                 ChildProfileSetupView(
                     initialProfile: childProfile,
+                    initialStep: profileSetupStep,
+                    onBackToPreviousScreen: {
+                        profileSetupStep = .name
+                        route = FamilyCloudSync.isEnabled ? .parentAccount : .welcome
+                    },
                     onContinue: { profile in
                         var saved = profile
                         saved.hasCompletedOnboarding = false
@@ -59,6 +69,10 @@ struct ContentView: View {
                 InterestSelectionView(
                     childName: PersonalizationService.shared.childReference,
                     mode: .onboarding,
+                    onCancel: {
+                        profileSetupStep = .levels
+                        route = .profileSetup
+                    },
                     onContinue: finishInterestSelection
                 )
 

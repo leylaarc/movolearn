@@ -1,12 +1,15 @@
 import SwiftUI
+import UIKit
 
 struct LessonView: View {
     @ObservedObject var viewModel: LessonViewModel
     let onComplete: (ProgressSummary) -> Void
 
+    @ObservedObject private var speech = LessonSpeechReader.shared
     @State private var showCelebration = false
     @State private var cardVisible = true
     @State private var celebrationTick = 0
+    @State private var readGeneration = 0
 
     private var story: LessonStoryContent { viewModel.lesson.story }
     private var topicAccent: Color { TopicPalette.color(for: viewModel.lesson.theme) }
@@ -23,7 +26,9 @@ struct LessonView: View {
                     subtitle: viewModel.lesson.title,
                     accent: topicAccent,
                     showsStars: viewModel.playKind != nil,
-                    earnedStars: viewModel.earnedStars
+                    earnedStars: viewModel.earnedStars,
+                    isReadingAloud: speech.isSpeaking,
+                    onReadAloud: toggleReading
                 )
                 .padding(.horizontal, DesignSystem.Spacing.lg)
                 .padding(.top, DesignSystem.Spacing.md)
@@ -31,6 +36,9 @@ struct LessonView: View {
                 GeometryReader { geo in
                     ScrollView {
                         VStack(alignment: .center, spacing: DesignSystem.Spacing.lg) {
+                            if showsLessonStage {
+                                lessonStage
+                            }
                             if let step = viewModel.currentStep, cardVisible {
                                 stepContent(for: step)
                                     .frame(maxWidth: .infinity)
@@ -60,11 +68,32 @@ struct LessonView: View {
         }
         .navigationBarBackButtonHidden(true)
         .sensoryFeedback(.success, trigger: celebrationTick)
+        .onAppear {
+            scheduleAutomaticReading()
+        }
+        .onDisappear {
+            cancelScheduledReading()
+            speech.stop()
+        }
         .onChange(of: viewModel.currentStepIndex) { _, _ in
             cardVisible = false
+            speech.stop()
+            scheduleAutomaticReading()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                 cardVisible = true
             }
+        }
+        .onChange(of: viewModel.showFeedback) { _, showing in
+            guard showing else { return }
+            scheduleFeedbackReading()
+        }
+        .onChange(of: viewModel.revealedClueCount) { previous, count in
+            guard count > previous else { return }
+            scheduleClueReading(clueNumber: count)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            cancelScheduledReading()
+            speech.stop()
         }
     }
 
@@ -82,8 +111,8 @@ struct LessonView: View {
         switch step {
         case .moment(let moment):
             storyMomentView(moment)
-        case .question(let moment, let question, let index, let total):
-            questionView(moment: moment, question: question, index: index, total: total)
+        case .question(let moment, let question, _, _):
+            questionView(moment: moment, question: question)
         case .creative(let moment):
             creativeView(moment: moment)
         case .reflection(let moment):
@@ -109,9 +138,8 @@ struct LessonView: View {
 
     private func continueButton(for moment: StoryMoment) -> some View {
         let playOpening = viewModel.playKind != nil && moment == .storyOpening
-        return PrimaryGradientButton(
-            title: playOpening ? "Start Practice" : (moment == .ending ? "See My Results" : moment.continueLabel),
-            icon: playOpening ? "play.fill" : (moment == .ending ? "star.fill" : "arrow.right")
+        return LessonContinueButton(
+            title: playOpening ? "Start Practice" : (moment == .ending ? "See My Results" : moment.continueLabel)
         ) {
             if moment == .ending {
                 onComplete(viewModel.makeProgressSummary())
@@ -134,18 +162,20 @@ struct LessonView: View {
                     lessonTitle: viewModel.lesson.title
                 )
             } else {
-                StoryTextBlock(
-                    text: story.storyOpening,
-                    style: .narrative,
-                    pointSize: viewModel.storyBodyFontSize,
-                    centered: false
-                )
+                VStack(alignment: .leading, spacing: DesignSystem.Spacing.md) {
+                    StoryTextBlock(
+                        text: story.storyOpening,
+                        style: .narrative,
+                        pointSize: viewModel.storyBodyFontSize,
+                        centered: false
+                    )
+                }
             }
         case .reading:
             VStack(alignment: .leading, spacing: DesignSystem.Spacing.lg) {
                 let opening = story.storyOpening.trimmingCharacters(in: .whitespacesAndNewlines)
-                let passage = story.readingPassage.trimmingCharacters(in: .whitespacesAndNewlines)
-                if !opening.isEmpty {
+                let passage = StoryTextDedup.withoutRepeatedBlock(story.readingPassage)
+                if !opening.isEmpty, !StoryTextDedup.openingIsRetold(by: passage, opening: opening) {
                     StoryTextBlock(
                         text: opening,
                         style: .narrative,
@@ -186,8 +216,93 @@ struct LessonView: View {
         }
     }
 
+    private var showsLessonStage: Bool {
+        switch viewModel.currentStep {
+        case .creative where viewModel.creativeResponseType == .drawing:
+            return false
+        case .question(_, let question, _, _) where question.displayResponseType == .drawing:
+            return false
+        default:
+            return true
+        }
+    }
+
+    private var lessonMentionsCat: Bool {
+        let blob = "\(viewModel.lesson.title) \(story.storyOpening) \(story.readingPassage)"
+        return blob.range(of: #"\bcats?\b"#, options: [.regularExpression, .caseInsensitive]) != nil
+    }
+
+    private var stageScene: StoryCountScene? {
+        if case .question(_, let question, _, _) = viewModel.currentStep,
+           let math = StoryCountScene.math(
+               prompt: question.prompt,
+               explanation: question.explanation,
+               title: viewModel.lesson.title,
+               opening: story.storyOpening,
+               passage: story.readingPassage
+           ) {
+            return math
+        }
+        return StoryCountScene.story(
+            title: viewModel.lesson.title,
+            opening: story.storyOpening,
+            passage: story.readingPassage,
+            goals: viewModel.lesson.drawingQuestGoals
+        )
+    }
+
+    /// The place in the lesson, shown behind the thing being counted.
+    private var stageHabitat: LessonHabitat? {
+        let blob = "\(viewModel.lesson.theme.rawValue) \(viewModel.lesson.title) \(story.storyOpening) \(story.readingPassage)"
+        let mentionsVolcano = blob.range(of: #"\bvolcano(es)?\b"#, options: [.regularExpression, .caseInsensitive]) != nil
+        guard mentionsVolcano, stageScene?.picture.name != "volcano" else { return nil }
+        return .volcano
+    }
+
+    /// The passage or question is about rock that glows, so the picture uses red rock.
+    private var stageShowsHotRock: Bool {
+        var blob = "\(story.storyOpening) \(story.readingPassage)"
+        if case .question(_, let question, _, _) = viewModel.currentStep {
+            blob += " \(question.prompt) \(question.explanation)"
+        }
+        let lower = blob.lowercased()
+        if lower.range(of: #"\b(hot|glowing) rocks?\b"#, options: .regularExpression) != nil {
+            return true
+        }
+        return lower.contains("glows red")
+    }
+
+    @ViewBuilder
+    private var lessonStage: some View {
+        if let scene = stageScene {
+            if scene.picture.name == "hero", isVisit(scene) {
+                HeroFlightScene(showsCat: lessonMentionsCat)
+            } else {
+                StoryPictureStrip(
+                    scene: scene,
+                    accent: topicAccent,
+                    rocketLaunch: isVisit(scene) && scene.picture.name == "rocket" ? .countdown : nil,
+                    habitatOverride: stageHabitat,
+                    showsHotRock: stageShowsHotRock
+                )
+                .id("\(viewModel.currentStepIndex)-\(scene.picture.name)")
+            }
+        } else {
+            TopicStage(name: topicStageName(viewModel.lesson.theme))
+        }
+    }
+
+    private func isVisit(_ scene: StoryCountScene) -> Bool {
+        if case .visit = scene.arrangement { return true }
+        return false
+    }
+
+    private func topicStageName(_ topic: Topic) -> String {
+        TopicStageArt.name(for: topic)
+    }
+
     private var readingPassageText: String {
-        story.readingPassage.trimmingCharacters(in: .whitespacesAndNewlines)
+        StoryTextDedup.withoutRepeatedBlock(story.readingPassage)
     }
 
     private func showsStoryWithQuestion(_ question: LessonQuestion, moment: StoryMoment) -> Bool {
@@ -200,9 +315,7 @@ struct LessonView: View {
 
     private func questionView(
         moment: StoryMoment,
-        question: LessonQuestion,
-        index: Int,
-        total: Int
+        question: LessonQuestion
     ) -> some View {
         let isDrawing = question.displayResponseType == .drawing
         let showsStory = showsStoryWithQuestion(question, moment: moment)
@@ -215,7 +328,7 @@ struct LessonView: View {
             compactHeader: isDrawing || showsStory,
             expandsContent: isDrawing
         ) {
-            questionBody(moment: moment, question: question, index: index, total: total)
+            questionBody(moment: moment, question: question)
         } footer: {
             questionFooter(question: question)
         }
@@ -224,20 +337,12 @@ struct LessonView: View {
     @ViewBuilder
     private func questionBody(
         moment: StoryMoment,
-        question: LessonQuestion,
-        index: Int,
-        total: Int
+        question: LessonQuestion
     ) -> some View {
         let responseType = question.displayResponseType
         let isDrawing = responseType == .drawing
 
         VStack(spacing: isDrawing ? DesignSystem.Spacing.md : DesignSystem.Spacing.xl) {
-            if total > 1 {
-                Text("\(index) of \(total)")
-                    .font(DesignSystem.Typography.title(14))
-                    .foregroundStyle(DesignSystem.Colors.deepNavy)
-            }
-
             if showsStoryWithQuestion(question, moment: moment) {
                 ReadingPassageCard(
                     text: readingPassageText,
@@ -265,7 +370,12 @@ struct LessonView: View {
                     }
                 )
             } else {
-                QuestionCard(prompt: question.prompt)
+                QuestionCard(
+                    prompt: StoryTextDedup.questionBesideStory(
+                        question.prompt,
+                        passage: showsStoryWithQuestion(question, moment: moment) ? readingPassageText : ""
+                    )
+                )
 
                 QuestionAnswerInput(
                     responseType: responseType,
@@ -300,7 +410,7 @@ struct LessonView: View {
             if shouldShowQuestionFeedback(for: question) {
                 FeedbackCard(
                     isCorrect: viewModel.isAnswerCorrect,
-                    message: viewModel.feedbackMessage(for: moment),
+                    message: viewModel.feedbackText,
                     explanation: question.explanation
                 )
             }
@@ -337,13 +447,10 @@ struct LessonView: View {
                 questionAdvanceButton
             }
         } else if responseType == .number || responseType == .shortText || responseType == .longText {
-            PrimaryGradientButton(
+            LessonContinueButton(
                 title: viewModel.showFeedback
                     ? (viewModel.isAnswerCorrect ? "Continue" : "Try Again")
-                    : "Check Answer",
-                icon: viewModel.showFeedback
-                    ? (viewModel.isAnswerCorrect ? "arrow.right" : "arrow.counterclockwise")
-                    : "checkmark"
+                    : "Check Answer"
             ) {
                 if viewModel.showFeedback {
                     handleQuestionAdvance()
@@ -356,13 +463,10 @@ struct LessonView: View {
             }
             .disabled(!viewModel.showFeedback && viewModel.openResponse.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         } else if responseType == .matching {
-            PrimaryGradientButton(
+            LessonContinueButton(
                 title: viewModel.showFeedback
                     ? (viewModel.isAnswerCorrect ? "Continue" : "Try Again")
-                    : "Check Matches",
-                icon: viewModel.showFeedback
-                    ? (viewModel.isAnswerCorrect ? "arrow.right" : "arrow.counterclockwise")
-                    : "checkmark"
+                    : "Check Matches"
             ) {
                 if viewModel.showFeedback {
                     handleQuestionAdvance()
@@ -375,13 +479,10 @@ struct LessonView: View {
             }
             .disabled(!viewModel.showFeedback && !viewModel.matchingComplete)
         } else if responseType == .sorting {
-            PrimaryGradientButton(
+            LessonContinueButton(
                 title: viewModel.showFeedback
                     ? (viewModel.isAnswerCorrect ? "Continue" : "Try Again")
-                    : "Check Order",
-                icon: viewModel.showFeedback
-                    ? (viewModel.isAnswerCorrect ? "arrow.right" : "arrow.counterclockwise")
-                    : "checkmark"
+                    : "Check Order"
             ) {
                 if viewModel.showFeedback {
                     handleQuestionAdvance()
@@ -398,7 +499,7 @@ struct LessonView: View {
                 questionAdvanceButton
             }
         } else if responseType == .drawing {
-            PrimaryGradientButton(title: "Finish Drawing!", icon: "star.fill") {
+            LessonContinueButton(title: "Finish Drawing!") {
                 withAnimation(DesignSystem.Animation.gentle) {
                     viewModel.submitOpenResponse(kind: .drawing)
                 }
@@ -408,9 +509,8 @@ struct LessonView: View {
     }
 
     private var questionAdvanceButton: some View {
-        PrimaryGradientButton(
-            title: viewModel.isAnswerCorrect ? "Continue" : "Try Again",
-            icon: viewModel.isAnswerCorrect ? "arrow.right" : "arrow.counterclockwise"
+        LessonContinueButton(
+            title: viewModel.isAnswerCorrect ? "Continue" : "Try Again"
         ) {
             handleQuestionAdvance()
         }
@@ -487,9 +587,8 @@ struct LessonView: View {
             .frame(maxWidth: .infinity)
             .frame(maxHeight: responseType == .drawing ? .infinity : nil)
         } footer: {
-            PrimaryGradientButton(
-                title: creativeButtonTitle(responseType: responseType, isArtQuest: isArtQuest),
-                icon: responseType == .drawing ? "star.fill" : "paperplane.fill"
+            LessonContinueButton(
+                title: creativeButtonTitle(responseType: responseType, isArtQuest: isArtQuest)
             ) {
                 withAnimation(DesignSystem.Animation.gentle) {
                     viewModel.submitCreativeResponse()
@@ -551,7 +650,7 @@ struct LessonView: View {
             }
             .frame(maxWidth: .infinity)
         } footer: {
-            PrimaryGradientButton(title: moment.continueLabel, icon: "heart.fill") {
+            LessonContinueButton(title: moment.continueLabel) {
                 withAnimation(DesignSystem.Animation.gentle) {
                     viewModel.submitReflection()
                 }
@@ -575,18 +674,128 @@ struct LessonView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(6)
             }
-            .padding(DesignSystem.Spacing.lg)
             .frame(maxWidth: .infinity)
-            .background(DesignSystem.Colors.cardWhite.opacity(0.82))
-            .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Radius.xl, style: .continuous))
 
-            Spacer(minLength: DesignSystem.Spacing.sm)
-
-            PrimaryGradientButton(title: "See My Results", icon: "star.fill") {
+            LessonContinueButton(title: "See My Results") {
                 onComplete(viewModel.makeProgressSummary())
             }
         }
         .frame(maxWidth: .infinity)
+    }
+
+    private var allowsAutomaticReading: Bool {
+        LessonSpeechReader.isEnabled
+            && !UIAccessibility.isVoiceOverRunning
+            && ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1"
+    }
+
+    private func toggleReading() {
+        if speech.isSpeaking {
+            cancelScheduledReading()
+            speech.stop()
+            return
+        }
+        cancelScheduledReading()
+        speech.speak(currentSpokenLines())
+    }
+
+    private func scheduleAutomaticReading() {
+        guard allowsAutomaticReading else { return }
+        let generation = nextReadGeneration()
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 450_000_000)
+            guard generation == readGeneration else { return }
+            speech.speak(currentSpokenLines())
+        }
+    }
+
+    private func scheduleFeedbackReading() {
+        guard allowsAutomaticReading else { return }
+        speech.stop()
+        let generation = nextReadGeneration()
+        let delay: UInt64 = viewModel.isAnswerCorrect ? 700_000_000 : 250_000_000
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: delay)
+            guard generation == readGeneration else { return }
+            speech.speak(currentSpokenLines())
+        }
+    }
+
+    private func scheduleClueReading(clueNumber: Int) {
+        guard allowsAutomaticReading else { return }
+        guard case .question(_, let question, _, _) = viewModel.currentStep else { return }
+        let lines = LessonReadAloudScript.newClueLines(question: question, clueNumber: clueNumber)
+        guard !lines.isEmpty else { return }
+        speech.stop()
+        let generation = nextReadGeneration()
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 200_000_000)
+            guard generation == readGeneration else { return }
+            speech.speak(lines)
+        }
+    }
+
+    private func cancelScheduledReading() {
+        readGeneration += 1
+    }
+
+    private func nextReadGeneration() -> Int {
+        readGeneration += 1
+        return readGeneration
+    }
+
+    private func currentSpokenLines() -> [String] {
+        if viewModel.showFeedback {
+            let explanation: String?
+            if case .question(_, let question, _, _) = viewModel.currentStep {
+                explanation = question.explanation
+            } else {
+                explanation = nil
+            }
+            return LessonReadAloudScript.feedbackLines(
+                message: viewModel.feedbackText,
+                explanation: explanation
+            )
+        }
+        return LessonReadAloudScript.lines(for: spokenPage())
+    }
+
+    private func spokenPage() -> LessonReadAloudScript.Page {
+        let step = viewModel.currentStep ?? .completion
+        let leadIn: String = {
+            guard let moment = viewModel.currentMoment else { return "" }
+            if moment == .vocabulary || moment == .knowledge { return "" }
+            return viewModel.encouragement(for: moment)
+        }()
+        let drawingGoals: [String] = {
+            switch step {
+            case .question(_, let question, _, _) where question.displayResponseType == .drawing:
+                return DrawingQuestGoals.goals(for: viewModel.lesson.theme)
+            case .creative where viewModel.lesson.isArtQuest && viewModel.creativeResponseType == .drawing:
+                return DrawingQuestGoals.goals(
+                    for: viewModel.lesson.theme,
+                    authored: viewModel.lesson.drawingQuestGoals
+                )
+            default:
+                return []
+            }
+        }()
+        let showsPassage: Bool = {
+            guard case .question(_, let question, _, _) = step else { return false }
+            return showsStoryWithQuestion(question, moment: viewModel.currentMoment ?? .question)
+        }()
+        return LessonReadAloudScript.Page(
+            story: story,
+            step: step,
+            lessonTitle: viewModel.lesson.title,
+            missionCompleteMessage: viewModel.lesson.missionCompleteMessage,
+            playKind: viewModel.playKind,
+            showsPassageWithQuestion: showsPassage,
+            includePassageOnReflection: viewModel.lesson.primarySubject != .math && !readingPassageText.isEmpty,
+            revealedClueCount: viewModel.revealedClueCount,
+            drawingGoals: drawingGoals,
+            leadIn: leadIn
+        )
     }
 }
 

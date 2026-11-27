@@ -692,7 +692,7 @@ struct WorldBubbleCard: View {
                         .frame(width: DesignSystem.Metrics.scaled(92), height: DesignSystem.Metrics.scaled(92))
                         .shadow(color: world.accent.opacity(0.28), radius: 12, y: 6)
 
-                    TopicIllustrationView(topic: world.illustrationTopic, size: 58, animate: true)
+                    WorldBubbleMark(topic: world.illustrationTopic, size: 58)
                 }
                 .floating(offset: 5, delay: floatDelay)
                 .idlePulse(scale: 1.04, delay: floatDelay)
@@ -984,7 +984,7 @@ struct InterestCategoryCard: View {
                         .frame(width: DesignSystem.Metrics.scaled(84), height: DesignSystem.Metrics.scaled(84))
                         .shadow(color: accent.opacity(0.28), radius: 12, y: 6)
 
-                    TopicIllustrationView(topic: topic, size: 52, animate: true)
+                    WorldBubbleMark(topic: topic, size: 52)
                 }
                 .floating(offset: 5, delay: floatDelay)
 

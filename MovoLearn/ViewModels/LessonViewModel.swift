@@ -18,6 +18,8 @@ final class LessonViewModel: ObservableObject {
     @Published private(set) var responses: [ChildResponse] = []
     @Published var selectedAnswer: String?
     @Published var showFeedback = false
+    /// The praise or hint currently on screen. Captured once so the voice matches the card.
+    @Published private(set) var feedbackText = ""
     @Published var isAnswerCorrect = false
     @Published var creativeResponse = ""
     @Published var reflectionResponse = ""
@@ -95,8 +97,8 @@ final class LessonViewModel: ObservableObject {
             }
         }
         switch currentStep {
-        case .question(_, _, let index, let total):
-            return "\(currentMoment?.title ?? "Question") (\(index) of \(total))"
+        case .question:
+            return currentMoment?.title ?? "Question"
         case .creative:
             return lesson.isArtQuest ? "Draw This Scene!" : "Create Time"
         case .moment(let moment), .reflection(let moment):
@@ -151,7 +153,7 @@ final class LessonViewModel: ObservableObject {
 
     func selectAnswer(_ answer: String) {
         guard !showFeedback else { return }
-        guard case .question(_, let question, _, _) = currentStep else { return }
+        guard case .question(let moment, let question, _, _) = currentStep else { return }
         let responseType = question.displayResponseType
         guard responseType == .multipleChoice || responseType == .matching else {
             lessonLog.error("selectAnswer called for incompatible type \(responseType.rawValue)")
@@ -166,8 +168,8 @@ final class LessonViewModel: ObservableObject {
             correct = true
         }
         isAnswerCorrect = correct
-        showFeedback = true
         attemptCounts[question.id, default: 0] += 1
+        beginFeedback(for: moment)
 
         responses.append(
             ChildResponse(
@@ -182,7 +184,7 @@ final class LessonViewModel: ObservableObject {
     /// Submits a typed / number-pad answer for non-MCQ question steps.
     func submitTypedAnswer() {
         guard !showFeedback else { return }
-        guard case .question(_, let question, _, _) = currentStep else { return }
+        guard case .question(let moment, let question, _, _) = currentStep else { return }
         let responseType = question.displayResponseType
         guard responseType == .number || responseType == .shortText || responseType == .longText else {
             lessonLog.error("submitTypedAnswer for incompatible type \(responseType.rawValue)")
@@ -203,8 +205,8 @@ final class LessonViewModel: ObservableObject {
 
         selectedAnswer = answer
         isAnswerCorrect = correct
-        showFeedback = true
         attemptCounts[question.id, default: 0] += 1
+        beginFeedback(for: moment)
 
         responses.append(
             ChildResponse(
@@ -218,12 +220,12 @@ final class LessonViewModel: ObservableObject {
 
     func submitMatchingAnswer() {
         guard !showFeedback else { return }
-        guard case .question(_, let question, _, _) = currentStep else { return }
+        guard case .question(let moment, let question, _, _) = currentStep else { return }
         guard question.displayResponseType == .matching, matchingComplete else { return }
 
         isAnswerCorrect = matchingCorrect
-        showFeedback = true
         attemptCounts[question.id, default: 0] += 1
+        beginFeedback(for: moment)
         responses.append(
             ChildResponse(
                 questionId: question.id,
@@ -236,14 +238,14 @@ final class LessonViewModel: ObservableObject {
 
     func submitSortingAnswer() {
         guard !showFeedback else { return }
-        guard case .question(_, let question, _, _) = currentStep else { return }
+        guard case .question(let moment, let question, _, _) = currentStep else { return }
         guard question.displayResponseType == .sorting else { return }
 
         let correctOrder = question.correctlyOrderedItemIDs
         let correct = sortingOrderIDs == correctOrder
         sortingCorrect = correct
         isAnswerCorrect = correct
-        showFeedback = true
+        beginFeedback(for: moment)
         responses.append(
             ChildResponse(
                 questionId: question.id,
@@ -279,6 +281,7 @@ final class LessonViewModel: ObservableObject {
     func resetForRetry() {
         selectedAnswer = nil
         showFeedback = false
+        feedbackText = ""
         isAnswerCorrect = false
         openResponse = ""
         matchingComplete = false
@@ -372,6 +375,7 @@ final class LessonViewModel: ObservableObject {
     func advance() {
         selectedAnswer = nil
         showFeedback = false
+        feedbackText = ""
         isAnswerCorrect = false
         creativeResponse = ""
         reflectionResponse = ""
@@ -419,6 +423,11 @@ final class LessonViewModel: ObservableObject {
             totalQuestions: total,
             correctAnswers: correct
         )
+    }
+
+    private func beginFeedback(for moment: StoryMoment) {
+        feedbackText = feedbackMessage(for: moment)
+        showFeedback = true
     }
 
     func feedbackMessage(for moment: StoryMoment) -> String {

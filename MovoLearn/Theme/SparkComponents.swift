@@ -997,58 +997,26 @@ struct AnswerButton: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: DesignSystem.Spacing.md) {
-                Text(text)
-                    .font(DesignSystem.Typography.title(20))
-                    .multilineTextAlignment(.leading)
-                    .accessibilityLabel(accessibilityLabel)
-                Spacer()
-                if isCorrect {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(DesignSystem.Colors.successGreen)
-                        .accessibilityHidden(true)
-                        .transition(.scale.combined(with: .opacity))
-                        .symbolEffect(.bounce, value: isCorrect)
-                } else if isIncorrect {
-                    Image(systemName: "arrow.counterclockwise.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(DesignSystem.Colors.softRed)
-                        .accessibilityHidden(true)
-                        .symbolEffect(.bounce, value: isIncorrect)
-                } else if isSelected {
-                    Image(systemName: "circle.fill")
-                        .font(.caption)
-                        .foregroundStyle(DesignSystem.Colors.skyBlue)
-                        .accessibilityHidden(true)
+            Text(text)
+                .font(DesignSystem.Typography.title(20))
+                .foregroundStyle(DesignSystem.Colors.deepNavy)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 2)
+                .frame(minHeight: DesignSystem.Metrics.scaled(56))
+                .background(backgroundColor)
+                .overlay(alignment: .bottom) {
+                    Rectangle()
+                        .fill(borderColor)
+                        .frame(height: isCorrect || isIncorrect ? 2 : 1)
                 }
-            }
-            .foregroundStyle(DesignSystem.Colors.deepNavy)
-            .padding(DesignSystem.Spacing.lg)
-            .frame(minHeight: DesignSystem.Metrics.scaled(64))
-            .background {
-                RoundedRectangle(cornerRadius: DesignSystem.Radius.mediumRadius, style: .continuous)
-                    .fill(backgroundColor)
-                    .shadow(color: shadowColor, radius: isSelected || isCorrect ? 10 : 5, y: isSelected || isCorrect ? 5 : 2)
-            }
-            .overlay(
-                RoundedRectangle(cornerRadius: DesignSystem.Radius.mediumRadius, style: .continuous)
-                    .stroke(borderColor, lineWidth: isSelected || isCorrect || isIncorrect ? 2.5 : 1)
-            )
-            .scaleEffect(isCorrect ? 1.03 : 1)
+                .accessibilityLabel(accessibilityLabel)
         }
-        .buttonStyle(BouncyCardButtonStyle())
+        .buttonStyle(.plain)
         .sensoryFeedback(.selection, trigger: isSelected)
         .sensoryFeedback(.success, trigger: isCorrect)
         .shake(trigger: isIncorrect)
-        .overlay {
-            if isCorrect {
-                CelebrationView()
-                    .scaleEffect(0.72)
-                    .offset(y: -18)
-                    .allowsHitTesting(false)
-            }
-        }
         .animation(DesignSystem.Animation.cardSelectAnimation, value: isCorrect)
         .animation(DesignSystem.Animation.cardSelectAnimation, value: isIncorrect)
         .animation(DesignSystem.Animation.cardSelectAnimation, value: isSelected)
@@ -1062,23 +1030,15 @@ struct AnswerButton: View {
     }
 
     private var backgroundColor: Color {
-        if isCorrect { return DesignSystem.Colors.freshGreenLight }
-        if isIncorrect { return DesignSystem.Colors.softRed.opacity(0.16) }
-        if isSelected { return DesignSystem.Colors.skyBlueLight }
-        return DesignSystem.Colors.sunshineYellowLight.opacity(0.45)
+        if isCorrect { return DesignSystem.Colors.lessonCorrectWash }
+        return Color.clear
     }
 
     private var borderColor: Color {
-        if isCorrect { return DesignSystem.Colors.successGreen.opacity(0.75) }
-        if isIncorrect { return DesignSystem.Colors.softRed.opacity(0.55) }
-        if isSelected { return DesignSystem.Colors.skyBlue.opacity(0.50) }
-        return DesignSystem.Colors.cardBorder
-    }
-
-    private var shadowColor: Color {
-        if isCorrect { return DesignSystem.Colors.successGreen.opacity(0.20) }
-        if isSelected { return DesignSystem.Colors.skyBlue.opacity(0.16) }
-        return DesignSystem.Shadow.softShadow.color
+        if isCorrect { return DesignSystem.Colors.lessonCorrectLine }
+        if isIncorrect { return DesignSystem.Colors.lessonCoral }
+        if isSelected { return DesignSystem.Colors.deepNavy.opacity(0.35) }
+        return DesignSystem.Colors.lessonLine
     }
 }
 
@@ -1092,42 +1052,24 @@ struct FeedbackCard: View {
     @State private var bounce = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: DesignSystem.Spacing.sm) {
-            HStack(spacing: DesignSystem.Spacing.sm) {
-                Image(systemName: isCorrect ? "star.circle.fill" : "lightbulb.fill")
-                    .font(.title2)
-                    .foregroundStyle(isCorrect ? DesignSystem.Colors.sunshineYellow : DesignSystem.Colors.warmOrange)
-                    .scaleEffect(bounce ? 1.18 : 1)
-                    .symbolEffect(.bounce, value: bounce)
-                    .accessibilityHidden(true)
+        VStack(alignment: .leading, spacing: 4) {
+            Text(message)
+                .font(DesignSystem.Typography.title(17))
+                .foregroundStyle(DesignSystem.Colors.deepNavy)
+                .fixedSize(horizontal: false, vertical: true)
 
-                Text(message)
-                    .font(DesignSystem.Typography.title(18))
-                    .foregroundStyle(DesignSystem.Colors.deepNavy)
-            }
-
-            if let explanation {
+            if let explanation, !explanation.isEmpty {
                 Text(explanation)
-                    .font(DesignSystem.Typography.title(17))
-                    .foregroundStyle(DesignSystem.Colors.deepNavy)
-                    .lineSpacing(5)
+                    .font(DesignSystem.Typography.subtitle(16))
+                    .foregroundStyle(DesignSystem.Colors.lessonMuted)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .transition(.opacity.combined(with: .move(edge: .bottom)).combined(with: .scale(scale: 0.97)))
-        .overlay(alignment: .topTrailing) {
-            if isCorrect {
-                Image(systemName: "sparkle")
-                    .font(.title3)
-                    .foregroundStyle(DesignSystem.Colors.sunshineYellow)
-                    .idlePulse(scale: 1.2, delay: 0.1)
-                    .offset(x: 4, y: -6)
-                    .accessibilityHidden(true)
-            }
-        }
+        .opacity(bounce || !isCorrect ? 1 : 0.2)
         .onAppear {
             guard isCorrect else { return }
-            withAnimation(DesignSystem.Animation.celebrate) { bounce = true }
+            withAnimation(DesignSystem.Animation.gentle) { bounce = true }
         }
     }
 }

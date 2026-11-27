@@ -26,6 +26,9 @@ Package.resolved
 .env
 *.pem
 
+# Cloudflare local cache (account id lives here)
+.wrangler/
+
 # Raw App Store capture dumps (finished screenshots stay tracked)
 app-store/raw/
 app-store/raw-ipad/

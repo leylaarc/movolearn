@@ -16,7 +16,8 @@ struct MathCountableScene: Equatable {
     /// Where the objects are, e.g. "on a rock", "in the castle garden".
     let location: String
 
-    /// Opening state verb phrase for a group, e.g. "were resting", "sat".
+    /// Opening state verb phrase for a group, e.g. "were resting".
+    /// Stored in the plural. Use `stateVerb(forCount:)` so one object takes "was".
     let groupStateVerb: String
     /// How more objects join, e.g. "arrived", "swam over".
     let joinVerb: String
@@ -61,6 +62,19 @@ struct MathCountableScene: Equatable {
             collectVerb: collectVerb,
             giveVerb: giveVerb
         )
+    }
+
+    /// Plural scene verbs are stored as "were …" or "are …".
+    /// One object needs the singular match: "was …" or "is …".
+    func stateVerb(forCount count: Int) -> String {
+        guard count == 1 else { return groupStateVerb }
+        if groupStateVerb.hasPrefix("were ") {
+            return "was \(groupStateVerb.dropFirst(5))"
+        }
+        if groupStateVerb.hasPrefix("are ") {
+            return "is \(groupStateVerb.dropFirst(4))"
+        }
+        return groupStateVerb
     }
 }
 

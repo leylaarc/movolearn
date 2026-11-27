@@ -14,6 +14,7 @@ struct ProfileSettingsView: View {
     var onDeleteFamilyAccount: (() -> Void)? = nil
 
     @State private var draft: ChildProfile
+    @AppStorage(LessonSpeechReader.enabledDefaultsKey) private var readAloud = true
     @State private var showResetConfirm = false
     @State private var showDeleteAccountConfirm = false
     @State private var showAcknowledgements = false
@@ -71,6 +72,7 @@ struct ProfileSettingsView: View {
                     if onOpenFamilyAccount != nil || familyAccountEmail != nil {
                         familyAccountCard
                     }
+                    readAloudCard
                     editCard
 
                     SecondaryButton(title: "Privacy", icon: "lock.shield") {
@@ -280,6 +282,31 @@ struct ProfileSettingsView: View {
             }
         }
         .sparkCard(accent: DesignSystem.Colors.lavenderPurple)
+    }
+
+    private var readAloudCard: some View {
+        SparkInputCard(icon: "speaker.wave.2.fill", title: "Read aloud", accent: DesignSystem.Colors.skyBlue) {
+            Toggle(isOn: $readAloud) {
+                Text("Read lessons out loud")
+                    .font(DesignSystem.Typography.title(16))
+                    .foregroundStyle(DesignSystem.Colors.deepNavy)
+            }
+            .tint(DesignSystem.Colors.skyBlue)
+
+            Text(readAloud
+                 ? "Stories, words, and questions start speaking on their own. Tap the speaker in a lesson to stop or hear the page again."
+                 : "Lessons stay quiet until someone taps the speaker.")
+                .font(DesignSystem.Typography.subtitle(14))
+                .foregroundStyle(DesignSystem.Colors.mutedText)
+                .fixedSize(horizontal: false, vertical: true)
+
+            if LessonSpeechReader.needsAvaDownload {
+                Text("Download Ava once for this warmer voice: Settings → Accessibility → Read & Speak → Voices → English → Ava (Premium).")
+                    .font(DesignSystem.Typography.subtitle(14))
+                    .foregroundStyle(DesignSystem.Colors.mutedText)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
     }
 
     private var editCard: some View {

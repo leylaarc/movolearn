@@ -7,14 +7,7 @@ struct WelcomeView: View {
 
     var body: some View {
         ZStack {
-            AnimatedGradientBackground()
-
-            SoftBubbleAtmosphere(
-                accent: DesignSystem.Colors.skyBlue,
-                secondary: DesignSystem.Colors.sunshineYellow,
-                tertiary: DesignSystem.Colors.lavenderPurple,
-                intensity: 1.2
-            )
+            OnboardingBackdrop()
 
             VStack(spacing: 0) {
                 Spacer(minLength: 12)
@@ -31,35 +24,18 @@ struct WelcomeView: View {
                             .frame(maxWidth: DesignSystem.Metrics.scaled(280), maxHeight: DesignSystem.Metrics.scaled(120))
                             .accessibilityLabel("Movo Learn")
 
-                        Text("Learning built around what your child loves.")
+                        Text("Short lessons, shaped around your child.")
                             .font(DesignSystem.Typography.screenTitle)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(DesignSystem.Colors.deepNavy)
                             .lineSpacing(4)
-
-                        Text("Personalized reading, math, vocabulary, and discovery lessons through their favorite topics.")
-                            .font(DesignSystem.Typography.subtitle(16))
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(DesignSystem.Colors.mutedText)
-                            .lineSpacing(5)
-                            .padding(.horizontal, DesignSystem.Spacing.sm)
                     }
                     .entrance(appeared: appeared, delay: 0.12)
                 }
 
                 Spacer()
 
-                VStack(spacing: DesignSystem.Spacing.md) {
-                    PrimaryGradientButton(
-                        title: "Get Started",
-                        icon: "arrow.right.circle.fill",
-                        action: onGetStarted
-                    )
-
-                    Text("Designed for parents. Delightful for kids.")
-                        .font(DesignSystem.Typography.captionText)
-                        .foregroundStyle(DesignSystem.Colors.textTertiary)
-                }
+                OnboardingActionButton(title: "Get Started", action: onGetStarted)
                 .padding(.bottom, DesignSystem.Spacing.screenBottom)
                 .entrance(appeared: appeared, delay: 0.22)
             }

@@ -150,7 +150,7 @@ enum MathWordProblemGenerator {
                         subject: .math,
                         type: .multipleChoice,
                         responseType: .multipleChoice,
-                        prompt: "\(capWord(a)) \(noun(a, scene)) \(scene.groupStateVerb) \(scene.location). \(capWord(sum - a)) more \(noun(sum - a, scene)) arrived. How many \(scene.objectPlural) are there now?",
+                        prompt: "\(countedState(a, scene: scene)). \(capWord(sum - a)) more \(noun(sum - a, scene)) arrived. How many \(scene.objectPlural) are there now?",
                         choices: choices(for: sum, seed: seed &+ questions.count),
                         correctAnswer: "\(sum)",
                         explanation: "\(a) + \(sum - a) = \(sum).",
@@ -513,17 +513,17 @@ enum MathWordProblemGenerator {
         let prompt: String
         switch pattern {
         case 0:
-            prompt = "\(capWord(a)) \(objects) \(scene.groupStateVerb) \(scene.location). \(capWord(b)) more \(moreObjects) arrived. How many \(scene.objectPlural) are there now?"
+            prompt = "\(countedState(a, scene: scene)). \(capWord(b)) more \(moreObjects) arrived. How many \(scene.objectPlural) are there now?"
         case 1:
             if let character = scene.character {
                 prompt = "\(cap(character)) \(scene.collectVerb) \(a) \(objects) \(scene.location). Then \(scene.pronoun) found \(quantityPhrase(b)) more. How many \(scene.objectPlural) does \(character) have now?"
             } else {
-                prompt = "There were \(a) \(objects) \(scene.location). Then \(quantityPhrase(b)) more \(moreObjects) joined them. How many \(scene.objectPlural) are there altogether?"
+                prompt = "\(thereWere(a)) \(a) \(objects) \(scene.location). Then \(quantityPhrase(b)) more \(moreObjects) joined \(objectPronoun(a)). How many \(scene.objectPlural) are there altogether?"
             }
         case 2:
             prompt = "You see \(a) \(objects) \(scene.location) and \(b) more \(moreObjects) nearby. How many \(scene.objectPlural) do you see in all?"
         default:
-            prompt = "\(capWord(a)) \(objects) \(scene.groupStateVerb) \(scene.location). \(capWord(b)) \(moreObjects) joined them. How many \(scene.objectPlural) are there altogether?"
+            prompt = "\(countedState(a, scene: scene)). \(capWord(b)) \(moreObjects) joined \(objectPronoun(a)). How many \(scene.objectPlural) are there altogether?"
         }
 
         return draft(prompt: prompt, answer: sum, explanation: "\(a) + \(b) = \(sum).", operation: .addition(a, b))
@@ -544,20 +544,20 @@ enum MathWordProblemGenerator {
         let prompt: String
         switch pattern {
         case 0:
-            prompt = "\(capWord(start)) \(objects) \(scene.groupStateVerb) \(scene.location). \(capWord(leave)) \(leaving) \(leaveVerb). How many \(scene.objectPlural) are left?"
+            prompt = "\(countedState(start, scene: scene)). \(capWord(leave)) \(leaving) \(leaveVerb). How many \(scene.objectPlural) are left?"
         case 1:
             if let character = scene.character, canShare(scene) {
                 prompt = "\(cap(character)) had \(start) \(objects). \(cap(scene.pronoun)) \(scene.giveVerb) \(leave) \(leaving). How many \(scene.objectPlural) does \(character) still have?"
             } else {
-                prompt = "There were \(start) \(objects) \(scene.location). \(capWord(leave)) \(leaving) \(leaveVerb). How many \(scene.objectPlural) remain?"
+                prompt = "\(thereWere(start)) \(start) \(objects) \(scene.location). \(capWord(leave)) \(leaving) \(leaveVerb). How many \(scene.objectPlural) remain?"
             }
         case 2:
-            prompt = "\(capWord(start)) \(objects) \(scene.groupStateVerb) \(scene.location). Then \(leave) \(leaving) \(leaveVerb). How many \(scene.objectPlural) are still there?"
+            prompt = "\(countedState(start, scene: scene)). Then \(leave) \(leaving) \(leaveVerb). How many \(scene.objectPlural) are still there?"
         default:
             if let character = scene.character, canShare(scene) {
                 prompt = "\(cap(character)) \(scene.collectVerb) \(start) \(objects). \(cap(scene.pronoun)) \(scene.giveVerb) \(leave) \(leaving) with a friend. How many \(scene.objectPlural) are left?"
             } else {
-                prompt = "A group of \(start) \(objects) \(scene.groupStateVerb) \(scene.location). \(capWord(leave)) \(leaving) \(leaveVerb). How many \(scene.objectPlural) are left?"
+                prompt = "\(capWord(start)) \(objects) \(scene.stateVerb(forCount: start)) together \(scene.location). \(capWord(leave)) \(leaving) \(leaveVerb). How many \(scene.objectPlural) are left?"
             }
         }
 
@@ -709,13 +709,14 @@ enum MathWordProblemGenerator {
         guard groups >= 1 else { return nil }
 
         let objects = noun(total, scene)
+        let bunch = objectPronoun(total)
         let prompt: String
         if let character = scene.character {
             let actor = scene.pronoun == "they" ? cap(character) : cap(scene.pronoun)
             let put = scene.pronoun == "they" ? "put" : "puts"
-            prompt = "\(cap(character)) has \(total) \(objects). \(actor) \(put) them in groups of \(size). How many groups is that?"
+            prompt = "\(cap(character)) has \(total) \(objects). \(actor) \(put) \(bunch) in groups of \(size). How many groups is that?"
         } else {
-            prompt = "You have \(total) \(objects). You put them in groups of \(size). How many groups is that?"
+            prompt = "You have \(total) \(objects). You put \(bunch) in groups of \(size). How many groups is that?"
         }
         return draft(
             prompt: prompt,
@@ -737,15 +738,17 @@ enum MathWordProblemGenerator {
         let prompt: String
         switch pattern {
         case 0:
-            prompt = "There are \(groups) groups of \(scene.objectPlural) \(scene.location). Each group has \(perGroup) \(scene.objectPlural). How many \(scene.objectPlural) are there in all?"
+            prompt = "\(thereAre(groups)) \(groups) \(groups == 1 ? "group" : "groups") of \(scene.objectPlural) \(scene.location). Each group has \(perGroup) \(noun(perGroup, scene)). How many \(scene.objectPlural) are there in all?"
         case 1:
             if let character = scene.character {
-                prompt = "\(cap(character)) packs \(groups) bags. Each bag holds \(perGroup) \(scene.objectPlural). How many \(scene.objectPlural) did \(scene.pronoun) pack?"
+                prompt = "\(cap(character)) packs \(groups) \(groups == 1 ? "bag" : "bags"). Each bag holds \(perGroup) \(noun(perGroup, scene)). How many \(scene.objectPlural) did \(scene.pronoun) pack?"
             } else {
-                prompt = "\(capWord(groups)) baskets each hold \(perGroup) \(scene.objectPlural). How many \(scene.objectPlural) are there altogether?"
+                prompt = groups == 1
+                    ? "One basket holds \(perGroup) \(noun(perGroup, scene)). How many \(scene.objectPlural) are there altogether?"
+                    : "\(capWord(groups)) baskets each hold \(perGroup) \(noun(perGroup, scene)). How many \(scene.objectPlural) are there altogether?"
             }
         default:
-            prompt = "There are \(groups) rows of \(scene.objectPlural). Each row has \(perGroup) \(scene.objectPlural). How many \(scene.objectPlural) are there in all?"
+            prompt = "\(thereAre(groups)) \(groups) \(groups == 1 ? "row" : "rows") of \(scene.objectPlural). Each row has \(perGroup) \(noun(perGroup, scene)). How many \(scene.objectPlural) are there in all?"
         }
 
         return draft(
@@ -765,18 +768,21 @@ enum MathWordProblemGenerator {
         let total = groups * perGroup
         let pattern = abs(seed) % 3
 
+        let shared = total == 1 ? "is shared" : "are shared"
+        let friends = groups == 1 ? "friend" : "friends"
         let prompt: String
         switch pattern {
         case 0:
-            prompt = "\(capWord(total)) \(noun(total, scene)) are shared equally among \(groups) friends. How many \(scene.objectPlural) does each friend get?"
+            prompt = "\(capWord(total)) \(noun(total, scene)) \(shared) equally among \(groups) \(friends). How many \(scene.objectPlural) does each friend get?"
         case 1:
             if let character = scene.character {
-                prompt = "\(cap(character)) has \(total) \(noun(total, scene)) and puts them into \(groups) equal piles. How many \(scene.objectPlural) are in each pile?"
+                prompt = "\(cap(character)) has \(total) \(noun(total, scene)) and puts \(objectPronoun(total)) into \(groups) equal \(groups == 1 ? "pile" : "piles"). How many \(scene.objectPlural) are in each pile?"
             } else {
-                prompt = "You sort \(total) \(noun(total, scene)) into \(groups) equal groups. How many \(scene.objectPlural) are in each group?"
+                prompt = "You sort \(total) \(noun(total, scene)) into \(groups) equal \(groups == 1 ? "group" : "groups"). How many \(scene.objectPlural) are in each group?"
             }
         default:
-            prompt = "\(capWord(total)) \(noun(total, scene)) \(scene.groupStateVerb) \(scene.location). They are shared equally by \(groups) friends. How many \(scene.objectPlural) does each friend get?"
+            let theyAre = total == 1 ? "It is" : "They are"
+            prompt = "\(countedState(total, scene: scene)). \(theyAre) shared equally by \(groups) \(friends). How many \(scene.objectPlural) does each friend get?"
         }
 
         return draft(
@@ -796,9 +802,9 @@ enum MathWordProblemGenerator {
         let product = groups * perGroup
         let prompt: String
         if let character = scene.character {
-            prompt = "\(cap(character)) fills \(groups) boxes with \(perGroup) \(scene.objectPlural) in each box. How many \(scene.objectPlural) is that?"
+            prompt = "\(cap(character)) fills \(groups) \(groups == 1 ? "box" : "boxes") with \(perGroup) \(noun(perGroup, scene)) in each box. How many \(scene.objectPlural) is that?"
         } else {
-            prompt = "There are \(groups) baskets with \(perGroup) \(scene.objectPlural) in each basket. How many \(scene.objectPlural) altogether?"
+            prompt = "\(thereAre(groups)) \(groups) \(groups == 1 ? "basket" : "baskets") with \(perGroup) \(noun(perGroup, scene)) in each basket. How many \(scene.objectPlural) altogether?"
         }
         return draft(
             prompt: prompt,
@@ -824,7 +830,7 @@ enum MathWordProblemGenerator {
         let prompt: String
         switch pattern {
         case 0:
-            prompt = "There are \(a) \(noun(a, scene)) \(scene.location) and \(b) \(noun(b, scene)) nearby. How many more \(scene.objectPlural) are in the larger group?"
+            prompt = "\(thereAre(a)) \(a) \(noun(a, scene)) \(scene.location) and \(b) \(noun(b, scene)) nearby. How many more \(scene.objectPlural) are in the larger group?"
         case 1:
             if largerIsA {
                 prompt = "One group has \(a) \(noun(a, scene)). Another group has \(b) \(noun(b, scene)). How many more \(scene.objectPlural) does the first group have?"
@@ -852,9 +858,9 @@ enum MathWordProblemGenerator {
         let prompt: String
         switch pattern {
         case 0:
-            prompt = "Count the \(scene.objectPlural): there are \(numberWord(n)) \(noun(n, scene)) \(scene.location). How many \(scene.objectPlural) are there?"
+            prompt = "Count the \(scene.objectPlural): \(thereAreMid(n)) \(numberWord(n)) \(noun(n, scene)) \(scene.location). How many \(scene.objectPlural) are there?"
         case 1:
-            prompt = "\(capWord(n)) \(noun(n, scene)) \(scene.groupStateVerb) \(scene.location). How many \(scene.objectPlural) can you count?"
+            prompt = "\(countedState(n, scene: scene)). How many \(scene.objectPlural) can you count?"
         default:
             if let character = scene.character {
                 prompt = "\(cap(character)) points to \(numberWord(n)) \(noun(n, scene)) \(scene.location). How many \(scene.objectPlural) did \(scene.pronoun) point to?"
@@ -874,9 +880,9 @@ enum MathWordProblemGenerator {
         let answer = hideFirst ? a : b
         let prompt: String
         if hideFirst {
-            prompt = "Some \(scene.objectPlural) \(scene.groupStateVerb) \(scene.location). \(capWord(b)) more \(noun(b, scene)) arrived, and now there are \(sum). How many \(scene.objectPlural) were there at the start?"
+            prompt = "Some \(scene.objectPlural) \(scene.groupStateVerb) \(scene.location). \(capWord(b)) more \(noun(b, scene)) arrived, and now \(thereAreMid(sum)) \(sum). How many \(scene.objectPlural) were there at the start?"
         } else {
-            prompt = "\(capWord(a)) \(noun(a, scene)) \(scene.groupStateVerb) \(scene.location). Some more arrived, and now there are \(sum). How many \(scene.objectPlural) joined?"
+            prompt = "\(countedState(a, scene: scene)). Some more arrived, and now \(thereAreMid(sum)) \(sum). How many \(scene.objectPlural) joined?"
         }
         return draft(
             prompt: prompt,
@@ -903,9 +909,9 @@ enum MathWordProblemGenerator {
         let pattern = abs(seed) % 2
         let prompt: String
         if pattern == 0 {
-            prompt = "There are \(wholes) \(noun(wholes, scene)) \(scene.location). Half of them are moved. How many \(scene.objectPlural) were moved?"
+            prompt = "\(thereAre(wholes)) \(wholes) \(noun(wholes, scene)) \(scene.location). Half of \(objectPronoun(wholes)) \(wholes == 1 ? "is" : "are") moved. How many \(scene.objectPlural) were moved?"
         } else if let character = scene.character, canShare(scene) {
-            prompt = "\(cap(character)) has \(wholes) \(noun(wholes, scene)) and gives half of them away. How many \(scene.objectPlural) does \(scene.pronoun) give away?"
+            prompt = "\(cap(character)) has \(wholes) \(noun(wholes, scene)) and gives half of \(objectPronoun(wholes)) away. How many \(scene.objectPlural) does \(scene.pronoun) give away?"
         } else {
             prompt = "You split \(wholes) \(noun(wholes, scene)) into two equal groups. How many \(scene.objectPlural) are in each group?"
         }
@@ -929,8 +935,8 @@ enum MathWordProblemGenerator {
         default: unit = "inches"
         }
         let sum = a + b
-        let prompt = "A path \(scene.location) is \(a) \(unit) long. You measure \(b) more \(unit). How many \(unit) long is the path now?"
-        return draft(prompt: prompt, answer: sum, explanation: "\(a) + \(b) = \(sum) \(unit).", operation: .addition(a, b))
+        let prompt = "A path \(scene.location) is \(amountWithUnit(a, unit: unit)) long. You measure \(amountWithUnit(b, unit: unit, more: true)). How many \(unit) long is the path now?"
+        return draft(prompt: prompt, answer: sum, explanation: "\(a) + \(b) = \(amountWithUnit(sum, unit: unit)).", operation: .addition(a, b))
     }
 
     // MARK: - Time
@@ -962,11 +968,11 @@ enum MathWordProblemGenerator {
         let pattern = abs(seed) % 2
         let prompt: String
         if pattern == 0, let character = scene.character {
-            prompt = "\(cap(character)) has \(a) cents and finds \(b) more cents near the \(scene.objectPlural). How many cents does \(scene.pronoun) have now?"
+            prompt = "\(cap(character)) has \(amountWithUnit(a, unit: "cents")) and finds \(amountWithUnit(b, unit: "cents", more: true)) near the \(scene.objectPlural). How many cents does \(scene.pronoun) have now?"
         } else {
-            prompt = "You save \(a) cents, then earn \(b) more cents after counting \(scene.objectPlural). How many cents do you have in all?"
+            prompt = "You save \(amountWithUnit(a, unit: "cents")), then earn \(amountWithUnit(b, unit: "cents", more: true)) after counting \(scene.objectPlural). How many cents do you have in all?"
         }
-        return draft(prompt: prompt, answer: sum, explanation: "\(a) + \(b) = \(sum) cents.", operation: .addition(a, b))
+        return draft(prompt: prompt, answer: sum, explanation: "\(a) + \(b) = \(amountWithUnit(sum, unit: "cents")).", operation: .addition(a, b))
     }
 
     // MARK: - Shapes
@@ -1008,7 +1014,7 @@ enum MathWordProblemGenerator {
     ) -> LessonQuestion {
         let (a, b) = addends(seed: seed, mathLevel: mathLevel, age: age)
         let sum = a + b
-        let prompt = "\(capWord(a)) \(noun(a, scene)) \(scene.groupStateVerb) \(scene.location). \(capWord(b)) more \(noun(b, scene)) arrived. How many \(scene.objectPlural) are there now?"
+        let prompt = "\(countedState(a, scene: scene)). \(capWord(b)) more \(noun(b, scene)) arrived. How many \(scene.objectPlural) are there now?"
         return LessonQuestion(
             subject: .math,
             type: .multipleChoice,
@@ -1065,6 +1071,49 @@ enum MathWordProblemGenerator {
 
     private static func noun(_ count: Int, _ scene: MathCountableScene) -> String {
         count == 1 ? scene.objectSingular : scene.objectPlural
+    }
+
+    /// "One chicken was pecking in the coop" — the verb matches the count.
+    private static func countedState(_ count: Int, scene: MathCountableScene) -> String {
+        "\(capWord(count)) \(noun(count, scene)) \(scene.stateVerb(forCount: count)) \(scene.location)"
+    }
+
+    private static func thereWere(_ count: Int) -> String {
+        count == 1 ? "There was" : "There were"
+    }
+
+    private static func thereAre(_ count: Int) -> String {
+        count == 1 ? "There is" : "There are"
+    }
+
+    private static func thereAreMid(_ count: Int) -> String {
+        count == 1 ? "there is" : "there are"
+    }
+
+    /// "them" only when the earlier group has more than one object.
+    private static func objectPronoun(_ count: Int) -> String {
+        count == 1 ? "it" : "them"
+    }
+
+    private static func amountWithUnit(_ count: Int, unit: String, more: Bool = false) -> String {
+        let name = count == 1 ? singularUnit(unit) : unit
+        if more {
+            return "\(count) more \(name)"
+        }
+        return "\(count) \(name)"
+    }
+
+    private static func singularUnit(_ unit: String) -> String {
+        switch unit {
+        case "feet": return "foot"
+        case "inches": return "inch"
+        case "cents": return "cent"
+        default:
+            if unit.hasSuffix("s"), !unit.hasSuffix("ss") {
+                return String(unit.dropLast())
+            }
+            return unit
+        }
     }
 
     /// Prefer number words for small counts so mid-sentence wording stays natural.

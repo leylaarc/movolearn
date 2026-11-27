@@ -751,6 +751,48 @@ final class ChildFacingProseQualityTests: XCTestCase {
         )
     }
 
+    func testRejectsSingularSubjectWithPluralVerb() {
+        let badSentences = [
+            "One chicken were pecking in the coop. Three more chickens arrived. How many chickens are there now?",
+            "There were 1 chicken in the coop. Then three more chickens joined them. How many chickens are there altogether?",
+            "One chicken was pecking in the coop. Three chickens joined them. How many chickens are there altogether?",
+            "A group of 4 chickens were pecking in the coop.",
+            "There was 4 chickens in the coop.",
+            "A path in the coop is 1 inches long. You measure 1 more inches.",
+            "Mia has 1 cents and finds 2 more cents near the chickens.",
+            "They was pecking in the coop.",
+            "She were pecking in the coop."
+        ]
+        for sentence in badSentences {
+            let result = ChildFacingProseQualityValidator.validate(sentence, allowShortImperative: true)
+            XCTAssertFalse(result.passed, "Should reject: \(sentence)")
+            XCTAssertTrue(result.issues.contains { issue in
+                if case .subjectVerbAgreement = issue { return true }
+                return false
+            }, "Expected agreement error for: \(sentence). Got: \(result.issues)")
+        }
+
+        let goodSentences = [
+            "One chicken was pecking in the coop. Three more chickens arrived. How many chickens are there now?",
+            "There was 1 chicken in the coop. Then three more chickens joined it. How many chickens are there altogether?",
+            "Four chickens were pecking in the coop. Two chickens joined them. How many chickens are there altogether?",
+            "There were 4 chickens in the coop.",
+            "A path in the coop is 1 inch long. You measure 3 more inches.",
+            "Mia has 1 cent and finds 2 more cents near the chickens.",
+            "They were pecking in the coop.",
+            "Which clue would reassure you most if a train were running late?",
+            "The ordered steps a robot follows are called a program.",
+            "Name one thing clouds are made of.",
+            "What should he do?"
+        ]
+        for sentence in goodSentences {
+            XCTAssertTrue(
+                ChildFacingProseQualityValidator.validate(sentence, allowShortImperative: true).passed,
+                "Should accept: \(sentence)"
+            )
+        }
+    }
+
     func testRejectsSheAddAgreementError() {
         let bad = "Check what she add layer by layer."
         let result = ChildFacingProseQualityValidator.validate(bad, allowShortImperative: true)

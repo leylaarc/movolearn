@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Animation review · Movo Learn</title>
+  <style>
+    :root {
+      --navy: #141f47;
+      --muted: #3e4468;
+      --cream: #fff6db;
+      --sky: #8ec8e8;
+      --window: #d7efff;
+      --coral: #e23b62;
+      --orange: #ff7510;
+      --yellow: #ffc700;
+      --line: rgba(20, 31, 71, 0.14);
+      --ok: #1a8f45;
+      --ok-wash: #e5f6ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--navy);
+      background: var(--cream);
+      font-family: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", sans-serif;
+      line-height: 1.4;
+    }
+    header, main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 28px 0 12px; }
+    h1 { font-size: 1.8rem; margin: 0 0 6px; letter-spacing: -0.03em; }
+    .lead { margin: 0; max-width: 62ch; color: var(--muted); }
+    .bar {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin: 16px 0 8px;
+    }
+    .count { font-weight: 700; margin-right: 8px; }
+    button, textarea { font: inherit; color: inherit; }
+    .filters button, .actions button, .copy {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+    .filters button[aria-pressed="true"] { background: var(--navy); color: white; border-color: var(--navy); }
+    main {
+      display: grid;
+      grid-template-columns: minmax(280px, 380px) 1fr;
+      gap: 20px;
+      align-items: start;
+      padding-bottom: 48px;
+    }
+    .list {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      max-height: calc(100vh - 180px);
+      overflow: auto;
+    }
+    .group {
+      position: sticky; top: 0;
+      background: #f7f4ea;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+    }
+    .row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: white;
+      text-align: left;
+      cursor: pointer;
+    }
+    .row:hover { background: #fffdf6; }
+    .row[aria-current="true"] { background: var(--window); }
+    .row strong { display: block; }
+    .row span { color: var(--muted); font-size: 0.85rem; }
+    .mark { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+    .mark.yes { background: var(--ok); }
+    .mark.no { background: var(--coral); }
+    .thumb, .still { width: 56px; height: 56px; }
+    .thumb svg, .still svg { width: 100%; height: 100%; display: block; }
+    .stage-wrap {
+      position: sticky; top: 16px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .sky {
+      height: 280px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 45%, #fff, var(--sky) 70%);
+    }
+    .sky.water { background: radial-gradient(circle at 50% 40%, #e7f6ff, #7eb6d8 72%); }
+    .sky.space { background: radial-gradient(circle at 50% 40%, #24315f, #141f47 75%); }
+    .sky.volcano { background: radial-gradient(circle at 50% 30%, #ffd7a8, #e7a06a 70%); }
+    .sky.ground { background: radial-gradient(circle at 50% 40%, #fff, #d7efc8 78%); }
+    .mover { width: 168px; height: 168px; }
+    .mover svg { width: 100%; height: 100%; overflow: visible; }
+    .stage-copy { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+    .stage-copy .mover { width: 64px; height: 64px; }
+    h2 { margin: 14px 0 4px; font-size: 1.45rem; }
+    .detail { margin: 0 0 12px; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .actions .yes[aria-pressed="true"] { background: var(--ok-wash); border-color: var(--ok); }
+    .actions .no[aria-pressed="true"] { background: #fde8ee; border-color: var(--coral); }
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      min-height: 72px;
+      resize: vertical;
+    }
+    .hidden { display: none; }
+    .mover-flutter { animation: flutter 0.85s ease-in-out infinite alternate; }
+    .mover-waddle { animation: waddle 0.42s ease-in-out infinite alternate; }
+    .mover-trot { animation: trot 0.72s ease-in-out infinite alternate; }
+    .mover-hop { animation: hop 0.48s ease-in-out infinite alternate; }
+    .mover-swim { animation: swim 1.4s ease-in-out infinite alternate; }
+    .mover-roll { animation: roll 0.85s ease-in-out infinite alternate; }
+    .mover-drive { animation: drive 1.15s ease-in-out infinite alternate; }
+    .mover-bob { animation: bob 1.2s ease-in-out infinite alternate; }
+    .mover-rest { animation: rest 2s ease-in-out infinite alternate; }
+    .mover-twinkle { animation: twinkle 0.75s ease-in-out infinite alternate; }
+    .mover-float { animation: float 1.7s ease-in-out infinite alternate; }
+    .mover-glide { animation: glide 1.45s ease-in-out infinite alternate; }
+    .life-spin, .life-flip, .life-wag, .life-wing { transform-box: fill-box; transform-origin: center; }
+    .life-spin { animation: spin 4.5s linear infinite; }
+    .life-flip { animation: flip 1.6s ease-in-out infinite; }
+    .life-smoke { animation: smoke 1.6s ease-in-out infinite alternate; }
+    .life-blink { animation: blink 0.9s ease-in-out infinite alternate; }
+    .life-wag { animation: wag 0.45s ease-in-out infinite alternate; }
+    .life-wing { animation: wing 0.42s ease-in-out infinite alternate; }
+    .life-flap-left, .life-flap-right { transform-box: fill-box; }
+    .life-flap-left { animation: flap-left 0.38s ease-in-out infinite alternate; }
+    .life-flap-right { animation: flap-right 0.38s ease-in-out infinite alternate; }
+    @keyframes flutter { to { transform: translateY(-16px) rotate(-12deg); } }
+    @keyframes waddle { from { transform: translateX(-8px) rotate(-7deg); } to { transform: translateX(8px) rotate(7deg); } }
+    @keyframes trot { to { transform: translate(16px, -6px) rotate(3deg); } }
+    @keyframes hop { to { transform: translateY(-26px); } }
+    @keyframes swim { to { transform: translate(24px, -8px) rotate(6deg); } }
+    @keyframes roll { to { transform: translateX(16px) rotate(20deg); } }
+    @keyframes drive { to { transform: translateX(22px); } }
+    @keyframes bob { to { transform: translateY(-12px); } }
+    @keyframes rest { to { transform: translateY(-4px); } }
+    @keyframes twinkle { to { transform: translateY(-8px); opacity: 0.55; } }
+    @keyframes float { to { transform: translateY(-28px); } }
+    @keyframes glide { to { transform: translate(26px, -12px) rotate(-5deg); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes flip { 50% { transform: scaleX(0.22); } }
+    @keyframes smoke { to { transform: translateY(-12px); opacity: 0.35; } }
+    @keyframes blink { to { opacity: 0.2; } }
+    @keyframes wag { to { transform: rotate(16deg); } }
+    @keyframes wing { to { transform: rotate(-18deg); } }
+    @keyframes flap-left { from { transform: rotate(14deg); } to { transform: rotate(46deg); } }
+    @keyframes flap-right { from { transform: rotate(-14deg); } to { transform: rotate(-46deg); } }
+    @media (max-width: 800px) {
+      main { grid-template-columns: 1fr; }
+      .list { max-height: none; }
+      .stage-wrap { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Animation review</h1>
+    <p class="lead">Every picture a lesson can show. The list stays still. Open one to watch how it moves, then approve it or mark what should change. Your marks stay in this browser.</p>
+    <div class="bar">
+      <div class="count" id="progress">Loading</div>
+      <div class="filters" role="group" aria-label="Filter">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="open" aria-pressed="false">Still to review</button>
+        <button type="button" data-filter="yes" aria-pressed="false">Approved</button>
+        <button type="button" data-filter="no" aria-pressed="false">Needs a change</button>
+      </div>
+      <button class="copy" type="button" id="copy">Copy decisions</button>
+    </div>
+  </header>
+  <main>
+    <div class="list" id="list"></div>
+    <section class="stage-wrap" aria-live="polite">
+      <div class="sky" id="sky"></div>
+      <div class="stage-copy" id="copies"></div>
+      <h2 id="title">Picture</h2>
+      <p class="detail" id="detail"></p>
+      <div class="actions">
+        <button type="button" class="yes" id="approve">Approve</button>
+        <button type="button" class="no" id="reject">Needs a change</button>
+      </div>
+      <textarea id="note" class="hidden" placeholder="What should be different?"></textarea>
+    </section>
+  </main>
+  <script>
+    const MOTION = {
+      flutter: ["Flutters", "Lifts and tips, the way wings do."],
+      waddle: ["Waddles", "Short steps from side to side."],
+      trot: ["Trots", "A longer stride, with a small lift."],
+      hop: ["Hops", "Jumps up, then comes back down."],
+      swim: ["Swims", "Glides ahead and rises a little."],
+      roll: ["Rolls", "Turns as it moves."],
+      drive: ["Drives", "Moves ahead without tipping over."],
+      bob: ["Bobs", "A small, slow lift."],
+      rest: ["Stays put", "Settles in place so it is easy to count."],
+      twinkle: ["Twinkles", "Brightens, dims, and lifts a little."],
+      float: ["Floats", "Drifts slowly up and down."],
+      glide: ["Glides", "Travels across the sky and rises a little."]
+    };
+
+    const LIFE = {
+      spin: "It also turns in place.",
+      flip: "The face of the coin flips.",
+      smoke: "A puff of smoke rises above it.",
+      blink: "The light blinks.",
+      wag: "The tail or legs keep time.",
+      wing: "The wings beat."
+    };
+
+    const NOTES = {
+      rocket: "When a story counts rockets, they glide. The countdown lesson still opens with the full launch.",
+      hero: "Heroes float. A city square stays a place, so the picture is the hero."
+    };
+
+    const GROUPS = [
+      ["From the stories", [
+        item("octopus", "Octopus", "waddle", "octopus", "wag"),
+        item("giraffe", "Giraffe", "rest", "giraffe"),
+        item("elephant", "Elephant", "waddle", "elephant"),
+        item("triceratops", "Triceratops", "waddle", "triceratops", "wag"),
+        item("tyrannosaurus", "Tyrannosaurus", "waddle", "tyrannosaurus", "wag"),
+        item("hawk", "Hawk", "flutter", "hawk", "wing"),
+        item("caterpillar", "Caterpillar", "waddle", "caterpillar"),
+        item("earth", "Earth", "float", "earth", "spin"),
+        item("venus", "Venus", "float", "venus"),
+        item("spacecraft", "Spacecraft", "glide", "spacecraft"),
+        item("magma", "Magma", "rest", "magma"),
+        item("wind vane", "Wind vane", "rest", "vane", "spin"),
+        item("lighthouse", "Lighthouse", "rest", "lighthouse", "blink"),
+        item("traffic light", "Traffic light", "rest", "stoplight", "blink"),
+        item("hubcap", "Hubcap", "roll", "hubcap", "spin"),
+        item("barn", "Red barn", "rest", "barn"),
+        item("sun", "Sun", "twinkle", "sun", "spin")
+      ]],
+      ["Ocean", [
+        item("shark", "Shark", "swim", "shark"),
+        item("dolphin", "Dolphin", "swim", "dolphin"),
+        item("whale", "Whale", "swim", "whale"),
+        item("fish", "Fish", "swim", "fish"),
+        item("crab", "Crab", "waddle", "crab", "wag"),
+        item("sea star", "Sea star", "bob", "seastar"),
+        item("seashell", "Seashell", "bob", "shell"),
+        item("pearl", "Pearl", "bob", "pearl"),
+        item("ship", "Ship", "swim", "ship")
+      ]],
+      ["Space", [
+        item("rocket", "Rocket", "glide", "rocket"),
+        item("planet", "Planet", "float", "planet", "spin"),
+        item("moon", "Moon", "float", "moon"),
+        item("star", "Star", "twinkle", "star"),
+        item("star crystal", "Star crystal", "twinkle", "crystal"),
+        item("moon rock", "Moon rock", "rest", "moonrock")
+      ]],
+      ["Earth", [
+        item("volcano", "Volcano", "rest", "volcano", "smoke"),
+        item("lava", "Lava", "rest", "lava", "smoke"),
+        item("rock", "Rock", "rest", "rock"),
+        item("stone", "Stone", "rest", "stone"),
+        item("fossil", "Fossil", "rest", "fossil"),
+        item("bone", "Bone", "rest", "bone"),
+        item("dinosaur", "Dinosaur", "waddle", "dino", "wag"),
+        item("dinosaur egg", "Dinosaur egg", "rest", "dinoegg"),
+        item("pinecone", "Pinecone", "rest", "pinecone"),
+        item("cloud", "Cloud", "float", "cloud")
+      ]],
+      ["Animals", [
+        item("horse", "Horse", "trot", "horse", "wag"),
+        item("pony", "Pony", "trot", "pony", "wag"),
+        item("dog", "Dog", "waddle", "dog", "wag"),
+        item("puppy", "Puppy", "waddle", "puppy", "wag"),
+        item("cat", "Cat", "waddle", "cat", "wag"),
+        item("kitten", "Kitten", "waddle", "kitten", "wag"),
+        item("pig", "Pig", "waddle", "pig", "wag"),
+        item("cow", "Cow", "waddle", "cow", "wag"),
+        item("sheep", "Sheep", "waddle", "sheep"),
+        item("goat", "Goat", "waddle", "goat", "wag"),
+        item("rabbit", "Rabbit", "hop", "rabbit"),
+        item("frog", "Frog", "hop", "frog"),
+        item("monkey", "Monkey", "waddle", "monkey", "wag"),
+        item("chick", "Chick", "hop", "chick"),
+        item("hen", "Hen", "waddle", "hen", "wag"),
+        item("chicken", "Chicken", "waddle", "chicken", "wag"),
+        item("rooster", "Rooster", "waddle", "rooster", "wag"),
+        item("duck", "Duck", "waddle", "duck", "wag"),
+        item("penguin", "Penguin", "waddle", "penguin", "wag"),
+        item("bird", "Bird", "flutter", "bird", "wing"),
+        item("toucan", "Toucan", "flutter", "toucan", "wing"),
+        item("egg", "Egg", "rest", "egg")
+      ]],
+      ["Bugs and night lights", [
+        item("butterfly", "Butterfly", "flutter", "butterfly", "wing"),
+        item("bee", "Bee", "flutter", "bee", "wing"),
+        item("ladybug", "Ladybug", "waddle", "ladybug"),
+        item("ant", "Ant", "waddle", "ant"),
+        item("firefly", "Firefly", "twinkle", "firefly")
+      ]],
+      ["People", [
+        item("hero", "Hero", "float", "hero", "wing"),
+        item("princess", "Princess", "bob", "princess"),
+        item("pirate", "Pirate", "bob", "pirate"),
+        item("fairy", "Fairy", "flutter", "fairy", "wing"),
+        item("cape", "Cape", "flutter", "cape", "wing")
+      ]],
+      ["Plants and food", [
+        item("flower", "Flower", "bob", "flower"),
+        item("rose", "Rose", "bob", "rose"),
+        item("petal", "Petal", "flutter", "petal"),
+        item("leaf", "Leaf", "flutter", "leaf"),
+        item("seed", "Seed", "bob", "seed"),
+        item("fern", "Fern", "bob", "fern"),
+        item("mushroom", "Mushroom", "bob", "mushroom"),
+        item("dewdrop", "Dewdrop", "bob", "dew"),
+        item("berry", "Berry", "bob", "berry"),
+        item("apple", "Apple", "bob", "apple"),
+        item("cupcake", "Cupcake", "bob", "cupcake")
+      ]],
+      ["Play and music", [
+        item("soccer ball", "Soccer ball", "roll", "ball", "spin", { pattern: "soccer" }),
+        item("basketball", "Basketball", "roll", "ball", "spin", { pattern: "basketball" }),
+        item("tennis ball", "Tennis ball", "roll", "ball", "spin", { pattern: "tennis" }),
+        item("yarn ball", "Yarn ball", "roll", "ball", "spin", { pattern: "yarn" }),
+        item("drum", "Drum", "rest", "drum"),
+        item("paintbrush", "Paintbrush", "rest", "brush")
+      ]],
+      ["Vehicles", [
+        item("train", "Train", "drive", "train"),
+        item("train car", "Train car", "drive", "traincar"),
+        item("car", "Car", "drive", "car"),
+        item("airplane", "Airplane", "glide", "plane", "wing"),
+        item("tractor", "Tractor", "drive", "tractor"),
+        item("suitcase", "Suitcase", "drive", "suitcase"),
+        item("wheel", "Wheel", "roll", "wheel", "spin"),
+        item("robot", "Robot", "waddle", "robot"),
+        item("gear", "Gear", "rest", "gear", "spin"),
+        item("castle", "Castle", "rest", "castle")
+      ]],
+      ["Things to count", [
+        item("sensor", "Sensor", "rest", "sensor", "blink"),
+        item("battery", "Battery", "rest", "battery"),
+        item("coin", "Coin", "rest", "coin", "flip"),
+        item("jewel", "Jewel", "twinkle", "crystal"),
+        item("bead", "Bead", "twinkle", "bead"),
+        item("cone", "Cone", "rest", "cone"),
+        item("cup", "Cup", "rest", "cup"),
+        item("jar", "Jar", "rest", "jar"),
+        item("pouch", "Pouch", "rest", "bag"),
+        item("bag", "Bag", "rest", "bag"),
+        item("box", "Box", "rest", "box"),
+        item("basket", "Basket", "rest", "basket"),
+        item("bowl", "Bowl", "rest", "bowl"),
+        item("chest", "Chest", "rest", "chest"),
+        item("umbrella", "Umbrella", "rest", "umbrella"),
+        item("rain gauge", "Rain gauge", "rest", "gauge"),
+        item("ticket", "Ticket", "rest", "ticket"),
+        item("spoon", "Spoon", "rest", "spoon"),
+        item("torch", "Torch", "twinkle", "torch"),
+        item("space tool", "Space tool", "rest", "wrench"),
+        item("dog treat", "Dog treat", "rest", "treat")
+      ]],
+      ["Shapes", [
+        item("circle", "Circle", "rest", "circle"),
+        item("square", "Square", "rest", "square"),
+        item("triangle", "Triangle", "rest", "triangle"),
+        item("rectangle", "Rectangle", "rest", "rectangle")
+      ]]
+    ];
+
+    function item(id, name, motion, art, life, extra) {
+      return { id, name, motion, art, life: life || "", extra: extra || {} };
+    }
+
+    const ITEMS = GROUPS.flatMap(([group, rows]) => rows.map((row) => ({ ...row, group })));
+
+    function svg(inner) {
+      return `<svg viewBox="0 0 80 80" aria-hidden="true">${inner}</svg>`;
+    }
+    function g(play, life, inner, origin) {
+      const style = origin ? ` style="transform-origin:${origin}"` : "";
+      return play && life ? `<g class="life life-${life}"${style}>${inner}</g>` : inner;
+    }
+    function eye(x, y, s) {
+      return `<circle cx="${x}" cy="${y}" r="${s}" fill="#d7efff"/><circle cx="${x + s * 0.3}" cy="${y}" r="${s * 0.45}" fill="#141f47"/>`;
+    }
+
+    let globeSerial = 0;
+    const ART = {
+      shark: (it, play) => fish("#457394", true, play),
+      dolphin: (it, play) => mammalTail("#2e9ec7", play, false),
+      whale: (it, play) => mammalTail("#2e4d7a", play, true),
+      fish: (it, play) => fish("#ff7510", false, play),
+      crab: () => `<rect x="10" y="39" width="28" height="7" rx="3.5" fill="#e23b62" transform="rotate(-8 34 42)"/><ellipse cx="18" cy="33" rx="9" ry="3.4" fill="#e23b62" transform="rotate(-22 18 33)"/><ellipse cx="18" cy="40" rx="9" ry="3.4" fill="#e23b62" transform="rotate(14 18 40)"/><rect x="42" y="39" width="28" height="7" rx="3.5" fill="#e23b62" transform="rotate(8 46 42)"/><ellipse cx="62" cy="33" rx="9" ry="3.4" fill="#e23b62" transform="rotate(22 62 33)"/><ellipse cx="62" cy="40" rx="9" ry="3.4" fill="#e23b62" transform="rotate(-14 62 40)"/><ellipse cx="40" cy="46" rx="18" ry="12" fill="#e23b62"/>${eye(34, 42, 4)}${eye(46, 42, 4)}`,
+      seastar: () => [0, 72, 144, 216, 288].map((d) => `<rect x="36" y="18" width="8" height="22" rx="4" fill="#ff7510" transform="rotate(${d} 40 40)"/>`).join("") + `<circle cx="40" cy="40" r="8" fill="#ff7510"/>`,
+      shell: () => `<path d="M40 62 C16 60 10 40 16 30 C24 16 32 14 40 18 C48 14 56 16 64 30 C70 40 64 60 40 62 Z" fill="#fff6db" stroke="#e39a3c" stroke-width="2"/><path d="M40 58 L22 28 M40 58 L31 18 M40 58 L40 16 M40 58 L49 18 M40 58 L58 28" fill="none" stroke="#f0b060" stroke-width="2"/><circle cx="40" cy="58" r="4" fill="#ff7510"/>`,
+      pearl: () => `<circle cx="40" cy="42" r="14" fill="#fff" stroke="#8ec8e8"/><circle cx="34" cy="36" r="3" fill="#fff"/>`,
+      ship: () => `<path d="M16 50 H64 L54 62 H26 Z" fill="#141f47"/><rect x="37" y="24" width="4" height="26" fill="#fff6db"/><path d="M42 28 H58 L42 44 Z" fill="#d7efff"/>`,
+      rocket: () => `<polygon points="40,12 48,28 32,28" fill="#e23b62"/><rect x="32" y="28" width="16" height="28" rx="3" fill="#d7efff"/><circle cx="40" cy="40" r="4" fill="#8ec8e8"/><polygon points="32,44 24,56 32,52" fill="#e23b62"/><polygon points="48,44 56,56 48,52" fill="#e23b62"/><polygon points="35,56 40,70 45,56" fill="#ff7510"/>`,
+      planet: (_, play) => `<ellipse cx="40" cy="40" rx="28" ry="10" fill="none" stroke="#ffc700" stroke-width="3" transform="rotate(-18 40 40)"/>${g(play, "spin", `<circle cx="40" cy="40" r="14" fill="#7360db"/><circle cx="46" cy="38" r="4" fill="#e23b62"/>`)}`,
+      moon: () => `<circle cx="40" cy="40" r="16" fill="#fff6db"/><circle cx="34" cy="36" r="3" fill="#ffe08a"/><circle cx="46" cy="44" r="2" fill="#ffe08a"/>`,
+      star: () => star("#ffc700"),
+      crystal: () => `<polygon points="40,14 54,40 40,66 26,40" fill="#8ec8e8"/><polygon points="40,24 46,40 40,54 34,40" fill="#d7efff"/>`,
+      moonrock: () => `<ellipse cx="40" cy="44" rx="18" ry="12" fill="#b7bcc6"/><circle cx="34" cy="42" r="3" fill="#8d93a0"/><circle cx="46" cy="46" r="2" fill="#8d93a0"/>`,
+      volcano: (_, play) => `<polygon points="14,62 40,24 66,62" fill="#734838"/>${g(play, "smoke", `<circle cx="40" cy="22" r="5" fill="#fff6db"/><circle cx="48" cy="16" r="3" fill="#fff"/>`)}`,
+      lava: (_, play) => `<polygon points="14,62 40,24 66,62" fill="#734838"/><ellipse cx="40" cy="28" rx="8" ry="4" fill="#e23b62"/>${g(play, "smoke", `<circle cx="40" cy="18" r="6" fill="#ff7510"/><circle cx="50" cy="12" r="4" fill="#ffc700"/>`)}`,
+      rock: () => `<ellipse cx="40" cy="46" rx="20" ry="13" fill="#6b6560"/><ellipse cx="32" cy="42" rx="6" ry="4" fill="#9e7a66"/>`,
+      stone: () => `<ellipse cx="40" cy="46" rx="14" ry="10" fill="#52565f"/><ellipse cx="34" cy="44" rx="4" ry="3" fill="#7a7e88"/>`,
+      fossil: () => `<ellipse cx="40" cy="42" rx="24" ry="16" fill="#8c857a"/>${bone("#fff6db")}`,
+      bone: () => bone("#fff6db"),
+      dino: (_, play) => `${g(play, "wag", `<rect x="8" y="44" width="22" height="6" rx="3" fill="#339e66" transform="rotate(-18 20 47)"/>`)}${[30, 36, 42, 48].map((x) => `<rect x="${x}" y="44" width="4.2" height="18" rx="2.1" fill="#339e66"/>`).join("")}<ellipse cx="40" cy="48" rx="16" ry="12" fill="#339e66"/><rect x="36" y="42" width="32" height="8" rx="4" fill="#339e66" transform="rotate(-50 40 46)"/><ellipse cx="61" cy="22" rx="9" ry="7" fill="#339e66"/>${eye(65, 20, 2)}`,
+      dinoegg: () => `<ellipse cx="40" cy="42" rx="14" ry="18" fill="#fff6db" stroke="#ff7510"/><circle cx="34" cy="38" r="2" fill="#734820"/><circle cx="46" cy="46" r="2" fill="#734820"/>`,
+      pinecone: () => {
+        const id = `cone${ballFace.cone = (ballFace.cone || 0) + 1}`;
+        const rows = [[24, 1], [32, 2], [40, 3], [48, 3], [56, 2], [63, 1]];
+        const scales = rows.map(([y, count], row) => Array.from({ length: count }, (_, index) => {
+          const x = 40 + (index - (count - 1) / 2) * 8;
+          return `<ellipse cx="${x}" cy="${y}" rx="4.2" ry="3.3" fill="${row % 2 ? "#b07a45" : "#8d5a2b"}"/>`;
+        }).join("")).join("");
+        const cone = `<path d="M40 14 C32 22 26 36 28 50 C30 64 35 70 40 70 C45 70 50 64 52 50 C54 36 48 22 40 14 Z"/>`;
+        return `<defs><clipPath id="${id}">${cone}</clipPath></defs><path d="M40 14 C32 22 26 36 28 50 C30 64 35 70 40 70 C45 70 50 64 52 50 C54 36 48 22 40 14 Z" fill="#7a4c29"/><g clip-path="url(#${id})">${scales}</g>`;
+      },
+      octopus: (_, play) => {
+        const arms = [-78, -56, -34, -12, 12, 34, 56, 78].map((angle, index) => {
+          const bumpy = index === 6;
+          const color = bumpy ? "#735536" : "#c29e6b";
+          const reach = Math.sin(angle * Math.PI / 180);
+          const path = `<path d="M40 36 C${40 + reach * 8} 52 ${40 + reach * 26} 64 ${40 + reach * 30} 74" fill="none" stroke="${color}" stroke-width="4.5" stroke-linecap="round"/>`;
+          const dots = bumpy ? `<circle cx="${40 + reach * 16}" cy="58" r="1.7" fill="#3d2918"/><circle cx="${40 + reach * 22}" cy="66" r="1.7" fill="#3d2918"/><circle cx="${40 + reach * 28}" cy="72" r="1.6" fill="#3d2918"/>` : "";
+          const arm = path + dots;
+          return play ? `<g class="life life-wag" style="transform-origin:50% 0%">${arm}</g>` : arm;
+        }).join("");
+        return `${arms}<ellipse cx="40" cy="32" rx="16" ry="13" fill="#c29e6b"/>${eye(34, 30, 3)}${eye(46, 30, 3)}`;
+      },
+      giraffe: () => `${[20, 27, 34, 41].map((x) => `<rect x="${x}" y="44" width="4" height="22" rx="2" fill="#dbb26b"/>`).join("")}<ellipse cx="34" cy="50" rx="16" ry="9" fill="#dbb26b"/><path d="M20 50 C14 56 12 64 16 70" fill="none" stroke="#dbb26b" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="71" r="2.6" fill="#3d2918"/><rect x="40" y="24" width="8" height="28" rx="4" fill="#dbb26b"/><circle cx="48" cy="22" r="8" fill="#dbb26b"/><rect x="42" y="12" width="2.4" height="6" rx="1.2" fill="#dbb26b"/><circle cx="43.2" cy="11" r="2.2" fill="#734824"/><rect x="48" y="11" width="2.4" height="6" rx="1.2" fill="#dbb26b"/><circle cx="49.2" cy="10" r="2.2" fill="#734824"/><circle cx="26" cy="48" r="3.2" fill="#734824"/><circle cx="34" cy="52" r="2.6" fill="#734824"/><circle cx="40" cy="46" r="2.4" fill="#734824"/><circle cx="43" cy="36" r="2.2" fill="#734824"/><circle cx="44" cy="28" r="2" fill="#734824"/><circle cx="46" cy="20" r="1.8" fill="#734824"/><ellipse cx="58" cy="16" rx="6" ry="2.6" fill="#38a34a" transform="rotate(-28 58 16)"/>${eye(52, 21, 2)}`,
+      elephant: (_, play) => {
+        const foot = (x) => `<rect x="${x}" y="42" width="4.4" height="20" rx="2.2" fill="#8c93a0"/><ellipse cx="${x + 2.2}" cy="63" rx="3.1" ry="1.7" fill="#8c93a0"/>`;
+        const tail = `<path d="M24 44 C20 50 18 56 20 62" fill="none" stroke="#8c93a0" stroke-width="2.2" stroke-linecap="round"/>`;
+        const trunk = `<path d="M62 38 C72 46 68 56 60 58" fill="none" stroke="#8c93a0" stroke-width="4.5" stroke-linecap="round"/>`;
+        return `${foot(27)}${foot(34)}${foot(43)}${foot(50)}<ellipse cx="40" cy="46" rx="16" ry="10" fill="#8c93a0"/>${g(play, "wag", tail, "100% 0%")}<circle cx="56" cy="34" r="10" fill="#8c93a0"/>${trunk}<ellipse cx="48" cy="28" rx="6" ry="8" fill="#8c93a0"/>${eye(60, 32, 2)}`;
+      },
+      triceratops: (_, play) => `${g(play, "wag", `<rect x="8" y="46" width="16" height="5" rx="2.5" fill="#6b8538"/>`, "100% 50%")}${[22, 29, 36, 43].map((x) => `<rect x="${x}" y="44" width="4.2" height="16" rx="2.1" fill="#6b8538"/>`).join("")}<ellipse cx="34" cy="48" rx="18" ry="10" fill="#6b8538"/><ellipse cx="54" cy="42" rx="10" ry="12" fill="#6b8538"/><ellipse cx="62" cy="48" rx="7" ry="6" fill="#6b8538"/><rect x="64" y="40" width="3" height="10" rx="1.5" fill="#fff6db"/><rect x="48" y="30" width="3" height="12" rx="1.5" fill="#fff6db"/><rect x="56" y="28" width="3" height="12" rx="1.5" fill="#fff6db"/>${eye(58, 44, 2)}`,
+      tyrannosaurus: (_, play) => {
+        const leg = (x, y) => `<rect x="${x}" y="${y}" width="7" height="20" rx="3.5" fill="#8c522e"/><ellipse cx="${x + 4}" cy="${y + 21}" rx="6" ry="2.2" fill="#8c522e"/>`;
+        const arm = (x, y, len) => `<g transform="translate(${x} ${y})"><rect x="-3.2" y="-2.1" width="7" height="4.4" rx="2.2" fill="#8c522e"/><g transform="rotate(34)"><rect x="1.5" y="-1.7" width="${len}" height="3.4" rx="1.7" fill="#8c522e"/><polygon points="${len + 0.6},-1.2 ${len + 4.4},1.8 ${len + 1},1.5" fill="#fff6db"/><polygon points="${len},0.4 ${len + 4},3.2 ${len + 1.6},2.2" fill="#fff6db"/></g></g>`;
+        const tail = `<path d="M36 34 Q22 32 4 40 Q22 44 36 46 Z" fill="#8c522e"/>`;
+        const teeth = [60, 63, 66, 69, 72].map((x, index) => {
+          const y = 16.6 + index * 0.45;
+          return `<polygon points="${x},${y} ${x + 1.2},${y + 2.8} ${x + 2.4},${y}" fill="#fff6db"/>`;
+        }).join("");
+        return `${g(play, "wag", tail, "100% 50%")}${leg(30, 44)}${leg(40, 42)}<ellipse cx="42" cy="38" rx="11" ry="15" fill="#8c522e" transform="rotate(-16 42 38)"/><path d="M46 32 C52 26 58 20 62 17" fill="none" stroke="#8c522e" stroke-width="11" stroke-linecap="round"/><ellipse cx="64" cy="16" rx="12" ry="5.5" fill="#8c522e" transform="rotate(-10 64 16)"/><ellipse cx="66" cy="20" rx="6" ry="2.4" fill="#3d2416" transform="rotate(4 66 20)"/><ellipse cx="66" cy="23.5" rx="5.2" ry="1.8" fill="#8c522e" transform="rotate(20 66 23.5)"/>${teeth}${eye(58, 14, 2)}${arm(46, 31, 13)}${arm(48, 35, 11)}`;
+      },
+      hawk: (_, play) => `${g(play, "wing", `<path d="M38 40 C26 34 14 30 8 34 C16 40 26 44 38 44 Z" fill="#7a4c28"/>`, "100% 50%")}${g(play, "wing", `<path d="M42 40 C54 34 66 30 72 34 C64 40 54 44 42 44 Z" fill="#7a4c28"/>`, "0% 50%")}<ellipse cx="40" cy="42" rx="12" ry="7" fill="#7a4c28"/><ellipse cx="40" cy="44" rx="5" ry="3" fill="#fff6db"/><circle cx="50" cy="40" r="5" fill="#7a4c28"/><polygon points="54,39 60,41 54,43" fill="#ffc700"/>${eye(51, 39, 1.6)}`,
+      caterpillar: () => [0, 1, 2, 3, 4].map((index) => `<circle cx="${22 + index * 9}" cy="${44 + (index % 2 ? 3 : -3)}" r="7" fill="${index % 2 ? "#141f47" : "#ffc700"}"/>`).join(""),
+      earth: (_, play) => {
+        const id = `earth${globeSerial += 1}`;
+        const globe = `<circle cx="40" cy="40" r="16" fill="#2974c4"/><ellipse cx="33" cy="40" rx="4" ry="11" fill="#38964a"/><ellipse cx="38" cy="46" rx="2.2" ry="6" fill="#38964a"/><ellipse cx="47" cy="38" rx="3.6" ry="8" fill="#2f8640"/><ellipse cx="40" cy="28" rx="2.4" ry="2" fill="#46a456"/><ellipse cx="44" cy="32" rx="6" ry="2" fill="#fff" opacity="0.9"/><ellipse cx="34" cy="48" rx="4" ry="1.4" fill="#fff" opacity="0.75"/>`;
+        return g(play, "spin", `<defs><clipPath id="${id}"><circle cx="40" cy="40" r="16"/></clipPath></defs><g clip-path="url(#${id})">${globe}</g>`);
+      },
+      venus: () => {
+        const id = `venus${globeSerial += 1}`;
+        const globe = `<circle cx="40" cy="40" r="16" fill="#f0d48a"/><ellipse cx="26" cy="33" rx="14" ry="5" fill="#fff6dc" transform="rotate(-24 26 33)"/><ellipse cx="50" cy="35" rx="12" ry="4.5" fill="#e4bc62" transform="rotate(18 50 35)"/><ellipse cx="34" cy="43" rx="16" ry="3.6" fill="#fffaf0" transform="rotate(-8 34 43)"/><ellipse cx="48" cy="48" rx="11" ry="3.4" fill="#ddb15a" transform="rotate(14 48 48)"/><ellipse cx="30" cy="50" rx="9" ry="2.8" fill="#fff3d4" transform="rotate(-16 30 50)"/>`;
+        return `<defs><clipPath id="${id}"><circle cx="40" cy="40" r="16"/></clipPath></defs><g clip-path="url(#${id})">${globe}</g>`;
+      },
+      spacecraft: () => `<polygon points="48,36 34,36 22,18 40,16" fill="#d5e4f2"/><polygon points="48,46 34,46 22,64 40,66" fill="#d5e4f2"/><polygon points="48,40 58,36 68,26 60,30" fill="#8b95a0"/><polygon points="48,42 58,46 68,56 60,52" fill="#8b95a0"/><path d="M50 39 L62 37.6 Q70 41 62 44.4 L50 43 Z" fill="#6f7882"/><rect x="22" y="36" width="36" height="10" rx="5" fill="#fff"/><path d="M30 36 C20 36 12 38 8 41 C12 44 20 46 30 46 Z" fill="#8b95a0"/><path d="M28 37.4 C20 37.6 14 39 11 41" fill="none" stroke="#d5dde4" stroke-width="1.3" stroke-linecap="round"/><circle cx="34" cy="41" r="3" fill="#d7efff"/>`,
+      magma: () => `<ellipse cx="40" cy="48" rx="24" ry="12" fill="#5c4030"/><ellipse cx="40" cy="50" rx="16" ry="8" fill="#ff7510"/><ellipse cx="34" cy="49" rx="7" ry="3.4" fill="#ffc14a"/><ellipse cx="46" cy="52" rx="5" ry="2.6" fill="#e44512"/><path d="M28 49 Q36 54 44 48 Q52 44 56 51" fill="none" stroke="#6a2e12" stroke-width="1.5" stroke-linecap="round"/><path d="M32 54 Q40 49 48 54" fill="none" stroke="#ffc14a" stroke-width="1.6" stroke-linecap="round"/><path d="M22 42 H58" fill="none" stroke="#4a3428" stroke-width="5" stroke-linecap="round"/>`,
+      vane: (_, play) => `<rect x="38" y="36" width="4" height="28" rx="2" fill="#5c6270"/>${g(play, "spin", `<rect x="24" y="30" width="28" height="5" rx="2" fill="#d12429"/><polygon points="52,26 62,32.5 52,39" fill="#d12429"/>`)}`,
+      lighthouse: (_, play) => {
+        const beam = `<polygon points="38,22 2,4 2,40" fill="#ffe08a" opacity="0.75"/>`;
+        const lamp = `<circle cx="40" cy="22" r="3.6" fill="#ffc700"/>`;
+        const tower = `<rect x="34" y="26" width="12" height="38" rx="1" fill="#fff"/><rect x="34" y="32" width="12" height="6" fill="#d12429"/><rect x="34" y="44" width="12" height="6" fill="#d12429"/><rect x="32" y="24" width="16" height="3.5" fill="#d12429"/><rect x="36" y="16" width="8" height="8" fill="#fff6db"/><polygon points="34,16 40,8 46,16" fill="#d12429"/>`;
+        return `${g(play, "blink", beam)}${tower}${g(play, "blink", lamp)}`;
+      },
+      stoplight: (_, play) => `<rect x="30" y="12" width="20" height="56" rx="6" fill="#141f47"/>${g(play, "blink", `<circle cx="40" cy="26" r="6" fill="#db1f29"/>`)}<circle cx="40" cy="40" r="6" fill="#ffc700" opacity="0.28"/><circle cx="40" cy="54" r="6" fill="#339e52" opacity="0.28"/>`,
+      hubcap: (_, play) => `<circle cx="40" cy="40" r="22" fill="#141f47"/>${g(play, "spin", `<circle cx="40" cy="40" r="12" fill="#c0c6d0"/><circle cx="34" cy="34" r="3" fill="#fff"/>`)}`,
+      sun: (_, play) => {
+        const rays = [0, 45, 90, 135, 180, 225, 270, 315].map((angle) => `<rect x="37" y="6" width="6" height="14" rx="3" fill="#ffc700" transform="rotate(${angle} 40 40)"/>`).join("");
+        return `${g(play, "spin", rays)}<circle cx="40" cy="40" r="14" fill="#ffc700"/>`;
+      },
+      barn: () => `<path d="M10 38 L20 26 L30 18 L50 18 L60 26 L70 38 Z" fill="#8e1e1c"/><rect x="14" y="36" width="52" height="32" fill="#c42e28"/><rect x="14" y="36" width="52" height="3" fill="#fff6db"/><circle cx="40" cy="46" r="4.5" fill="#fff6db"/><rect x="28" y="52" width="10" height="16" fill="#fff"/><rect x="42" y="52" width="10" height="16" fill="#fff"/><path d="M30 54 L36 60 L30 66 M36 54 L30 60 L36 66" fill="none" stroke="#c42e28" stroke-width="1.3"/><path d="M44 54 L50 60 L44 66 M50 54 L44 60 L50 66" fill="none" stroke="#c42e28" stroke-width="1.3"/>`,
+      cloud: () => {
+        const puff = (color, grow) => `<ellipse cx="40" cy="42" rx="${18 + grow}" ry="${12 + grow}" fill="${color}"/><ellipse cx="26" cy="46" rx="${14 + grow}" ry="${10 + grow}" fill="${color}"/><ellipse cx="54" cy="46" rx="${15 + grow}" ry="${10 + grow}" fill="${color}"/><ellipse cx="40" cy="34" rx="${10 + grow}" ry="${8 + grow}" fill="${color}"/>`;
+        return puff("#5a7a9a", 3) + puff("#fff", 0);
+      },
+      horse: (it, play) => beast("#9e5724", "#edc794", "mane", play, it.life) + `<ellipse cx="67" cy="41" rx="3.5" ry="2.2" fill="#9e5724"/>`,
+      pony: (it, play) => beast("#c4844a", "#f3d7b0", "mane", play, it.life, false, "#6b3d1f") + `<ellipse cx="67" cy="41" rx="3.5" ry="2.2" fill="#c4844a"/>`,
+      dog: (it, play) => beast("#b87a3d", "#fff6db", "flop", play, it.life, true, "", "#8c5526"),
+      puppy: (it, play) => beast("#db9e57", "#fff6db", "flop", play, it.life, true, "", "#a86b34"),
+      cat: (it, play) => beast("#f59e47", "#fff6db", "point", play, it.life, true),
+      kitten: (it, play) => beast("#fac47a", "#fff", "point", play, it.life, true),
+      pig: (it, play) => beast("#f59eb3", "#ffccd9", "round", play, it.life),
+      cow: (it, play) => beast("#fff6db", "#fff6db", "round", play, it.life) + `<circle cx="34" cy="44" r="4" fill="#2c241f"/><circle cx="48" cy="48" r="3" fill="#2c241f"/>`,
+      sheep: () => `${[26, 32.5, 44, 50.5].map((x) => `<rect x="${x}" y="54" width="4.2" height="13" rx="2.1" fill="#d7efff"/>`).join("")}<circle cx="32" cy="40" r="10" fill="#d7efff"/><circle cx="46" cy="38" r="9" fill="#d7efff"/><ellipse cx="40" cy="48" rx="18" ry="12" fill="#d7efff"/><circle cx="58" cy="44" r="6" fill="#fff6db"/>${eye(61, 42, 1.8)}`,
+      goat: (it, play) => beast("#d1c7b3", "#fff6db", "point", play, it.life) + `<rect x="50" y="24" width="3" height="10" rx="1" fill="#735636" transform="rotate(-20 51 29)"/>`,
+      frog: () => `<ellipse cx="40" cy="48" rx="18" ry="10" fill="#47b361"/><circle cx="24" cy="40" r="7" fill="#47b361"/><circle cx="56" cy="40" r="7" fill="#47b361"/>${eye(24, 38, 3)}${eye(56, 38, 3)}`,
+      monkey: (_, play) => `${g(play, "wag", `<path d="M30 58 C18 64 8 56 12 46 C18 54 24 56 30 54 Z" fill="#8c562e"/>`, "100% 40%")}<rect x="22" y="42" width="8" height="24" rx="4" fill="#8c562e" transform="rotate(-26 26 44)"/><rect x="50" y="42" width="8" height="24" rx="4" fill="#8c562e" transform="rotate(22 54 44)"/><ellipse cx="40" cy="50" rx="15" ry="16" fill="#8c562e"/><ellipse cx="40" cy="54" rx="7" ry="8" fill="#f2cca0"/><circle cx="24" cy="32" r="6" fill="#8c562e"/><circle cx="24" cy="32" r="3" fill="#f2cca0"/><circle cx="56" cy="32" r="6" fill="#8c562e"/><circle cx="56" cy="32" r="3" fill="#f2cca0"/><circle cx="40" cy="30" r="13" fill="#8c562e"/><ellipse cx="40" cy="34" rx="8" ry="6" fill="#f2cca0"/>${eye(36, 32, 2)}${eye(44, 32, 2)}`,
+      rabbit: () => `<ellipse cx="42" cy="50" rx="16" ry="12" fill="#ede6db"/><circle cx="56" cy="42" r="10" fill="#ede6db"/><rect x="48" y="14" width="6" height="22" rx="3" fill="#ede6db"/><rect x="50" y="18" width="2" height="12" rx="1" fill="#f59eb3"/><rect x="56" y="14" width="6" height="22" rx="3" fill="#ede6db"/><rect x="58" y="18" width="2" height="12" rx="1" fill="#f59eb3"/>${eye(60, 40, 2)}`,
+      chick: () => `<ellipse cx="38" cy="48" rx="14" ry="11" fill="#ffc700"/><circle cx="50" cy="40" r="8" fill="#ffc700"/>${eye(53, 38, 2)}<rect x="56" y="38" width="8" height="4" rx="2" fill="#ff7510"/>`,
+      hen: (it, play) => bird("#fff6db", "#fff", true, play, it.life),
+      chicken: (it, play) => bird("#fff", "#ffc700", true, play, it.life),
+      rooster: (it, play) => bird("#db4738", "#ff7510", true, play, it.life),
+      duck: (it, play) => bird("#ffc700", "#fff6db", false, play, it.life),
+      penguin: (_, play) => `${g(play, "wag", `<rect x="22" y="32" width="8" height="26" rx="4" fill="#1e2947" transform="rotate(20 26 34)"/>`, "50% 0%")}<rect x="50" y="32" width="8" height="26" rx="4" fill="#1e2947" transform="rotate(-20 54 34)"/><ellipse cx="40" cy="46" rx="14" ry="20" fill="#1e2947"/><ellipse cx="40" cy="50" rx="8" ry="14" fill="#fff"/><circle cx="40" cy="24" r="8" fill="#1e2947"/>${eye(44, 22, 2)}<rect x="46" y="22" width="10" height="4" rx="2" fill="#ff7510" transform="rotate(18 51 24)"/>`,
+      bird: (it, play) => bird("#338cd8", "#d7efff", false, play, it.life),
+      toucan: (_, play) => `${g(play, "wing", `<ellipse cx="24" cy="40" rx="12" ry="6" fill="#fff"/>`)}<ellipse cx="36" cy="46" rx="12" ry="14" fill="#33a35c"/><rect x="44" y="40" width="22" height="8" rx="4" fill="#ff7510"/>${eye(42, 38, 2)}`,
+      egg: () => `<ellipse cx="40" cy="42" rx="14" ry="18" fill="#fff6db" stroke="#ff7510"/>`,
+      butterfly: (_, play) => `${g(play, "wing", `<ellipse cx="24" cy="36" rx="12" ry="10" fill="#b9a7e6"/><ellipse cx="56" cy="36" rx="12" ry="10" fill="#e23b62"/>`)}<rect x="37" y="28" width="6" height="28" rx="3" fill="#141f47"/>`,
+      bee: (_, play) => `${g(play, "wing", `<ellipse cx="28" cy="30" rx="8" ry="5" fill="#d7efff"/><ellipse cx="52" cy="30" rx="8" ry="5" fill="#d7efff"/>`)}<ellipse cx="40" cy="44" rx="12" ry="8" fill="#ffc700"/><rect x="34" y="38" width="3" height="14" fill="#141f47"/><rect x="42" y="38" width="3" height="14" fill="#141f47"/>`,
+      ladybug: () => `<circle cx="40" cy="44" r="16" fill="#e23b62"/><circle cx="32" cy="40" r="3" fill="#141f47"/><circle cx="48" cy="48" r="3" fill="#141f47"/><circle cx="40" cy="28" r="6" fill="#141f47"/>`,
+      ant: () => `<ellipse cx="28" cy="44" rx="12" ry="9" fill="#141f47"/><ellipse cx="42" cy="42" rx="8" ry="7" fill="#141f47"/><circle cx="54" cy="38" r="7" fill="#141f47"/><rect x="50" y="20" width="2" height="12" fill="#141f47" transform="rotate(-20 51 26)"/><rect x="58" y="20" width="2" height="12" fill="#141f47" transform="rotate(20 59 26)"/>${eye(56, 36, 2)}`,
+      firefly: () => `<circle cx="40" cy="42" r="22" fill="#ffc700" opacity="0.72"/><ellipse cx="30" cy="46" rx="12" ry="8" fill="#3d4a28"/><ellipse cx="44" cy="44" rx="8" ry="6.5" fill="#4a582e"/><circle cx="56" cy="42" r="6" fill="#3d4a28"/><ellipse cx="22" cy="48" rx="5.5" ry="3.4" fill="#ffc700"/><ellipse cx="32" cy="38" rx="12" ry="4.6" fill="#d7efff" transform="rotate(40 44 38)"/><ellipse cx="56" cy="38" rx="12" ry="4.6" fill="#d7efff" transform="rotate(-40 44 38)"/><rect x="54" y="28" width="1.6" height="10" rx="0.8" fill="#3d4a28" transform="rotate(-24 55 33)"/><rect x="60" y="28" width="1.6" height="10" rx="0.8" fill="#3d4a28" transform="rotate(22 61 33)"/>${eye(58, 40, 2)}`,
+      hero: (_, play) => `${g(play, "wing", `<ellipse cx="24" cy="46" rx="14" ry="6" fill="#e23b62" transform="rotate(-16 24 46)"/>`)}<rect x="32" y="36" width="12" height="24" rx="6" fill="#8ec8e8"/><circle cx="38" cy="26" r="8" fill="#f5c7a3"/>${eye(42, 25, 2)}`,
+      princess: () => `<path d="M27 32 C25 22 30 15 39 15 C48 15 53 22 51 32 L52 62 C52 70 46 73 44 67 L43 40 C42 33 40 31 39 33 C38 31 36 33 35 40 L34 67 C32 73 26 70 26 62 Z" fill="#ffe56b"/><rect x="32" y="36" width="14" height="24" rx="6" fill="#b9a7e6"/><circle cx="39" cy="30" r="8" fill="#f5c7a3"/><rect x="30" y="20" width="18" height="4" rx="2" fill="#ffc700"/><polygon points="30,22 34,10 38,22" fill="#ffc700"/><polygon points="36,22 40,8 44,22" fill="#ffc700"/><polygon points="42,22 46,10 50,22" fill="#ffc700"/><circle cx="40" cy="10" r="2" fill="#e23b62"/>${eye(43, 29, 2)}`,
+      pirate: () => `<rect x="32" y="36" width="14" height="24" rx="6" fill="#141f47"/><circle cx="39" cy="32" r="8" fill="#f5c7a3"/>${eye(43, 31, 2)}<path d="M14 30 L30 12 L39 20 L48 12 L64 30 Q39 24 14 30 Z" fill="#141f47" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><circle cx="39" cy="18" r="3.4" fill="#fff"/><circle cx="37.8" cy="17.4" r="0.55" fill="#141f47"/><circle cx="40.2" cy="17.4" r="0.55" fill="#141f47"/><path d="M37.6 19.6 Q39 20.6 40.4 19.6" fill="none" stroke="#141f47" stroke-width="0.5"/>`,
+      fairy: (_, play) => {
+        const left = `<ellipse cx="26" cy="38" rx="14" ry="5.5" fill="#d7efff"/>`;
+        const right = `<ellipse cx="54" cy="38" rx="14" ry="5.5" fill="#b9a7e6"/>`;
+        const wings = play
+          ? `${g(true, "flap-left", left, "100% 50%")}${g(true, "flap-right", right, "0% 50%")}`
+          : `<g transform="rotate(18 40 38)">${left}</g><g transform="rotate(-18 40 38)">${right}</g>`;
+        return `${wings}<rect x="36" y="34" width="8" height="22" rx="4" fill="#f59eb3"/><circle cx="40" cy="28" r="6" fill="#f5c7a3"/>${eye(37.2, 27.4, 1.25)}${eye(42.8, 27.4, 1.25)}`;
+      },
+      cape: (_, play) => g(play, "wing", `<path d="M30 20 Q12 48 24 66 Q40 48 56 66 Q48 40 50 20 Z" fill="#e23b62"/>`),
+      flower: () => bloom("#f58cb8"),
+      rose: () => `<rect x="37" y="52" width="6" height="16" rx="3" fill="#339e5c"/><ellipse cx="46" cy="58" rx="7" ry="2.6" fill="#2f9a52" transform="rotate(36 46 58)"/><ellipse cx="30" cy="44" rx="8" ry="12" fill="#c42a52" transform="rotate(-28 30 44)"/><ellipse cx="50" cy="44" rx="8" ry="12" fill="#c42a52" transform="rotate(28 50 44)"/><ellipse cx="40" cy="38" rx="10" ry="12" fill="#e23b62"/><path d="M40 48 C31 48 27 38 34 34 C42 29 51 36 48 44 C45 52 33 50 32 42 C31 36 38 33 43 37 C47 41 44 48 38 46" fill="none" stroke="#f27a96" stroke-width="4.6" stroke-linecap="round"/><path d="M40 45 C35 45 33 40 36 38 C40 35 45 39 44 43 C43 47 37 46 36 42" fill="none" stroke="#ffd0dc" stroke-width="2.8" stroke-linecap="round"/>`,
+      petal: () => `<ellipse cx="40" cy="40" rx="10" ry="22" fill="#e23b62" transform="rotate(-18 40 40)"/>`,
+      leaf: () => `<ellipse cx="40" cy="40" rx="12" ry="22" fill="#38a861" transform="rotate(-20 40 40)"/><rect x="39" y="22" width="2" height="32" fill="#1f6b3a" transform="rotate(-20 40 40)"/><rect x="30" y="32" width="12" height="2" fill="#1f6b3a" transform="rotate(-50 36 33)"/><rect x="40" y="40" width="12" height="2" fill="#1f6b3a" transform="rotate(10 46 41)"/>`,
+      seed: () => `<ellipse cx="30" cy="40" rx="9" ry="4.5" fill="#59bf66" transform="rotate(-34 40 42)"/><ellipse cx="50" cy="40" rx="9" ry="4.5" fill="#59bf66" transform="rotate(34 40 42)"/><rect x="37" y="38" width="6" height="24" rx="3" fill="#339e5c"/>`,
+      fern: () => {
+        const blade = (y, length, side) => {
+          const h = 5.4;
+          const d = `M 0 ${(-0.22 * h).toFixed(2)} Q ${(-length / 2).toFixed(2)} ${(-0.55 * h).toFixed(2)} ${(-length).toFixed(2)} 0 Q ${(-length / 2).toFixed(2)} ${(0.35 * h).toFixed(2)} 0 ${(0.22 * h).toFixed(2)} Z`;
+          const angle = side < 0 ? 52 : -52;
+          const sx = side < 0 ? 1 : -1;
+          return `<path d="${d}" fill="#47b86c" transform="translate(40 ${y.toFixed(2)}) rotate(${angle}) scale(${sx} 1)"/>`;
+        };
+        const frond = (tilt) => {
+          const lengths = [9.6, 12.8, 16, 17.6, 15.2, 11.2];
+          const pairs = lengths.map((length, index) => {
+            const y = 40 + (index * 0.078 - 0.24) * 80;
+            return blade(y, length, -1) + blade(y, length, 1);
+          }).join("");
+          return `<g transform="rotate(${tilt} 40 66)"><rect x="38.8" y="8" width="2.4" height="58" rx="1.2" fill="#1a5c32"/>${pairs}</g>`;
+        };
+        return frond(-20) + frond(20) + frond(0);
+      },
+      mushroom: () => `<rect x="34" y="40" width="12" height="20" rx="4" fill="#e3ded8"/><ellipse cx="40" cy="38" rx="18" ry="12" fill="#e23b62"/><circle cx="32" cy="36" r="3" fill="#fff6db"/>`,
+      dew: () => `<path d="M40 16 C40 16 22 40 22 52 C22 64 30 70 40 70 C50 70 58 64 58 52 C58 40 40 16 40 16 Z" fill="#8ec8e8"/><ellipse cx="33" cy="52" rx="3" ry="5" fill="#fff" opacity="0.75"/>`,
+      berry: () => fruit("#4747b8"),
+      apple: () => `<path d="M25 48 C25 34 32 28 40 33 C48 28 55 34 55 48 C55 62 48 68 40 66 C32 68 25 62 25 48 Z" fill="#e23b62"/><path d="M40 33 C38 26 36 22 34 18" fill="none" stroke="#5c3a22" stroke-width="2" stroke-linecap="round"/><ellipse cx="50" cy="28" rx="6" ry="3" fill="#339e5c" transform="rotate(-28 50 28)"/>`,
+      cupcake: () => `<path d="M24 40 H56 L50 66 H30 Z" fill="#fff6db" stroke="#db9e57" stroke-width="1.5"/><path d="M32 40 L34 66 M40 40 V66 M48 40 L46 66" stroke="#f3d7b0" stroke-width="1.6"/><ellipse cx="40" cy="38" rx="18" ry="10" fill="#e23b62"/><ellipse cx="33" cy="36" rx="8" ry="6" fill="#f27a96"/><ellipse cx="47" cy="35" rx="7" ry="5" fill="#f27a96"/><circle cx="40" cy="30" r="5" fill="#e23b62"/><circle cx="40" cy="23" r="3.5" fill="#ff7510"/>`,
+      ball: (it, play) => g(play, "spin", ballFace(it.extra.pattern)),
+      drum: () => `<ellipse cx="40" cy="48" rx="18" ry="14" fill="#e23b62"/><ellipse cx="40" cy="40" rx="18" ry="7" fill="#fff6db"/><rect x="48" y="24" width="16" height="3" fill="#8c5228" transform="rotate(-30 56 25)"/>`,
+      brush: () => `<rect x="36" y="42" width="8" height="24" rx="3" fill="#8c5228"/><rect x="31" y="36" width="18" height="8" rx="2" fill="#c4a574"/>${[-7, -5, -3, -1, 1, 3, 5, 7].map((x, index) => `<rect x="${39 + x}" y="${index % 2 ? 23 : 21}" width="1.4" height="${index % 2 ? 16 : 18}" rx="0.7" fill="#e6d3b0"/>`).join("")}`,
+      train: () => `<rect x="16" y="36" width="46" height="18" rx="3" fill="#e23b62"/><rect x="46" y="26" width="14" height="14" rx="2" fill="#141f47"/><circle cx="28" cy="56" r="5" fill="none" stroke="#141f47" stroke-width="2"/><circle cx="48" cy="56" r="5" fill="none" stroke="#141f47" stroke-width="2"/>`,
+      traincar: () => `<rect x="16" y="34" width="48" height="20" rx="3" fill="#ff7510"/><circle cx="28" cy="56" r="5" fill="none" stroke="#141f47" stroke-width="2"/><circle cx="52" cy="56" r="5" fill="none" stroke="#141f47" stroke-width="2"/>`,
+      car: () => `<rect x="14" y="38" width="52" height="16" rx="4" fill="#8ec8e8"/><rect x="26" y="28" width="24" height="12" rx="3" fill="#d7efff"/><circle cx="26" cy="56" r="5" fill="#141f47"/><circle cx="54" cy="56" r="5" fill="#141f47"/>`,
+      plane: (_, play) => `<polygon points="16,36 24,36 14,20" fill="#8ec8e8"/><rect x="10" y="37" width="16" height="4" rx="1" fill="#8ec8e8"/><rect x="16" y="36" width="50" height="8" rx="4" fill="#d7efff"/>${g(play, "wing", `<polygon points="48,39 34,28 28,33 38,44" fill="#8ec8e8"/>`, "70% 82%")}${[32, 38, 44, 50].map((x) => `<circle cx="${x}" cy="40" r="1.4" fill="#141f47"/>`).join("")}`,
+      tractor: () => `<rect x="18" y="36" width="28" height="16" rx="3" fill="#33a35c"/><rect x="40" y="28" width="14" height="12" rx="2" fill="#d7efff"/><circle cx="26" cy="54" r="8" fill="#141f47"/><circle cx="52" cy="56" r="5" fill="#141f47"/>`,
+      suitcase: () => `<rect x="22" y="28" width="36" height="28" rx="4" fill="#8ec8e8"/><rect x="32" y="20" width="16" height="8" rx="3" fill="none" stroke="#141f47" stroke-width="3"/><circle cx="32" cy="60" r="4" fill="#141f47"/><circle cx="48" cy="60" r="4" fill="#141f47"/>`,
+      wheel: (_, play) => g(play, "spin", `<circle cx="40" cy="40" r="16" fill="none" stroke="#141f47" stroke-width="4"/><circle cx="40" cy="40" r="4" fill="#141f47"/><path d="M40 24 V56 M24 40 H56" stroke="#141f47" stroke-width="3"/>`),
+      robot: () => `<rect x="26" y="36" width="28" height="22" rx="4" fill="#8ec8e8"/><rect x="28" y="18" width="24" height="16" rx="4" fill="#d7efff"/>${eye(36, 26, 3)}${eye(48, 26, 3)}<circle cx="40" cy="12" r="3" fill="#ffc700"/><circle cx="32" cy="60" r="4" fill="none" stroke="#141f47" stroke-width="2"/><circle cx="50" cy="60" r="4" fill="none" stroke="#141f47" stroke-width="2"/>`,
+      gear: (_, play) => g(play, "spin", [0, 45, 90, 135, 180, 225, 270, 315].map((d) => `<rect x="36" y="12" width="8" height="12" rx="1" fill="#d7efff" transform="rotate(${d} 40 40)"/>`).join("") + `<circle cx="40" cy="40" r="10" fill="#d7efff"/><circle cx="40" cy="40" r="4" fill="#141f47"/>`),
+      castle: () => `<rect x="18" y="36" width="44" height="28" fill="#8c93a8"/><rect x="16" y="30" width="6" height="8" fill="#8c93a8"/><rect x="26" y="30" width="6" height="8" fill="#8c93a8"/><rect x="48" y="30" width="6" height="8" fill="#8c93a8"/><rect x="58" y="30" width="6" height="8" fill="#8c93a8"/><rect x="14" y="20" width="14" height="18" fill="#8c93a8"/><rect x="52" y="20" width="14" height="18" fill="#8c93a8"/><rect x="12" y="16" width="4" height="6" fill="#8c93a8"/><rect x="18" y="16" width="4" height="6" fill="#8c93a8"/><rect x="24" y="16" width="4" height="6" fill="#8c93a8"/><rect x="50" y="16" width="4" height="6" fill="#8c93a8"/><rect x="56" y="16" width="4" height="6" fill="#8c93a8"/><rect x="62" y="16" width="4" height="6" fill="#8c93a8"/><polygon points="16,20 21,10 26,20" fill="#e23b62"/><polygon points="54,20 59,10 64,20" fill="#e23b62"/><path d="M36 64 V50 Q40 44 44 50 V64 Z" fill="#5c4030"/><rect x="22" y="44" width="5" height="6" fill="#d7efff"/><rect x="53" y="44" width="5" height="6" fill="#d7efff"/><rect x="20" y="28" width="4" height="5" fill="#d7efff"/><rect x="56" y="28" width="4" height="5" fill="#d7efff"/>`,
+      sensor: (_, play) => `<rect x="37" y="36" width="6" height="28" rx="2" fill="#141f47"/><rect x="26" y="24" width="28" height="16" rx="3" fill="#8ec8e8"/>${g(play, "blink", `<circle cx="40" cy="32" r="4" fill="#ffc700"/>`)}`,
+      battery: () => `<rect x="30" y="24" width="20" height="36" rx="3" fill="#33a35c"/><rect x="34" y="18" width="12" height="8" rx="2" fill="#141f47"/>`,
+      coin: (_, play) => g(play, "flip", `<circle cx="40" cy="40" r="16" fill="#ffc700" stroke="#c45e0a" stroke-width="2"/><text x="40" y="46" text-anchor="middle" font-size="16" font-family="Avenir Next, sans-serif" fill="#c45e0a">¢</text>`),
+      bead: () => `<circle cx="40" cy="40" r="14" fill="#b9a7e6"/><circle cx="40" cy="40" r="5" fill="#fff"/>`,
+      cone: () => `<polygon points="40,16 58,64 22,64" fill="#ff7510"/><rect x="22" y="40" width="36" height="6" fill="#fff"/>`,
+      cup: () => `<rect x="26" y="28" width="24" height="28" rx="3" fill="#d7efff"/><rect x="50" y="34" width="8" height="12" rx="4" fill="none" stroke="#d7efff" stroke-width="3"/><rect x="30" y="40" width="16" height="8" fill="#fff6db"/>`,
+      jar: () => `<rect x="26" y="28" width="28" height="32" rx="6" fill="none" stroke="#8ec8e8" stroke-width="3"/><rect x="30" y="40" width="20" height="12" fill="#ff7510" opacity="0.75"/><rect x="30" y="22" width="20" height="8" rx="2" fill="#141f47"/>`,
+      bag: () => `<rect x="24" y="32" width="32" height="28" rx="6" fill="#ff7510"/><rect x="30" y="22" width="20" height="12" rx="6" fill="none" stroke="#c45e0a" stroke-width="3"/>`,
+      box: () => `<rect x="20" y="30" width="40" height="28" rx="3" fill="#b87a3d"/>`,
+      basket: () => `<path d="M20 40 H60 L52 62 H28 Z" fill="#b87a3d"/><rect x="28" y="28" width="24" height="12" rx="8" fill="none" stroke="#8c5228" stroke-width="3"/>`,
+      bowl: () => `<ellipse cx="40" cy="48" rx="20" ry="12" fill="#d7efff"/><ellipse cx="40" cy="44" rx="14" ry="6" fill="#fff6db"/>`,
+      chest: () => `<rect x="18" y="36" width="44" height="24" rx="3" fill="#b87a3d"/><rect x="18" y="24" width="44" height="8" fill="#8c5228" transform="rotate(-12 40 28)"/>`,
+      umbrella: () => `<path d="M16 40 Q40 16 64 40 Z" fill="#e23b62"/><rect x="38" y="40" width="4" height="24" fill="#141f47"/>`,
+      gauge: () => `<rect x="34" y="16" width="12" height="48" rx="6" fill="none" stroke="#141f47" stroke-width="3"/><rect x="37" y="36" width="6" height="22" fill="#8ec8e8"/>`,
+      ticket: () => `<rect x="16" y="30" width="48" height="22" rx="3" fill="#ffc700"/><rect x="36" y="30" width="4" height="22" fill="#e23b62"/>`,
+      spoon: () => `<rect x="37" y="36" width="6" height="28" rx="3" fill="#d7efff"/><ellipse cx="40" cy="28" rx="8" ry="12" fill="#d7efff"/>`,
+      torch: () => `<rect x="36" y="40" width="8" height="26" rx="3" fill="#734824"/><polygon points="40,14 50,40 30,40" fill="#ff7510"/><polygon points="40,20 46,38 34,38" fill="#ffc700"/>`,
+      wrench: () => `<rect x="36" y="28" width="8" height="32" rx="3" fill="#d7efff" transform="rotate(40 40 44)"/><circle cx="54" cy="26" r="8" fill="none" stroke="#d7efff" stroke-width="3"/>`,
+      treat: () => bone("#b87a3d"),
+      circle: () => `<circle cx="40" cy="40" r="16" fill="none" stroke="#141f47" stroke-width="4"/>`,
+      square: () => `<rect x="24" y="24" width="32" height="32" rx="3" fill="none" stroke="#141f47" stroke-width="4"/>`,
+      triangle: () => `<polygon points="40,18 62,60 18,60" fill="none" stroke="#141f47" stroke-width="4"/>`,
+      rectangle: () => `<rect x="16" y="28" width="48" height="24" rx="3" fill="none" stroke="#141f47" stroke-width="4"/>`
+    };
+
+    function fish(color, fin, play) {
+      const tail = g(play, "wag", `<path d="M36 42 L4 16 L22 42 L4 68 Z" fill="${color}"/>`);
+      const dorsal = fin ? `<polygon points="36,30 44,30 40,16" fill="${color}"/>` : "";
+      const gills = fin ? `<g fill="none" stroke="#1a3344" stroke-width="1.6" stroke-linecap="round"><path d="M44 36 Q42 42 44 48"/><path d="M47.5 35.5 Q45.5 42 47.5 48.5"/><path d="M51 36 Q49 42 51 48"/></g>` : "";
+      return `${tail}<ellipse cx="46" cy="42" rx="18" ry="${fin ? 12 : 10}" fill="${color}"/>${dorsal}<ellipse cx="46" cy="48" rx="10" ry="4" fill="#d7efff" opacity="0.7"/>${gills}${eye(56, 38, 3)}`;
+    }
+    function mammalTail(color, play, whale) {
+      const flukes = whale
+        ? g(play, "wag", `<path d="M36 42 C22 42 14 12 4 20 C1 30 8 40 14 42 C8 44 1 54 4 64 C14 72 22 42 36 42 Z" fill="${color}"/>`, "100% 50%")
+        : g(play, "wag", `<path d="M38 37 L18 36 C16 30 7 28 3 32 C1 36 9 40 16 41 C9 42 1 47 3 51 C7 55 16 50 18 46 L38 47 Z" fill="${color}"/>`, "100% 50%");
+      const body = whale
+        ? `<ellipse cx="44" cy="44" rx="24" ry="16" fill="${color}"/>`
+        : `<ellipse cx="46" cy="42" rx="20" ry="11" fill="${color}"/><ellipse cx="66" cy="44" rx="12" ry="3.2" fill="${color}"/>`;
+      const dorsal = whale ? "" : `<path d="M38 34 Q44 18 50 32 Q45 30 38 34 Z" fill="${color}"/>`;
+      const spout = whale ? `<circle cx="36" cy="26" r="3" fill="#d7efff"/><circle cx="44" cy="20" r="2" fill="#d7efff"/>` : "";
+      return `${flukes}${body}${dorsal}${spout}${eye(56, 38, 3)}`;
+    }
+    function pentagon(cx, cy, radius, turn) {
+      const points = [];
+      for (let index = 0; index < 5; index += 1) {
+        const angle = ((index * 72 - 90 + turn) * Math.PI) / 180;
+        points.push(`${cx + Math.cos(angle) * radius},${cy + Math.sin(angle) * radius}`);
+      }
+      return `<polygon points="${points.join(" ")}" fill="#141f47"/>`;
+    }
+    function ballFace(pattern) {
+      if (pattern === "soccer") {
+        const id = `soccer${ballFace.serial = (ballFace.serial || 0) + 1}`;
+        const patches = [0, 1, 2, 3, 4].map((index) => {
+          const angle = ((index * 72 - 90) * Math.PI) / 180;
+          return pentagon(40 + Math.cos(angle) * 13, 40 + Math.sin(angle) * 13, 4.2, index * 72 + 36);
+        }).join("");
+        return `<defs><clipPath id="${id}"><circle cx="40" cy="40" r="16"/></clipPath></defs><g clip-path="url(#${id})"><circle cx="40" cy="40" r="16" fill="#fff"/>${pentagon(40, 40, 5, 0)}${patches}</g><circle cx="40" cy="40" r="16" fill="none" stroke="#141f47" stroke-width="2"/>`;
+      }
+      if (pattern === "basketball") {
+        const id = `hoop${ballFace.serial = (ballFace.serial || 0) + 1}`;
+        return `<defs><clipPath id="${id}"><circle cx="40" cy="40" r="15.2"/></clipPath></defs><circle cx="40" cy="40" r="16" fill="#ff7510"/><g clip-path="url(#${id})" fill="none" stroke="#141f47" stroke-width="2"><path d="M40 24 V56 M25 40 H55"/><path d="M31 26 Q35 40 31 54"/><path d="M49 26 Q45 40 49 54"/></g><circle cx="40" cy="40" r="16" fill="none" stroke="#141f47" stroke-width="2"/>`;
+      }
+      if (pattern === "tennis") {
+        return `<circle cx="40" cy="40" r="16" fill="#c7e638"/><path d="M32 26 Q26 40 32 54" fill="none" stroke="#fff" stroke-width="2"/><path d="M48 26 Q54 40 48 54" fill="none" stroke="#fff" stroke-width="2"/>`;
+      }
+      const id = `yarn${ballFace.serial = (ballFace.serial || 0) + 1}`;
+      const loops = Array.from({ length: 16 }, (_, index) => {
+        const radius = 3.5 + (index % 6) * 2;
+        const cx = 40 + ((index % 5) - 2) * 3.2;
+        const cy = 40 + ((index % 4) - 1.5) * 3.6;
+        return `<circle cx="${cx}" cy="${cy}" r="${radius}"/>`;
+      }).join("");
+      return `<defs><clipPath id="${id}"><circle cx="40" cy="40" r="15.2"/></clipPath></defs><circle cx="40" cy="40" r="16" fill="#b9a7e6"/><g clip-path="url(#${id})" fill="none" stroke="#efe8ff" stroke-width="1.6">${loops}</g>`;
+    }
+    function star(color) {
+      const points = [];
+      for (let index = 0; index < 10; index += 1) {
+        const angle = ((index * 36 - 90) * Math.PI) / 180;
+        const radius = index % 2 === 0 ? 22 : 9;
+        points.push(`${(40 + Math.cos(angle) * radius).toFixed(1)},${(40 + Math.sin(angle) * radius).toFixed(1)}`);
+      }
+      return `<polygon points="${points.join(" ")}" fill="${color}"/>`;
+    }
+    function bone(color) {
+      return `<rect x="24" y="36" width="32" height="8" rx="4" fill="${color}"/><circle cx="24" cy="34" r="6" fill="${color}"/><circle cx="24" cy="46" r="6" fill="${color}"/><circle cx="56" cy="34" r="6" fill="${color}"/><circle cx="56" cy="46" r="6" fill="${color}"/>`;
+    }
+    function beast(body, belly, ear, play, life, lift, hair, earColor) {
+      const mane = hair || "#472410";
+      const ears = ear === "flop"
+        ? `<ellipse cx="50" cy="40" rx="4.5" ry="9" fill="${earColor}" transform="rotate(22 50 40)"/><ellipse cx="55" cy="36" rx="4" ry="8" fill="${earColor}" transform="rotate(8 55 36)"/>`
+        : ear === "point"
+          ? `<polygon points="52,34 56,18 60,34" fill="${body}"/>`
+          : ear === "round"
+            ? `<circle cx="56" cy="30" r="4" fill="${body}"/>`
+            : "";
+      const fringe = ear === "mane"
+        ? `<rect x="39" y="35" width="15" height="4" rx="2" fill="${mane}" transform="rotate(-36 46 37)"/>`
+        : "";
+      const points = ear === "mane"
+        ? `<polygon points="53,33 55.5,26 58,33" fill="${body}"/><polygon points="58,32 61,25 64,32" fill="${body}"/>`
+        : "";
+      const tail = ear === "mane"
+        ? `<path d="M27 39 C21 48 15 58 14 68 C17 75 23 73 23 66 C23 56 25 48 31 41 Z" fill="${mane}"/>`
+        : lift
+          ? `<g transform="rotate(42 30 47)"><rect x="1" y="45.5" width="29" height="3" rx="1.5" fill="${body}"/></g>`
+          : `<rect x="12" y="44" width="16" height="6" rx="3" fill="${body}"/>`;
+      const pivot = ear === "mane" ? "50% 0%" : lift ? "100% 50%" : "";
+      const legs = ear === "mane" || ear === "flop"
+        ? [26, 32.5, 44, 50.5].map((x) => `<rect x="${x}" y="54" width="4.2" height="13" rx="2.1" fill="${body}"/>`).join("")
+        : "";
+      const tongue = ear === "flop" ? `<ellipse cx="65" cy="46" rx="1.05" ry="2" fill="#ff8fb8"/>` : "";
+      return `${g(play, life || "wag", tail, pivot)}${legs}<ellipse cx="40" cy="48" rx="20" ry="12" fill="${body}"/><ellipse cx="40" cy="52" rx="10" ry="6" fill="${belly}"/>${fringe}<circle cx="58" cy="38" r="9" fill="${body}"/>${ears}${points}${eye(62, 36, 2)}${tongue}`;
+    }
+    function bird(body, belly, comb, play, life) {
+      const top = comb ? `<polygon points="56,24 60,16 64,26" fill="#e23b62"/>` : "";
+      return `${g(play, life || "wing", `<ellipse cx="24" cy="42" rx="14" ry="7" fill="${body}"/>`)}<ellipse cx="40" cy="46" rx="16" ry="12" fill="${body}"/><ellipse cx="40" cy="50" rx="8" ry="6" fill="${belly}"/><circle cx="56" cy="38" r="8" fill="${body}"/>${top}${eye(60, 36, 2)}<rect x="62" y="36" width="10" height="4" rx="2" fill="#ff7510"/>`;
+    }
+    function bloom(color) {
+      return [0, 72, 144, 216, 288].map((d) => `<ellipse cx="40" cy="24" rx="6" ry="12" fill="${color}" transform="rotate(${d} 40 40)"/>`).join("") + `<rect x="37" y="40" width="6" height="22" fill="#339e5c"/><circle cx="40" cy="40" r="5" fill="#ffc700"/>`;
+    }
+    function fruit(color) {
+      return `<circle cx="40" cy="44" r="14" fill="${color}"/><ellipse cx="48" cy="30" rx="6" ry="3" fill="#339e5c" transform="rotate(-30 48 30)"/>`;
+    }
+
+    const SKY = {
+      swim: "water", float: "space", glide: "sky", flutter: "sky", twinkle: "space"
+    };
+    const NAMED_SKY = { volcano: "volcano", lava: "volcano", rock: "volcano", cloud: "sky", sun: "sky", ship: "water", hero: "sky", airplane: "sky", rocket: "sky", bird: "sky", fairy: "sky", butterfly: "sky", leaf: "sky", petal: "sky", octopus: "water", lighthouse: "water", earth: "space", venus: "space", spacecraft: "space", hawk: "sky" };
+
+    const storeKey = "movo-animation-review-v1";
+    const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
+    let filter = "all";
+    let current = ITEMS[0].id;
+
+    function skyFor(it) {
+      return NAMED_SKY[it.id] || SKY[it.motion] || "ground";
+    }
+    function frame(it, play) {
+      const draw = ART[it.art](it, play);
+      const cls = play ? `mover mover-${it.motion}` : "still";
+      return `<div class="${cls}">${svg(draw)}</div>`;
+    }
+    function statusOf(id) { return saved[id] && saved[id].status; }
+    function persist() { localStorage.setItem(storeKey, JSON.stringify(saved)); }
+
+    function renderList() {
+      const list = document.getElementById("list");
+      const parts = [];
+      let shown = 0;
+      for (const [group, rows] of GROUPS) {
+        const visible = rows.filter((row) => {
+          const status = statusOf(row.id) || "open";
+          if (filter === "all") return true;
+          if (filter === "open") return status !== "yes" && status !== "no";
+          return status === filter;
+        });
+        if (!visible.length) continue;
+        shown += visible.length;
+        parts.push(`<div class="group">${group}</div>`);
+        for (const row of visible) {
+          const status = statusOf(row.id);
+          parts.push(`<button class="row" type="button" data-id="${row.id}"${row.id === current ? ' aria-current="true"' : ""}>
+            <span class="thumb">${frame(row, false)}</span>
+            <span><strong>${row.name}</strong><span>${MOTION[row.motion][0]}</span></span>
+            <i class="mark ${status || ""}"></i>
+          </button>`);
+        }
+      }
+      list.innerHTML = parts.join("") || `<p class="group">Nothing in this filter.</p>`;
+      const yes = ITEMS.filter((it) => statusOf(it.id) === "yes").length;
+      const no = ITEMS.filter((it) => statusOf(it.id) === "no").length;
+      document.getElementById("progress").textContent = `${yes} approved · ${no} need a change · ${ITEMS.length - yes - no} still to review`;
+      if (!shown && filter !== "all") return;
+    }
+
+    function renderStage() {
+      const it = ITEMS.find((row) => row.id === current) || ITEMS[0];
+      current = it.id;
+      const sky = document.getElementById("sky");
+      sky.className = `sky ${skyFor(it)}`;
+      sky.innerHTML = frame(it, true);
+      document.getElementById("copies").innerHTML = [0, 1, 2].map(() => frame(it, true)).join("");
+      const [label, sentence] = MOTION[it.motion];
+      const extra = [sentence, it.life && LIFE[it.life], NOTES[it.id]].filter(Boolean).join(" ");
+      document.getElementById("title").textContent = it.name;
+      document.getElementById("detail").textContent = `${label}. ${extra}`;
+      const status = statusOf(it.id);
+      document.getElementById("approve").setAttribute("aria-pressed", String(status === "yes"));
+      document.getElementById("reject").setAttribute("aria-pressed", String(status === "no"));
+      const note = document.getElementById("note");
+      note.classList.toggle("hidden", status !== "no");
+      note.value = (saved[it.id] && saved[it.id].note) || "";
+    }
+
+    function select(id) {
+      current = id;
+      renderList();
+      renderStage();
+      const row = document.querySelector(`.row[data-id="${CSS.escape(id)}"]`);
+      if (row) row.scrollIntoView({ block: "nearest" });
+    }
+
+    document.getElementById("list").addEventListener("click", (event) => {
+      const row = event.target.closest(".row");
+      if (row) select(row.dataset.id);
+    });
+    document.querySelectorAll(".filters button").forEach((button) => {
+      button.addEventListener("click", () => {
+        filter = button.dataset.filter;
+        document.querySelectorAll(".filters button").forEach((other) => {
+          other.setAttribute("aria-pressed", String(other === button));
+        });
+        renderList();
+      });
+    });
+    document.getElementById("approve").addEventListener("click", () => {
+      saved[current] = { status: "yes", note: "" };
+      persist();
+      const index = ITEMS.findIndex((row) => row.id === current);
+      const next = ITEMS.slice(index + 1).find((row) => !statusOf(row.id)) || ITEMS[index];
+      current = next.id;
+      renderList();
+      renderStage();
+    });
+    document.getElementById("reject").addEventListener("click", () => {
+      saved[current] = { status: "no", note: (saved[current] && saved[current].note) || "" };
+      persist();
+      renderList();
+      renderStage();
+      document.getElementById("note").focus();
+    });
+    document.getElementById("note").addEventListener("input", (event) => {
+      if (!saved[current]) saved[current] = { status: "no", note: "" };
+      saved[current].note = event.target.value;
+      persist();
+    });
+    document.getElementById("copy").addEventListener("click", async () => {
+      const lines = ITEMS.map((it) => {
+        const status = statusOf(it.id);
+        if (!status) return `${it.name}: not reviewed`;
+        const note = saved[it.id].note ? ` — ${saved[it.id].note}` : "";
+        return `${it.name}: ${status === "yes" ? "approved" : "needs a change"}${note}`;
+      });
+      await navigator.clipboard.writeText(lines.join("\n"));
+      document.getElementById("copy").textContent = "Copied";
+      setTimeout(() => { document.getElementById("copy").textContent = "Copy decisions"; }, 1200);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.target.matches("textarea")) return;
+      const visible = [...document.querySelectorAll(".row")].map((row) => row.dataset.id);
+      const index = visible.indexOf(current);
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+        event.preventDefault();
+        select(visible[Math.min(visible.length - 1, index + 1)] || current);
+      }
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+        event.preventDefault();
+        select(visible[Math.max(0, index - 1)] || current);
+      }
+    });
+
+    renderList();
+    renderStage();
+  </script>
+</body>
+</html>

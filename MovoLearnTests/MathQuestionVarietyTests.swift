@@ -72,6 +72,83 @@ final class MathQuestionVarietyTests: XCTestCase {
         )
     }
 
+    func testGeneratedWordProblemsAgreeInNumber() {
+        var failures: [String] = []
+        var sawSingularChicken = false
+        let readings: [ReadingLevel] = [.beginner, .earlyReader, .growingReader, .confidentReader]
+        for topic in Topic.allCases {
+            for math in MathLevel.allCases {
+                for reading in readings {
+                    for age in [5, 7] {
+                        let seed = MathWordProblemGenerator.varietySeed(
+                            topic: topic,
+                            mathLevel: math,
+                            readingLevel: reading
+                        ) &+ age
+                        let questions = MathWordProblemGenerator.generateQuestions(
+                            topic: topic,
+                            seed: seed,
+                            level: reading,
+                            mathLevel: math,
+                            count: 4,
+                            age: age
+                        ) + MathWordProblemGenerator.generateGroupingQuestions(
+                            topic: topic,
+                            seed: seed,
+                            level: reading,
+                            mathLevel: math,
+                            count: 3,
+                            age: age
+                        )
+                        for question in questions {
+                            let fields = [question.prompt, question.explanation].compactMap { $0 }
+                            for field in fields {
+                                let result = ChildFacingProseQualityValidator.validate(
+                                    field,
+                                    allowShortImperative: true
+                                )
+                                if !result.passed {
+                                    failures.append(
+                                        "\(topic.rawValue) \(math.rawValue) age \(age): \(field) :: \(result.issues.map(\.description).joined(separator: "; "))"
+                                    )
+                                }
+                                if field.localizedCaseInsensitiveContains("one chicken was")
+                                    || field.localizedCaseInsensitiveContains("there was 1 chicken") {
+                                    sawSingularChicken = true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for seed in 0..<60 {
+            let questions = MathWordProblemGenerator.generateQuestions(
+                topic: .farmAnimals,
+                seed: seed,
+                level: .beginner,
+                mathLevel: .emerging,
+                count: 4,
+                age: 5
+            )
+            for question in questions where question.prompt.localizedCaseInsensitiveContains("chicken") {
+                XCTAssertFalse(
+                    question.prompt.localizedCaseInsensitiveContains("chicken were"),
+                    question.prompt
+                )
+                if question.prompt.localizedCaseInsensitiveContains("one chicken was")
+                    || question.prompt.localizedCaseInsensitiveContains("there was 1 chicken") {
+                    sawSingularChicken = true
+                }
+            }
+        }
+        XCTAssertTrue(sawSingularChicken, "Expected a singular chicken sentence such as \"One chicken was pecking\".")
+        XCTAssertTrue(
+            failures.isEmpty,
+            failures.prefix(12).joined(separator: "\n")
+        )
+    }
+
     func testGeneratorProducesDistinctEquationsAcrossTopicSeeds() {
         let topics: [Topic] = [.horses, .sharks, .space, .cooking, .robots, .fairies]
         var allEquations = Set<String>()

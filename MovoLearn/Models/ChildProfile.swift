@@ -16,6 +16,20 @@ enum ReadingLevel: String, Codable, CaseIterable, Identifiable {
         case .confidentReader: return 3
         }
     }
+
+    /// Plain description for a parent choosing a starting point.
+    var parentDetail: String {
+        switch self {
+        case .beginner:
+            return "Knows some letters and words. Mostly listens along."
+        case .earlyReader:
+            return "Reads short sentences with a little help."
+        case .growingReader:
+            return "Reads a short passage and talks about it."
+        case .confidentReader:
+            return "Reads on their own and answers questions."
+        }
+    }
 }
 
 enum MathLevel: String, Codable, CaseIterable, Identifiable {
@@ -34,6 +48,20 @@ enum MathLevel: String, Codable, CaseIterable, Identifiable {
         case .advancing: return 3
         }
     }
+
+    /// Plain description for a parent choosing a starting point.
+    var parentDetail: String {
+        switch self {
+        case .emerging:
+            return "Counts and adds small numbers."
+        case .developing:
+            return "Adds and subtracts with familiar numbers."
+        case .secure:
+            return "Comfortable with the math expected for their age."
+        case .advancing:
+            return "Ready for richer problems and word stories."
+        }
+    }
 }
 
 enum LearningGoal: String, Codable, CaseIterable, Identifiable {
@@ -45,6 +73,24 @@ enum LearningGoal: String, Codable, CaseIterable, Identifiable {
     case allAround = "All-around practice"
 
     var id: String { rawValue }
+
+    /// Plain description for a parent choosing what to emphasize.
+    var parentDetail: String {
+        switch self {
+        case .reading:
+            return "More time with stories and sentences."
+        case .math:
+            return "More time with numbers and word problems."
+        case .vocabulary:
+            return "New words tied to the topics they pick."
+        case .science:
+            return "Short discovery facts and questions."
+        case .writing:
+            return "Drawing and putting ideas into words."
+        case .allAround:
+            return "A mix of reading, math, words, and discovery."
+        }
+    }
 }
 
 enum PreferredActivityType: String, Codable, CaseIterable, Identifiable {

@@ -45,9 +45,8 @@ struct MysteryInvestigationView: View {
             }
 
             if !allCluesRevealed {
-                PrimaryGradientButton(
+                LessonContinueButton(
                     title: revealedClueCount == 0 ? "Reveal first clue" : "Reveal next clue",
-                    icon: "eye.fill",
                     action: onRevealClue
                 )
 
@@ -62,8 +61,8 @@ struct MysteryInvestigationView: View {
                         .lineSpacing(6)
 
                     Text("Use every clue to choose the best answer.")
-                        .font(DesignSystem.Typography.title(16))
-                        .foregroundStyle(DesignSystem.Colors.deepNavy)
+                        .font(DesignSystem.Typography.subtitle(16))
+                        .foregroundStyle(DesignSystem.Colors.lessonMuted)
 
                     ForEach(question.choices, id: \.self) { choice in
                         AnswerButton(
@@ -97,25 +96,19 @@ struct MysteryInvestigationView: View {
                 Button {
                     onEarlyPrediction(choice)
                 } label: {
-                    HStack {
-                        Text(choice)
-                            .font(DesignSystem.Typography.title(18))
-                            .foregroundStyle(DesignSystem.Colors.deepNavy)
-                            .multilineTextAlignment(.leading)
-                        Spacer()
-                        if earlyPrediction == choice {
-                            Image(systemName: "circle.inset.filled")
-                                .foregroundStyle(accent)
+                    Text(choice)
+                        .font(DesignSystem.Typography.title(18))
+                        .foregroundStyle(DesignSystem.Colors.deepNavy)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 12)
+                        .frame(minHeight: DesignSystem.Metrics.scaled(56))
+                        .background(earlyPrediction == choice ? DesignSystem.Colors.lessonCorrectWash : Color.clear)
+                        .overlay(alignment: .bottom) {
+                            Rectangle()
+                                .fill(earlyPrediction == choice ? DesignSystem.Colors.lessonCorrectLine : DesignSystem.Colors.lessonLine)
+                                .frame(height: 1)
                         }
-                    }
-                    .padding(.horizontal, DesignSystem.Spacing.md)
-                    .padding(.vertical, 12)
-                    .background(
-                        earlyPrediction == choice
-                            ? accent.opacity(0.12)
-                            : DesignSystem.Colors.surfaceMuted.opacity(0.65)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Radius.sm, style: .continuous))
                 }
                 .buttonStyle(.plain)
             }

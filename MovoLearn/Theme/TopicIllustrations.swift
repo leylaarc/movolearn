@@ -115,7 +115,7 @@ struct TopicCard: View {
                             y: 5
                         )
 
-                    TopicIllustrationView(topic: topic, size: 56, animate: true)
+                    WorldBubbleMark(topic: topic, size: 56)
 
                     if isSelected {
                         Image(systemName: "checkmark.circle.fill")

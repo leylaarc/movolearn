@@ -676,9 +676,8 @@ enum QuestionQualityValidator {
         }
         let snippet = String(lower[match])
         let noun = snippet.split(separator: " ").last.map(String.init) ?? ""
-        let allowedPluralsAfterOne: Set<String> = [
-            "hours", "cents", "sides", "inches", "meters", "steps", "feet", "is"
-        ]
+        // "one is" is a verb, not a plural noun. Units such as "1 inches" are errors.
+        let allowedPluralsAfterOne: Set<String> = ["is"]
         return !allowedPluralsAfterOne.contains(noun)
     }
 

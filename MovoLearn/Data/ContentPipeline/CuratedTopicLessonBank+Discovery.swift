@@ -1103,21 +1103,21 @@ extension CuratedTopicLessonBank {
         case .beginner:
             return DiscoveryPack(
                 title: "Day and Night",
-                storyOpening: "Nova the star twinkles over half the Earth. Right now, half the world is bright and half is dark — at the same time!",
+                storyOpening: "Nova the star watches Earth from far away.",
                 missionPrompt: "Catch one fact that explains why we have day and night.",
-                readingPassage: "Earth spins like a top. One side faces the Sun and has day. The other side faces away and has night. The Sun does not turn off. Earth keeps spinning even while you sleep.",
+                readingPassage: "Earth spins like a top. The side that faces the Sun has day. The side that faces away has night. The Sun does not turn off.",
                 questions: [
                     discoveryMCQ(
                         "According to the notes, what does Earth do?",
                         ["It spins like a top", "It turns the Sun off each night", "It stays still and never turns"],
                         "It spins like a top",
-                        "Earth spins like a top, so different sides face the Sun through the day."
+                        "Earth spins like a top, so different sides face the Sun."
                     ),
                     discoveryMCQ(
-                        "What makes day and night?",
-                        ["Earth's spin", "The Sun turning off at night", "The Moon covering the Sun each day"],
-                        "Earth's spin",
-                        "Day and night happen because Earth spins; the Sun keeps shining the whole time."
+                        "Which side of Earth has day?",
+                        ["The side that faces the Sun", "The side that faces away", "The side with the Moon covering it"],
+                        "The side that faces the Sun",
+                        "The side that faces the Sun has day."
                     )
                 ],
                 vocabularyWords: [
@@ -1140,7 +1140,7 @@ extension CuratedTopicLessonBank {
                 creativePrompt: "Draw Earth beside the Sun. Shade the night side and label day and night.",
                 storyEnding: "Nova the star sparkles — you logged a real day-and-night fact. Great science work!",
                 readingSkill: "Use a science note to explain day and night",
-                reflectionPrompt: "Why is it night on one side of Earth?",
+                reflectionPrompt: "What does the Sun do while one side of Earth has night?",
                 hints: ["Look for the word spin", "Find which side faces the Sun"],
                 commonMistakes: ["Thinking the Sun turns off at night"],
                 successCriteria: ["Links Earth's spin to day and night"],

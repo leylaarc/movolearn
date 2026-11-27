@@ -57,6 +57,19 @@ enum DesignSystem {
         static let surfaceMuted = Color(red: 0.90, green: 0.94, blue: 1.0)
         static let textSecondary = mutedText
         static let textTertiary = Color(red: 0.48, green: 0.50, blue: 0.62)
+
+        /// Colors from the website lesson demo: flat cream page, navy type, coral action.
+        static let lessonCoral = Color(red: 226/255, green: 59/255, blue: 98/255)
+        static let lessonMuted = Color(red: 62/255, green: 68/255, blue: 104/255)
+        static let lessonSky = Color(red: 142/255, green: 200/255, blue: 232/255)
+        static let lessonCream = Color(red: 255/255, green: 246/255, blue: 219/255)
+        static let lessonOrange = Color(red: 255/255, green: 117/255, blue: 16/255)
+        static let lessonYellow = Color(red: 255/255, green: 199/255, blue: 0/255)
+        static let lessonWindow = Color(red: 215/255, green: 239/255, blue: 255/255)
+        static let lessonPad = Color(red: 196/255, green: 94/255, blue: 10/255)
+        static let lessonCorrectWash = Color(red: 229/255, green: 246/255, blue: 234/255)
+        static let lessonCorrectLine = Color(red: 26/255, green: 143/255, blue: 69/255)
+        static let lessonLine = Color(red: 20/255, green: 31/255, blue: 71/255).opacity(0.16)
         static let cardBorder = deepNavy.opacity(0.08)
         static let softCardShadow = deepNavy.opacity(0.12)
         static let shadow = softCardShadow

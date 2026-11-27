@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Movo Learn · Learning built around what your child loves</title>
   <meta name="description" content="Movo Learn is an iPhone and iPad app for ages 5–8. Personalized reading, math, vocabulary, and discovery lessons through your child’s favorite topics. Learning stays on the device.">
   <link rel="canonical" href="https://movolearn.com/">
@@ -14,7 +14,8 @@
   <meta property="og:url" content="https://movolearn.com/">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#fff8f0">
-  <link rel="stylesheet" href="/assets/site.css?v=19">
+  <link rel="stylesheet" href="/assets/site.css?v=42">
+  <script>document.documentElement.classList.add("is-gated");</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -67,7 +68,7 @@
         <span class="sr-only">Menu</span>
       </button>
       <div class="nav-links" id="nav-menu">
-        <a href="/#how">How it works</a>
+        <a href="#how">How it works</a>
         <a href="/support/">Support</a>
         <a href="/privacy/">Privacy</a>
         <a data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">App Store</a>
@@ -76,84 +77,64 @@
   </header>
 
   <main id="main">
-    <section class="wrap hero">
-      <div class="hero-copy">
-        <p class="kicker">For iPhone and iPad · Ages 5–8</p>
-        <h1>Learning built around what your child loves.</h1>
-        <div class="play" id="lesson-play" role="region" aria-labelledby="play-title">
-          <div class="play-head">
-            <p class="play-kicker">Try a lesson</p>
-            <h2 id="play-title">Countdown to Launch</h2>
-            <p class="play-step" id="play-step">Story · 1 of 4</p>
-            <div class="play-pips" aria-hidden="true">
-              <span class="play-pip"></span>
-              <span class="play-pip"></span>
-              <span class="play-pip"></span>
-              <span class="play-pip"></span>
-            </div>
+    <section class="journey" id="journey">
+      <div class="play" id="lesson-play" role="region" aria-label="Countdown to launch">
+        <p class="sr-only">Countdown to Launch</p>
+        <div class="play-sky">
+          <p class="play-num" id="play-num" aria-live="polite"></p>
+          <div class="rocket" id="rocket">
+            <svg viewBox="0 0 80 120" aria-hidden="true">
+              <path d="M22 78 L8 102 L30 90 Z" fill="#ff7510"/>
+              <path d="M58 78 L72 102 L50 90 Z" fill="#ff7510"/>
+              <path d="M26 46 Q40 10 54 46 L54 86 Q40 96 26 86 Z" fill="#e23b62"/>
+              <path d="M26 46 Q40 14 54 46 Z" fill="#141f47"/>
+              <circle cx="40" cy="58" r="8" fill="#d7efff" stroke="#141f47" stroke-width="2.5"/>
+              <rect x="26" y="74" width="28" height="6" fill="#ffc700"/>
+            </svg>
+            <span class="flame" aria-hidden="true"></span>
           </div>
-          <div class="play-sky">
-            <p class="play-num" id="play-num" aria-live="polite"></p>
-            <div class="rocket" id="rocket">
-              <svg viewBox="0 0 80 120" aria-hidden="true">
-                <path d="M22 78 L8 102 L30 90 Z" fill="#ff7510"/>
-                <path d="M58 78 L72 102 L50 90 Z" fill="#ff7510"/>
-                <path d="M26 46 Q40 10 54 46 L54 86 Q40 96 26 86 Z" fill="#e23b62"/>
-                <path d="M26 46 Q40 14 54 46 Z" fill="#141f47"/>
-                <circle cx="40" cy="58" r="8" fill="#d7efff" stroke="#141f47" stroke-width="2.5"/>
-                <rect x="26" y="74" width="28" height="6" fill="#ffc700"/>
-              </svg>
-              <span class="flame" aria-hidden="true"></span>
-            </div>
-            <span class="puff puff-a" aria-hidden="true"></span>
-            <span class="puff puff-b" aria-hidden="true"></span>
-            <span class="play-pad" aria-hidden="true"></span>
+          <span class="puff puff-a" aria-hidden="true"></span>
+          <span class="puff puff-b" aria-hidden="true"></span>
+          <span class="play-pad" aria-hidden="true"></span>
+        </div>
+        <div class="play-body">
+          <p>Tess checks the rocket one more time. She counts down from five. Then the rocket lifts off. Soft smoke floats near the pad.</p>
+          <p class="play-q">What does Tess count down from?</p>
+          <div class="play-choices" role="group" aria-label="Answers">
+            <button type="button" data-answer="wrong">Ten</button>
+            <button type="button" data-answer="right">Five</button>
+            <button type="button" data-answer="wrong">Three</button>
           </div>
-          <div class="play-body">
-            <div class="play-slide is-on" data-beat="story">
-              <p>Tess stands by a small model rocket pad. She is ready for countdown.</p>
-              <button type="button" class="play-next" data-go="launch">Start countdown</button>
-            </div>
-            <div class="play-slide" data-beat="count" hidden>
-              <p class="play-countline" tabindex="-1">Watch the pad.</p>
-            </div>
-            <div class="play-slide" data-beat="read" hidden>
-              <p>Tess checks the rocket one more time. She counts down from five. Then the rocket lifts off. Soft smoke floats near the pad.</p>
-              <button type="button" class="play-next" data-go="ask">Try a question</button>
-            </div>
-            <div class="play-slide" data-beat="ask" hidden>
-              <p class="play-q" tabindex="-1">What does Tess count down from?</p>
-              <div class="play-choices" role="group" aria-label="Answers">
-                <button type="button" data-answer="wrong">Ten</button>
-                <button type="button" data-answer="right">Five</button>
-                <button type="button" data-answer="wrong">Three</button>
-              </div>
-              <p class="play-note" id="play-note" role="status"></p>
-              <button type="button" class="play-next" data-go="word" hidden>Next</button>
-            </div>
-            <div class="play-slide" data-beat="word" hidden>
-              <p class="play-word">countdown</p>
-              <p>Counting backward before something starts.</p>
-              <p class="play-fact">A countdown helps a launch team get ready before a rocket lifts off.</p>
-              <button type="button" class="play-next" data-go="story">Play again</button>
-            </div>
+          <p class="play-note" id="play-note" role="status"></p>
+          <div class="play-result" id="play-result" hidden>
+            <p class="play-word">countdown</p>
+            <p>Counting backward before something starts.</p>
+            <p class="play-fact">A countdown helps a launch team get ready before a rocket lifts off.</p>
           </div>
         </div>
-
-        <p class="lede">Lessons in reading, math, vocabulary, and discovery, built from the topics your child already likes, such as sharks, horses, space, dinosaurs, and whatever else they pick. A parent sets up the app. Kids just play.</p>
+      </div>
+      <div class="store-copy" id="store">
+        <p class="kicker">iPhone and iPad · Ages 5–8</p>
+        <h1>Available on the App Store</h1>
         <div class="hero-actions">
           <a class="app-store-badge" data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">
             <img src="/assets/app-store-badge.svg?v=2" alt="Download on the App Store" width="168" height="56">
           </a>
         </div>
-        <p class="fine">No ads. No account. Progress stays on the device.</p>
+        <button type="button" class="next-screen" id="open-details">The app</button>
       </div>
     </section>
 
-    <section class="wrap band" id="how">
-      <h2>A short lesson, matched to your child</h2>
-      <p class="band-intro">A parent picks a nickname, age, reading level, and math level. Then the child chooses topics. Each lesson uses those choices, not a one-size worksheet with a new sticker on top.</p>
-      <ol class="lesson-parts">
+    <div class="site-after" id="site">
+    <section class="flow-statement wrap">
+      <p>A parent sets up the app. Kids just learn while they play.</p>
+    </section>
+
+    <section class="flow-band wrap" id="how">
+      <p class="flow-kicker">How a lesson moves</p>
+      <h2>Reading, then math, then a discovery.</h2>
+      <p class="flow-lead">A parent picks a nickname, age, reading level, and math level. The child chooses topics. The lesson follows those choices, one part after another.</p>
+      <ol class="flow-steps">
         <li>
           <h3><svg class="i" aria-hidden="true"><use href="#book"/></svg> Reading &amp; words</h3>
           <p>Stories, comprehension, and vocabulary with real subject words a ranger or scientist would use: tide chart, orbit, fossil, lava.</p>
@@ -169,58 +150,41 @@
       </ol>
     </section>
 
-    <section class="wrap band">
-      <h2>Topics they already talk about</h2>
-      <p class="band-intro">Lessons follow the child’s topics.</p>
-      <ul class="topic-index">
-        <li><svg class="i" aria-hidden="true"><use href="#shark"/></svg><span>Sharks</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#fish"/></svg><span>Ocean animals</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#star"/></svg><span>Space</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#planet"/></svg><span>Planets</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#horse"/></svg><span>Horses</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#dino"/></svg><span>Dinosaurs</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#ball"/></svg><span>Soccer</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#robot"/></svg><span>Robots</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#volcano"/></svg><span>Volcanoes</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#train"/></svg><span>Trains</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#palette"/></svg><span>Art</span></li>
-        <li><svg class="i" aria-hidden="true"><use href="#note"/></svg><span>Music</span></li>
-      </ul>
-    </section>
-
-    <section class="wrap band" id="parents">
-      <h2>Parents stay in the loop</h2>
-      <p class="band-intro">Kids go from lesson to celebration, then home. The Learning Report lives in Profile, behind For Parents: short scores and recent lessons, without pulling children through an adult screen.</p>
-      <div class="split">
-        <article>
-          <h3>Setup once</h3>
-          <p>A parent or guardian creates the profile. Children never sign in and never have a password.</p>
-        </article>
-        <article>
-          <h3>Change interests anytime</h3>
-          <p>Edit favorite topics from Home without resetting progress. New lessons follow the new list.</p>
-        </article>
+    <section class="flow-band wrap" id="topics">
+      <p class="flow-kicker">Topics they already talk about</p>
+      <h2>The lesson follows the child.</h2>
+      <div class="river" id="topic-river" role="list">
+        <button type="button" class="is-on" role="listitem" data-line="A tide pool is a pocket of seawater left on the rocks when the tide goes out. In a shark lesson, kids count the seashells there.">Sharks</button>
+        <button type="button" role="listitem" data-line="Kelp is a long seaweed. A tide chart shows when the water will be high or low.">Ocean</button>
+        <button type="button" role="listitem" data-line="An orbit is the path something follows around a planet or a star. Thrust is the push that lifts a rocket.">Space</button>
+        <button type="button" role="listitem" data-line="A planet orbits a star. Kids read a short sky story, then count the moons the story names.">Planets</button>
+        <button type="button" role="listitem" data-line="A hoof is the hard foot of a horse. A mane is the hair along the neck.">Horses</button>
+        <button type="button" role="listitem" data-line="A fossil is what is left of a living thing from long ago, kept in rock.">Dinosaurs</button>
+        <button type="button" role="listitem" data-line="The story stays on the field: goals, players, and minutes, then a question that uses those same numbers.">Soccer</button>
+        <button type="button" role="listitem" data-line="Kids follow a short sequence: what the robot does first, next, and last.">Robots</button>
+        <button type="button" role="listitem" data-line="Lava is melted rock that comes out of a volcano.">Volcanoes</button>
+        <button type="button" role="listitem" data-line="A conductor is the person in charge of the train. Kids count cars in a station story.">Trains</button>
+        <button type="button" role="listitem" data-line="Kids look closely, name colors, and describe what they see.">Art</button>
+        <button type="button" role="listitem" data-line="A note is one musical sound. Kids can count beats in a short piece.">Music</button>
       </div>
+      <p class="river-line" id="river-line" aria-live="polite">A tide pool is a pocket of seawater left on the rocks when the tide goes out. In a shark lesson, kids count the seashells there.</p>
     </section>
 
-    <section class="wrap band" id="privacy">
-      <div class="privacy-note">
-        <div>
-          <h2>Learning stays on this iPhone or iPad.</h2>
+    <section class="flow-parents" id="parents">
+      <div class="wrap">
+        <p class="flow-kicker">For parents</p>
+        <h2>Learning stays on this iPhone or iPad.</h2>
+        <div class="flow-split">
           <p>This version does not create an account and does not send a child’s name, age, or lesson scores to Movo Learn servers. No ads, no tracking, no analytics SDKs.</p>
-          <p><a href="/privacy/">Read the Privacy Policy</a></p>
+          <p>A parent creates the profile. Children never sign in. Favorite topics can change from Home without resetting progress. The Learning Report lives in Profile, behind For Parents.</p>
         </div>
-        <p class="privacy-aside">Profile and progress stay on the device. Reset in Profile, or delete the app, to erase them. The same policy is in the app under Profile → Privacy.</p>
+        <p class="flow-privacy-link"><a href="/privacy/">Read the Privacy Policy</a></p>
+        <a class="app-store-badge" data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">
+          <img src="/assets/app-store-badge.svg?v=2" alt="Download on the App Store" width="168" height="56">
+        </a>
       </div>
     </section>
-
-    <section class="wrap band cta">
-      <h2>Get Movo Learn</h2>
-      <p class="band-intro">On the App Store for iPhone and iPad.</p>
-      <a class="app-store-badge" data-app-store href="https://apps.apple.com/us/app/movo-learn/id6822238237">
-        <img src="/assets/app-store-badge.svg?v=2" alt="Download on the App Store" width="168" height="56">
-      </a>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -234,6 +198,6 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/site.js?v=9"></script>
+  <script src="/assets/site.js?v=15"></script>
 </body>
 </html>
