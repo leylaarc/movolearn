@@ -49,7 +49,7 @@ enum ExploreSubjectCategory: String, CaseIterable, Identifiable, Hashable {
         case .artsAndCulture: return "Art, music, and creative play"
         case .language: return "Stories, reading clues, and words"
         case .math: return "Numbers, puzzles, and problem solving"
-        case .lifeSkills: return "Pets, horses, food, and everyday helpers"
+        case .lifeSkills: return "Dogs, cats, horses, farms, and cooking"
         }
     }
 
@@ -63,7 +63,7 @@ enum ExploreSubjectCategory: String, CaseIterable, Identifiable, Hashable {
         case .artsAndCulture: return "Art Studio"
         case .language: return "Story Kingdom"
         case .math: return "Number Quest"
-        case .lifeSkills: return "Everyday Heroes"
+        case .lifeSkills: return "Pets and Farms"
         }
     }
 

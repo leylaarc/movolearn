@@ -45,14 +45,7 @@ struct LessonSkyBackdrop: View {
                     .offset(y: drift ? 4 : -3)
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .padding(.bottom, DesignSystem.Metrics.scaled(10))
-            case .ground:
-                Capsule()
-                    .fill(Color(red: 0.22, green: 0.55, blue: 0.32).opacity(0.55))
-                    .frame(height: DesignSystem.Metrics.scaled(12))
-                    .padding(.horizontal, DesignSystem.Spacing.xl)
-                    .frame(maxHeight: .infinity, alignment: .bottom)
-                    .padding(.bottom, DesignSystem.Metrics.scaled(18))
-            case .sky:
+            case .ground, .sky:
                 EmptyView()
             case .volcano:
                 volcanoHill
@@ -880,8 +873,16 @@ struct DrawnSubject: View {
             PersonArt(kind: .princess, phase: phase, size: size)
         case "pirate":
             PersonArt(kind: .pirate, phase: phase, size: size)
-        case "space tool":
+        case "space tool", "wrench":
             WrenchArt(size: size)
+        case "scoop":
+            GrainScoopArt(size: size, phase: phase)
+        case "bucket", "hay bale", "tag", "patch", "card", "jersey", "bottle",
+             "trophy", "toy", "candle", "mask", "shaker", "lemon", "feather", "helmet",
+             "paint tube", "wristband", "blanket", "bandana", "ribbon", "hairpin",
+             "biscuit", "medal", "orange slice", "table setting",
+             "cell", "drumstick", "beetle", "chart", "thermometer", "fruit", "compass", "map clue", "passenger":
+            SupplyArt(kind: name, size: size)
         default:
             StarArt(color: DesignSystem.Colors.lessonSky, size: size, phase: phase)
         }
@@ -2578,6 +2579,204 @@ private struct DrumArt: View {
             Capsule().fill(Color(red: 0.55, green: 0.32, blue: 0.16)).frame(width: size * 0.28, height: size * 0.04).rotationEffect(.degrees(-40)).offset(x: size * 0.12, y: -size * 0.16)
         }
         .frame(width: size, height: size)
+    }
+}
+
+private struct GrainScoopArt: View {
+    var size: CGFloat
+    var phase: CGFloat
+
+    var body: some View {
+        ZStack {
+            Capsule()
+                .fill(Color(red: 0.72, green: 0.48, blue: 0.24))
+                .frame(width: size * 0.1, height: size * 0.44)
+                .rotationEffect(.degrees(42), anchor: .bottom)
+                .offset(x: -size * 0.08, y: -size * 0.12)
+            Ellipse()
+                .fill(Color(red: 0.77, green: 0.65, blue: 0.45))
+                .frame(width: size * 0.46, height: size * 0.26)
+                .offset(x: -size * 0.08, y: size * 0.1)
+            Ellipse()
+                .fill(Color(red: 0.90, green: 0.76, blue: 0.35))
+                .frame(width: size * 0.34, height: size * 0.16)
+                .offset(x: -size * 0.08, y: size * 0.05)
+            grain(x: -0.18, y: 0.04, scale: 0.07)
+            grain(x: -0.08, y: 0.01, scale: 0.055)
+            grain(x: 0.02, y: 0.05, scale: 0.06)
+            grain(x: -0.12, y: 0.08, scale: 0.045)
+            grain(x: -0.02, y: 0.09, scale: 0.05)
+        }
+        .offset(y: phase * size * 0.012)
+        .frame(width: size, height: size)
+    }
+
+    private func grain(x: CGFloat, y: CGFloat, scale: CGFloat) -> some View {
+        Ellipse()
+            .fill(Color(red: 0.69, green: 0.48, blue: 0.16))
+            .frame(width: size * scale * 1.35, height: size * scale)
+            .rotationEffect(.degrees(18))
+            .offset(x: size * x + phase * size * 0.012, y: size * y + phase * size * 0.008)
+    }
+}
+
+private struct SupplyArt: View {
+    var kind: String
+    var size: CGFloat
+
+    var body: some View {
+        ZStack {
+            switch kind {
+            case "bucket":
+                BucketShape()
+                    .fill(Color(red: 0.45, green: 0.62, blue: 0.78))
+                    .frame(width: size * 0.42, height: size * 0.36)
+                Ellipse()
+                    .fill(Color(red: 0.85, green: 0.71, blue: 0.35))
+                    .frame(width: size * 0.32, height: size * 0.1)
+                    .offset(y: -size * 0.12)
+                Capsule()
+                    .stroke(DesignSystem.Colors.deepNavy, lineWidth: 2)
+                    .frame(width: size * 0.22, height: size * 0.16)
+                    .offset(y: -size * 0.22)
+            case "hay bale":
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(Color(red: 0.86, green: 0.72, blue: 0.28))
+                    .frame(width: size * 0.5, height: size * 0.32)
+                Capsule().fill(Color(red: 0.72, green: 0.55, blue: 0.16)).frame(width: size * 0.5, height: size * 0.04)
+                Capsule().fill(Color(red: 0.72, green: 0.55, blue: 0.16)).frame(width: size * 0.5, height: size * 0.04).offset(y: size * 0.08)
+            case "tag", "patch", "card", "ticket":
+                RoundedRectangle(cornerRadius: kind == "card" ? 4 : 6, style: .continuous)
+                    .fill(kind == "patch" ? DesignSystem.Colors.lessonCoral : DesignSystem.Colors.lessonCream)
+                    .frame(width: size * (kind == "card" ? 0.36 : 0.42), height: size * (kind == "card" ? 0.48 : 0.32))
+                Circle().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.1)
+            case "jersey":
+                JerseyShape()
+                    .fill(DesignSystem.Colors.lessonSky)
+                    .frame(width: size * 0.46, height: size * 0.4)
+            case "bottle":
+                Capsule().fill(DesignSystem.Colors.lessonSky.opacity(0.85)).frame(width: size * 0.22, height: size * 0.42)
+                Capsule().fill(DesignSystem.Colors.lessonSky).frame(width: size * 0.1, height: size * 0.14).offset(y: -size * 0.26)
+            case "trophy", "medal":
+                Circle().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.28)
+                Capsule().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.08, height: size * 0.16).offset(y: size * 0.16)
+                if kind == "trophy" {
+                    Capsule().fill(Color(red: 0.55, green: 0.4, blue: 0.16)).frame(width: size * 0.22, height: size * 0.06).offset(y: size * 0.26)
+                }
+            case "toy":
+                Circle().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.34)
+                Circle().fill(DesignSystem.Colors.lessonCream).frame(width: size * 0.12)
+            case "candle":
+                Capsule().fill(DesignSystem.Colors.lessonCream).frame(width: size * 0.16, height: size * 0.36)
+                Ellipse().fill(DesignSystem.Colors.lessonOrange).frame(width: size * 0.1, height: size * 0.14).offset(y: -size * 0.24)
+            case "mask", "helmet":
+                Capsule()
+                    .fill(kind == "helmet" ? DesignSystem.Colors.lessonWindow : DesignSystem.Colors.lessonCoral)
+                    .frame(width: size * 0.42, height: size * 0.32)
+                Capsule().fill(DesignSystem.Colors.deepNavy.opacity(0.35)).frame(width: size * 0.28, height: size * 0.08)
+            case "shaker":
+                Capsule().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.2, height: size * 0.4)
+                Circle().fill(DesignSystem.Colors.lessonOrange).frame(width: size * 0.16).offset(y: -size * 0.18)
+            case "lemon", "orange slice":
+                Circle().fill(kind == "lemon" ? DesignSystem.Colors.lessonYellow : DesignSystem.Colors.lessonOrange).frame(width: size * 0.36)
+                if kind == "orange slice" {
+                    Circle().stroke(DesignSystem.Colors.lessonCream, lineWidth: 2).frame(width: size * 0.2)
+                }
+            case "feather":
+                Capsule()
+                    .fill(DesignSystem.Colors.lessonSky)
+                    .frame(width: size * 0.16, height: size * 0.46)
+                    .rotationEffect(.degrees(-18))
+            case "paint tube":
+                Capsule().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.2, height: size * 0.4)
+                Capsule().fill(DesignSystem.Colors.deepNavy).frame(width: size * 0.08, height: size * 0.1).offset(y: -size * 0.22)
+            case "wristband", "bandana", "ribbon":
+                Capsule()
+                    .fill(DesignSystem.Colors.lessonCoral)
+                    .frame(width: size * 0.46, height: size * 0.14)
+                    .rotationEffect(.degrees(kind == "ribbon" ? -20 : 0))
+            case "blanket":
+                RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .fill(DesignSystem.Colors.lavenderPurple.opacity(0.8))
+                    .frame(width: size * 0.48, height: size * 0.32)
+            case "hairpin":
+                Capsule().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.08, height: size * 0.36).rotationEffect(.degrees(24))
+                Circle().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.1).offset(x: size * 0.06, y: -size * 0.14)
+            case "biscuit":
+                Circle().fill(Color(red: 0.76, green: 0.52, blue: 0.28)).frame(width: size * 0.32)
+                Circle().fill(Color(red: 0.45, green: 0.28, blue: 0.14)).frame(width: size * 0.06).offset(x: -size * 0.06, y: -size * 0.02)
+                Circle().fill(Color(red: 0.45, green: 0.28, blue: 0.14)).frame(width: size * 0.05).offset(x: size * 0.05, y: size * 0.04)
+            case "table setting":
+                Circle().stroke(DesignSystem.Colors.lessonSky, lineWidth: 3).frame(width: size * 0.36)
+                Capsule().fill(DesignSystem.Colors.deepNavy).frame(width: size * 0.06, height: size * 0.28).offset(x: size * 0.2)
+            case "cell":
+                RoundedRectangle(cornerRadius: 3, style: .continuous)
+                    .fill(DesignSystem.Colors.lessonYellow)
+                    .frame(width: size * 0.28, height: size * 0.4)
+                Capsule().fill(DesignSystem.Colors.deepNavy).frame(width: size * 0.1, height: size * 0.06).offset(y: -size * 0.22)
+            case "drumstick":
+                Capsule().fill(Color(red: 0.72, green: 0.5, blue: 0.28)).frame(width: size * 0.08, height: size * 0.42).rotationEffect(.degrees(28))
+                Circle().fill(DesignSystem.Colors.lessonCream).frame(width: size * 0.16).offset(x: size * 0.1, y: -size * 0.16)
+            case "beetle":
+                Ellipse().fill(DesignSystem.Colors.deepNavy).frame(width: size * 0.34, height: size * 0.24)
+                Circle().fill(DesignSystem.Colors.deepNavy).frame(width: size * 0.16).offset(y: -size * 0.12)
+            case "chart":
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(DesignSystem.Colors.lessonCream)
+                    .frame(width: size * 0.4, height: size * 0.32)
+                Capsule().fill(DesignSystem.Colors.lessonSky).frame(width: size * 0.22, height: size * 0.06).offset(y: -size * 0.04)
+            case "thermometer":
+                Capsule().fill(DesignSystem.Colors.lessonCream).frame(width: size * 0.12, height: size * 0.4)
+                Circle().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.16).offset(y: size * 0.16)
+            case "fruit":
+                Circle().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.22).offset(x: -size * 0.08)
+                Circle().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.2).offset(x: size * 0.08, y: size * 0.04)
+            case "compass":
+                Circle().stroke(DesignSystem.Colors.deepNavy, lineWidth: 3).frame(width: size * 0.36)
+                Capsule().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.04, height: size * 0.2)
+            case "map clue":
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(DesignSystem.Colors.lessonCream)
+                    .frame(width: size * 0.4, height: size * 0.3)
+                Circle().fill(DesignSystem.Colors.lessonCoral).frame(width: size * 0.08).offset(x: size * 0.08, y: size * 0.02)
+            case "passenger":
+                Circle().fill(Color(red: 0.96, green: 0.78, blue: 0.64)).frame(width: size * 0.2).offset(y: -size * 0.12)
+                Capsule().fill(DesignSystem.Colors.lessonSky).frame(width: size * 0.28, height: size * 0.24).offset(y: size * 0.1)
+            default:
+                Circle().fill(DesignSystem.Colors.lessonYellow).frame(width: size * 0.28)
+            }
+        }
+        .frame(width: size, height: size)
+    }
+}
+
+private struct BucketShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.12, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - rect.width * 0.12, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+private struct JerseyShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.minY + rect.height * 0.28))
+        path.addLine(to: CGPoint(x: rect.width * 0.22, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.width * 0.38, y: rect.height * 0.22))
+        path.addLine(to: CGPoint(x: rect.width * 0.62, y: rect.height * 0.22))
+        path.addLine(to: CGPoint(x: rect.width * 0.78, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.height * 0.28))
+        path.addLine(to: CGPoint(x: rect.width * 0.78, y: rect.height * 0.42))
+        path.addLine(to: CGPoint(x: rect.width * 0.78, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.width * 0.22, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.width * 0.22, y: rect.height * 0.42))
+        path.closeSubpath()
+        return path
     }
 }
 

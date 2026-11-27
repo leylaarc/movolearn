@@ -232,11 +232,30 @@ struct LessonView: View {
         return blob.range(of: #"\bcats?\b"#, options: [.regularExpression, .caseInsensitive]) != nil
     }
 
+    /// The words on this page. A question or reflection prompt counts its own objects,
+    /// so the picture does not keep showing the story's subject.
+    private var stagePrompt: (prompt: String, explanation: String?)? {
+        switch viewModel.currentStep {
+        case .question(_, let question, _, _):
+            return (question.prompt, question.explanation)
+        case .reflection:
+            let prompt = story.reflectionPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !prompt.isEmpty else { return nil }
+            return (prompt, nil)
+        case .creative:
+            let prompt = story.creativePrompt.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !prompt.isEmpty else { return nil }
+            return (prompt, nil)
+        default:
+            return nil
+        }
+    }
+
     private var stageScene: StoryCountScene? {
-        if case .question(_, let question, _, _) = viewModel.currentStep,
+        if let stagePrompt,
            let math = StoryCountScene.math(
-               prompt: question.prompt,
-               explanation: question.explanation,
+               prompt: stagePrompt.prompt,
+               explanation: stagePrompt.explanation,
                title: viewModel.lesson.title,
                opening: story.storyOpening,
                passage: story.readingPassage

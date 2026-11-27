@@ -174,24 +174,13 @@ struct ReadingPassageCard: View {
     let text: String
     var pointSize: CGFloat = 20
 
-    private var scrolls: Bool {
-        text.count > 320
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: DesignSystem.Spacing.sm) {
             Text("The story")
                 .font(DesignSystem.Typography.label(13))
                 .foregroundStyle(DesignSystem.Colors.lessonMuted)
 
-            if scrolls {
-                ScrollView {
-                    passageText
-                }
-                .frame(maxHeight: DesignSystem.Metrics.scaled(168))
-            } else {
-                passageText
-            }
+            passageText
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)

@@ -160,10 +160,10 @@ enum ApprovedContentLibrary {
             let readingOK = abs(lesson.readingLevel.sortOrder - readingLevel.sortOrder) <= 0
                 || (category == .math && abs(lesson.readingLevel.sortOrder - readingLevel.sortOrder) <= 1)
             let mathOK: Bool
-            if lesson.primarySubject == .math || category == .math {
+            if lesson.primarySubject == .math || category == .math || lesson.mathChallenges.isEmpty {
+                // Reading and science packs are copied once per math level with the same
+                // title. Keep the copy stamped for this child so Practice is not the same lesson repeated.
                 mathOK = lesson.mathLevel == mathLevel
-            } else if lesson.mathChallenges.isEmpty {
-                mathOK = true
             } else {
                 mathOK = abs(lesson.mathLevel.sortOrder - mathLevel.sortOrder) <= 1
             }

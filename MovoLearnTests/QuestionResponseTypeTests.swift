@@ -577,6 +577,66 @@ final class QuestionResponseTypeTests: XCTestCase {
         XCTAssertNotEqual(question.subject, .math)
     }
 
+    func testPracticeRowSkipsRepeatedTitlesAndMixesTopics() {
+        func lesson(title: String, theme: Topic) -> Lesson {
+            let questions = [
+                LessonQuestion(
+                    subject: .reading,
+                    prompt: "How many horns did Triceratops have?",
+                    choices: ["One", "Three", "Ten"],
+                    correctAnswer: "Three",
+                    explanation: "Triceratops had three horns."
+                ),
+                LessonQuestion(
+                    subject: .reading,
+                    prompt: "What kind of teeth did Tyrannosaurus have?",
+                    choices: ["Flat teeth", "Sharp teeth", "No teeth"],
+                    correctAnswer: "Sharp teeth",
+                    explanation: "Tyrannosaurus had sharp teeth."
+                )
+            ]
+            return Lesson(
+                title: title,
+                theme: theme,
+                lessonType: .detective,
+                category: .story,
+                primarySubject: .reading,
+                storyOpening: "Dottie looks at two dinosaurs.",
+                missionPrompt: "Find the teeth clue.",
+                readingPassage: "Triceratops had three horns. Tyrannosaurus had sharp teeth.",
+                questions: questions,
+                mathChallenges: [],
+                vocabularyWords: [],
+                knowledgeFacts: [KnowledgeFact(fact: "Tooth shape helps tell dinosaur species apart.")],
+                creativePrompt: "Draw Triceratops with three horns.",
+                creativeResponseType: .drawing,
+                storyEnding: "Dottie can tell the species apart.",
+                readingSkill: "Find details",
+                mathSkill: "",
+                skillsPracticed: ["Reading"],
+                contentApprovalStatus: .approved
+            )
+        }
+
+        let lessons = [
+            lesson(title: "Plant Eaters and Meat Eaters", theme: .dinosaurs),
+            lesson(title: "Plant Eaters and Meat Eaters", theme: .dinosaurs),
+            lesson(title: "Plant Eaters and Meat Eaters", theme: .dinosaurs),
+            lesson(title: "A Dog's Super Nose", theme: .dogs),
+            lesson(title: "Day and Night", theme: .space)
+        ]
+        let offers = PlayGameCatalog.offers(
+            from: lessons,
+            favoriteTopics: [.dinosaurs, .dogs, .space],
+            limit: 3
+        )
+        XCTAssertEqual(offers.map(\.lesson.title), [
+            "A Dog's Super Nose",
+            "Day and Night",
+            "Plant Eaters and Meat Eaters"
+        ])
+    }
+
     func testDrawThisSceneWithDrawbridgeStillCountsAsDrawing() {
         XCTAssertTrue(
             QuestionResponseTypeResolver.looksLikeDrawingPrompt(

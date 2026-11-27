@@ -495,8 +495,45 @@ enum AgeGradeLearningStandards {
     /// Truncate passage to sentence cap, preferring complete sentences.
     /// Preserves each sentence's original `.` / `!` / `?` terminal (never turns questions into periods).
     static func limitSentences(_ text: String, max: Int) -> String {
+        limitSentences(text, max: max, keeping: { _ in false })
+    }
+
+    /// Shorten to `max` sentences, keeping any sentence `keeping` marks as required
+    /// (a comprehension answer lives there) plus the opening sentence when it fits.
+    /// Required sentences stay in story order. If none are required, the opening sentences are kept.
+    static func limitSentences(
+        _ text: String,
+        max: Int,
+        keeping sentenceIsRequired: (String) -> Bool
+    ) -> String {
         let pieces = extractSentencesPreservingTerminal(text)
-        return Array(pieces.prefix(Swift.max(1, max))).map { piece in
+        let cap = Swift.max(1, max)
+        guard pieces.count > cap else {
+            return joinSentencePieces(pieces)
+        }
+
+        let required = Set(pieces.indices.filter { sentenceIsRequired(pieces[$0].body) })
+        var chosen = Set<Int>()
+        if required.isEmpty {
+            chosen = Set(pieces.indices.prefix(cap))
+        } else if required.count >= cap {
+            chosen = Set(required.sorted().prefix(cap))
+        } else {
+            chosen = required
+            if chosen.count < cap {
+                chosen.insert(pieces.startIndex)
+            }
+            var index = pieces.startIndex
+            while chosen.count < cap && index < pieces.endIndex {
+                chosen.insert(index)
+                index += 1
+            }
+        }
+        return joinSentencePieces(chosen.sorted().map { pieces[$0] })
+    }
+
+    private static func joinSentencePieces(_ pieces: [SentencePiece]) -> String {
+        pieces.map { piece in
             let body = piece.body.trimmingCharacters(in: .whitespacesAndNewlines)
             let terminal = piece.terminal.isEmpty ? "." : piece.terminal
             return ChildFacingProseQualityValidator.polish(body + terminal)

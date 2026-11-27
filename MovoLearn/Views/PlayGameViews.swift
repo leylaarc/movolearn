@@ -40,7 +40,7 @@ struct PlayGameCard: View {
                         )
                     )
                     .frame(width: DesignSystem.Metrics.scaled(72), height: DesignSystem.Metrics.scaled(72))
-                TopicIllustrationView(topic: offer.lesson.theme, size: 46, animate: true)
+                WorldBubbleMark(topic: offer.lesson.theme, size: 46)
             }
             .frame(maxWidth: .infinity)
 
@@ -79,7 +79,7 @@ struct PlayGameCard: View {
                         )
                     )
                     .frame(width: DesignSystem.Metrics.scaled(68), height: DesignSystem.Metrics.scaled(68))
-                TopicIllustrationView(topic: offer.lesson.theme, size: 42, animate: true)
+                WorldBubbleMark(topic: offer.lesson.theme, size: 42)
             }
 
             VStack(alignment: .leading, spacing: 5) {

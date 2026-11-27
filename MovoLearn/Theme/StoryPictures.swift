@@ -145,7 +145,9 @@ struct StoryCountScene: Equatable {
         opening: String = "",
         passage: String = ""
     ) -> StoryCountScene? {
-        let fromPrompt = StoryPictureLibrary.countedPicture(in: prompt)
+        let fromPrompt = StoryPictureLibrary.pictureAsked(in: prompt)
+            ?? StoryPictureLibrary.directPicture(in: prompt)
+            ?? StoryPictureLibrary.countedPicture(in: prompt)
         let fromStory = StoryPictureLibrary.bestStoryPicture(title: title, opening: opening, passage: passage)
         guard var picture = fromPrompt ?? fromStory else { return nil }
 
@@ -157,15 +159,18 @@ struct StoryCountScene: Equatable {
             let count = picture.name == "volcano" || picture.name == "lava" ? 1 : 2
             return StoryCountScene(picture: picture, arrangement: .visit(count: count))
         }
-        if StoryPictureLibrary.isMoney(lower), let coin = StoryPictureLibrary.picture(named: "coin") {
+        if fromPrompt == nil,
+           StoryPictureLibrary.isMoney(lower),
+           let coin = StoryPictureLibrary.picture(named: "coin") {
             picture = coin
         }
         if StoryPictureLibrary.isCompare(lower),
            let beside = StoryPictureLibrary.beside(in: prompt) {
             return StoryCountScene(picture: beside.0.picture, arrangement: .beside(beside.0, beside.1))
         }
-        if StoryPictureLibrary.isMissingNumber(lower) {
-            return StoryCountScene(picture: picture, arrangement: .visit(count: 3))
+        if StoryPictureLibrary.isMissingNumber(lower),
+           let counted = StoryPictureLibrary.missingNumberScene(in: lower, picture: picture) {
+            return counted
         }
         if let equation = StoryPictureLibrary.equation(in: explanation ?? "") {
             return StoryCountScene(
@@ -176,6 +181,9 @@ struct StoryCountScene: Equatable {
         if let total = StoryPictureLibrary.identityTotal(in: explanation ?? ""),
            (1...StoryPictureLibrary.maxObjects).contains(total) {
             return StoryCountScene(picture: picture, arrangement: .gather(shown: total, joining: nil))
+        }
+        if let arrangement = StoryPictureLibrary.promptArrangement(in: lower, picture: picture) {
+            return StoryCountScene(picture: picture, arrangement: arrangement)
         }
         if let counted = countedAmount(in: lower, picture: picture) {
             return counted
@@ -872,7 +880,7 @@ private struct StoryTriangle: Shape {
 // MARK: - Matching the story's words
 
 private enum StoryPictureLibrary {
-    static let maxObjects = 24
+    static let maxObjects = 36
 
     fileprivate struct Equation {
         enum Op { case add, subtract, multiply, divide }
@@ -931,6 +939,117 @@ private enum StoryPictureLibrary {
         return pictures[best.key]
     }
 
+    /// "How many scoops are left?" is about scoops, even when hens are also mentioned.
+    static func pictureAsked(in prompt: String) -> StoryPicture? {
+        let lower = prompt.lowercased()
+        let pattern = #"how many(?: more)? ([a-z]+(?: [a-z]+){0,3}) (?:are|is|does|do|can|did|were|remain|in all|altogether)\b"#
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return nil }
+        let ns = lower as NSString
+        guard let match = regex.firstMatch(in: lower, range: NSRange(location: 0, length: ns.length)),
+              match.numberOfRanges >= 2 else { return nil }
+        let noun = ns.substring(with: match.range(at: 1))
+        let first = noun.split(separator: " ").first.map(String.init) ?? noun
+        if ["does", "do", "is", "are", "can", "did", "were"].contains(first) { return nil }
+        return picture(forNoun: noun)
+    }
+
+    /// The picture named directly after a number: "10 scoops", not a later word like "hens".
+    static func directPicture(in prompt: String) -> StoryPicture? {
+        let stated = statedCounts(in: prompt)
+        return (stated.first { !$0.picture.isContainer } ?? stated.first)?.picture
+    }
+
+    /// When a question has no equation, the numbers in the sentence still decide the picture.
+    static func promptArrangement(in lower: String, picture: StoryPicture) -> StoryCountScene.Arrangement? {
+        let stated = statedCounts(in: lower).filter { $0.picture.name == picture.name }.map(\.count)
+        let numbers = numbers(in: lower).map(\.value).filter { (1...maxObjects).contains($0) }
+        if isGrouped(lower), numbers.count >= 2 {
+            let groups = numbers[0]
+            let each = numbers[1]
+            if (1...6).contains(groups), each >= 1, groups * each <= maxObjects {
+                return .rows(groups: groups, each: each)
+            }
+        }
+        if stated.count >= 2 {
+            let start = stated[0]
+            let next = stated[1]
+            if isJoining(lower) {
+                return .gather(shown: start, joining: next)
+            }
+            if isRemoval(lower), start > next {
+                return .depart(start: start, leaving: next)
+            }
+            return .beside(
+                StoryCountCluster(picture: picture, count: start),
+                StoryCountCluster(picture: picture, count: next)
+            )
+        }
+        guard let only = stated.first else {
+            guard numbers.count == 1, let single = numbers.first else { return nil }
+            return .gather(shown: single, joining: nil)
+        }
+        if let other = numbers.first(where: { $0 != only }), (1...maxObjects).contains(other) {
+            if isJoining(lower) {
+                return .gather(shown: only, joining: other)
+            }
+            if isRemoval(lower) {
+                let start = max(only, other)
+                let leaving = min(only, other)
+                if start > leaving {
+                    return .depart(start: start, leaving: leaving)
+                }
+            }
+            if lower.contains("how many more") || lower.contains("filled") || lower.contains("has ") {
+                return .beside(
+                    StoryCountCluster(picture: picture, count: only),
+                    StoryCountCluster(picture: picture, count: other)
+                )
+            }
+        }
+        return .gather(shown: only, joining: nil)
+    }
+
+    private static func isGrouped(_ lower: String) -> Bool {
+        lower.range(
+            of: #"\b(rows? of|in each|each row|each group|each pack|each box|each tray|groups of)\b"#,
+            options: .regularExpression
+        ) != nil
+    }
+
+    private static func isJoining(_ lower: String) -> Bool {
+        if lower.contains("arrived") || lower.contains("join") { return true }
+        if lower.contains("more"),
+           lower.contains("add") || lower.contains("found") || lower.contains("brings") {
+            return true
+        }
+        return false
+    }
+
+    private static func isRemoval(_ lower: String) -> Bool {
+        if isJoining(lower) { return false }
+        return lower.range(
+            of: #"\b(gives|give|gave|hands|handed|uses|used|takes|took|shares|shared|rolls|rolled|sends|sent|stamps|stamped|missing|left)\b"#,
+            options: .regularExpression
+        ) != nil
+    }
+
+    static func picture(forNoun noun: String) -> StoryPicture? {
+        var words = noun.split(separator: " ").map(String.init)
+        let fillers: Set<String> = ["of", "the", "a", "an", "these", "those", "her", "his", "their"]
+        while let first = words.first, fillers.contains(first) {
+            words.removeFirst()
+        }
+        while !words.isEmpty {
+            let candidate = words.joined(separator: " ")
+            if let picture = entries.first(where: { $0.phrase == candidate })?.picture {
+                return picture
+            }
+            if words.count == 1 { break }
+            words.removeFirst()
+        }
+        return nil
+    }
+
     static func countedPicture(in prompt: String) -> StoryPicture? {
         let found = quantityPictures(in: prompt)
         if let item = found.first(where: { !$0.picture.isContainer }) {
@@ -966,7 +1085,8 @@ private enum StoryPictureLibrary {
     }
 
     static func isMoney(_ lower: String) -> Bool {
-        lower.range(of: #"\b(cents?|dollars?|coins?)\b"#, options: .regularExpression) != nil
+        if lower.contains("sand dollar") { return false }
+        return lower.range(of: #"\b(cents?|dollars?|coins?)\b"#, options: .regularExpression) != nil
     }
 
     static func isCompare(_ lower: String) -> Bool {
@@ -984,6 +1104,41 @@ private enum StoryPictureLibrary {
         if lower.contains("some more arrived") { return true }
         if lower.contains("how many") && lower.contains("joined") && lower.contains("some") { return true }
         return false
+    }
+
+    /// A missing-number question still names real amounts. Draw those, not a stand-in group.
+    /// "Eight fossils were waiting. Some more arrived, and now there are 9" shows 8, then 1 more.
+    /// When the start is the hidden number, show the total the question already states.
+    static func missingNumberScene(in lower: String, picture: StoryPicture) -> StoryCountScene? {
+        guard let total = nowTotal(in: lower), (1...maxObjects).contains(total) else { return nil }
+        if let start = startingCount(beforeSomeMore: lower, picture: picture),
+           (1...total).contains(start) {
+            let joining = total - start
+            guard joining <= maxObjects else { return nil }
+            return StoryCountScene(
+                picture: picture,
+                arrangement: .gather(shown: start, joining: joining == 0 ? nil : joining)
+            )
+        }
+        return StoryCountScene(picture: picture, arrangement: .gather(shown: total, joining: nil))
+    }
+
+    /// "now there are 9" or "now there is one".
+    private static func nowTotal(in lower: String) -> Int? {
+        guard let marker = lower.range(of: #"now there (?:are|is) "#, options: .regularExpression) else {
+            return nil
+        }
+        let rest = String(lower[marker.upperBound...])
+        let token = rest.prefix { $0.isNumber || $0.isLetter }
+        if let value = Int(token) { return value }
+        return numberWords.first { $0.0 == token }?.1
+    }
+
+    /// The group named before "some more" is already on the scene.
+    private static func startingCount(beforeSomeMore lower: String, picture: StoryPicture) -> Int? {
+        guard let marker = lower.range(of: "some more") else { return nil }
+        let prefix = String(lower[..<marker.lowerBound])
+        return statedCounts(in: prefix).first { $0.picture.name == picture.name }?.count
     }
 
     static func equation(in explanation: String) -> Equation? {
@@ -1024,28 +1179,28 @@ private enum StoryPictureLibrary {
         switch equation.op {
         case .add:
             let total = equation.a + max(equation.b, 0)
-            guard equation.a >= 1, total <= maxObjects else { return .visit(count: 3) }
+            guard equation.a >= 1, total <= maxObjects else { return .visit(count: 1) }
             if equation.b <= 0 {
                 return .gather(shown: equation.a, joining: nil)
             }
             return .gather(shown: equation.a, joining: equation.b)
         case .subtract:
-            guard equation.a > equation.b, equation.b >= 1, equation.a <= 20 else { return .visit(count: 3) }
+            guard equation.a > equation.b, equation.b >= 1, equation.a <= maxObjects else { return .visit(count: 1) }
             return .depart(start: equation.a, leaving: equation.b)
         case .multiply:
             let product = equation.a * equation.b
             guard equation.a >= 1, equation.b >= 1, equation.a <= 6, product <= maxObjects else {
-                return .visit(count: 3)
+                return .visit(count: 1)
             }
             return .rows(groups: equation.a, each: equation.b)
         case .divide:
-            guard equation.b > 0, equation.a % equation.b == 0 else { return .visit(count: 3) }
+            guard equation.b > 0, equation.a % equation.b == 0 else { return .visit(count: 1) }
             let quotient = equation.a / equation.b
             let eachIsDivisor = prompt.contains("groups of") || prompt.contains("each group") || prompt.contains("in each")
             let groups = eachIsDivisor ? quotient : equation.b
             let each = eachIsDivisor ? equation.b : quotient
             guard groups >= 1, each >= 1, groups <= 6, groups * each <= maxObjects else {
-                return .visit(count: 3)
+                return .visit(count: 1)
             }
             return .rows(groups: groups, each: each)
         }
@@ -1244,7 +1399,7 @@ private enum StoryPictureLibrary {
             pic("crab", "crabs", .waddle, .emoji("🦀"), ["hermit crabs", "hermit crab", "crabs", "crab"]),
             pic("octopus", "octopuses", .waddle, .emoji("🐙"), ["octopuses", "octopus"]),
             pic("sea star", "sea stars", .bob, .seaStar, ["sea stars", "sea star", "starfish"]),
-            pic("seashell", "seashells", .bob, .emoji("🐚"), ["seashells", "seashell", "shells", "shell"]),
+            pic("seashell", "seashells", .bob, .emoji("🐚"), ["sand dollars", "sand dollar", "clam shells", "clam shell", "spiral shells", "spiral shell", "shell samples", "seashells", "seashell", "shells", "shell", "samples", "sample"]),
             pic("pearl", "pearls", .bob, .pearl, ["pearls", "pearl"]),
             pic("dinosaur", "dinosaurs", .waddle, .emoji("🦕"), ["horned dinosaurs", "horned dinosaur", "dinosaurs", "dinosaur"]),
             pic("triceratops", "triceratops", .waddle, .emoji("🦕"), ["triceratops"]),
@@ -1308,7 +1463,7 @@ private enum StoryPictureLibrary {
             pic("yarn ball", "yarn balls", .roll, .emoji("🧶"), ["yarn balls", "yarn ball"]),
             pic("cone", "cones", .rest, .cone, ["safety cones", "safety cone", "cones", "cone"]),
             pic("battery", "batteries", .rest, .emoji("🔋"), ["batteries", "battery"]),
-            pic("paintbrush", "paintbrushes", .rest, .emoji("🖌️"), ["paintbrushes", "paintbrush"]),
+            pic("paintbrush", "paintbrushes", .rest, .emoji("🖌️"), ["paintbrushes", "paintbrush", "brushes", "brush"]),
             pic("drum", "drums", .rest, .emoji("🥁"), ["drums", "drum"]),
             pic("spoon", "spoons", .rest, .emoji("🥄"), ["wooden spoons", "wooden spoon", "spoons", "spoon"]),
             pic("cup", "cups", .rest, .emoji("🥛"), ["measuring cups", "measuring cup", "cups", "cup"], container: true),
@@ -1322,7 +1477,7 @@ private enum StoryPictureLibrary {
             pic("umbrella", "umbrellas", .rest, .emoji("☂️"), ["umbrellas", "umbrella"]),
             pic("rain gauge", "rain gauges", .rest, .rainGauge, ["rain gauges", "rain gauge"]),
             pic("suitcase", "suitcases", .drive, .emoji("🧳"), ["suitcases", "suitcase"]),
-            pic("ticket", "tickets", .rest, .emoji("🎫"), ["tickets", "ticket"]),
+            pic("ticket", "tickets", .rest, .emoji("🎫"), ["boarding passes", "boarding pass", "tickets", "ticket"]),
             pic("train", "trains", .drive, .emoji("🚂"), ["trains", "train"]),
             pic("train car", "train cars", .drive, .emoji("🚃"), ["train cars", "train car"]),
             pic("car", "cars", .drive, .emoji("🚗"), ["cars", "car"]),
@@ -1340,8 +1495,43 @@ private enum StoryPictureLibrary {
             pic("wind vane", "wind vanes", .rest, .emoji("🧭"), ["wind vanes", "wind vane"]),
             pic("torch", "torches", .twinkle, .emoji("🔥"), ["torches", "torch"]),
             pic("stone", "stones", .rest, .emoji("🪨"), ["stones", "stone"]),
-            pic("space tool", "space tools", .rest, .emoji("🔧"), ["space tools", "space tool"]),
-            pic("dog treat", "dog treats", .rest, .emoji("🦴"), ["dog treats", "dog treat"]),
+            pic("space tool", "space tools", .rest, .emoji("🔧"), ["wrenches", "wrench", "space tools", "space tool"]),
+            pic("scoop", "scoops", .rest, .emoji("🌾"), ["scoops of grain", "scoops", "scoop", "grain"]),
+            pic("bucket", "buckets", .rest, .emoji("🪣"), ["feed buckets", "feed bucket", "buckets", "bucket"]),
+            pic("hay bale", "hay bales", .rest, .emoji("🌾"), ["hay bales", "hay bale"]),
+            pic("tag", "tags", .rest, .emoji("🏷️"), ["turtle tags", "tags", "tag"]),
+            pic("patch", "patches", .rest, .emoji("🏅"), ["mission patches", "moon patches", "rocket patches", "star patches", "patches", "patch"]),
+            pic("card", "cards", .rest, .emoji("🃏"), ["rocket cards", "cards", "card"]),
+            pic("jersey", "jerseys", .rest, .emoji("👕"), ["jerseys", "jersey"]),
+            pic("bottle", "bottles", .rest, .emoji("🍼"), ["oil bottles", "oil bottle", "water bottles", "water bottle", "bottles", "bottle"]),
+            pic("trophy", "trophies", .rest, .emoji("🏆"), ["trophies", "trophy"]),
+            pic("toy", "toys", .rest, .emoji("🧸"), ["chew toys", "feather toys", "toys", "toy"]),
+            pic("candle", "candles", .rest, .emoji("🕯️"), ["candles", "candle"]),
+            pic("mask", "masks", .rest, .emoji("🎭"), ["masks", "mask"]),
+            pic("shaker", "shakers", .rest, .emoji("🪇"), ["shakers", "shaker"]),
+            pic("lemon", "lemons", .rest, .emoji("🍋"), ["lemons", "lemon"]),
+            pic("feather", "feathers", .flutter, .emoji("🪶"), ["feathers", "feather"]),
+            pic("helmet", "helmets", .rest, .emoji("⛑️"), ["helmets", "helmet"]),
+            pic("paint tube", "paint tubes", .rest, .emoji("🎨"), ["paint tubes", "paint tube"]),
+            pic("wristband", "wristbands", .rest, .emoji("⌚"), ["wristbands", "wristband"]),
+            pic("blanket", "blankets", .rest, .emoji("🛏️"), ["soft blankets", "blankets", "blanket"]),
+            pic("bandana", "bandanas", .rest, .emoji("🎀"), ["puppy bandanas", "bandanas", "bandana"]),
+            pic("ribbon", "ribbons", .rest, .emoji("🎀"), ["ribbons", "ribbon"]),
+            pic("hairpin", "hairpins", .rest, .emoji("📍"), ["jeweled hairpins", "hairpins", "hairpin"]),
+            pic("biscuit", "biscuits", .rest, .emoji("🍪"), ["dog biscuits", "biscuits", "biscuit"]),
+            pic("medal", "medals", .rest, .emoji("🎖️"), ["victory medals", "goal medals", "medals", "medal"]),
+            pic("orange slice", "orange slices", .rest, .emoji("🍊"), ["orange slices", "orange slice"]),
+            pic("table setting", "table settings", .rest, .emoji("🍽️"), ["banquet settings", "table settings", "settings"]),
+            pic("cell", "cells", .rest, .emoji("🔋"), ["cells", "cell"]),
+            pic("drumstick", "drumsticks", .rest, .emoji("🥁"), ["drumsticks", "drumstick"]),
+            pic("beetle", "beetles", .waddle, .emoji("🪲"), ["beetles", "beetle"]),
+            pic("chart", "charts", .rest, .emoji("📊"), ["weather charts", "charts", "chart"]),
+            pic("thermometer", "thermometers", .rest, .emoji("🌡️"), ["thermometers", "thermometer"]),
+            pic("fruit", "fruit", .rest, .emoji("🍎"), ["pieces of fruit", "pieces", "piece"]),
+            pic("compass", "compasses", .rest, .emoji("🧭"), ["compasses", "compass"]),
+            pic("map clue", "map clues", .rest, .emoji("🗺️"), ["map clues", "map clue"]),
+            pic("passenger", "passengers", .rest, .emoji("🧑"), ["passengers", "passenger"]),
+            pic("dog treat", "dog treats", .rest, .emoji("🦴"), ["dog treats", "dog treat", "cat treats", "cat treat", "fish-shaped treats", "training treats", "treats", "treat"]),
             pic("tractor", "tractors", .drive, .emoji("🚜"), ["tractors", "tractor"]),
             pic("circle", "circles", .rest, .circle, ["circles", "circle"]),
             pic("square", "squares", .rest, .square, ["squares", "square"]),

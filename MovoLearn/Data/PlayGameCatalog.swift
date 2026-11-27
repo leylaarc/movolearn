@@ -77,17 +77,28 @@ enum PlayGameCatalog {
 
         var bubble: [PlayGameOffer] = []
         var memory: [PlayGameOffer] = []
+        var titles = Set<String>()
+        var topics = Set<Topic>()
+        let topicsNeeded = favoriteTopics.isEmpty ? 1 : min(limit, favoriteTopics.count)
 
-        for lesson in ordered.prefix(48) {
+        for lesson in ordered {
             guard lesson.isApprovedForChildDisplay || lesson.contentApprovalStatus == .legacyBundled else { continue }
             let practice = practiceQuestions(in: lesson)
+            var added = false
             if canOfferBubble(practice, lesson: lesson) {
                 bubble.append(PlayGameOffer(kind: .bubblePop, lesson: lesson))
+                added = true
             }
             if canOfferMemory(lesson, practice: practice) {
                 memory.append(PlayGameOffer(kind: .memoryMatch, lesson: lesson))
+                added = true
             }
-            if bubble.count >= limit && memory.count >= 2 { break }
+            if added {
+                titles.insert(normalizedTitle(lesson.title))
+                topics.insert(lesson.theme)
+            }
+            // Keep scanning past repeated titles so the row can mix topics.
+            if titles.count >= max(limit * 4, 12), topics.count >= topicsNeeded { break }
         }
 
         return mix(bubble: bubble, memory: memory, limit: limit)
@@ -242,34 +253,68 @@ enum PlayGameCatalog {
         )
     }
 
+    private static func normalizedTitle(_ title: String) -> String {
+        title.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    }
+
+    /// Alternate answer practice and word practice, skipping repeated titles and
+    /// preferring a new topic when one is still available.
     private static func mix(bubble: [PlayGameOffer], memory: [PlayGameOffer], limit: Int) -> [PlayGameOffer] {
         var result: [PlayGameOffer] = []
-        var used = Set<UUID>()
+        var usedLessons = Set<UUID>()
+        var usedTitles = Set<String>()
         var bubbleIndex = 0
         var memoryIndex = 0
         var preferBubble = true
 
-        func take(_ offer: PlayGameOffer) {
-            guard result.count < limit, used.insert(offer.lesson.id).inserted else { return }
-            result.append(offer)
+        func nextIndex(in offers: [PlayGameOffer], from start: Int, allowSameTopic: Bool) -> Int? {
+            let topicsShown = Set(result.map(\.lesson.theme))
+            var index = start
+            while index < offers.count {
+                let offer = offers[index]
+                let title = normalizedTitle(offer.lesson.title)
+                let fresh = !usedLessons.contains(offer.lesson.id) && !usedTitles.contains(title)
+                let topicOK = allowSameTopic || !topicsShown.contains(offer.lesson.theme)
+                if fresh && topicOK { return index }
+                index += 1
+            }
+            return nil
         }
 
-        while result.count < limit && (bubbleIndex < bubble.count || memoryIndex < memory.count) {
-            let before = result.count
+        while result.count < limit {
+            let useBubble: Bool
             if preferBubble, bubbleIndex < bubble.count {
-                take(bubble[bubbleIndex])
-                bubbleIndex += 1
+                useBubble = true
             } else if memoryIndex < memory.count {
-                take(memory[memoryIndex])
-                memoryIndex += 1
+                useBubble = false
             } else if bubbleIndex < bubble.count {
-                take(bubble[bubbleIndex])
-                bubbleIndex += 1
+                useBubble = true
             } else {
                 break
             }
-            if result.count == before, bubbleIndex >= bubble.count, memoryIndex >= memory.count {
-                break
+
+            let offers = useBubble ? bubble : memory
+            let start = useBubble ? bubbleIndex : memoryIndex
+            guard let index = nextIndex(in: offers, from: start, allowSameTopic: false)
+                    ?? nextIndex(in: offers, from: start, allowSameTopic: true) else {
+                if useBubble {
+                    bubbleIndex = offers.count
+                } else {
+                    memoryIndex = offers.count
+                }
+                preferBubble.toggle()
+                if bubbleIndex >= bubble.count && memoryIndex >= memory.count { break }
+                continue
+            }
+
+            let offer = offers[index]
+            usedLessons.insert(offer.lesson.id)
+            usedTitles.insert(normalizedTitle(offer.lesson.title))
+            result.append(offer)
+            if useBubble {
+                bubbleIndex = index + 1
+            } else {
+                memoryIndex = index + 1
             }
             preferBubble.toggle()
         }

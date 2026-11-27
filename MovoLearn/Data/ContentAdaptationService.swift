@@ -41,7 +41,14 @@ enum ContentAdaptationService {
             mission = normalizedMission
             notes.append("Kept normalized mission — adapted mission failed mission quality")
         }
-        var passage = adaptPassage(lesson.readingPassage, ability: ability, expectations: expectations, protectedTerms: protectedVocab(lesson), notes: &notes)
+        var passage = adaptPassage(
+            lesson.readingPassage,
+            ability: ability,
+            expectations: expectations,
+            protectedTerms: protectedVocab(lesson),
+            questions: lesson.childFacingQuestions,
+            notes: &notes
+        )
         let ending = adaptProse(lesson.storyEnding, ability: ability, expectations: expectations, kind: .ending, protectedTerms: protectedVocab(lesson))
 
         var vocabulary = adaptVocabulary(
@@ -305,14 +312,19 @@ enum ContentAdaptationService {
         ability: LearnerAbilityProfile,
         expectations: AgeGradeLearningStandards.Expectations,
         protectedTerms: Set<String>,
+        questions: [LessonQuestion] = [],
         notes: inout [String]
     ) -> String {
         var text = passage
         let sentenceCap = min(ability.rules.passageSentenceRange.upperBound, expectations.maxPassageSentences)
+        let answers = questions.compactMap(\.correctAnswer)
+        let keepAnswerSentence = { (sentence: String) in
+            answers.contains { answerSupported($0, in: sentence) }
+        }
         let sentences = AgeGradeLearningStandards.sentenceCount(of: text)
         if sentences > sentenceCap {
             notes.append("Passage shortened to \(sentenceCap) sentences for \(expectations.band.displayName)")
-            text = AgeGradeLearningStandards.limitSentences(text, max: sentenceCap)
+            text = AgeGradeLearningStandards.limitSentences(text, max: sentenceCap, keeping: keepAnswerSentence)
         }
         if expectations.preferConcreteLanguage || ability.prefersConcreteLanguage {
             let adapted = AgeGradeLearningStandards.adaptProseSafely(
@@ -327,9 +339,11 @@ enum ContentAdaptationService {
             // Never ship malformed adaptation artifacts to children.
             if ChildFacingProseQualityValidator.passes(adapted) {
                 text = adapted
+            } else if ChildFacingProseQualityValidator.passes(text) {
+                notes.append("Kept story sentences — adapted wording failed prose quality")
             } else if ChildFacingProseQualityValidator.passes(passage) {
                 notes.append("Kept original passage — adapted wording failed prose quality")
-                text = AgeGradeLearningStandards.limitSentences(passage, max: sentenceCap)
+                text = AgeGradeLearningStandards.limitSentences(passage, max: sentenceCap, keeping: keepAnswerSentence)
             } else {
                 text = adapted
             }
@@ -516,11 +530,10 @@ enum ContentAdaptationService {
             notes.append("Added letter-sound practice for beginner readers")
         }
 
-        if ability.needsScaffolding || expectations.teachVocabularyBeforeTesting {
-            let grounded = result.filter { isGroundedInPassage($0, passage: passage) || $0.subject == .math }
-            if grounded.count >= ability.rules.readingQuestionRange.lowerBound {
-                result = grounded + result.filter { item in !grounded.contains(where: { $0.id == item.id }) }
-            }
+        let beforeFilter = result.count
+        result = result.filter { isAnswerableFromShownStory($0, passage: passage) }
+        if result.count < beforeFilter {
+            notes.append("Removed questions whose answers are not in the story")
         }
         return result
     }
@@ -1015,14 +1028,93 @@ enum ContentAdaptationService {
         return markers.contains { lower.contains($0) }
     }
 
-    private static func isGroundedInPassage(_ question: LessonQuestion, passage: String) -> Bool {
-        guard let answer = question.correctAnswer?.lowercased(), !answer.isEmpty else {
-            return question.isProgressiveMystery || !question.pairs.isEmpty
+    /// A factual question is answerable only when the story the child sees states the answer.
+    /// "What can you assume…" questions stay, because they ask the child to imagine.
+    private static func isAnswerableFromShownStory(_ question: LessonQuestion, passage: String) -> Bool {
+        if question.subject == .math { return true }
+        if question.isProgressiveMystery { return true }
+        if isCreativeAssumption(question.prompt) { return true }
+        if isVocabularyMeaningPrompt(question.prompt, passage: passage) { return true }
+
+        if !question.pairs.isEmpty {
+            return question.pairs.allSatisfy { pair in
+                answerSupported(pair.left, in: passage) && answerSupported(pair.right, in: passage)
+            }
         }
-        let haystack = passage.lowercased()
-        if haystack.contains(answer) { return true }
-        let words = answer.split(separator: " ").map(String.init).filter { $0.count > 3 }
-        return words.contains { haystack.contains($0) }
+
+        guard let answer = question.correctAnswer?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !answer.isEmpty else {
+            return true
+        }
+        return answerSupported(answer, in: passage)
+    }
+
+    private static func isCreativeAssumption(_ prompt: String) -> Bool {
+        let lower = prompt.lowercased()
+        let markers = [
+            "what can you assume",
+            "what could you assume",
+            "what do you think",
+            "why do you think",
+            "what can you infer",
+            "why might",
+            "most likely",
+            "best conclusion",
+            "based on all the clues",
+            "what best explains"
+        ]
+        return markers.contains { lower.contains($0) }
+    }
+
+    /// "What does pail mean?" is about a word in the story, not an unstated event.
+    private static func isVocabularyMeaningPrompt(_ prompt: String, passage: String) -> Bool {
+        let lower = prompt.lowercased()
+        guard lower.contains("mean") else { return false }
+        guard let match = prompt.range(of: #""([^"]+)""#, options: .regularExpression) else { return false }
+        let word = prompt[match].replacingOccurrences(of: "\"", with: "")
+        return passageContainsWord(word, in: passage)
+    }
+
+    /// True when the answer's meaningful words actually appear in this text.
+    /// A shared function word like "into" is not enough.
+    private static func answerSupported(_ answer: String, in passage: String) -> Bool {
+        let trimmed = answer.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return false }
+        if passage.localizedCaseInsensitiveContains(trimmed) { return true }
+        let words = contentWords(trimmed)
+        if words.isEmpty {
+            let token = trimmed.lowercased()
+            if ["yes", "no", "left", "right", "same"].contains(token) { return true }
+            if Int(token) != nil { return true }
+            return token.count >= 3 && passageContainsWord(token, in: passage)
+        }
+        let hits = words.filter { passageContainsWord($0, in: passage) }
+        if words.count == 1 { return hits.count == 1 }
+        return hits.count >= 2 && Double(hits.count) / Double(words.count) >= 0.5
+    }
+
+    private static let answerStopwords: Set<String> = [
+        "a", "an", "the", "and", "or", "but", "to", "of", "in", "on", "for", "with",
+        "her", "his", "their", "she", "he", "they", "it", "its", "is", "are", "was",
+        "were", "be", "been", "this", "that", "these", "those", "from", "into", "onto",
+        "over", "under", "about", "after", "before", "then", "than", "when", "what",
+        "which", "who", "how", "why", "does", "did", "do", "not", "you", "your",
+        "our", "out", "there", "here", "them", "him", "can", "will", "just", "also",
+        "very", "really", "only", "even", "back", "down", "off", "by", "at", "as",
+        "if", "so", "too", "each", "every", "some", "any", "all", "both", "such",
+        "own", "same", "other", "more", "most", "less", "many", "much", "while",
+        "during", "where", "because", "have", "has", "had", "being"
+    ]
+
+    private static func contentWords(_ text: String) -> [String] {
+        text.lowercased()
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { $0.count > 2 && !answerStopwords.contains($0) }
+    }
+
+    private static func passageContainsWord(_ word: String, in passage: String) -> Bool {
+        let pattern = "\\b\(NSRegularExpression.escapedPattern(for: word))\\b"
+        return passage.range(of: pattern, options: [.regularExpression, .caseInsensitive]) != nil
     }
 
     private static func looksMultiStep(_ prompt: String) -> Bool {

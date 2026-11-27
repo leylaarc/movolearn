@@ -369,6 +369,118 @@ final class ChildFacingProseQualityTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(Double(grounded.count) / Double(readingQs.count), 0.5)
     }
 
+    func testShortenedStoryKeepsTheSentenceAQuestionAsksAbout() {
+        let passage = "Farmer Jo walks into the barn every morning to milk Bessie, the gentle brown cow. She washes her hands first, then sits on a small wooden stool beside Bessie. Gently, she squeezes to fill a metal pail with fresh, warm milk. Bessie chews hay calmly the whole time, seeming to enjoy the quiet routine. When the pail is full, Farmer Jo carries the milk inside to pour into clean glass jars."
+        let lesson = farmStory(
+            passage: passage,
+            questions: [
+                farmChoice(
+                    "What does Farmer Jo do first before milking?",
+                    ["Washes her hands", "Feeds the chickens", "Cleans the barn floor"],
+                    "Washes her hands"
+                ),
+                farmChoice(
+                    "What does Bessie do while being milked?",
+                    ["Chews hay calmly", "Runs around the barn", "Falls asleep standing up"],
+                    "Chews hay calmly"
+                ),
+                farmChoice(
+                    "What does Farmer Jo do with the full pail?",
+                    ["Carries it inside to pour into glass jars", "Leaves it in the barn overnight", "Gives it directly to Bessie"],
+                    "Carries it inside to pour into glass jars"
+                )
+            ]
+        )
+        let prepared = ContentAdaptationService.prepare(lesson: lesson, profile: earlyReaderProfile())
+        let shown = prepared.lesson.readingPassage
+        XCTAssertTrue(
+            shown.localizedCaseInsensitiveContains("glass jars"),
+            "The story must still say what happens to the pail. Got: \(shown)"
+        )
+        XCTAssertTrue(
+            prepared.lesson.questions.contains { $0.prompt.localizedCaseInsensitiveContains("full pail") },
+            "The pail question belongs with the story that states the answer."
+        )
+        XCTAssertLessThanOrEqual(AgeGradeLearningStandards.sentenceCount(of: shown), 4)
+    }
+
+    func testUnstatedFactQuestionIsRemovedUnlessItAsksWhatYouCanAssume() {
+        let passage = "Farmer Jo walks into the barn every morning to milk Bessie, the gentle brown cow. She washes her hands first, then sits on a small wooden stool beside Bessie. Gently, she squeezes to fill a metal pail with fresh, warm milk. Bessie chews hay calmly the whole time, seeming to enjoy the quiet routine."
+        let lesson = farmStory(
+            passage: passage,
+            questions: [
+                farmChoice(
+                    "What does Farmer Jo do first before milking?",
+                    ["Washes her hands", "Feeds the chickens", "Cleans the barn floor"],
+                    "Washes her hands"
+                ),
+                farmChoice(
+                    "What does Farmer Jo do with the full pail?",
+                    ["Carries it inside to pour into glass jars", "Leaves it in the barn overnight", "Gives it directly to Bessie"],
+                    "Carries it inside to pour into glass jars"
+                ),
+                farmChoice(
+                    "What can you assume Farmer Jo did with the full pail?",
+                    ["Carried it inside to pour into glass jars", "Left it in the barn overnight", "Gave it directly to Bessie"],
+                    "Carried it inside to pour into glass jars"
+                )
+            ]
+        )
+        let prepared = ContentAdaptationService.prepare(lesson: lesson, profile: earlyReaderProfile())
+        let prompts = prepared.lesson.questions.map(\.prompt)
+        XCTAssertFalse(
+            prompts.contains { $0.localizedCaseInsensitiveContains("what does farmer jo do with the full pail") },
+            "A factual question about something the story never says should not be shown. Got: \(prompts)"
+        )
+        XCTAssertTrue(
+            prompts.contains { $0.localizedCaseInsensitiveContains("what can you assume") },
+            "An assume question is a creativity prompt and can stay. Got: \(prompts)"
+        )
+    }
+
+    private func earlyReaderProfile() -> ChildProfile {
+        ChildProfile(
+            age: 6,
+            grade: "K",
+            readingLevel: .earlyReader,
+            mathLevel: .developing,
+            favoriteTopics: [.farmAnimals]
+        )
+    }
+
+    private func farmStory(passage: String, questions: [LessonQuestion]) -> Lesson {
+        Lesson(
+            title: "Farmer Jo Milks the Cow",
+            theme: .farmAnimals,
+            lessonType: .explorer,
+            storyOpening: "Soft morning light fills the barn.",
+            missionPrompt: "Read how Farmer Jo milks Bessie.",
+            readingPassage: passage,
+            questions: questions,
+            mathChallenges: [],
+            vocabularyWords: [VocabularyWord(word: "pail", definition: "A container for carrying liquid.")],
+            knowledgeFacts: [KnowledgeFact(fact: "Cows are milked on a regular schedule.")],
+            creativePrompt: "Draw Farmer Jo milking Bessie.",
+            creativeResponseType: .drawing,
+            storyEnding: "The milking is done for the morning.",
+            readingSkill: "Recall a farm detail",
+            mathSkill: "",
+            skillsPracticed: ["Reading"]
+        )
+    }
+
+    private func farmChoice(_ prompt: String, _ choices: [String], _ answer: String) -> LessonQuestion {
+        LessonQuestion(
+            subject: .reading,
+            type: .multipleChoice,
+            responseType: .multipleChoice,
+            prompt: prompt,
+            choices: choices,
+            correctAnswer: answer,
+            explanation: answer
+        )
+    }
+
     func testFactoryPassagesDifferByReadingLevelAndStayGrammatical() {
         let beginner = LevelSpecificContentFactory.makeApprovedLesson(
             topic: .horses,

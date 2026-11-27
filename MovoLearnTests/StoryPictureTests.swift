@@ -180,16 +180,139 @@ final class StoryPictureTests: XCTestCase {
         XCTAssertNil(joining)
     }
 
-    func testMissingNumberDoesNotShowTheAnswer() {
+    func testMissingStartShowsTheTotalAlreadyNamed() {
         let scene = StoryCountScene.math(
             prompt: "Some fairies were glowing. 2 more fairies arrived, and now there are 7. How many fairies were there at the start?",
             explanation: "7 − 2 = 5."
         )
         XCTAssertEqual(scene?.picture.name, "fairy")
-        guard case .visit(let count) = scene?.arrangement else {
-            return XCTFail("Expected fairies without the missing total")
+        guard case .gather(let shown, let joining) = scene?.arrangement else {
+            return XCTFail("Expected the 7 fairies the question already names")
         }
-        XCTAssertEqual(count, 3)
+        XCTAssertEqual(shown, 7)
+        XCTAssertNil(joining)
+    }
+
+    func testGrainScoopsAreNotStoryEggs() {
+        let scene = StoryCountScene.math(
+            prompt: "A feed bin holds 10 scoops of grain. Farmer Jo gives 4 scoops to the hens. How many scoops are left?",
+            explanation: nil,
+            title: "Eggs for the Basket",
+            opening: "Farmer Jo sorts eggs before a busy morning.",
+            passage: "Farmer Jo collects eggs from the henhouse at dawn. She checks how many eggs she has gathered and how many feed buckets still need filling."
+        )
+        XCTAssertEqual(scene?.picture.name, "scoop")
+        guard case .depart(let start, let leaving) = scene?.arrangement else {
+            return XCTFail("Expected 10 scoops with 4 given away, not the story's eggs")
+        }
+        XCTAssertEqual(start, 10)
+        XCTAssertEqual(leaving, 4)
+    }
+
+    func testMathQuestionsPictureTheNumbersTheyAsk() {
+        var mismatches: [String] = []
+        for topic in Topic.allCases {
+            for mathLevel in MathLevel.allCases {
+                guard let lesson = CuratedTopicLessonBank.mathScene(
+                    topic: topic,
+                    mathLevel: mathLevel,
+                    readingLevel: .earlyReader
+                ) else { continue }
+                let prompts = lesson.problems.map { ($0.prompt, $0.explanation) }
+                    + [(lesson.reflectionPrompt, nil as String?)]
+                for (prompt, explanation) in prompts {
+                    guard Self.statesACount(prompt) else { continue }
+                    guard let scene = StoryCountScene.math(
+                        prompt: prompt,
+                        explanation: explanation,
+                        title: lesson.title,
+                        opening: lesson.storyOpening,
+                        passage: lesson.readingPassage
+                    ) else {
+                        mismatches.append("\(topic.rawValue): no picture for \(prompt)")
+                        continue
+                    }
+                    let shown = Self.amounts(in: scene.arrangement)
+                    let named = Self.numbers(in: prompt)
+                    if !Self.amountsMatch(shown, named: named) {
+                        mismatches.append("\(topic.rawValue): \(scene.picture.plural) \(shown) not in \"\(prompt)\"")
+                    }
+                }
+            }
+        }
+        XCTAssertTrue(mismatches.isEmpty, mismatches.prefix(24).joined(separator: "\n"))
+    }
+
+    private static func statesACount(_ prompt: String) -> Bool {
+        let lower = prompt.lowercased()
+        if lower.range(of: #"\d+"#, options: .regularExpression) != nil { return true }
+        let words = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
+        return words.contains { word in
+            lower.range(of: "\\b\(word)\\b", options: .regularExpression) != nil
+        }
+    }
+
+    private static func numbers(in prompt: String) -> Set<Int> {
+        let lower = prompt.lowercased()
+        var found = Set<Int>()
+        if let regex = try? NSRegularExpression(pattern: #"\d+"#) {
+            let ns = lower as NSString
+            for match in regex.matches(in: lower, range: NSRange(location: 0, length: ns.length)) {
+                if let value = Int(ns.substring(with: match.range)) {
+                    found.insert(value)
+                }
+            }
+        }
+        let words = [
+            "twelve": 12, "eleven": 11, "ten": 10, "nine": 9, "eight": 8, "seven": 7,
+            "six": 6, "five": 5, "four": 4, "three": 3, "two": 2, "one": 1
+        ]
+        for (word, value) in words where lower.range(of: "\\b\(word)\\b", options: .regularExpression) != nil {
+            found.insert(value)
+        }
+        return found
+    }
+
+    /// A pictured amount has to be a number the question says, one of the subject when the
+    /// real total is too big to draw, or the groups that multiply or add back to a stated number.
+    private static func amountsMatch(_ shown: [Int], named: Set<Int>) -> Bool {
+        if shown.allSatisfy({ named.contains($0) || $0 == 1 }) { return true }
+        if shown.count == 2 {
+            let a = shown[0]
+            let b = shown[1]
+            if named.contains(a + b) || named.contains(a * b) || named.contains(abs(a - b)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    private static func amounts(in arrangement: StoryCountScene.Arrangement) -> [Int] {
+        switch arrangement {
+        case .gather(let shown, let joining):
+            return [shown] + (joining.map { [$0] } ?? [])
+        case .depart(let start, let leaving):
+            return [start, leaving]
+        case .rows(let groups, let each):
+            return [groups, each]
+        case .beside(let left, let right):
+            return [left.count, right.count]
+        case .visit(let count):
+            return [count]
+        }
+    }
+
+    func testFossilsShowTheWaitingGroupThenTheNewTotal() {
+        let scene = StoryCountScene.math(
+            prompt: "Eight fossils were waiting at the dig site. Some more arrived, and now there are 9. How many fossils joined?",
+            explanation: "9 − 8 = 1."
+        )
+        XCTAssertEqual(scene?.picture.name, "fossil")
+        guard case .gather(let shown, let joining) = scene?.arrangement else {
+            return XCTFail("Expected 8 fossils, then enough to make 9")
+        }
+        XCTAssertEqual(shown, 8)
+        XCTAssertEqual(joining, 1)
     }
 
     func testHeroesInTheCitySquareAreHeroesNotSquares() {
